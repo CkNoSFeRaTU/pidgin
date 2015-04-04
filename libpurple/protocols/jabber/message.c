@@ -534,13 +534,25 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 					purple_debug_info("jabber", "It's forwarded message, using the wrapped message instead.\n");
 					packet = message;
 
-					to = xmlnode_get_attrib(packet, "from");
+					from = xmlnode_get_attrib(packet, "from");
+					
+					if (result) {
+						JabberID *jid = jabber_id_new(from);
 
-					if (result && !strncmp(to, from, strlen(from)))
-						is_outgoing = TRUE;
+						if (!jid)
+							return;
+
+						gboolean equal = (purple_strequal(jid->node, js->user->node) &&
+							g_str_equal(jid->domain, js->user->domain));
+
+						if (equal)
+							is_outgoing = TRUE;
+						
+						jabber_id_free(jid);
+					}
 					else if (sent)
 						is_outgoing = TRUE;
-					
+
 					if (delay) {
 						const char *timestamp = xmlnode_get_attrib(delay, "stamp");
 						
