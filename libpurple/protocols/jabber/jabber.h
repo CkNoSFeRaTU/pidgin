@@ -48,8 +48,11 @@ typedef enum {
 
 	JABBER_CAP_ITEMS          = 1 << 14,
 	JABBER_CAP_ROSTER_VERSIONING = 1 << 15,
-
+	
 	JABBER_CAP_FACEBOOK       = 1 << 16,
+
+	JABBER_CAP_CARBONS        = 1 << 17,
+	JABBER_CAP_MAM            = 1 << 18,
 
 	JABBER_CAP_RETRIEVED      = 1 << 31
 } JabberCapabilities;
@@ -62,6 +65,7 @@ typedef struct _JabberStream JabberStream;
 #include "connection.h"
 #include "dnsquery.h"
 #include "dnssrv.h"
+#include "mam.h"
 #include "media.h"
 #include "mediamanager.h"
 #include "roomlist.h"
@@ -287,6 +291,8 @@ struct _JabberStream
 
 	/* facebook quirks */
 	gboolean facebook_roster_cleanup_performed;
+	
+	mam_t *mam;
 };
 
 typedef gboolean (JabberFeatureEnabled)(JabberStream *js, const gchar *namespace);

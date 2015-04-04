@@ -62,6 +62,7 @@ typedef struct _JabberMessage {
 	} chat_state;
 	GList *etc;
 	GList *eventitems;
+	gboolean outgoing;
 } JabberMessage;
 
 void jabber_message_free(JabberMessage *jm);
@@ -78,5 +79,8 @@ unsigned int jabber_send_typing(PurpleConnection *gc, const char *who, PurpleTyp
 gboolean jabber_buzz_isenabled(JabberStream *js, const gchar *namespace);
 
 gboolean jabber_custom_smileys_isenabled(JabberStream *js, const const gchar *namespace);
+
+void jabber_toggle_carbons(PurplePluginAction *action);
+void jabber_toggle_mam(PurplePluginAction *action);
 
 #endif /* PURPLE_JABBER_MESSAGE_H_ */

@@ -31,6 +31,7 @@
 #include "chat.h"
 #include "data.h"
 #include "google/google.h"
+#include "mam.h"
 #include "message.h"
 #include "xmlnode.h"
 #include "pep.h"
@@ -58,7 +59,8 @@ void jabber_message_free(JabberMessage *jm)
 
 static void handle_chat(JabberMessage *jm)
 {
-	JabberID *jid = jabber_id_new(jm->from);
+	gchar *contact = jm->outgoing ? jm->to : jm->from;
+	JabberID *jid = jabber_id_new(contact);
 
 	PurpleConnection *gc;
 	PurpleAccount *account;
@@ -71,48 +73,50 @@ static void handle_chat(JabberMessage *jm)
 	gc = jm->js->gc;
 	account = purple_connection_get_account(gc);
 
-	jb = jabber_buddy_find(jm->js, jm->from, TRUE);
+	jb = jabber_buddy_find(jm->js, contact, TRUE);
 	jbr = jabber_buddy_find_resource(jb, jid->resource);
 
 	if(!jm->xhtml && !jm->body) {
-		if (jbr && jm->chat_state != JM_STATE_NONE)
-			jbr->chat_states = JABBER_CHAT_STATES_SUPPORTED;
+		if (!jm->outgoing) {
+			if (jbr && jm->chat_state != JM_STATE_NONE)
+				jbr->chat_states = JABBER_CHAT_STATES_SUPPORTED;
 
-		if(JM_STATE_COMPOSING == jm->chat_state) {
-			serv_got_typing(gc, jm->from, 0, PURPLE_TYPING);
-		} else if(JM_STATE_PAUSED == jm->chat_state) {
-			serv_got_typing(gc, jm->from, 0, PURPLE_TYPED);
-		} else if(JM_STATE_GONE == jm->chat_state) {
-			PurpleConversation *conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM,
-					jm->from, account);
-			if (conv && jid->node && jid->domain) {
-				char buf[256];
-				PurpleBuddy *buddy;
+			if(JM_STATE_COMPOSING == jm->chat_state) {
+				serv_got_typing(gc, contact, 0, PURPLE_TYPING);
+			} else if(JM_STATE_PAUSED == jm->chat_state) {
+				serv_got_typing(gc, contact, 0, PURPLE_TYPED);
+			} else if(JM_STATE_GONE == jm->chat_state) {
+				PurpleConversation *conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM,
+						contact, account);
+				if (conv && jid->node && jid->domain) {
+					char buf[256];
+					PurpleBuddy *buddy;
 
-				g_snprintf(buf, sizeof(buf), "%s@%s", jid->node, jid->domain);
+					g_snprintf(buf, sizeof(buf), "%s@%s", jid->node, jid->domain);
 
-				if ((buddy = purple_find_buddy(account, buf))) {
-					const char *who;
-					char *escaped;
+					if ((buddy = purple_find_buddy(account, buf))) {
+						const char *who;
+						char *escaped;
 
-					who = purple_buddy_get_alias(buddy);
-					escaped = g_markup_escape_text(who, -1);
+						who = purple_buddy_get_alias(buddy);
+						escaped = g_markup_escape_text(who, -1);
 
-					g_snprintf(buf, sizeof(buf),
-					           _("%s has left the conversation."), escaped);
-					g_free(escaped);
+						g_snprintf(buf, sizeof(buf),
+						           _("%s has left the conversation."), escaped);
+						g_free(escaped);
 
-					/* At some point when we restructure PurpleConversation,
-					 * this should be able to be implemented by removing the
-					 * user from the conversation like we do with chats now. */
-					purple_conversation_write(conv, "", buf,
-					                        PURPLE_MESSAGE_SYSTEM, time(NULL));
+						/* At some point when we restructure PurpleConversation,
+						 * this should be able to be implemented by removing the
+						 * user from the conversation like we do with chats now. */
+						purple_conversation_write(conv, "", buf,
+						                        PURPLE_MESSAGE_SYSTEM, time(NULL));
+					}
 				}
-			}
-			serv_got_typing_stopped(gc, jm->from);
+				serv_got_typing_stopped(gc, contact);
 
-		} else {
-			serv_got_typing_stopped(gc, jm->from);
+			} else {
+				serv_got_typing_stopped(gc, contact);
+			}
 		}
 	} else {
 		if (jid->resource) {
@@ -128,12 +132,12 @@ static void handle_chat(JabberMessage *jm)
 			PurpleConversation *conv;
 
 			conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM,
-			                                             jm->from, account);
-			if (conv && !g_str_equal(jm->from,
+			                                             contact, account);
+			if (conv && !g_str_equal(contact,
 			                         purple_conversation_get_name(conv))) {
 				purple_debug_info("jabber", "Binding conversation to %s\n",
-				                  jm->from);
-				purple_conversation_set_name(conv, jm->from);
+				                  contact);
+				purple_conversation_set_name(conv, contact);
 			}
 		}
 
@@ -156,7 +160,8 @@ static void handle_chat(JabberMessage *jm)
 			jm->body = jabber_google_format_to_html(jm->body);
 			g_free(tmp);
 		}
-		serv_got_im(gc, jm->from, jm->xhtml ? jm->xhtml : jm->body, 0, jm->sent);
+		serv_got_im(gc, contact, jm->xhtml ? jm->xhtml : jm->body,
+					(jm->outgoing ? PURPLE_MESSAGE_SEND : PURPLE_MESSAGE_RECV), jm->sent);
 	}
 
 	jabber_id_free(jid);
@@ -502,7 +507,76 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 	JabberMessage *jm;
 	const char *id, *from, *to, *type;
 	xmlnode *child;
-	gboolean signal_return;
+	gboolean signal_return, is_outgoing = FALSE;
+	time_t message_timestamp = time(NULL);
+	gboolean delayed = FALSE;
+
+	/* Check if this is a carbon-copy of a message.
+	 * If so, use that instead for the rest of this function,
+	 * but keep track of wether the from and to should be swapped.
+	 */
+	from = xmlnode_get_attrib(packet, "from");
+
+	if (jabber_is_own_account(js, from)) {
+		xmlnode *received = xmlnode_get_child_with_namespace(packet, "received", NS_XMPP_CARBONS);
+		xmlnode *sent = xmlnode_get_child_with_namespace(packet, "sent", NS_XMPP_CARBONS);
+		xmlnode *result = xmlnode_get_child_with_namespace(packet, "result", NS_XMPP_MAM);
+		xmlnode *fin = xmlnode_get_child_with_namespace(packet, "fin", NS_XMPP_MAM);
+
+		if (received || sent || result) {
+			xmlnode *forwarded = xmlnode_get_child_with_namespace(received ? received : sent ? sent : result, "forwarded", NS_XMPP_FORWARD);
+
+			if (forwarded) {
+				xmlnode *message = xmlnode_get_child_with_namespace(forwarded, "message", NS_XMPP_CLIENT);
+				xmlnode *delay = xmlnode_get_child_with_namespace(forwarded, "delay", NS_DELAYED_DELIVERY);
+
+				if (message) {
+					purple_debug_info("jabber", "It's forwarded message, using the wrapped message instead.\n");
+					packet = message;
+
+					to = xmlnode_get_attrib(packet, "from");
+
+					if (result && !strncmp(to, from, strlen(from)))
+						is_outgoing = TRUE;
+					else if (sent)
+						is_outgoing = TRUE;
+					
+					if (delay) {
+						const char *timestamp = xmlnode_get_attrib(delay, "stamp");
+						
+						if(timestamp) {
+							if (result) {
+								memset(js->mam->last_timestamp, 0, 32);
+								strcpy(js->mam->last_timestamp, timestamp);
+							}
+
+							purple_debug_info("jabber", "Found a delay stamp: %s\n", timestamp);
+
+							delayed = TRUE;
+
+							message_timestamp = purple_str_to_time(timestamp, TRUE, NULL, NULL, NULL);
+						}
+					}
+				}
+			}
+		} else if (fin) {
+			gboolean complete = xmlnode_get_attrib(fin, "complete") ? TRUE : FALSE;
+			if (complete) {
+				js->mam->current->completed = TRUE;
+
+				jabber_mam_process(js, NULL);
+			} else {
+				xmlnode *set = xmlnode_get_child_with_namespace(fin, "set", NS_RSM);
+				if (set) {
+					xmlnode *last = xmlnode_get_child(set, "last");
+					if (last) {
+						jabber_mam_process(js, xmlnode_get_data(last));
+					}
+				}
+			}
+			return;
+		}
+	}
 
 	from = xmlnode_get_attrib(packet, "from");
 	id   = xmlnode_get_attrib(packet, "id");
@@ -516,9 +590,13 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 
 	jm = g_new0(JabberMessage, 1);
 	jm->js = js;
-	jm->sent = time(NULL);
-	jm->delayed = FALSE;
+	jm->sent = message_timestamp;
+	jm->delayed = delayed;
 	jm->chat_state = JM_STATE_NONE;
+	jm->outgoing = is_outgoing;
+	
+	if (jm->sent > purple_account_get_int(js->gc->account, "mam_laststamp", 0))
+		purple_account_set_int(js->gc->account, "mam_laststamp", jm->sent);
 
 	if(type) {
 		if(!strcmp(type, "normal"))
@@ -624,12 +702,12 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 						           jm->type == JABBER_MESSAGE_CHAT) {
 							conv =
 								purple_find_conversation_with_account(PURPLE_CONV_TYPE_ANY,
-									from, account);
+									is_outgoing ? to : from, account);
 							if (!conv) {
 								/* we need to create the conversation here */
 								conv =
 									purple_conversation_new(PURPLE_CONV_TYPE_IM,
-									account, from);
+									account, is_outgoing ? to : from);
 							}
 						}
 					}
@@ -709,6 +787,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 		} else if(!strcmp(child->name, "attention") && !strcmp(xmlns, NS_ATTENTION)) {
 			jm->hasBuzz = TRUE;
 		} else if(!strcmp(child->name, "delay") && !strcmp(xmlns, NS_DELAYED_DELIVERY)) {
+			/* Carbons/Stanza fowarding might have already set jm->delayed. However, this timestamp was certainly applied earlier, so it overrides Carbons. */
 			const char *timestamp = xmlnode_get_attrib(child, "stamp");
 			jm->delayed = TRUE;
 			if(timestamp)
@@ -1085,6 +1164,8 @@ void jabber_message_send(JabberMessage *jm)
 		}
 	}
 
+	purple_account_set_int(jm->js->gc->account, "mam_laststamp", time(0));
+
 	jabber_send(jm->js, message);
 
 	xmlnode_free(message);
@@ -1304,4 +1385,49 @@ gboolean jabber_custom_smileys_isenabled(JabberStream *js, const gchar *namespac
 	PurpleAccount *account = purple_connection_get_account(gc);
 
 	return purple_account_get_bool(account, "custom_smileys", TRUE);
+}
+
+void jabber_toggle_carbons(PurplePluginAction *action) {
+	PurpleConnection *gc = (PurpleConnection *) action->context;
+	JabberStream *js = purple_connection_get_protocol_data(gc);
+	JabberIq *iq = jabber_iq_new(js, JABBER_IQ_SET);
+	gboolean has_carbons = !purple_account_get_bool(purple_connection_get_account(gc), "carbons", FALSE);
+	xmlnode *node;
+
+	if (has_carbons) {
+		node = xmlnode_new_child(iq->node, "enable");
+	} else {
+		node = xmlnode_new_child(iq->node, "disable");
+	}
+
+	purple_account_set_bool(gc->account, "carbons", has_carbons);
+
+	xmlnode_set_namespace(node, NS_XMPP_CARBONS);
+	jabber_iq_send(iq);
+
+	/* Force an update of the account actions. */
+	purple_prpl_got_account_actions(purple_connection_get_account(gc));
+}
+
+void jabber_toggle_mam(PurplePluginAction *action) {
+	PurpleConnection *gc = (PurpleConnection *) action->context;
+	JabberStream *js = purple_connection_get_protocol_data(gc);
+	gboolean has_mam = !purple_account_get_bool(purple_connection_get_account(gc), "mam", FALSE);
+
+	purple_account_set_bool(gc->account, "mam", has_mam);
+	
+	if (has_mam) {
+		purple_debug_info("jabber", "MAM Requesting.\n");
+	
+		time_t mam_laststamp = (time_t *)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
+		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp);
+
+		const struct tm *unixtime = gmtime(&mam_laststamp);
+		strcpy(js->mam->last_timestamp, purple_utf8_strftime("%Y-%m-%dT%H:%M:%SZ", unixtime));
+
+		jabber_mam_add_to_queue(js, js->mam->last_timestamp, NULL, NULL);
+	}
+
+	/* Force an update of the account actions. */
+	purple_prpl_got_account_actions(purple_connection_get_account(gc));
 }

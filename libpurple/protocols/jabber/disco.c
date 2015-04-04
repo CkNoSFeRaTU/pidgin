@@ -36,6 +36,7 @@
 #include "iq.h"
 #include "jabber.h"
 #include "jingle/jingle.h"
+#include "mam.h"
 #include "pep.h"
 #include "presence.h"
 #include "roster.h"
@@ -295,13 +296,16 @@ static void jabber_disco_info_cb(JabberStream *js, const char *from,
 					capabilities |= JABBER_CAP_PING;
 				else if(!strcmp(var, NS_DISCO_ITEMS))
 					capabilities |= JABBER_CAP_ITEMS;
-				else if(!strcmp(var, "http://jabber.org/protocol/commands")) {
+				else if(!strcmp(var, "http://jabber.org/protocol/commands"))
 					capabilities |= JABBER_CAP_ADHOC;
-				}
 				else if(!strcmp(var, NS_IBB)) {
 					purple_debug_info("jabber", "remote supports IBB\n");
 					capabilities |= JABBER_CAP_IBB;
 				}
+				else if(!strcmp(var, NS_XMPP_CARBONS))
+					capabilities |= JABBER_CAP_CARBONS;
+				else if(!strcmp(var, NS_XMPP_MAM))
+					capabilities |= JABBER_CAP_MAM;
 			}
 		}
 
@@ -384,6 +388,29 @@ jabber_disco_finish_server_info_result_cb(JabberStream *js)
 	/* If the server supports blocking, request the block list */
 	if (js->server_caps & JABBER_CAP_BLOCKING) {
 		jabber_request_block_list(js);
+	}
+
+	if ((js->server_caps & JABBER_CAP_CARBONS) && purple_account_get_bool(js->gc->account, "carbons", FALSE)) {
+		JabberIq *iq = jabber_iq_new(js, JABBER_IQ_SET);
+		xmlnode *enable = xmlnode_new_child(iq->node, "enable");
+
+		purple_debug_info("jabber", "Automatically enabling Carbons.\n");
+
+		xmlnode_set_namespace(enable, NS_XMPP_CARBONS);
+
+		jabber_iq_send(iq);
+	}
+
+	if ((js->server_caps & JABBER_CAP_MAM) && purple_account_get_bool(js->gc->account, "mam", FALSE)) {
+		purple_debug_info("jabber", "MAM Requesting.\n");
+		
+		time_t mam_laststamp = (time_t *)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
+		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp + 1);
+
+		const struct tm *unixtime = gmtime(&mam_laststamp);
+		strcpy(js->mam->last_timestamp, purple_utf8_strftime("%Y-%m-%dT%H:%M:%SZ", unixtime));
+
+		jabber_mam_add_to_queue(js, js->mam->last_timestamp, NULL, NULL);
 	}
 
 	/* If there are manually specified bytestream proxies, query them */
@@ -574,6 +601,10 @@ jabber_disco_server_info_result_cb(JabberStream *js, const char *from,
 			js->server_caps |= JABBER_CAP_ADHOC;
 		} else if (!strcmp(NS_SIMPLE_BLOCKING, var)) {
 			js->server_caps |= JABBER_CAP_BLOCKING;
+		} else if(!strcmp(var, NS_XMPP_CARBONS)) {
+			js->server_caps |= JABBER_CAP_CARBONS;
+		} else if(!strcmp(var, NS_XMPP_MAM)) {
+			js->server_caps |= JABBER_CAP_MAM;
 		}
 	}
 

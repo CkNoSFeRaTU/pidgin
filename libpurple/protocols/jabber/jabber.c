@@ -933,6 +933,7 @@ jabber_stream_new(PurpleAccount *account)
 	js = gc->proto_data = g_new0(JabberStream, 1);
 	js->gc = gc;
 	js->fd = -1;
+	js->mam = calloc(1, sizeof(mam_t));
 
 	if (g_strcmp0("prpl-facebook-xmpp",
 		purple_account_get_protocol_id(account)) == 0)
@@ -1731,6 +1732,10 @@ void jabber_close(PurpleConnection *gc)
 					js->google_relay_requests);
 		}
 	}
+	
+	jabber_mam_clear(js->mam);
+	free(js->mam);
+	js->mam = NULL;
 
 	g_free(js);
 
@@ -2574,6 +2579,8 @@ GList *jabber_actions(PurplePlugin *plugin, gpointer context)
 	JabberStream *js = gc->proto_data;
 	GList *m = NULL;
 	PurplePluginAction *act;
+	gboolean has_carbons = purple_account_get_bool(gc->account, "carbons", FALSE);
+	gboolean has_mam = purple_account_get_bool(gc->account, "mam", FALSE);
 
 	act = purple_plugin_action_new(_("Set User Info..."),
 	                             jabber_setup_set_info);
@@ -2596,6 +2603,16 @@ GList *jabber_actions(PurplePlugin *plugin, gpointer context)
 
 	if(js->commands)
 		jabber_adhoc_init_server_commands(js, &m);
+
+	if(js->server_caps & JABBER_CAP_CARBONS) {
+		act = purple_plugin_action_new((has_carbons ? _("Disable Message Copies") : _("Enable Message Copies")), jabber_toggle_carbons);
+		m = g_list_append(m, act);
+	}
+
+	if(js->server_caps & JABBER_CAP_MAM) {
+		act = purple_plugin_action_new((has_mam ? _("Disable Messaging Archive Management") : _("Enable Messaging Archive Management")), jabber_toggle_mam);
+		m = g_list_append(m, act);
+	}
 
 	return m;
 }

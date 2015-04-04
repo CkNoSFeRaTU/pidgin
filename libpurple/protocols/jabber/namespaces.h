@@ -42,6 +42,9 @@
 /* XEP-0047 IBB (In-band bytestreams) */
 #define NS_IBB "http://jabber.org/protocol/ibb"
 
+/* XEP-0059 Result Set Management (RSM) */
+#define NS_RSM "http://jabber.org/protocol/rsm"
+
 /* XEP-0065 SOCKS5 Bytestreams */
 #define NS_BYTESTREAMS "http://jabber.org/protocol/bytestreams"
 
@@ -94,6 +97,15 @@
 
 /* XEP-0264 File Transfer Thumbnails (Thumbs) */
 #define NS_THUMBS "urn:xmpp:thumbs:0"
+
+/* XEP-0280 Message Carbons */
+#define NS_XMPP_CARBONS "urn:xmpp:carbons:2"
+
+/* XEP-0297 Message Forwarding */
+#define NS_XMPP_FORWARD "urn:xmpp:forward:0"
+
+/* XEP-0313 Message Archive Management */
+#define NS_XMPP_MAM "urn:xmpp:mam:0"
 
 /* Google extensions */
 #define NS_GOOGLE_CAMERA "http://www.google.com/xmpp/protocol/camera/v1"

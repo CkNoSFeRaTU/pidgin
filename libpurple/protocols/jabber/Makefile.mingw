@@ -74,6 +74,7 @@ C_SRC =	\
 			jingle/session.c \
 			jingle/transport.c \
 			jutil.c \
+			mam.c \
 			message.c \
 			oob.c \
 			parser.c \

@@ -575,11 +575,6 @@ void serv_got_im(PurpleConnection *gc, const char *who, const char *msg,
 		mtime = time(NULL);
 	}
 
-	/*
-	 * XXX: Should we be setting this here, or relying on prpls to set it?
-	 */
-	flags |= PURPLE_MESSAGE_RECV;
-
 	if (!purple_privacy_check(account, who)) {
 		purple_signal_emit(purple_conversations_get_handle(), "blocked-im-msg",
 				account, who, msg, flags, (unsigned int)mtime);
