@@ -210,7 +210,7 @@ void jabber_mam_request(JabberStream *js, const char* after)
 
 	if (after) {
 		xmlnode *set = xmlnode_new_child(query, "set");
-		xmlnode_set_namespace(x, NS_RSM);
+		xmlnode_set_namespace(set, NS_RSM);
 
 		value = xmlnode_new_child(set, "after");
 		xmlnode_insert_data(value, after, -1);
