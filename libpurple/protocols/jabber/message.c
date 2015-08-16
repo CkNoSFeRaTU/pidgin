@@ -535,19 +535,21 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 					packet = message;
 
 					from = xmlnode_get_attrib(packet, "from");
-					
+
 					if (result) {
 						JabberID *jid = jabber_id_new(from);
 
 						if (!jid)
 							return;
 
+						js->mam->count++;
+
 						gboolean equal = (purple_strequal(jid->node, js->user->node) &&
 							g_str_equal(jid->domain, js->user->domain));
 
 						if (equal)
 							is_outgoing = TRUE;
-						
+
 						jabber_id_free(jid);
 					}
 					else if (sent)
@@ -573,7 +575,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 			}
 		} else if (fin) {
 			gboolean complete = xmlnode_get_attrib(fin, "complete") ? TRUE : FALSE;
-			if (complete) {
+			if (complete || js->mam->count == 0) {
 				js->mam->current->completed = TRUE;
 
 				jabber_mam_process(js, NULL);
@@ -582,6 +584,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 				if (set) {
 					xmlnode *last = xmlnode_get_child(set, "last");
 					if (last) {
+						js->mam->count = 0;
 						jabber_mam_process(js, xmlnode_get_data(last));
 					}
 				}

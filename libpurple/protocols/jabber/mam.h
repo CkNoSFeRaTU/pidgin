@@ -46,6 +46,7 @@ typedef struct {
     list_t *queue;
     mam_item_t *current;
     char last_timestamp[32];
+    uint32_t count;
 } mam_t;
 
 void jabber_mam_clear(mam_t *mam);
