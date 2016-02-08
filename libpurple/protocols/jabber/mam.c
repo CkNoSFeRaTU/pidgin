@@ -201,6 +201,7 @@ void jabber_mam_request(JabberStream *js, const char* after)
 
 	xmlnode *x = xmlnode_new_child(query, "x");
 	xmlnode_set_namespace(x, "jabber:x:data");
+	xmlnode_set_attrib(x, "type", "submit");
 
 	xmlnode *field = xmlnode_new_child(x, "field");
 	xmlnode_set_attrib(field, "type", "hidden");
