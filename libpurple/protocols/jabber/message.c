@@ -574,7 +574,8 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 				}
 			}
 		} else if (fin) {
-			gboolean complete = xmlnode_get_attrib(fin, "complete") ? TRUE : FALSE;
+			char *complete_attrib = xmlnode_get_attrib(fin, "complete");
+			gboolean complete = complete_attrib != NULL && strcmp(complete_attrib, "true") == 0 ? TRUE : FALSE;
 			if (complete || js->mam->count == 0) {
 				js->mam->current->completed = TRUE;
 
