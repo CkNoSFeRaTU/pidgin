@@ -26,7 +26,11 @@
 #include "gtkutils.h"
 #include "gtkprefs.h"
 
+#if GST_CHECK_VERSION(1,0,0)
+#include <gst/video/videooverlay.h>
+#else
 #include <gst/interfaces/propertyprobe.h>
+#endif
 
 /* container window for showing a stand-alone configurator */
 static GtkWidget *window = NULL;
@@ -81,8 +85,10 @@ get_element_devices(const gchar *element_name)
 	GList *ret = NULL;
 	GstElement *element;
 	GObjectClass *klass;
+#if !GST_CHECK_VERSION(1,0,0)
 	GstPropertyProbe *probe;
 	const GParamSpec *pspec;
+#endif
 
 	ret = g_list_prepend(ret, (gpointer)_("Default"));
 	ret = g_list_prepend(ret, "");
@@ -103,6 +109,10 @@ get_element_devices(const gchar *element_name)
 		return g_list_reverse(ret);
 	}
 
+#if GST_CHECK_VERSION(1,0,0)
+	purple_debug_info("vvconfig", "'%s' - gstreamer-1.0 doesn't suport "
+		"property probing\n", element_name);
+#else
 	if (!g_object_class_find_property(klass, "device") ||
 			!GST_IS_PROPERTY_PROBE(element) ||
 			!(probe = GST_PROPERTY_PROBE(element)) ||
@@ -155,6 +165,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			gst_element_set_state(element, GST_STATE_NULL);
 		}
 	}
+#endif
 	gst_object_unref(element);
 
 	return g_list_reverse(ret);
@@ -168,8 +179,13 @@ get_element_plugins(const gchar **plugins)
 	ret = g_list_prepend(ret, "Default");
 	ret = g_list_prepend(ret, "");
 	for (; plugins[0] && plugins[1]; plugins += 2) {
+#if GST_CHECK_VERSION(1,0,0)
+		if (gst_registry_check_feature_version(gst_registry_get(),
+				plugins[0], 0, 0, 0)) {
+#else
 		if (gst_default_registry_check_feature_version(
 				plugins[0], 0, 0, 0)) {
+#endif
 			ret = g_list_prepend(ret, (gpointer)plugins[1]);
 			ret = g_list_prepend(ret, (gpointer)plugins[0]);
 		}
@@ -355,6 +371,26 @@ create_video_src(PurpleMedia *media,
 	return ret;
 }
 
+static void
+videosink_disable_last_sample(GstElement *sink)
+{
+	GObjectClass *klass = G_OBJECT_GET_CLASS(sink);
+
+	if (g_object_class_find_property(klass, "enable-last-sample")) {
+		g_object_set(sink, "enable-last-sample", FALSE, NULL);
+	}
+}
+
+static void
+autovideosink_child_added_cb(GstChildProxy *child_proxy, GObject *object,
+#if GST_CHECK_VERSION(1,0,0)
+		gchar *name,
+#endif
+		gpointer user_data)
+{
+	videosink_disable_last_sample(GST_ELEMENT(object));
+}
+
 static GstElement *
 create_video_sink(PurpleMedia *media,
 		const gchar *session_id, const gchar *participant)
@@ -372,6 +408,14 @@ create_video_sink(PurpleMedia *media,
 	ret = gst_element_factory_make(plugin, NULL);
 	if (device[0] != '\0')
 		g_object_set(G_OBJECT(ret), "device", device, NULL);
+
+	if (g_strcmp0(plugin, "autovideosink") == 0) {
+		g_signal_connect(ret, "child-added",
+			G_CALLBACK(autovideosink_child_added_cb), NULL);
+	} else {
+		videosink_disable_last_sample(ret);
+	}
+
 	return ret;
 }
 
@@ -588,7 +632,13 @@ gst_msg_db_to_percent(GstMessage *msg, gchar *value_name)
 
 	list = gst_structure_get_value(
 				gst_message_get_structure(msg), value_name);
+#if GST_CHECK_VERSION(1,0,0)
+G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+	value = g_value_array_get_nth(g_value_get_boxed(list), 0);
+G_GNUC_END_IGNORE_DEPRECATIONS
+#else
 	value = gst_value_list_get_value(list, 0);
+#endif
 	value_db = g_value_get_double(value);
 	percent = pow(10, value_db / 20);
 	return (percent > 1.0) ? 1.0 : percent;
@@ -604,7 +654,7 @@ static gboolean
 gst_bus_cb(GstBus *bus, GstMessage *msg, BusCbCtx *ctx)
 {
 	if (GST_MESSAGE_TYPE(msg) == GST_MESSAGE_ELEMENT &&
-		gst_structure_has_name(msg->structure, "level")) {
+		gst_structure_has_name(gst_message_get_structure(msg), "level")) {
 
 		GstElement *src = GST_ELEMENT(GST_MESSAGE_SRC(msg));
 		gchar *name = gst_element_get_name(src);
