@@ -48,7 +48,7 @@ typedef enum {
 
 	JABBER_CAP_ITEMS          = 1 << 14,
 	JABBER_CAP_ROSTER_VERSIONING = 1 << 15,
-	
+
 	JABBER_CAP_FACEBOOK       = 1 << 16,
 
 	JABBER_CAP_CARBONS        = 1 << 17,
@@ -291,7 +291,7 @@ struct _JabberStream
 
 	/* facebook quirks */
 	gboolean facebook_roster_cleanup_performed;
-	
+
 	mam_t *mam;
 };
 

@@ -119,16 +119,16 @@ void jabber_mam_clear(mam_t *mam)
 {
 	if (mam)
 		return;
-	
+
 	list_t *queue_item = list_get_first(mam->queue);
 	while (queue_item) {
 		mam_item_t *mam_item = list_get_data(queue_item);
-        
+
 		free(mam_item->start);
 		free(mam_item->end);
 		free(mam_item->with);
 		free(mam_item);
-        
+
 		queue_item = list_get_next(queue_item);
 	}
 }
@@ -137,7 +137,7 @@ void jabber_mam_add_to_queue(JabberStream *js, const char* start, const char* en
 {
 	if (!js->mam)
 		return;
-	
+
 	mam_item_t *mam_item = calloc(1, sizeof(mam_item_t));
 
 	if (start) {
@@ -154,9 +154,9 @@ void jabber_mam_add_to_queue(JabberStream *js, const char* start, const char* en
 		mam_item->with = calloc(1, strlen(with) + 1);
 		strcpy(mam_item->with, with);
 	}
-    
+
 	js->mam->queue = list_append(js->mam->queue, mam_item);
-	
+
 	jabber_mam_process(js, NULL);
 }
 
@@ -164,14 +164,14 @@ void jabber_mam_process(JabberStream *js, const char* after)
 {
 	if (!js->mam)
 		return;
-	
+
 	if (js->mam->current && js->mam->current->completed) {
 		free(js->mam->current->start);
 		free(js->mam->current->end);
 		free(js->mam->current->with);
 
 		memset(js->mam->last_timestamp, 0, 32);
-		
+
 		free(js->mam->current);
 		js->mam->current = NULL;
 	}
@@ -186,7 +186,7 @@ void jabber_mam_process(JabberStream *js, const char* after)
 			js->mam->queue = list_get_next(js->mam->queue);
 		}
 	}
-	
+
 	if (js->mam->current)
 		jabber_mam_request(js, after);
 }
@@ -195,7 +195,7 @@ void jabber_mam_request(JabberStream *js, const char* after)
 {
 	if (!js->mam)
 		return;
-	
+
 	JabberIq *iq = jabber_iq_new_query(js, JABBER_IQ_SET, NS_XMPP_MAM);
 	xmlnode *query = xmlnode_get_child(iq->node, "query");
 

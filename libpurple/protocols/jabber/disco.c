@@ -403,7 +403,7 @@ jabber_disco_finish_server_info_result_cb(JabberStream *js)
 
 	if ((js->server_caps & JABBER_CAP_MAM) && purple_account_get_bool(js->gc->account, "mam", FALSE)) {
 		purple_debug_info("jabber", "MAM Requesting.\n");
-		
+
 		time_t mam_laststamp = (time_t *)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
 		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp + 1);
 

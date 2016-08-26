@@ -1732,7 +1732,7 @@ void jabber_close(PurpleConnection *gc)
 					js->google_relay_requests);
 		}
 	}
-	
+
 	jabber_mam_clear(js->mam);
 	free(js->mam);
 	js->mam = NULL;

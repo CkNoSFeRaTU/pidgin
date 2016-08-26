@@ -557,7 +557,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 
 					if (delay) {
 						const char *timestamp = xmlnode_get_attrib(delay, "stamp");
-						
+
 						if(timestamp) {
 							if (result) {
 								memset(js->mam->last_timestamp, 0, 32);
@@ -610,7 +610,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 	jm->delayed = delayed;
 	jm->chat_state = JM_STATE_NONE;
 	jm->outgoing = is_outgoing;
-	
+
 	if (jm->sent > purple_account_get_int(js->gc->account, "mam_laststamp", 0))
 		purple_account_set_int(js->gc->account, "mam_laststamp", jm->sent);
 
@@ -1431,10 +1431,10 @@ void jabber_toggle_mam(PurplePluginAction *action) {
 	gboolean has_mam = !purple_account_get_bool(purple_connection_get_account(gc), "mam", FALSE);
 
 	purple_account_set_bool(gc->account, "mam", has_mam);
-	
+
 	if (has_mam) {
 		purple_debug_info("jabber", "MAM Requesting.\n");
-	
+
 		time_t mam_laststamp = (time_t *)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
 		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp);
 
