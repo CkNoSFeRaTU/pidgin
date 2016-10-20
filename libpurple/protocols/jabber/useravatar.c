@@ -345,7 +345,7 @@ update_buddy_metadata(JabberStream *js, const char *from, xmlnode *items)
 	if(xmlnode_get_child(metadata, "stop")) {
 		purple_buddy_icons_set_for_user(purple_connection_get_account(js->gc), from, NULL, 0, NULL);
 	} else {
-		xmlnode *info, *goodinfo = NULL;
+		xmlnode *info, *goodinfo = NULL, *goodinfopng = NULL;
 		gboolean has_children = FALSE;
 
 		/* iterate over all info nodes to get one we can use */
@@ -362,10 +362,18 @@ update_buddy_metadata(JabberStream *js, const char *from, xmlnode *items)
 					break;
 				}
 				/* We'll only pick the png one for now. It's a very nice image format anyways. */
-				if(type && id && !goodinfo && !strcmp(type, "image/png"))
+				if(type && id && !goodinfopng && !strcmp(type, "image/png"))
+					goodinfopng = info;
+				else if(type && id && !goodinfo && (
+					!strcmp(type, "image/jpeg") ||
+					!strcmp(type, "image/gif") ||
+					!strcmp(type, "image/webp")
+				))
 					goodinfo = info;
 			}
 		}
+		if (goodinfopng)
+			goodinfo = goodinfopng;
 		if(has_children == FALSE) {
 			purple_buddy_icons_set_for_user(purple_connection_get_account(js->gc), from, NULL, 0, NULL);
 		} else if(goodinfo) {
