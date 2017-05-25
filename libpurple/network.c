@@ -624,7 +624,7 @@ wpurple_get_connected_network_count(void)
 	qs.dwSize = sizeof(WSAQUERYSET);
 	qs.dwNameSpace = NS_NLA;
 
-	retval = WSALookupServiceBegin(&qs, LUP_RETURN_ALL, &h);
+	retval = WSALookupServiceBeginA(&qs, LUP_RETURN_ALL, &h);
 	if (retval != ERROR_SUCCESS) {
 		gchar *msg;
 		errorid = WSAGetLastError();
@@ -636,17 +636,34 @@ wpurple_get_connected_network_count(void)
 
 		return -1;
 	} else {
-		char buf[4096];
+		gchar *buf = NULL;
 		WSAQUERYSET *res = (LPWSAQUERYSET) buf;
-		DWORD size = sizeof(buf);
-		while ((retval = WSALookupServiceNext(h, 0, &size, res)) == ERROR_SUCCESS) {
-			net_cnt++;
-			purple_debug_info("network", "found network '%s'\n",
-					res->lpszServiceInstanceName ? res->lpszServiceInstanceName : "(NULL)");
-			size = sizeof(buf);
+		DWORD current_size = 0;
+		int iteration_count = 0;
+		while (iteration_count++ < 100) {
+			DWORD size = current_size;
+			retval = WSALookupServiceNextA(h, 0, &size, res);
+			if (retval == ERROR_SUCCESS) {
+				net_cnt++;
+				purple_debug_info("network", "found network '%s'\n",
+						res->lpszServiceInstanceName ? res->lpszServiceInstanceName : "(NULL)");
+			} else {
+				errorid = WSAGetLastError();
+				if (errorid == WSAEFAULT) {
+					if (size == 0 || size > 102400) {
+						purple_debug_warning("network", "Got unexpected NLA buffer size %" G_GUINT32_FORMAT ".\n", (guint32) size);
+						break;
+					}
+					buf = g_realloc(buf, size);
+					res = (LPWSAQUERYSET) buf;
+					current_size = size;
+				} else {
+					break;
+				}
+			}
 		}
+		g_free(buf);
 
-		errorid = WSAGetLastError();
 		if (!(errorid == WSA_E_NO_MORE || errorid == WSAENOMORE)) {
 			gchar *msg = g_win32_error_message(errorid);
 			purple_debug_error("network", "got unexpected NLA response %s (%d)\n", msg, errorid);
@@ -700,9 +717,9 @@ static gpointer wpurple_network_change_thread(gpointer data)
 	WSAQUERYSET qs;
 	WSAEVENT *nla_event;
 	time_t last_trigger = time(NULL) - 31;
-	char buf[4096];
+	gchar *buf = NULL;
 	WSAQUERYSET *res = (LPWSAQUERYSET) buf;
-	DWORD size;
+	DWORD current_size = 0;
 
 	if ((nla_event = WSACreateEvent()) == WSA_INVALID_EVENT) {
 		int errorid = WSAGetLastError();
@@ -717,6 +734,7 @@ static gpointer wpurple_network_change_thread(gpointer data)
 
 	while (TRUE) {
 		int retval;
+		int iteration_count;
 		DWORD retLen = 0;
 		WSACOMPLETION completion;
 		WSAOVERLAPPED overlapped;
@@ -734,7 +752,7 @@ static gpointer wpurple_network_change_thread(gpointer data)
 			memset(&qs, 0, sizeof(WSAQUERYSET));
 			qs.dwSize = sizeof(WSAQUERYSET);
 			qs.dwNameSpace = NS_NLA;
-			if (WSALookupServiceBegin(&qs, 0, &network_change_handle) == SOCKET_ERROR) {
+			if (WSALookupServiceBeginA(&qs, 0, &network_change_handle) == SOCKET_ERROR) {
 				int errorid = WSAGetLastError();
 				gchar *msg = g_win32_error_message(errorid);
 				purple_timeout_add(0, _print_debug_msg,
@@ -794,13 +812,34 @@ static gpointer wpurple_network_change_thread(gpointer data)
 			return NULL;
 		}
 
-		size = sizeof(buf);
-		while ((retval = WSALookupServiceNext(network_change_handle, 0, &size, res)) == ERROR_SUCCESS) {
-			/*purple_timeout_add(0, _print_debug_msg,
+		iteration_count = 0;
+		while (iteration_count++ < 100) {
+			DWORD size = current_size;
+			retval = WSALookupServiceNextA(network_change_handle, 0, &size, res);
+			if (retval == ERROR_SUCCESS) {
+				/*purple_timeout_add(0, _print_debug_msg,
 							   g_strdup_printf("thread found network '%s'\n",
 											   res->lpszServiceInstanceName ? res->lpszServiceInstanceName : "(NULL)"));*/
-			size = sizeof(buf);
+			} else {
+				int errorid = WSAGetLastError();
+				if (errorid == WSAEFAULT) {
+					if (size == 0 || size > 102400) {
+						purple_timeout_add(0, _print_debug_msg,
+							   g_strdup_printf("Thread got unexpected NLA buffer size %" G_GUINT32_FORMAT ".\n", (guint32) size));
+						break;
+					}
+					buf = g_realloc(buf, size);
+					res = (LPWSAQUERYSET) buf;
+					current_size = size;
+				} else {
+					break;
+				}
+			}
+
 		}
+		g_free(buf);
+		buf = NULL;
+		current_size = 0;
 
 		WSAResetEvent(nla_event);
 		g_static_mutex_unlock(&mutex);

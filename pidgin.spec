@@ -9,13 +9,13 @@
 #define beta 7
 
 %if 0%{?beta}
-%define pidginver %(echo "2.11.0"|sed -e 's/dev.*//; s/beta.*//')
+%define pidginver %(echo "2.12.0"|sed -e 's/dev.*//; s/beta.*//')
 %else
-%define pidginver 2.11.0
+%define pidginver 2.12.0
 %endif
 
 # define the minimum API version required, so we can use it for plugin deps
-%define apiver %(echo "2.11.0"|awk -F. '{print $1"."$2}')
+%define apiver %(echo "2.12.0"|awk -F. '{print $1"."$2}')
 
 Summary:    A GTK+ based multiprotocol instant messaging client
 Name:       pidgin
@@ -24,7 +24,7 @@ Release:    0%{?beta:.beta%{beta}}
 License:    GPL
 Group:      Applications/Internet
 URL:        http://pidgin.im/
-Source:     %{name}-2.11.0.tar.bz2
+Source:     %{name}-2.12.0.tar.bz2
 BuildRoot:  %{_tmppath}/%{name}-%{version}-root
 
 # Generic build requirements
@@ -161,7 +161,7 @@ Requires:   pkgconfig
 
 %description
 Pidgin allows you to talk to anyone using a variety of messaging
-protocols including AIM, MSN, Yahoo!, XMPP, Bonjour, Gadu-Gadu,
+protocols including AIM, XMPP, Bonjour, Gadu-Gadu,
 ICQ, IRC, Novell Groupwise, QQ, Lotus Sametime, SILC, Simple and
 Zephyr.  These protocols are implemented using a modular, easy to
 use design.  To use a protocol, just add an account using the
@@ -171,7 +171,7 @@ Pidgin supports many common features of other clients, as well as many
 unique features, such as perl scripting, TCL scripting and C plugins.
 
 Pidgin is not affiliated with or endorsed by America Online, Inc.,
-Microsoft Corporation, Yahoo! Inc., or ICQ Inc.
+Microsoft Corporation, or ICQ Inc.
 
 %description devel
 The pidgin-devel package contains the header files, developer
@@ -182,8 +182,8 @@ and plugins.
 libpurple contains the core IM support for IM clients such as Pidgin
 and Finch.
 
-libpurple supports a variety of messaging protocols including AIM, MSN,
-Yahoo!, XMPP, Bonjour, Gadu-Gadu, ICQ, IRC, Novell Groupwise, QQ,
+libpurple supports a variety of messaging protocols including AIM,
+XMPP, Bonjour, Gadu-Gadu, ICQ, IRC, Novell Groupwise, QQ,
 Lotus Sametime, SILC, Simple and Zephyr.
 
 %description -n libpurple-devel
@@ -221,7 +221,7 @@ and plugins.
 %endif
 
 %prep
-%setup -q -n %{name}-2.11.0
+%setup -q -n %{name}-2.12.0
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} \
