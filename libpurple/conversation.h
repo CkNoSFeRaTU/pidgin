@@ -126,7 +126,10 @@ typedef enum
 	PURPLE_MESSAGE_NOTIFY      = 0x2000, /**< Message is a notification */
 	PURPLE_MESSAGE_NO_LINKIFY  = 0x4000, /**< Message should not be auto-
 										   linkified @since 2.1.0 */
-	PURPLE_MESSAGE_INVISIBLE   = 0x8000  /**< Message should not be displayed */
+	PURPLE_MESSAGE_INVISIBLE   = 0x8000, /**< Message should not be displayed */
+	PURPLE_MESSAGE_REMOTE_SEND = 0x10000 /**< Message sent from another location,
+	                                       not an echo of a local one
+	                                       @since 2.12.0 */
 } PurpleMessageFlags;
 
 /**
@@ -884,9 +887,8 @@ guint purple_conv_im_get_typing_timeout(const PurpleConvIm *im);
 
 /**
  * Sets the quiet-time when no PURPLE_TYPING messages will be sent.
- * Few protocols need this (maybe only MSN).  If the user is still
- * typing after this quiet-period, then another PURPLE_TYPING message
- * will be sent.
+ * Few protocols need this.  If the user is still typing after this
+ * quiet-period, then another PURPLE_TYPING message will be sent.
  *
  * @param im  The IM.
  * @param val The number of seconds to wait before allowing another

@@ -27,7 +27,7 @@
 /** The major version of the running libpurple. */
 #define PURPLE_MAJOR_VERSION (2)
 /** The minor version of the running libpurple. */
-#define PURPLE_MINOR_VERSION (11)
+#define PURPLE_MINOR_VERSION (12)
 /** The micro version of the running libpurple. */
 #define PURPLE_MICRO_VERSION (0)
 
