@@ -26,14 +26,11 @@
 
 #include "xmlnode.h"
 
-typedef struct list_s list_t;
-
-list_t * list_append(list_t *, void *);
-list_t * list_insert(list_t *, void *);
-list_t * list_delete(list_t *, void *);
-list_t * list_get_first(list_t *);
-list_t * list_get_next(list_t *);
-void   * list_get_data(list_t *);
+enum {
+    MAM_PREFS_NEVER = 0,
+    MAM_PREFS_ROSTER,
+    MAM_PREFS_ALWAYS
+};
 
 typedef struct {
     char *start;
@@ -43,7 +40,7 @@ typedef struct {
 } mam_item_t;
 
 typedef struct {
-    list_t *queue;
+    GList *queue;
     mam_item_t *current;
     char last_timestamp[32];
     guint32 count;

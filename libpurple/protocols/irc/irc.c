@@ -154,12 +154,23 @@ int irc_send(struct irc_conn *irc, const char *buf)
 int irc_send_len(struct irc_conn *irc, const char *buf, int buflen)
 {
 	int ret;
- 	char *tosend= g_strdup(buf);
+ 	char *tosend = g_strdup(buf);
 
 	purple_signal_emit(_irc_plugin, "irc-sending-text", purple_account_get_connection(irc->account), &tosend);
-	
+
 	if (tosend == NULL)
 		return 0;
+
+	if (!purple_strequal(tosend, buf)) {
+		buflen = strlen(tosend);
+	}
+
+	if (purple_debug_is_verbose()) {
+		char *clean = purple_utf8_salvage(tosend);
+		clean = g_strstrip(clean);
+		purple_debug_misc("irc", "<< %s\n", clean);
+		g_free(clean);
+	}
 
 	/* If we're not buffering writes, try to send immediately */
 	if (!irc->writeh)
@@ -591,12 +602,12 @@ static void irc_set_status(PurpleAccount *account, PurpleStatus *status)
 
 	args[0] = NULL;
 
-	if (!strcmp(status_id, "away")) {
+	if (purple_strequal(status_id, "away")) {
 		args[0] = purple_status_get_attr_string(status, "message");
 		if ((args[0] == NULL) || (*args[0] == '\0'))
 			args[0] = _("Away");
 		irc_cmd_away(irc, "away", NULL, args);
-	} else if (!strcmp(status_id, "available")) {
+	} else if (purple_strequal(status_id, "available")) {
 		irc_cmd_away(irc, "back", NULL, args);
 	}
 }
@@ -681,31 +692,38 @@ static void irc_input_cb_ssl(gpointer data, PurpleSslConnection *gsc,
 		return;
 	}
 
-	if (irc->inbuflen < irc->inbufused + IRC_INITIAL_BUFSIZE) {
-		irc->inbuflen += IRC_INITIAL_BUFSIZE;
-		irc->inbuf = g_realloc(irc->inbuf, irc->inbuflen);
-	}
+	do {
+		// resize buffer upwards so we have at least IRC_BUFSIZE_INCREMENT
+		// bytes free in inbuf
+		if (irc->inbuflen < irc->inbufused + IRC_BUFSIZE_INCREMENT) {
+			if (irc->inbuflen + IRC_BUFSIZE_INCREMENT <= IRC_MAX_BUFSIZE) {
+				irc->inbuflen += IRC_BUFSIZE_INCREMENT;
+				irc->inbuf = g_realloc(irc->inbuf, irc->inbuflen);
+			} else {
+				// discard unparseable data from the buffer
+				irc->inbufused = 0;
+			}
+		}
 
-	len = purple_ssl_read(gsc, irc->inbuf + irc->inbufused, IRC_INITIAL_BUFSIZE - 1);
+		len = purple_ssl_read(gsc, irc->inbuf + irc->inbufused, irc->inbuflen - irc->inbufused - 1);
+		if (len > 0) {
+			read_input(irc, len);
+		}
+	} while (len > 0);
 
-	if (len < 0 && errno == EAGAIN) {
-		/* Try again later */
-		return;
-	} else if (len < 0) {
+	if (len < 0 && errno != EAGAIN) {
 		gchar *tmp = g_strdup_printf(_("Lost connection with server: %s"),
 				g_strerror(errno));
 		purple_connection_error_reason (gc,
 			PURPLE_CONNECTION_ERROR_NETWORK_ERROR, tmp);
 		g_free(tmp);
-		return;
 	} else if (len == 0) {
 		purple_connection_error_reason (gc,
 			PURPLE_CONNECTION_ERROR_NETWORK_ERROR,
 			_("Server closed the connection"));
-		return;
 	}
 
-	read_input(irc, len);
+	/* else: len < 0 && errno == EAGAIN; this is fine, try again later */
 }
 
 static void irc_input_cb(gpointer data, gint source, PurpleInputCondition cond)
@@ -714,12 +732,18 @@ static void irc_input_cb(gpointer data, gint source, PurpleInputCondition cond)
 	struct irc_conn *irc = gc->proto_data;
 	int len;
 
-	if (irc->inbuflen < irc->inbufused + IRC_INITIAL_BUFSIZE) {
-		irc->inbuflen += IRC_INITIAL_BUFSIZE;
-		irc->inbuf = g_realloc(irc->inbuf, irc->inbuflen);
+	/* see irc_input_cb_ssl */
+	if (irc->inbuflen < irc->inbufused + IRC_BUFSIZE_INCREMENT) {
+		if (irc->inbuflen + IRC_BUFSIZE_INCREMENT <= IRC_MAX_BUFSIZE) {
+			irc->inbuflen += IRC_BUFSIZE_INCREMENT;
+			irc->inbuf = g_realloc(irc->inbuf, irc->inbuflen);
+		} else {
+			irc->inbufused = 0;
+		}
 	}
 
-	len = read(irc->fd, irc->inbuf + irc->inbufused, IRC_INITIAL_BUFSIZE - 1);
+	len = read(irc->fd, irc->inbuf + irc->inbufused, irc->inbuflen - irc->inbufused - 1);
+
 	if (len < 0 && errno == EAGAIN) {
 		return;
 	} else if (len < 0) {

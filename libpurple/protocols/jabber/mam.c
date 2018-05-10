@@ -27,118 +27,35 @@
 #include "jabber.h"
 #include "mam.h"
 
-struct list_s
-{
-	void *data;
-	list_t *prev;
-	list_t *next;
-};
-
-list_t * list_append(list_t *li, void *data)
-{
-	list_t *nli = malloc(sizeof(list_t));
-	nli->data = data;
-	if(!li) {
-		nli->prev = nli->next = NULL;
-	} else {
-	        nli->prev = li;
-	        nli->next = li->next;
-	        if(li->next)
-			li->next->prev = nli;
-		li->next = nli;
-	}
-	return nli;
-}
-
-list_t * list_insert(list_t *li, void *data)
-{
-	list_t *nli = malloc(sizeof(list_t));
-	nli->data = data;
-	if(!li) {
-		nli->prev = nli->next = NULL;
-	} else {
-		nli->next = li;
-		nli->prev = li->prev;
-		if(li->prev)
-			li->prev->next = nli;
-		li->prev = nli;
-	}
-	return nli;
-}
-
-list_t * list_delete(list_t *li, void *data)
-{
-	if(!li)
-		return NULL;
-
-	list_t *i = li;
-	if(data) {
-		i = list_get_first(li);
-		while(i) {
-			if(data == list_get_data(i))
-				break;
-			i = i->next;
-		}
-		if(!i)
-			return li;
-	}
-
-	list_t *r = NULL;
-	if(i->next) {
-		i->next->prev = i->prev;
-		r = i->next;
-	}
-	if(i->prev) {
-		i->prev->next = i->next;
-		r = i->prev;
-	}
-	free(i);
-	return r;
-}
-
-inline list_t * list_get_first(list_t *li)
-{
-	if(!li)
-		return NULL;
-	while(li->prev)
-		li = li->prev;
-	return li;
-}
-
-inline list_t * list_get_next(list_t *li)
-{
-	return li->next;
-}
-
-inline void * list_get_data(list_t *li)
-{
-	return li->data;
-}
-
 void jabber_mam_clear(mam_t *mam)
 {
+	GList *queue_item;
+	mam_item_t *mam_item;
+
 	if (mam)
 		return;
 
-	list_t *queue_item = list_get_first(mam->queue);
+	queue_item = g_list_first(mam->queue);
 	while (queue_item) {
-		mam_item_t *mam_item = list_get_data(queue_item);
+		mam_item = queue_item->data;
 
 		free(mam_item->start);
 		free(mam_item->end);
 		free(mam_item->with);
 		free(mam_item);
 
-		queue_item = list_get_next(queue_item);
+		queue_item = g_list_next(queue_item);
 	}
 }
 
 void jabber_mam_add_to_queue(JabberStream *js, const char* start, const char* end, const char* with)
 {
+	mam_item_t *mam_item;
+
 	if (!js->mam)
 		return;
 
-	mam_item_t *mam_item = calloc(1, sizeof(mam_item_t));
+	mam_item = calloc(1, sizeof(mam_item_t));
 
 	if (start) {
 		mam_item->start = calloc(1, strlen(start) + 1);
@@ -155,13 +72,15 @@ void jabber_mam_add_to_queue(JabberStream *js, const char* start, const char* en
 		strcpy(mam_item->with, with);
 	}
 
-	js->mam->queue = list_append(js->mam->queue, mam_item);
+	js->mam->queue = g_list_append(js->mam->queue, mam_item);
 
 	jabber_mam_process(js, NULL);
 }
 
 void jabber_mam_process(JabberStream *js, const char* after)
 {
+	GList *queue_item;
+
 	if (!js->mam)
 		return;
 
@@ -177,13 +96,13 @@ void jabber_mam_process(JabberStream *js, const char* after)
 	}
 
 	if (!js->mam->current) {
-		list_t *queue_item = list_get_first(js->mam->queue);
+		queue_item = g_list_first(js->mam->queue);
 		if (queue_item) {
-			js->mam->queue = list_delete(js->mam->queue, queue_item);
+			js->mam->queue = g_list_remove(js->mam->queue, queue_item);
 
-			js->mam->current = list_get_data(queue_item);
+			js->mam->current = queue_item->data;
 
-			js->mam->queue = list_get_next(js->mam->queue);
+			js->mam->queue = g_list_next(js->mam->queue);
 		}
 	}
 
@@ -193,20 +112,29 @@ void jabber_mam_process(JabberStream *js, const char* after)
 
 void jabber_mam_request(JabberStream *js, const char* after)
 {
+	JabberIq *iq;
+	xmlnode *x, *query, *field, *value;
+
 	if (!js->mam)
 		return;
 
-	JabberIq *iq = jabber_iq_new_query(js, JABBER_IQ_SET, NS_XMPP_MAM);
-	xmlnode *query = xmlnode_get_child(iq->node, "query");
+	if (!(js->server_caps & JABBER_CAP_MAM)) {
+		jabber_mam_clear(js->mam);
 
-	xmlnode *x = xmlnode_new_child(query, "x");
+		return;
+	}
+
+	iq = jabber_iq_new_query(js, JABBER_IQ_SET, NS_XMPP_MAM);
+	query = xmlnode_get_child(iq->node, "query");
+
+	x = xmlnode_new_child(query, "x");
 	xmlnode_set_namespace(x, "jabber:x:data");
 	xmlnode_set_attrib(x, "type", "submit");
 
-	xmlnode *field = xmlnode_new_child(x, "field");
+	field = xmlnode_new_child(x, "field");
 	xmlnode_set_attrib(field, "type", "hidden");
 	xmlnode_set_attrib(field, "var", "FORM_TYPE");
-	xmlnode *value = xmlnode_new_child(field, "value");
+	value = xmlnode_new_child(field, "value");
 	xmlnode_insert_data(value, NS_XMPP_MAM, -1);
 
 	if (after) {

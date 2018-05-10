@@ -51,6 +51,7 @@ typedef enum {
 
 	JABBER_CAP_CARBONS        = 1 << 16,
 	JABBER_CAP_MAM            = 1 << 17,
+	JABBER_CAP_MAM_LEGACY     = 1 << 18,
 
 	JABBER_CAP_RETRIEVED      = 1 << 31
 } JabberCapabilities;
@@ -85,7 +86,7 @@ typedef struct _JabberStream JabberStream;
 #define CAPS0115_NODE "http://pidgin.im/"
 
 #define JABBER_DEFAULT_REQUIRE_TLS    "require_starttls"
-#define JABBER_DEFAULT_FT_PROXIES     "proxy.eu.jabber.org"
+#define JABBER_DEFAULT_FT_PROXIES     ""
 
 /* Index into attention_types list */
 #define JABBER_BUZZ 0

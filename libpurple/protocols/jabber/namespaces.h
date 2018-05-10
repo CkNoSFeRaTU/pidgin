@@ -105,7 +105,7 @@
 #define NS_XMPP_FORWARD "urn:xmpp:forward:0"
 
 /* XEP-0313 Message Archive Management */
-#define NS_XMPP_MAM "urn:xmpp:mam:0"
+#define NS_XMPP_MAM "urn:xmpp:mam:2"
 
 /* Google extensions */
 #define NS_GOOGLE_CAMERA "http://www.google.com/xmpp/protocol/camera/v1"

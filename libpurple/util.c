@@ -950,8 +950,7 @@ const char *
 purple_markup_unescape_entity(const char *text, int *length)
 {
 	const char *pln;
-	int len, pound;
-	char temp[2];
+	int len;
 
 	if (!text || *text != '&')
 		return NULL;
@@ -974,7 +973,7 @@ purple_markup_unescape_entity(const char *text, int *length)
 		pln = "\302\256";      /* or use g_unichar_to_utf8(0xae); */
 	else if(IS_ENTITY("&apos;"))
 		pln = "\'";
-	else if(text[1] == '#' && g_ascii_isxdigit(text[2])) {
+	else if(text[1] == '#' && (g_ascii_isxdigit(text[2]) || text[2] == 'x')) {
 		static char buf[7];
 		const char *start = text + 2;
 		char *end;
@@ -3029,12 +3028,7 @@ purple_socket_speaks_ipv4(int fd)
 gboolean
 purple_strequal(const gchar *left, const gchar *right)
 {
-#if GLIB_CHECK_VERSION(2,16,0)
 	return (g_strcmp0(left, right) == 0);
-#else
-	return ((left == NULL && right == NULL) ||
-	        (left != NULL && right != NULL && strcmp(left, right) == 0));
-#endif
 }
 
 const char *
@@ -3434,7 +3428,7 @@ void purple_got_protocol_handler_uri(const char *uri)
 
 	tmp++;
 
-	if (g_str_equal(proto, "xmpp"))
+	if (purple_strequal(proto, "xmpp"))
 		delimiter = ';';
 	else
 		delimiter = '&';
@@ -3751,7 +3745,7 @@ find_header_content(const char *data, gsize data_len, const char *header)
 	return NULL;
 }
 
-static gsize 
+static gsize
 parse_content_len(const char *data, gsize data_len)
 {
 	gsize content_len = 0;
@@ -4409,7 +4403,7 @@ purple_email_is_valid(const char *address)
 		if (*c == '\"' && (c == address || *(c - 1) == '.' || *(c - 1) == '\"')) {
 			while (*++c) {
 				if (*c == '\\') {
-					if (*c++ && *c < 127 && *c != '\n' && *c != '\r') continue;
+					if (*c++ && *c < 127 && *c > 0 && *c != '\n' && *c != '\r') continue;
 					else return FALSE;
 				}
 				if (*c == '\"') break;
@@ -4587,6 +4581,17 @@ purple_uri_list_extract_filenames(const gchar *uri_list)
 		g_free (s);
 	}
 	return result;
+}
+
+char *
+purple_uri_escape_for_open(const char *unescaped)
+{
+	/* Replace some special characters like $ with their percent-encoded value.
+	 * This shouldn't be necessary because we shell-escape the entire arg before
+	 * exec'ing the browser, however, we had a report that a URL containing
+	 * $(xterm) was causing xterm to start on his system. This is obviously a
+	 * bug on his system, but it's pretty easy for us to protect against it. */
+	return g_uri_escape_string(unescaped, "[]:;/%#,+?=&@", FALSE);
 }
 
 /**************************************************************************

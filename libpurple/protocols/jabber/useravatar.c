@@ -352,28 +352,26 @@ update_buddy_metadata(JabberStream *js, const char *from, xmlnode *items)
 		for(info = metadata->child; info; info = info->next) {
 			if(info->type == XMLNODE_TYPE_TAG)
 				has_children = TRUE;
-			if(info->type == XMLNODE_TYPE_TAG && !strcmp(info->name,"info")) {
+			if(info->type == XMLNODE_TYPE_TAG && purple_strequal(info->name,"info")) {
 				const char *type = xmlnode_get_attrib(info,"type");
 				const char *id = xmlnode_get_attrib(info,"id");
 
-				if(checksum && id && !strcmp(id, checksum)) {
+				if(checksum && id && purple_strequal(id, checksum)) {
 					/* we already have that avatar, so we don't have to do anything */
 					goodinfo = NULL;
 					break;
 				}
 				/* We'll only pick the png one for now. It's a very nice image format anyways. */
-				if(type && id && !goodinfopng && !strcmp(type, "image/png"))
+				if(id && !goodinfopng && purple_strequal(type, "image/png"))
 					goodinfopng = info;
-				else if(type && id && !goodinfo && (
-					!strcmp(type, "image/jpeg") ||
-					!strcmp(type, "image/gif") ||
-					!strcmp(type, "image/webp")
+				else if(id && !goodinfo && (
+					purple_strequal(type, "image/jpeg") ||
+					purple_strequal(type, "image/gif") ||
+					purple_strequal(type, "image/webp")
 				))
 					goodinfo = info;
 			}
 		}
-		if (goodinfopng)
-			goodinfo = goodinfopng;
 		if(has_children == FALSE) {
 			purple_buddy_icons_set_for_user(purple_connection_get_account(js->gc), from, NULL, 0, NULL);
 		} else if(goodinfo) {

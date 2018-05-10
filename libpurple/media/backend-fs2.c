@@ -886,8 +886,8 @@ get_stream(PurpleMediaBackendFs2 *self,
 
 	for (; streams; streams = g_list_next(streams)) {
 		PurpleMediaBackendFs2Stream *stream = streams->data;
-		if (!strcmp(stream->session->id, sess_id) &&
-				!strcmp(stream->participant, name))
+		if (purple_strequal(stream->session->id, sess_id) &&
+				purple_strequal(stream->participant, name))
 			return stream;
 	}
 
@@ -909,9 +909,9 @@ get_streams(PurpleMediaBackendFs2 *self,
 	for (; streams; streams = g_list_next(streams)) {
 		PurpleMediaBackendFs2Stream *stream = streams->data;
 
-		if (sess_id != NULL && strcmp(stream->session->id, sess_id))
+		if (sess_id != NULL && !purple_strequal(stream->session->id, sess_id))
 			continue;
-		else if (name != NULL && strcmp(stream->participant, name))
+		else if (name != NULL && !purple_strequal(stream->participant, name))
 			continue;
 		else
 			ret = g_list_prepend(ret, stream);
@@ -1151,7 +1151,7 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		FsParticipant *participant;
 		PurpleMediaBackendFs2Session *session;
 		PurpleMediaBackendFs2Stream *media_stream;
-		gchar *name;
+		const gchar *name;
 
 		value = gst_structure_get_value(structure, "stream");
 		stream = g_value_get_object(value);
@@ -1165,8 +1165,7 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 				local_candidate->foundation);
 
 		g_object_get(stream, "participant", &participant, NULL);
-		g_object_get(participant, "cname", &name, NULL);
-		g_object_unref(participant);
+		name = g_object_get_data(G_OBJECT(participant), "purple-name");
 
 		media_stream = get_stream(self, session->id, name);
 		media_stream->local_candidates = g_list_append(
@@ -1177,6 +1176,7 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		g_signal_emit_by_name(self, "new-candidate",
 				session->id, name, candidate);
 		g_object_unref(candidate);
+		g_object_unref(participant);
 	} else if (gst_structure_has_name(structure,
 #ifdef HAVE_FARSIGHT
 			"farsight-local-candidates-prepared")) {
@@ -1187,18 +1187,18 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		FsStream *stream;
 		FsParticipant *participant;
 		PurpleMediaBackendFs2Session *session;
-		gchar *name;
 
 		value = gst_structure_get_value(structure, "stream");
 		stream = g_value_get_object(value);
 		session = get_session_from_fs_stream(self, stream);
 
 		g_object_get(stream, "participant", &participant, NULL);
-		g_object_get(participant, "cname", &name, NULL);
-		g_object_unref(participant);
 
 		g_signal_emit_by_name(self, "candidates-prepared",
-				session->id, name);
+				session->id,
+				g_object_get_data(G_OBJECT(participant), "purple-name"));
+
+		g_object_unref(participant);
 	} else if (gst_structure_has_name(structure,
 #ifdef HAVE_FARSIGHT
 			"farsight-new-active-candidate-pair")) {
@@ -1212,7 +1212,6 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		FsParticipant *participant;
 		PurpleMediaBackendFs2Session *session;
 		PurpleMediaCandidate *lcandidate, *rcandidate;
-		gchar *name;
 
 		value = gst_structure_get_value(structure, "stream");
 		stream = g_value_get_object(value);
@@ -1222,8 +1221,6 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		remote_candidate = g_value_get_boxed(value);
 
 		g_object_get(stream, "participant", &participant, NULL);
-		g_object_get(participant, "cname", &name, NULL);
-		g_object_unref(participant);
 
 		session = get_session_from_fs_stream(self, stream);
 
@@ -1231,8 +1228,11 @@ gst_handle_message_element(GstBus *bus, GstMessage *msg,
 		rcandidate = candidate_from_fs(remote_candidate);
 
 		g_signal_emit_by_name(self, "active-candidate-pair",
-				session->id, name, lcandidate, rcandidate);
+				session->id,
+				g_object_get_data(G_OBJECT(participant), "purple-name"),
+				lcandidate, rcandidate);
 
+		g_object_unref(participant);
 		g_object_unref(lcandidate);
 		g_object_unref(rcandidate);
 	} else if (gst_structure_has_name(structure,
@@ -1818,7 +1818,7 @@ create_session(PurpleMediaBackendFs2 *self, const gchar *sess_id,
 	GError *err = NULL;
 	GList *codec_conf = NULL, *iter = NULL;
 	gchar *filename = NULL;
-	gboolean is_nice = !strcmp(transmitter, "nice");
+	gboolean is_nice = purple_strequal(transmitter, "nice");
 
 	session = g_new0(PurpleMediaBackendFs2Session, 1);
 
@@ -1892,14 +1892,14 @@ create_session(PurpleMediaBackendFs2 *self, const gchar *sess_id,
 	 * receiving the src-pad-added signal.
 	 * Only works for non-multicast FsRtpSessions.
 	 */
-	if (!!strcmp(transmitter, "multicast"))
+	if (!purple_strequal(transmitter, "multicast"))
 		g_object_set(G_OBJECT(session->session),
 				"no-rtcp-timeout", 0, NULL);
 
 	/*
 	 * Hack to make x264 work with Gmail video.
 	 */
-	if (is_nice && !strcmp(sess_id, "google-video")) {
+	if (is_nice && purple_strequal(sess_id, "google-video")) {
 		FsElementAddedNotifier *notifier =
 				fs_element_added_notifier_new();
 		g_signal_connect(G_OBJECT(notifier), "element-added",
@@ -1958,6 +1958,9 @@ create_participant(PurpleMediaBackendFs2 *self, const gchar *name)
 		g_error_free(err);
 		return FALSE;
 	}
+
+	g_object_set_data_full(G_OBJECT(participant), "purple-name",
+			g_strdup(name), g_free);
 
 #ifndef HAVE_FARSIGHT
 	if (g_object_class_find_property(G_OBJECT_GET_CLASS(participant),
@@ -2090,6 +2093,7 @@ src_pad_added_cb(FsStream *fsstream, GstPad *srcpad,
 			(GSourceFunc)src_pad_added_cb_cb, stream);
 }
 
+#ifdef HAVE_FARSIGHT
 static GValueArray *
 append_relay_info(GValueArray *relay_info, const gchar *ip, gint port,
 	const gchar *username, const gchar *password, const gchar *type)
@@ -2115,6 +2119,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 
 	return relay_info;
 }
+#endif
 
 static gboolean
 create_stream(PurpleMediaBackendFs2 *self,
@@ -2141,6 +2146,10 @@ create_stream(PurpleMediaBackendFs2 *self,
 	  TURN modes, like Google f.ex. */
 	gboolean got_turn_from_prpl = FALSE;
 	guint i;
+#ifndef HAVE_FARSIGHT
+	GPtrArray *relay_info = g_ptr_array_new_full (1, (GDestroyNotify) gst_structure_free);
+	gboolean ret;
+#endif
 
 	session = get_session(self, sess_id);
 
@@ -2203,9 +2212,11 @@ create_stream(PurpleMediaBackendFs2 *self,
 		++_num_params;
 	}
 
-	if (turn_ip && !strcmp("nice", transmitter) && !got_turn_from_prpl) {
+	if (turn_ip && purple_strequal("nice", transmitter) && !got_turn_from_prpl) {
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#ifdef HAVE_FARSIGHT
 		GValueArray *relay_info = g_value_array_new(0);
+#endif
 G_GNUC_END_IGNORE_DEPRECATIONS
 		gint port;
 		const gchar *username =	purple_prefs_get_string(
@@ -2216,15 +2227,37 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		/* UDP */
 		port = purple_prefs_get_int("/purple/network/turn_port");
 		if (port > 0) {
+#ifdef HAVE_FARSIGHT
 			relay_info = append_relay_info(relay_info, turn_ip, port, username,
 				password, "udp");
+#else
+			g_ptr_array_add (relay_info,
+				gst_structure_new ("relay-info",
+				"ip", G_TYPE_STRING, turn_ip,
+				"port", G_TYPE_UINT, port,
+				"username", G_TYPE_STRING, username,
+				"password", G_TYPE_STRING, password,
+				"relay-type", G_TYPE_STRING, "udp",
+				NULL));
+#endif
 		}
-		
+
 		/* TCP */
 		port = purple_prefs_get_int("/purple/network/turn_port_tcp");
 		if (port > 0) {
+#ifdef HAVE_FARSIGHT
 			relay_info = append_relay_info(relay_info, turn_ip, port, username,
 				password, "tcp");
+#else
+			g_ptr_array_add (relay_info,
+				gst_structure_new ("relay-info",
+				"ip", G_TYPE_STRING, turn_ip,
+				"port", G_TYPE_UINT, port,
+				"username", G_TYPE_STRING, username,
+				"password", G_TYPE_STRING, password,
+				"relay-type", G_TYPE_STRING, "tcp",
+				NULL));
+#endif
 		}
 
 		/* TURN over SSL is only supported by libnice for Google's "psuedo" SSL mode
@@ -2234,9 +2267,14 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 			"Setting relay-info on new stream\n");
 		_params[_num_params].name = "relay-info";
 G_GNUC_BEGIN_IGNORE_DEPRECATIONS
+#ifdef HAVE_FARSIGHT
 		g_value_init(&_params[_num_params].value, G_TYPE_VALUE_ARRAY);
 		g_value_set_boxed(&_params[_num_params].value, relay_info);
 		g_value_array_free(relay_info);
+#else
+		g_value_init(&_params[_num_params].value, G_TYPE_PTR_ARRAY);
+		g_value_set_boxed(&_params[_num_params].value, relay_info);
+#endif
 G_GNUC_END_IGNORE_DEPRECATIONS
 		_num_params++;
 	}
@@ -2261,16 +2299,20 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 		return FALSE;
 	}
 #else
-	if (!fs_stream_set_transmitter(fsstream, transmitter,
-			_params, _num_params, &err)) {
+	ret = fs_stream_set_transmitter(fsstream, transmitter,
+			_params, _num_params, &err);
+	for (i = 0 ; i < _num_params ; i++)
+		g_value_unset (&_params[i].value);
+	g_free(_params);
+        if (relay_info)
+		g_ptr_array_unref (relay_info);
+	if (ret == FALSE) {
 		purple_debug_error("backend-fs2",
 			"Could not set transmitter %s: %s.\n",
 			transmitter, err ? err->message : NULL);
 		g_clear_error(&err);
-		g_free(_params);
 		return FALSE;
 	}
-	g_free(_params);
 #endif
 
 	stream = g_new0(PurpleMediaBackendFs2Stream, 1);
@@ -2278,7 +2320,7 @@ G_GNUC_END_IGNORE_DEPRECATIONS
 	stream->session = session;
 	stream->stream = fsstream;
 #ifndef HAVE_FARSIGHT
-	stream->supports_add = !strcmp(transmitter, "nice");
+	stream->supports_add = purple_strequal(transmitter, "nice");
 #endif
 
 	priv->streams =	g_list_append(priv->streams, stream);
@@ -2437,7 +2479,7 @@ purple_media_backend_fs2_codecs_ready(PurpleMediaBackend *self,
 				PURPLE_MEDIA_SEND_VIDEO)) {
 #ifdef HAVE_FARSIGHT
 			g_object_get(session->session,
-					"codecs-ready", &ret, NULL);	
+					"codecs-ready", &ret, NULL);
 #else
 			GList *codecs = NULL;
 
@@ -2702,7 +2744,7 @@ param_to_sdes_type(const gchar *param)
 	guint i;
 
 	for (i = 0; supported[i] != NULL; ++i) {
-		if (!strcmp(param, supported[i])) {
+		if (purple_strequal(param, supported[i])) {
 			return sdes_types[i];
 		}
 	}

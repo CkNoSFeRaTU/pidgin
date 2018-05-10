@@ -197,7 +197,7 @@ static PurpleAccount *find_acct(const char *prpl, const char *acct_id)
 	} else { /* Otherwise find an active account for the protocol */
 		GList *l = purple_accounts_get_all();
 		while (l) {
-			if (!strcmp(prpl, purple_account_get_protocol_id(l->data))
+			if (purple_strequal(prpl, purple_account_get_protocol_id(l->data))
 					&& purple_account_is_connected(l->data)) {
 				acct = l->data;
 				break;
@@ -303,10 +303,7 @@ init_plugin(PurplePlugin *plugin)
 						  option);
 
 	option = purple_account_option_string_new(_("File transfer proxies"),
-						  "ft_proxies",
-						/* TODO: Is this an acceptable default?
-						 * Also, keep this in sync as they add more servers */
-						  JABBER_DEFAULT_FT_PROXIES);
+						  "ft_proxies", NULL);
 	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options,
 						  option);
 

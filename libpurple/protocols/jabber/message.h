@@ -80,7 +80,4 @@ gboolean jabber_buzz_isenabled(JabberStream *js, const gchar *namespace);
 
 gboolean jabber_custom_smileys_isenabled(JabberStream *js, const const gchar *namespace);
 
-void jabber_toggle_carbons(PurplePluginAction *action);
-void jabber_toggle_mam(PurplePluginAction *action);
-
 #endif /* PURPLE_JABBER_MESSAGE_H_ */

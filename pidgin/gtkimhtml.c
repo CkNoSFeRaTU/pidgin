@@ -44,6 +44,7 @@
 #include "gtksourceiter.h"
 #include "gtksourceundomanager.h"
 #include "gtksourceview-marshal.h"
+#include "gtkstyle.h"
 #include <gtk/gtk.h>
 #include <glib.h>
 #include <gdk/gdkkeysyms.h>
@@ -469,6 +470,7 @@ gtk_imhtml_style_set(GtkWidget *widget, GtkStyle *prev_style)
 		} else {
 			GdkColor defcolor;
 			gdk_color_parse(styles[i].def, &defcolor);
+			pidgin_style_adjust_contrast(gtk_widget_get_style(widget), &defcolor);
 			g_object_set(tag, "foreground-gdk", &defcolor, NULL);
 		}
 	}
@@ -1382,9 +1384,9 @@ imhtml_paste_cb(GtkIMHtml *imhtml, const char *str)
 	if (!gtk_text_view_get_editable(GTK_TEXT_VIEW(imhtml)))
 		return;
 
-	if (!str || !*str || !strcmp(str, "html"))
+	if (!str || !*str || purple_strequal(str, "html"))
 		g_signal_emit_by_name(imhtml, "paste_clipboard");
-	else if (!strcmp(str, "text"))
+	else if (purple_strequal(str, "text"))
 		paste_unformatted_cb(NULL, imhtml);
 }
 
@@ -2052,58 +2054,66 @@ static gint
 gtk_smiley_tree_lookup (GtkSmileyTree *tree,
 			const gchar   *text)
 {
+	gunichar text_ch = g_utf8_get_char(text);
 	GtkSmileyTree *t = tree;
-	const gchar *x = text;
 	gint len = 0;
-	const gchar *amp;
-	gint alen;
-
-	while (*x) {
+	gint lastlen = 0;
+	
+	while (text_ch) {
+		const gchar *amp;
 		gchar *pos;
+		gint alen;
 
 		if (!t->values)
 			break;
 
-		if(*x == '&' && (amp = purple_markup_unescape_entity(x, &alen))) {
+		if((amp = purple_markup_unescape_entity(text, &alen))) {
 			gboolean matched = TRUE;
+			const char *amp_next = g_utf8_next_char(amp);
+			
 			/* Make sure all chars of the unescaped value match */
-			while (*(amp + 1)) {
-				pos = strchr (t->values->str, *amp);
+			while (g_utf8_get_char(amp_next)) {
+				pos = g_utf8_strchr (t->values->str, -1, g_utf8_get_char(amp));
 				if (pos)
 					t = t->children [GPOINTER_TO_INT(pos) - GPOINTER_TO_INT(t->values->str)];
 				else {
 					matched = FALSE;
 					break;
 				}
-				amp++;
+				amp = amp_next;
+				amp_next = g_utf8_next_char(amp_next);
 			}
+			
 			if (!matched)
 				break;
-
-			pos = strchr (t->values->str, *amp);
+			
+			pos = g_utf8_strchr (t->values->str, -1, g_utf8_get_char(amp));
 		}
-		else if (*x == '<') /* Because we're all WYSIWYG now, a '<'
+		else if (text_ch == '<') /* Because we're all WYSIWYG now, a '<'
 				     * char should only appear as the start of a tag.  Perhaps a safer (but costlier)
 				     * check would be to call gtk_imhtml_is_tag on it */
 			break;
 		else {
-			alen = 1;
-			pos = strchr (t->values->str, *x);
+			alen = g_unichar_to_utf8 (text_ch, NULL);
+			pos = g_utf8_strchr (t->values->str, -1, text_ch);
 		}
 
-		if (pos)
+		if (pos) {
 			t = t->children [GPOINTER_TO_INT(pos) - GPOINTER_TO_INT(t->values->str)];
-		else
+			if (t->image)
+				lastlen = len + alen;
+		} else
 			break;
 
-		x += alen;
 		len += alen;
+		text = g_utf8_next_char(text);
+		text_ch = g_utf8_get_char(text);
 	}
 
 	if (t->image)
 		return len;
 
-	return 0;
+	return lastlen;
 }
 
 static void
@@ -3309,13 +3319,13 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 							if (((font->bold && !oldfont->bold) || (oldfont->bold && !font->bold)) && !(options & GTK_IMHTML_NO_FORMATTING))
 							    gtk_imhtml_toggle_bold(imhtml);
 
-							if (font->face && (!oldfont->face || strcmp(font->face, oldfont->face) != 0) && !(options & GTK_IMHTML_NO_FONTS))
+							if (font->face && !purple_strequal(font->face, oldfont->face) && !(options & GTK_IMHTML_NO_FONTS))
 							    gtk_imhtml_toggle_fontface(imhtml, oldfont->face);
 
-							if (font->fore && (!oldfont->fore || strcmp(font->fore, oldfont->fore) != 0) && !(options & GTK_IMHTML_NO_COLOURS))
+							if (font->fore && !purple_strequal(font->fore, oldfont->fore) && !(options & GTK_IMHTML_NO_COLOURS))
 							    gtk_imhtml_toggle_forecolor(imhtml, oldfont->fore);
 
-							if (font->back && (!oldfont->back || strcmp(font->back, oldfont->back) != 0) && !(options & GTK_IMHTML_NO_COLOURS))
+							if (font->back && !purple_strequal(font->back, oldfont->back) && !(options & GTK_IMHTML_NO_COLOURS))
 							    gtk_imhtml_toggle_backcolor(imhtml, oldfont->back);
 						}
 
@@ -4054,7 +4064,7 @@ gboolean gtk_imhtml_search_find(GtkIMHtml *imhtml, const gchar *text)
 
 	start_mark = gtk_text_buffer_get_mark(imhtml->text_buffer, "search");
 
-	if (start_mark && imhtml->search_string && !strcmp(text, imhtml->search_string))
+	if (start_mark && imhtml->search_string && purple_strequal(text, imhtml->search_string))
 		new_search = FALSE;
 
 	if (new_search) {
@@ -4600,13 +4610,13 @@ static void mark_set_cb(GtkTextBuffer *buffer, GtkTextIter *arg1, GtkTextMark *m
 		GtkTextTag *tag = GTK_TEXT_TAG(l->data);
 
 		if (tag->name) {
-			if (strcmp(tag->name, "BOLD") == 0)
+			if (purple_strequal(tag->name, "BOLD"))
 				imhtml->edit.bold = TRUE;
-			else if (strcmp(tag->name, "ITALICS") == 0)
+			else if (purple_strequal(tag->name, "ITALICS"))
 				imhtml->edit.italic = TRUE;
-			else if (strcmp(tag->name, "UNDERLINE") == 0)
+			else if (purple_strequal(tag->name, "UNDERLINE"))
 				imhtml->edit.underline = TRUE;
-			else if (strcmp(tag->name, "STRIKE") == 0)
+			else if (purple_strequal(tag->name, "STRIKE"))
 				imhtml->edit.strike = TRUE;
 			else if (strncmp(tag->name, "FORECOLOR ", 10) == 0)
 				imhtml->edit.forecolor = g_strdup(&(tag->name)[10]);
@@ -4793,7 +4803,7 @@ static gboolean gtk_imhtml_toggle_str_tag(GtkIMHtml *imhtml, const char *value, 
 	g_free(*edit_field);
 	*edit_field = NULL;
 
-	if (value && strcmp(value, "") != 0)
+	if (value && *value)
 	{
 		*edit_field = g_strdup(value);
 
@@ -5113,13 +5123,13 @@ static const gchar *tag_to_html_start(GtkTextTag *tag)
 	name = tag->name;
 	g_return_val_if_fail(name != NULL, "");
 
-	if (strcmp(name, "BOLD") == 0) {
+	if (purple_strequal(name, "BOLD")) {
 		return "<b>";
-	} else if (strcmp(name, "ITALICS") == 0) {
+	} else if (purple_strequal(name, "ITALICS")) {
 		return "<i>";
-	} else if (strcmp(name, "UNDERLINE") == 0) {
+	} else if (purple_strequal(name, "UNDERLINE")) {
 		return "<u>";
-	} else if (strcmp(name, "STRIKE") == 0) {
+	} else if (purple_strequal(name, "STRIKE")) {
 		return "<s>";
 	} else if (strncmp(name, "LINK ", 5) == 0) {
 		char *tmp = g_object_get_data(G_OBJECT(tag), "link_url");
@@ -5220,13 +5230,13 @@ static const gchar *tag_to_html_end(GtkTextTag *tag)
 	name = tag->name;
 	g_return_val_if_fail(name != NULL, "");
 
-	if (strcmp(name, "BOLD") == 0) {
+	if (purple_strequal(name, "BOLD")) {
 		return "</b>";
-	} else if (strcmp(name, "ITALICS") == 0) {
+	} else if (purple_strequal(name, "ITALICS")) {
 		return "</i>";
-	} else if (strcmp(name, "UNDERLINE") == 0) {
+	} else if (purple_strequal(name, "UNDERLINE")) {
 		return "</u>";
-	} else if (strcmp(name, "STRIKE") == 0) {
+	} else if (purple_strequal(name, "STRIKE")) {
 		return "</s>";
 	} else if (strncmp(name, "LINK ", 5) == 0) {
 		return "</a>";
@@ -5583,7 +5593,7 @@ void gtk_imhtml_setup_entry(GtkIMHtml *imhtml, PurpleConnectionFlags flags)
 				gtk_imhtml_font_set_size(imhtml, size);
 		}
 
-		if(strcmp(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/fgcolor"), "") != 0)
+		if(!purple_strequal(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/fgcolor"), ""))
 		{
 			gdk_color_parse(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/fgcolor"),
 							&fg_color);
@@ -5597,7 +5607,7 @@ void gtk_imhtml_setup_entry(GtkIMHtml *imhtml, PurpleConnectionFlags flags)
 		gtk_imhtml_toggle_forecolor(imhtml, color);
 
 		if(!(flags & PURPLE_CONNECTION_NO_BGCOLOR) &&
-		   strcmp(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/bgcolor"), "") != 0)
+		   !purple_strequal(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/bgcolor"), ""))
 		{
 			gdk_color_parse(purple_prefs_get_string(PIDGIN_PREFS_ROOT "/conversations/bgcolor"),
 							&bg_color);

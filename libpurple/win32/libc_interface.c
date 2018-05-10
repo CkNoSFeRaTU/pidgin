@@ -31,6 +31,7 @@
 #include "config.h"
 #include "debug.h"
 #include "libc_internal.h"
+#include "util.h"
 #include <glib/gstdio.h>
 
 /** This is redefined here because we can't include internal.h */
@@ -933,7 +934,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 
 	for (i = 0; win32_tzmap[i].wstd != NULL; i++)
 	{
-		if (strcmp(tzname, win32_tzmap[i].wstd) == 0)
+		if (purple_strequal(tzname, win32_tzmap[i].wstd))
 		{
 #if 0
 			purple_debug_info("wpurple", "TZ \"%s\" matches Windows timezone \"%s\"\n",
@@ -949,7 +950,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 
 			return win32_tzmap[i].ustd;
 		}
-		if (strcmp(tzname, win32_tzmap[i].wdst) == 0)
+		if (purple_strequal(tzname, win32_tzmap[i].wdst))
 		{
 #if 0
 			purple_debug_info("wpurple", "TZ \"%s\" matches Windows timezone \"%s\"\n",
@@ -1023,7 +1024,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 			RegCloseKey(key);
 			break;
 		}
-		if (strcmp(tzname, zonename) == 0)
+		if (purple_strequal(tzname, zonename))
 		{
 			/* Matched zone */
 			g_strlcpy(localtzname, keyname, sizeof(localtzname));
@@ -1038,7 +1039,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 			RegCloseKey(key);
 			break;
 		}
-		if (strcmp(tzname, zonename) == 0)
+		if (purple_strequal(tzname, zonename))
 		{
 			/* Matched DST zone */
 			g_strlcpy(localtzname, keyname, sizeof(localtzname));
@@ -1056,7 +1057,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 		/* Found a localized name, so scan for that one too */
 		for (i = 0; win32_tzmap[i].wstd != NULL; i++)
 		{
-			if (strcmp(localtzname, win32_tzmap[i].wstd) == 0)
+			if (purple_strequal(localtzname, win32_tzmap[i].wstd))
 			{
 #if 0
 				purple_debug_info("wpurple", "TZ \"%s\" matches localized Windows timezone \"%s\" (\"%s\")\n",
@@ -1070,7 +1071,7 @@ wpurple_get_timezone_abbreviation(const struct tm *tm)
 
 				return win32_tzmap[i].ustd;
 			}
-			if (strcmp(localtzname, win32_tzmap[i].wdst) == 0)
+			if (purple_strequal(localtzname, win32_tzmap[i].wdst))
 			{
 #if 0
 				purple_debug_info("wpurple", "TZ \"%s\" matches localized Windows timezone \"%s\" (\"%s\")\n",
