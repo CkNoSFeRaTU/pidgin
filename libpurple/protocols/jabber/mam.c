@@ -23,6 +23,7 @@
 
 #include "internal.h"
 #include "request.h"
+#include "debug.h"
 
 #include "jabber.h"
 #include "mam.h"
@@ -55,6 +56,8 @@ void jabber_mam_add_to_queue(JabberStream *js, const char* start, const char* en
 	if (!js->mam)
 		return;
 
+	purple_debug_info("jabber", "MAM add to queue\n");
+
 	mam_item = calloc(1, sizeof(mam_item_t));
 
 	if (start) {
@@ -84,12 +87,14 @@ void jabber_mam_process(JabberStream *js, const char* after)
 	if (!js->mam)
 		return;
 
+	purple_debug_info("jabber", "MAM process\n");
+
 	if (js->mam->current && js->mam->current->completed) {
 		free(js->mam->current->start);
 		free(js->mam->current->end);
 		free(js->mam->current->with);
 
-		memset(js->mam->last_timestamp, 0, 32);
+		memset(js->mam->last_timestamp, 0, sizeof(js->mam->last_timestamp));
 
 		free(js->mam->current);
 		js->mam->current = NULL;
@@ -118,13 +123,16 @@ void jabber_mam_request(JabberStream *js, const char* after)
 	if (!js->mam)
 		return;
 
-	if (!(js->server_caps & JABBER_CAP_MAM)) {
+	if (!js->mam->ns) {
+		purple_debug_info("jabber", "MAM no namespace, skipping request\n");
 		jabber_mam_clear(js->mam);
 
 		return;
 	}
 
-	iq = jabber_iq_new_query(js, JABBER_IQ_SET, NS_XMPP_MAM);
+	purple_debug_info("jabber", "MAM request\n");
+
+	iq = jabber_iq_new_query(js, JABBER_IQ_SET, js->mam->ns);
 	query = xmlnode_get_child(iq->node, "query");
 
 	x = xmlnode_new_child(query, "x");
@@ -135,7 +143,7 @@ void jabber_mam_request(JabberStream *js, const char* after)
 	xmlnode_set_attrib(field, "type", "hidden");
 	xmlnode_set_attrib(field, "var", "FORM_TYPE");
 	value = xmlnode_new_child(field, "value");
-	xmlnode_insert_data(value, NS_XMPP_MAM, -1);
+	xmlnode_insert_data(value, js->mam->ns, -1);
 
 	if (after) {
 		xmlnode *set = xmlnode_new_child(query, "set");

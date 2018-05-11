@@ -125,10 +125,10 @@ static void handle_chat(JabberMessage *jm)
 	if (!jm->outgoing) {
 		switch(jm->chat_state) {
 			case JM_STATE_COMPOSING:
-				serv_got_typing(gc, jm->from, 0, PURPLE_TYPING);
+				serv_got_typing(gc, contact, 0, PURPLE_TYPING);
 				break;
 			case JM_STATE_PAUSED:
-				serv_got_typing(gc, jm->from, 0, PURPLE_TYPED);
+				serv_got_typing(gc, contact, 0, PURPLE_TYPED);
 				break;
 			case JM_STATE_GONE: {
 				PurpleConversation *conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM,
@@ -157,11 +157,11 @@ static void handle_chat(JabberMessage *jm)
 						                        PURPLE_MESSAGE_SYSTEM, time(NULL));
 					}
 				}
-				serv_got_typing_stopped(gc, jm->from);
+				serv_got_typing_stopped(gc, contact);
 				break;
 			}
 			default:
-				serv_got_typing_stopped(gc, jm->from);
+				serv_got_typing_stopped(gc, contact);
 		}
 	}
 
@@ -210,7 +210,7 @@ static void handle_chat(JabberMessage *jm)
 			jbr->thread_id = g_strdup(jbr->thread_id);
 		}
 
-		serv_got_im(gc, jm->from, body->str, (jm->outgoing ? PURPLE_MESSAGE_SEND : PURPLE_MESSAGE_RECV), jm->sent);
+		serv_got_im(gc, contact, body->str, (jm->outgoing ? PURPLE_MESSAGE_SEND : PURPLE_MESSAGE_RECV), jm->sent);
 	}
 
 	jabber_id_free(jid);
@@ -537,8 +537,11 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 	if (jabber_is_own_account(js, from)) {
 		xmlnode *received = xmlnode_get_child_with_namespace(packet, "received", NS_XMPP_CARBONS);
 		xmlnode *sent = xmlnode_get_child_with_namespace(packet, "sent", NS_XMPP_CARBONS);
-		xmlnode *result = xmlnode_get_child_with_namespace(packet, "result", NS_XMPP_MAM);
-		xmlnode *fin = xmlnode_get_child_with_namespace(packet, "fin", NS_XMPP_MAM);
+		xmlnode *result = NULL, *fin = NULL;
+		if (js->mam && js->mam->ns) {
+			result = xmlnode_get_child_with_namespace(packet, "result", js->mam->ns);
+			fin = xmlnode_get_child_with_namespace(packet, "fin", js->mam->ns);
+		}
 
 		if (received || sent || result) {
 			xmlnode *forwarded = xmlnode_get_child_with_namespace(received ? received : sent ? sent : result, "forwarded", NS_XMPP_FORWARD);
@@ -562,7 +565,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 						js->mam->count++;
 
 						gboolean equal = (purple_strequal(jid->node, js->user->node) &&
-							g_str_equal(jid->domain, js->user->domain));
+							purple_strequal(jid->domain, js->user->domain));
 
 						if (equal)
 							is_outgoing = TRUE;
@@ -577,27 +580,32 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 
 						if(timestamp) {
 							if (result) {
-								memset(js->mam->last_timestamp, 0, 32);
-								strcpy(js->mam->last_timestamp, timestamp);
+								memset(js->mam->last_timestamp, 0, sizeof(js->mam->last_timestamp));
+								strncpy(js->mam->last_timestamp, timestamp, sizeof(js->mam->last_timestamp));
 							}
 
-							purple_debug_info("jabber", "Found a delay stamp: %s\n", timestamp);
+							purple_debug_info("jabber", "MAM Found a delay stamp: %s\n", timestamp);
 
 							delayed = TRUE;
 
 							message_timestamp = purple_str_to_time(timestamp, TRUE, NULL, NULL, NULL);
 						}
+					} else {
+						purple_debug_info("jabber", "MAM delay stamp not found!\n");
 					}
 				}
 			}
 		} else if (fin) {
+			purple_debug_info("jabber", "MAM fin detected!\n");
 			char *complete_attrib = xmlnode_get_attrib(fin, "complete");
 			gboolean complete = complete_attrib != NULL && purple_strequal(complete_attrib, "true") ? TRUE : FALSE;
 			if (complete || js->mam->count == 0) {
+				purple_debug_info("jabber", "MAM sync complete!\n");
 				js->mam->current->completed = TRUE;
 
 				jabber_mam_process(js, NULL);
 			} else {
+				purple_debug_info("jabber", "MAM request next page!\n");
 				xmlnode *set = xmlnode_get_child_with_namespace(fin, "set", NS_RSM);
 				if (set) {
 					xmlnode *last = xmlnode_get_child(set, "last");

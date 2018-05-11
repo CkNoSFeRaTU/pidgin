@@ -106,6 +106,10 @@
 
 /* XEP-0313 Message Archive Management */
 #define NS_XMPP_MAM "urn:xmpp:mam:2"
+#define NS_XMPP_MAM_LEGACY "urn:xmpp:mam:0"
+
+/* XEP-0363 HTTP File Upload */
+#define NS_XMPP_HTTP_UPLOAD "urn:xmpp:http:upload:0"
 
 /* Google extensions */
 #define NS_GOOGLE_CAMERA "http://www.google.com/xmpp/protocol/camera/v1"

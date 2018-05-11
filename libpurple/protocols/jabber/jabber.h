@@ -52,6 +52,7 @@ typedef enum {
 	JABBER_CAP_CARBONS        = 1 << 16,
 	JABBER_CAP_MAM            = 1 << 17,
 	JABBER_CAP_MAM_LEGACY     = 1 << 18,
+	JABBER_CAP_HTTP_UPLOAD    = 1 << 19,
 
 	JABBER_CAP_RETRIEVED      = 1 << 31
 } JabberCapabilities;

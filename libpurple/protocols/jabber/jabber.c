@@ -2614,6 +2614,9 @@ static void jabber_mam_prefs_change_cb(JabberStream *js,
 	const char *mam_always = purple_request_fields_get_string(fields, "mam_always");
 	const char *mam_never = purple_request_fields_get_string(fields, "mam_never");
 
+	if (!js->mam || !js->mam->ns)
+		return;
+
 	if (pref_result == MAM_PREFS_ALWAYS)
 		mam_default = "always";
 	else if (pref_result == MAM_PREFS_ROSTER)
@@ -2621,7 +2624,7 @@ static void jabber_mam_prefs_change_cb(JabberStream *js,
 
 	iq = jabber_iq_new(js, JABBER_IQ_SET);
 	prefs = xmlnode_new_child(iq->node, "prefs");
-	xmlnode_set_namespace(prefs, NS_XMPP_MAM);
+	xmlnode_set_namespace(prefs, js->mam->ns);
 	xmlnode_set_attrib(prefs, "default", mam_default);
 
 	node = xmlnode_new_child(prefs, "always");
@@ -2665,7 +2668,10 @@ static void jabber_mam_prefs(JabberStream *js, const char *from,
 	char *mam_default, *value;
 	GString *str;
 
-	node = xmlnode_get_child_with_namespace(packet, "prefs", NS_XMPP_MAM);
+	if (!js->mam || !js->mam->ns)
+		return;
+
+	node = xmlnode_get_child_with_namespace(packet, "prefs", js->mam->ns);
 
 	if (type != JABBER_IQ_RESULT || !node) {
 		char *msg = jabber_parse_error(js, packet, NULL);
@@ -2741,10 +2747,13 @@ static void jabber_mam(PurplePluginAction *action) {
 	JabberIq *iq = jabber_iq_new(js, JABBER_IQ_GET);
 	xmlnode *prefs;
 
+	if (!js->mam || !js->mam->ns)
+		return;
+
 	purple_debug_info("jabber", "Requesting MAM Preferences...\n");
 
 	prefs = xmlnode_new_child(iq->node, "prefs");
-	xmlnode_set_namespace(prefs, NS_XMPP_MAM);
+	xmlnode_set_namespace(prefs, js->mam->ns);
 	jabber_iq_set_callback(iq, jabber_mam_prefs, NULL);
 
 	jabber_iq_send(iq);

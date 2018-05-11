@@ -306,6 +306,10 @@ static void jabber_disco_info_cb(JabberStream *js, const char *from,
 					capabilities |= JABBER_CAP_CARBONS;
 				else if(purple_strequal(var, NS_XMPP_MAM))
 					capabilities |= JABBER_CAP_MAM;
+				else if(purple_strequal(var, NS_XMPP_MAM_LEGACY))
+					capabilities |= JABBER_CAP_MAM_LEGACY;
+				else if(purple_strequal(var, NS_XMPP_HTTP_UPLOAD))
+					capabilities |= JABBER_CAP_HTTP_UPLOAD;
 			}
 		}
 
@@ -401,14 +405,18 @@ jabber_disco_finish_server_info_result_cb(JabberStream *js)
 		jabber_iq_send(iq);
 	}
 
-	if (js->server_caps & JABBER_CAP_MAM) {
-		purple_debug_info("jabber", "MAM Requesting.\n");
+	if (js->server_caps & JABBER_CAP_MAM)
+		js->mam->ns = NS_XMPP_MAM;
+	else if (js->server_caps & JABBER_CAP_MAM_LEGACY)
+		js->mam->ns = NS_XMPP_MAM_LEGACY;
 
-		time_t mam_laststamp = (time_t *)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
-		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp + 1);
+	if (js->mam->ns) {
+		time_t mam_laststamp = (time_t)purple_account_get_int(js->gc->account, "mam_laststamp", time(0));
 
-		const struct tm *unixtime = gmtime(&mam_laststamp);
-		strcpy(js->mam->last_timestamp, purple_utf8_strftime("%Y-%m-%dT%H:%M:%SZ", unixtime));
+		purple_account_set_int(js->gc->account, "mam_laststamp", mam_laststamp++);
+		purple_debug_info("jabber", "MAM on connect with timestamp '%lu', namespace '%s'\n", mam_laststamp, js->mam->ns);
+
+		strncpy(js->mam->last_timestamp, purple_utf8_strftime("%Y-%m-%dT%H:%M:%SZ", gmtime(&mam_laststamp)), sizeof(js->mam->last_timestamp));
 
 		jabber_mam_add_to_queue(js, js->mam->last_timestamp, NULL, NULL);
 	}

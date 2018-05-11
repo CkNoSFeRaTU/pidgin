@@ -340,7 +340,7 @@ static gboolean does_reply_from_match_request_to(JabberStream *js, JabberID *to,
 void jabber_iq_parse(JabberStream *js, xmlnode *packet)
 {
 	JabberIqCallbackData *jcd;
-	xmlnode *child, *error, *x;
+	xmlnode *child, *error, *x, *fin = NULL;
 	const char *xmlns;
 	const char *iq_type, *id, *from;
 	JabberIqType type = JABBER_IQ_NONE;
@@ -350,6 +350,8 @@ void jabber_iq_parse(JabberStream *js, xmlnode *packet)
 	from = xmlnode_get_attrib(packet, "from");
 	id = xmlnode_get_attrib(packet, "id");
 	iq_type = xmlnode_get_attrib(packet, "type");
+	if (js->mam && js->mam->ns)
+		fin = xmlnode_get_child_with_namespace(packet, "fin", js->mam->ns);
 
 	/*
 	 * Ensure the 'from' attribute is valid. No point in handling a stanza
@@ -478,6 +480,32 @@ void jabber_iq_parse(JabberStream *js, xmlnode *packet)
 			jabber_id_free(from_id);
 			return;
 		}
+	}
+
+	if (fin) {
+		char *complete_attrib = xmlnode_get_attrib(fin, "complete");
+		gboolean complete = complete_attrib != NULL && purple_strequal(complete_attrib, "true") ? TRUE : FALSE;
+
+		purple_debug_info("jabber", "MAM fin detected, complete - '%s'\n", complete_attrib);
+
+		if (complete || js->mam->count == 0) {
+			purple_debug_info("jabber", "MAM sync complete!\n");
+			js->mam->current->completed = TRUE;
+
+			jabber_mam_process(js, NULL);
+		} else {
+			purple_debug_info("jabber", "MAM request next page!\n");
+			xmlnode *set = xmlnode_get_child_with_namespace(fin, "set", NS_RSM);
+			if (set) {
+				xmlnode *last = xmlnode_get_child(set, "last");
+				if (last) {
+					js->mam->count = 0;
+					jabber_mam_process(js, xmlnode_get_data(last));
+				}
+			}
+		}
+
+		return;
 	}
 
 	purple_debug_misc("jabber", "Unhandled IQ with id %s\n", id);

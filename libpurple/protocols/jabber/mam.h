@@ -42,8 +42,9 @@ typedef struct {
 typedef struct {
     GList *queue;
     mam_item_t *current;
-    char last_timestamp[32];
+    char last_timestamp[64];
     guint32 count;
+    char *ns;
 } mam_t;
 
 void jabber_mam_clear(mam_t *mam);
