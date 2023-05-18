@@ -513,7 +513,7 @@ strbreakup (const char *string,
 		string_list = g_slist_prepend (string_list, new_string);
 	}
 
-	str_array = g_new (gchar*, n);
+	str_array = g_new0(gchar*, n);
 
 	i = n - 1;
 

@@ -3,6 +3,7 @@
 #include "tests.h"
 #include "../account.h"
 #include "../conversation.h"
+#include "../internal.h"
 #include "../xmlnode.h"
 #include "../protocols/jabber/jutil.h"
 
@@ -138,6 +139,7 @@ START_TEST(test_jabber_id_new)
 	assert_invalid_jid("paul@2[::1]124/as");
 	assert_invalid_jid("paul@まつ.おおかみ/\x01");
 
+#ifdef USE_IDN
 	/*
 	 * RFC 3454 Section 6 reads, in part,
 	 * "If a string contains any RandALCat character, the
@@ -145,6 +147,7 @@ START_TEST(test_jabber_id_new)
 	 * The character is U+066D (ARABIC FIVE POINTED STAR).
 	 */
 	assert_invalid_jid("foo@example.com/٭simplexe٭");
+#endif /* USE_IDN */
 
 	/* Ensure that jabber_id_new is properly lowercasing node and domains */
 	assert_jid_parts("paul", "darkrain42.org", "PaUL@darkrain42.org");

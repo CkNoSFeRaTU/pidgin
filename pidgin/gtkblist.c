@@ -31,6 +31,7 @@
 #include "connection.h"
 #include "core.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "prpl.h"
 #include "prefs.h"
@@ -832,6 +833,11 @@ static void gtk_blist_show_systemlog_cb(void)
 static void gtk_blist_show_onlinehelp_cb(void)
 {
 	purple_notify_uri(NULL, PURPLE_WEBSITE "documentation");
+}
+
+static void
+gtk_blist_donate_cb(void) {
+	purple_notify_uri(NULL, "https://imfreedom.org/donate/");
 }
 
 static void
@@ -2130,8 +2136,7 @@ add_buddies_from_vcard(const char *prpl_id, PurpleGroup *group, GList *list,
 		}
 	}
 
-	g_list_foreach(list, (GFunc)g_free, NULL);
-	g_list_free(list);
+	g_list_free_full(list, (GDestroyNotify)g_free);
 }
 
 static gboolean
@@ -3138,7 +3143,7 @@ pidgin_blist_create_tooltip_for_node(GtkWidget *widget, gpointer data, int *w, i
 		return FALSE;
 	}
 
-	height = width = 0;
+	height = 0;
 	for (list = gtkblist->tooltipdata; list; list = list->next) {
 		struct tooltip_data *td = list->data;
 		max_text_width = MAX(max_text_width, MAX(td->width, td->name_width));
@@ -3202,7 +3207,7 @@ static gboolean buddy_is_displayable(PurpleBuddy *buddy)
 {
 	struct _pidgin_blist_node *gtknode;
 
-	if(!buddy)
+	if(!buddy || !PURPLE_BLIST_NODE_IS_VISIBLE(buddy))
 		return FALSE;
 
 	gtknode = ((PurpleBlistNode*)buddy)->ui_data;
@@ -3647,6 +3652,7 @@ static GtkItemFactoryEntry blist_menu[] =
 	/* Help */
 	{ N_("/_Help"), NULL, NULL, 0, "<Branch>", NULL },
 	{ N_("/Help/Online _Help"), "F1", gtk_blist_show_onlinehelp_cb, 0, "<StockItem>", GTK_STOCK_HELP },
+	{ N_("/Help/D_onate"), NULL, gtk_blist_donate_cb, 0, "<Item>", NULL },
 	{ "/Help/sep1", NULL, NULL, 0, "<Separator>", NULL },
 	{ N_("/Help/_Build Information"), NULL, pidgin_dialogs_buildinfo, 0, "<Item>", NULL },
 	{ N_("/Help/_Debug Window"), NULL, toggle_debug, 0, "<Item>", NULL },
@@ -6386,14 +6392,15 @@ static void pidgin_blist_update_group(PurpleBuddyList *list,
 	else
 		count = purple_blist_get_group_online_count(group);
 
-	if (count > 0 || purple_prefs_get_bool(PIDGIN_PREFS_ROOT "/blist/show_empty_groups"))
+	if (!PURPLE_BLIST_NODE_IS_VISIBLE(gnode) || !PURPLE_BLIST_NODE_IS_VISIBLE(node))
+		show = FALSE;
+	else if (count > 0 || purple_prefs_get_bool(PIDGIN_PREFS_ROOT "/blist/show_empty_groups"))
 		show = TRUE;
 	else if (PURPLE_BLIST_NODE_IS_BUDDY(node) && buddy_is_displayable((PurpleBuddy*)node)) { /* Or chat? */
 		show = TRUE;
 	} else if (!show_offline) {
 		show = pidgin_blist_group_has_show_offline_buddy(group);
 	}
-
 	if (show) {
 		gchar *title;
 		gboolean biglist;
@@ -6450,7 +6457,7 @@ static char *pidgin_get_group_title(PurpleBlistNode *gnode, gboolean expanded)
 	PurpleGroup *group;
 	gboolean selected;
 	char group_count[12] = "";
-	char *mark, *esc;
+	char *mark, *esc = NULL;
 	PurpleBlistNode *selected_node = NULL;
 	GtkTreeIter iter;
 	PidginThemeFont *pair;
@@ -6483,7 +6490,10 @@ static char *pidgin_get_group_title(PurpleBlistNode *gnode, gboolean expanded)
 	text_color = selected ? NULL : theme_font_get_color_default(pair, NULL);
 	text_font = theme_font_get_face_default(pair, "");
 
-	esc = g_markup_escape_text(group->name, -1);
+	if(group != NULL) {
+		esc = g_markup_escape_text(group->name, -1);
+	}
+
 	if (text_color) {
 		mark = g_strdup_printf("<span foreground='%s' font_desc='%s'><b>%s</b>%s%s%s</span>",
 		                       text_color, text_font,

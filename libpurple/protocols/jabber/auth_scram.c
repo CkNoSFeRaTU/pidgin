@@ -47,32 +47,6 @@ static const JabberScramHash *mech_to_hash(const char *mech)
 	g_return_val_if_reached(NULL);
 }
 
-static const struct {
-	const char *error;
-	const char *meaning;
-} server_errors[] = {
-	{ "invalid-encoding",
-		N_("Invalid Encoding")},
-	{ "extensions-not-supported",
-		N_("Unsupported Extension") },
-	{ "channel-bindings-dont-match",
-		N_("Unexpected response from the server.  This may indicate a possible MITM attack") },
-	{ "server-does-support-channel-binding",
-		N_("The server does support channel binding, but did not appear to advertise it.  This indicates a likely MITM attack") },
-	{ "channel-binding-not-supported",
-		N_("Server does not support channel binding") },
-	{ "unsupported-channel-binding-type",
-		N_("Unsupported channel binding method") },
-	{ "unknown-user",
-		N_("User not found") },
-	{ "invalid-username-encoding",
-		N_("Invalid Username Encoding") },
-	{ "no-resources",
-		N_("Resource Constraint") },
-	{ "other-error",
-		N_("Unknown Error") }
-};
-
 guchar *jabber_scram_hi(const JabberScramHash *hash, const GString *str,
                         GString *salt, guint iterations)
 {
@@ -168,6 +142,13 @@ jabber_scram_calc_proofs(JabberScramData *data, GString *salt, guint iterations)
 	guchar *salted_password;
 	guchar *client_key, *stored_key, *client_signature, *server_key;
 
+	salted_password = jabber_scram_hi(data->hash, pass, salt, iterations);
+	memset(pass->str, 0, pass->allocated_len);
+	g_string_free(pass, TRUE);
+
+	if (!salted_password)
+		return FALSE;
+
 	client_key = g_new0(guchar, hash_len);
 	stored_key = g_new0(guchar, hash_len);
 	client_signature = g_new0(guchar, hash_len);
@@ -177,14 +158,6 @@ jabber_scram_calc_proofs(JabberScramData *data, GString *salt, guint iterations)
 	data->client_proof->len = hash_len;
 	data->server_signature = g_string_sized_new(hash_len);
 	data->server_signature->len = hash_len;
-
-	salted_password = jabber_scram_hi(data->hash, pass, salt, iterations);
-
-	memset(pass->str, 0, pass->allocated_len);
-	g_string_free(pass, TRUE);
-
-	if (!salted_password)
-		return FALSE;
 
 	/* client_key = HMAC(salted_password, "Client Key") */
 	jabber_scram_hmac(data->hash, client_key, salted_password, "Client Key");

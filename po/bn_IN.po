@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:20+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: runab <runab@redhat.com>, 2009-2010\n"
 "Language-Team: Bengali (India) (http://www.transifex.com/pidgin/pidgin/"
 "language/bn_IN/)\n"
 "Language: bn_IN\n"
@@ -1791,7 +1791,6 @@ msgstr "+++ %s যোগ করেছেন"
 msgid "+++ %s signed off"
 msgstr "+++ %s প্রস্থান করেছেন"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "অজানা ত্রুটি"
 
@@ -1807,6 +1806,10 @@ msgstr "বার্তার মাপ অত্যাধিক বড়।"
 
 msgid "Unable to send message."
 msgstr "বার্তা পাঠাতে ব্যর্থ।"
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "বার্তা পাঠিয়ে দিন"
@@ -2148,19 +2151,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>লগের পাথ সন্ধান করতে ব্যর্থ!</b></font>"
@@ -2226,6 +2225,42 @@ msgstr "কনফারেন্স সংক্রান্ত ত্রুট�
 #, c-format
 msgid "Error creating session: %s"
 msgstr "সেশান নির্মাণ করতে ব্যর্থ: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "নিষ্ক্রিয়"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2775,7 +2810,7 @@ msgstr "আগমনকারী কথোপকথোনের জন্য অ
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3367,7 +3402,16 @@ msgstr "SSL ব্যবহার করা হবে"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3842,37 +3886,6 @@ msgstr "SASL অনুমোদন ব্যর্থ"
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL ত্রুটি: %s"
-
-msgid "Invalid Encoding"
-msgstr ""
-
-msgid "Unsupported Extension"
-msgstr ""
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr ""
-
-msgid "User not found"
-msgstr "ব্যবহারকারীকে পাওয়া যায়নি"
-
-msgid "Invalid Username Encoding"
-msgstr ""
-
-msgid "Resource Constraint"
-msgstr "রিসোর্সের সীমা"
 
 msgid "Unable to canonicalize username"
 msgstr "ব্যবহারকারীর নামের ক্ষেত্রে ক্যানোনিক্যাল বৈশিষ্ট্য নির্ধারণ করতে ব্যর্থ"
@@ -4453,6 +4466,9 @@ msgstr "অনুমোদনের প্রণালী বৈধ নয়"
 msgid "Authorization mechanism too weak"
 msgstr "অনুমোদনের প্রণালী অত্যন্ত দুর্বল"
 
+msgid "Incorrect username or password"
+msgstr "ব্যবহারকারীর নাম অথবা পাসওয়ার্ড সঠিক নয়"
+
 msgid "Temporary Authentication Failure"
 msgstr "অনুমোদন ব্যবস্থা সাময়িকভাবে বিফল"
 
@@ -4497,6 +4513,9 @@ msgstr "নিয়মের উলঙ্ঘন"
 
 msgid "Remote Connection Failed"
 msgstr "দূরবর্তী সংযোগ বিফল হয়েছে"
+
+msgid "Resource Constraint"
+msgstr "রিসোর্সের সীমা"
 
 msgid "Restricted XML"
 msgstr "Restricted XML"
@@ -4822,6 +4841,19 @@ msgstr "%s-কে ফাইল পাঠাতে ব্যর্থ, ব্য�
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "ফাইল পাঠানোর উদ্দেশ্যে অনুগ্রহ করে %s-র একটি রিসোর্স নির্বাচন করুন"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr ""
 
@@ -5041,7 +5073,6 @@ msgstr ""
 msgid "Sick"
 msgstr "অসুস্থ"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "ঘুমে আচ্ছন্ন"
 
@@ -5130,6 +5161,9 @@ msgstr "পাসওয়ার্ডের মেয়াদ উত্তীর্�
 msgid "Incorrect password"
 msgstr "পাসওয়ার্ড সঠিক নয়"
 
+msgid "User not found"
+msgstr "ব্যবহারকারীকে পাওয়া যায়নি"
+
 msgid "Account has been disabled"
 msgstr "অ্যাকাউন্ট নিষ্ক্রিয় করা হয়েছে"
 
@@ -5150,9 +5184,6 @@ msgstr "নিজেকে যোগ করা সম্ভব নয়"
 
 msgid "Master archive is misconfigured"
 msgstr "প্রধান আর্কাইভ সঠিকরূপে কনফিগার করা হয়নি"
-
-msgid "Incorrect username or password"
-msgstr "ব্যবহারকারীর নাম অথবা পাসওয়ার্ড সঠিক নয়"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "উল্লিখিত ব্যবহারকারীর জন্য হোস্ট সনাক্ত করা যায়নি"
@@ -5367,1216 +5398,6 @@ msgstr "সার্ভারের ঠিকানা"
 
 msgid "Server port"
 msgstr "সার্ভারের পোর্ট"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "আমার বন্ধু তালিকায় যোগ করার জন্য অনুগ্রহ করে আমাকে অনুমোদন করুন।"
-
-msgid "No reason given."
-msgstr "কোনো কারণ উল্লেখ করা হয়নি।"
-
-msgid "Authorization Denied Message:"
-msgstr "অনুমোদন প্রত্যাখ্যানের বার্তা:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "ঠিক আছে (_O)"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "%s থেকে অপ্রত্যাশিত প্রত্যুত্তোর প্রাপ্ত হয়েছে: %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "%s থেকে অপ্রত্যাশিত প্রত্যুত্তোর প্রাপ্ত হয়েছে"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"আপনি ঘনঘন সংযোগ করছেন ও সংযোগ বিচ্ছিন্ন করছেন। অনুগ্রহ করে দশ মিনিট অপেক্ষা করে "
-"পুনরায় প্রয়াস করুন। অপেক্ষা না করে প্রচেষ্টা চালিয়ে গেলে সম্ভবত অনেক বেশি সময় ব্যয় "
-"হবে।"
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "%s-র অনুরোধ জানাতে ত্রুটি: %s"
-
-msgid "The server returned an empty response"
-msgstr ""
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"লগ-ইন করার জন্য সার্ভার দ্বারা আপনাকে একটি CAPTCHA লেখার অনুরোধ জানানো হয়েছে, "
-"কিন্তু এই ক্লায়েন্ট দ্বারা CAPTCHA সমর্থন করা হয় না।"
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr ""
-"AOL দ্বারা এইখানে আপনার ব্যবহারকারী অ্যাকাউন্টের পরিচয় প্রমাণ করার অনুমতি প্রদান "
-"করা হয় না"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(এই বার্তা প্রাপ্ত করতে সমস্যা দেখা দিয়েছে।  আপনি যে বন্ধুর সাথে আলাপ করছেন, তিনি "
-"সম্ভবত কোনো অপ্রত্যাশিত প্রকৃতির এনকোডিং ব্যবহার করছেন। সংশ্লিষ্ট এনকোডিং জানা থাকলে "
-"আপনার AIM/ICQ অ্যাকাউন্টের উন্নত বিকল্পের মধ্যে তা নির্ধারণ করুন।)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(এই বার্তা প্রাপ্ত করে ত্রুটি দেখা দিয়েছে।  সম্ভব আপনি ও %s ভিন্ন এনকোডিং ব্যবহার "
-"করছেন অথবা %s দ্বারা ব্যবহৃত ক্লায়েন্ট প্রোগ্রামটির মধ্যে কিছু সমস্যা রয়েছে।)"
-
-msgid "Could not join chat room"
-msgstr "চ্যাট রুমে সংযোগ করা যায়নি"
-
-msgid "Invalid chat room name"
-msgstr "চ্যাট রুমের নাম বৈধ নয়"
-
-msgid "Invalid error"
-msgstr "অবৈধ ত্রুটি"
-
-msgid "Not logged in"
-msgstr "লগ-ইন করা হয়নি"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "অভিভাবকদের দ্বারা ধার্য সীমারেখার কারণে IM প্রাপ্ত করা সম্ভব নয়"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "শর্তাবলী গ্রহণ না করে SMS পাঠানো সম্ভব নয়"
-
-msgid "Cannot send SMS"
-msgstr "SMS পাঠানো সম্ভব নয়"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "এই দেশে SMSপাঠানো সম্ভব নয়y"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "অজানা দেশে SMS পাঠানো সম্ভব নয়"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "বট (bot) অ্যাকাউন্ট দ্বারা IM আরম্ভ করা সম্ভব নয়"
-
-msgid "Bot account cannot IM this user"
-msgstr "বট (bot) অ্যাকাউন্ট দ্বারা এই ব্যবহারকারীর উদ্দেশ্যে IM করা সম্ভব নয়"
-
-msgid "Bot account reached IM limit"
-msgstr "বট (bot) অ্যাকাউন্টের জন্য ধার্য IM-র সীমা ছোঁয়া হয়েছে"
-
-msgid "Bot account reached daily IM limit"
-msgstr "বট (bot) অ্যাকাউন্টের জন্য ধার্য দৈনিক IM-র সীমা ছোঁয়া হয়েছে"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "বট (bot) অ্যাকাউন্টের জন্য ধার্য মাসিক IM-র সীমা ছোঁয়া হয়েছে"
-
-msgid "Unable to receive offline messages"
-msgstr "অফ-লাইন বার্তা প্রাপ্ত করা সম্ভব নয়"
-
-msgid "Offline message store full"
-msgstr "অফ-লাইন বার্তা সংগ্রহস্থল পূর্ণ হয়ে গিয়েছে"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "বার্তা পাঠাতে ব্যর্থ: %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "বার্তা পাঠাতে ব্যর্থ: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "%s-এ বার্তা পাঠাতে ব্যর্থ: %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "%s-কে বার্তা পাঠাতে ব্যর্থ: %s"
-
-msgid "Thinking"
-msgstr ""
-
-msgid "Shopping"
-msgstr ""
-
-msgid "Questioning"
-msgstr ""
-
-msgid "Eating"
-msgstr ""
-
-msgid "Watching a movie"
-msgstr ""
-
-msgid "Typing"
-msgstr "টাইপ করা হচ্ছে"
-
-msgid "At the office"
-msgstr ""
-
-msgid "Taking a bath"
-msgstr ""
-
-msgid "Watching TV"
-msgstr ""
-
-msgid "Having fun"
-msgstr ""
-
-msgid "Sleeping"
-msgstr ""
-
-msgid "Using a PDA"
-msgstr ""
-
-msgid "Meeting friends"
-msgstr ""
-
-msgid "On the phone"
-msgstr ""
-
-msgid "Surfing"
-msgstr ""
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "মোবাইল"
-
-msgid "Searching the web"
-msgstr ""
-
-msgid "At a party"
-msgstr ""
-
-msgid "Having Coffee"
-msgstr ""
-
-#. Playing video games
-msgid "Gaming"
-msgstr ""
-
-msgid "Browsing the web"
-msgstr ""
-
-msgid "Smoking"
-msgstr ""
-
-msgid "Writing"
-msgstr ""
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr ""
-
-msgid "Listening to music"
-msgstr "গান শুনছি"
-
-msgid "Studying"
-msgstr ""
-
-msgid "Working"
-msgstr "কাজে ব্যস্ত"
-
-msgid "In the restroom"
-msgstr ""
-
-msgid "Received invalid data on connection with server"
-msgstr "সার্ভারের সাথে সংযোগ স্থাপন করার সময় অবৈধ তথ্য প্রাপ্ত হয়েছে"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM Protocol প্লাগ-ইন"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ Protocol প্লাগ-ইন"
-
-msgid "Encoding"
-msgstr "এনকোডিং"
-
-msgid "The remote user has closed the connection."
-msgstr "দূরবর্তী ব্যবহারকারী দ্বারা সংযোগ বন্ধ করা হয়েছে।"
-
-msgid "The remote user has declined your request."
-msgstr "দূরবর্তী ব্যবহারকারী দ্বারা আপনার অনুরোধ প্রত্যাখ্যান করা হয়েছে।"
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "দূরবর্তী ব্যবহারকারীর সাথে সংযোগ বন্ধ হয়ে গেছে:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "দূরবর্তী ব্যবহারকারীর সাথে সংযোগকালে অবৈধ তথ্য প্রাপ্ত হয়েছে।"
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "দূরবর্তী ব্যবহারকারীর সাথে সংযোগ স্থাপন করতে ব্যর্থ।"
-
-msgid "Direct IM established"
-msgstr "সরাসরি IM স্থাপিত হয়েছে"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s দ্বারা আপনাকে একটি %s ফাইল পাঠানোর প্রচেষ্টা করা হয়েছে। কিন্তু Direct IM-র "
-"মাধ্যমে শুধুমাত্র %s পরিমাণ অবধি ফাইল বিনিময় করা সম্ভব।  পরিবর্তে সরাসরি ফাইল "
-"বিনিময়ের প্রচেষ্টা করুন।\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "%s ফাইলটির মাপ হল %s। এটি সর্বাধিক অনুমোদিত মাপ %s-র থেকে বেশি।"
-
-msgid "Free For Chat"
-msgstr "আলাপনের জন্য উপলব্ধ রয়েছেন"
-
-msgid "Not Available"
-msgstr "উপলব্ধ নয়"
-
-msgid "Occupied"
-msgstr "কাজে ব্যস্ত"
-
-msgid "Web Aware"
-msgstr "ওয়েব সম্পর্কে সচেতন"
-
-msgid "Invisible"
-msgstr "অদৃশ্য"
-
-msgid "Evil"
-msgstr ""
-
-msgid "Depression"
-msgstr ""
-
-msgid "At home"
-msgstr ""
-
-msgid "At work"
-msgstr ""
-
-msgid "At lunch"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "অনুমোদনের সার্ভারের সাথে সংযোগ স্থাপন করা সম্ভব নয়: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "BOS সার্ভারের সাথে সংযোগ স্থাপন করতে ব্যর্থ: %s"
-
-msgid "Username sent"
-msgstr "ব্যবহারকারীর নাম প্রেরিত"
-
-msgid "Connection established, cookie sent"
-msgstr "সংযোগ স্থাপিত হয়েছে, কুকি প্রেরিত হয়েছে"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "সংযোগ সম্পূর্ণরূপে প্রস্তুত করা হচ্ছে"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"ব্যবহারকারী অ্যাকাউন্ট %s বৈধ না হওয়ার ফলে এটি সহযোগে লগ-ইন করা সম্ভব হয়নি।  "
-"ব্যবহারকারী অ্যাকাউন্টের নামের ক্ষেত্রে বৈধ ই-মেইল ঠিকানা প্রয়োগ করা আবশ্যক অথবা "
-"অক্ষর সহযোগে আরম্ভ হয়ে শুধুমাত্র অক্ষর, সংখ্যা ও শূণ্য স্থান অথবা শুধুমাত্র সংখ্যা বিশিষ্ট "
-"হওয়া আবশ্যক।"
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"কিছু সময়ের মধ্যে সংযোগ বিচ্ছিন্ন হওয়ার সম্ভাবনা রয়েছে।  এই পরিস্থিতিতে %s-র মধ্যে "
-"আপডেট পরীক্ষা করুন।"
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "বৈধ AIM লগ-ইন হ্যাশ প্রাপ্ত করতে ব্যর্থ।"
-
-msgid "Unable to get a valid login hash."
-msgstr "বৈধ লগ-ইন হ্যাশ প্রাপ্ত করতে ব্যর্থ।"
-
-msgid "Received authorization"
-msgstr "অনুমোদন প্রাপ্ত হয়েছে"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "ব্যবহারকারী নাম উপস্থিত নেই"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "আপনার অ্যাকাউন্ট বর্তমানে বরখাস্ত করা হয়েছে"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL Instant Messenger পরিসেবা সাময়িকরূপে উপলব্ধ নয়।"
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"আপনার ব্যবহারকারী অ্যাকাউন্ট সহযোগে ঘনঘন সংযোগ স্থাপন ও সংযোগ বিচ্ছিন্ন করা হচ্ছে। "
-"অনুগ্রহ করে দশ মিনিট অপেক্ষা করে পুনরায় প্রয়াস করুন। অপেক্ষা না করে প্রচেষ্টা চালিয়ে "
-"গেলে সম্ভবত অনেক বেশি সময় ব্যয় হবে।"
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr "ব্যবহৃত ক্লায়েন্টের সংস্করণ অত্যাধিক পুরোনো। অনুগ্রহ করে %s-এ আপগ্রেড করুন"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"আপনার ব্যবহৃত IP ঠিকানা সহযোগে ঘনঘন সংযোগ স্থাপন ও সংযোগ বিচ্ছিন্ন করা হচ্ছে। "
-"অনুগ্রহ করে দশ মিনিট অপেক্ষা করে পুনরায় প্রয়াস করুন। অপেক্ষা না করে প্রচেষ্টা চালিয়ে "
-"গেলে সম্ভবত অনেক বেশি সময় ব্যয় হবে।"
-
-msgid "The SecurID key entered is invalid"
-msgstr "উল্লিখিত SecurID-কি বৈধ নয়"
-
-msgid "Enter SecurID"
-msgstr "SecurID লিখুন"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "ডিজিট্যাল ডিসপ্লে থেকে ৬ সংখ্যা বিশিষ্ট সংখ্যাটি লিখুন।"
-
-msgid "Password sent"
-msgstr "পাসওয়ার্ড পাঠানো হয়েছে"
-
-msgid "Unable to initialize connection"
-msgstr "সংযোগ আরম্ভ করতে ব্যর্থ"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"নিম্নলিখিত কারণে %u ব্যবহারকারীর বন্ধু তালিকায় আপনাকে যোগ করার অনুরোধ প্রত্যাখ্যান "
-"করা হয়েছে:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ অনুমোদন প্রত্যাখ্যান করা হয়েছে।"
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-"আপনার বন্ধু তালিকায় যোগ করার উদ্দেশ্যে %u ব্যবহারকারী দ্বারা আপনার অনুরোধ গ্রহণ করা "
-"হয়েছে।"
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"আপনার উদ্দেশ্যে একটি বিশেষ বার্তা প্রাপ্ত হয়েছে\n"
-"\n"
-"প্রেরক: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"আপনার উদ্দেশ্যে একটি ICQ পৃষ্ঠা প্রাপ্ত হয়েছে\n"
-"\n"
-"প্রেরক: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"আপনার উদ্দেশ্যে %s [%s] থেকে একটি ICQ ই-মেইল প্রাপ্ত হয়েছে\n"
-"\n"
-"বার্তা:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ ব্যবহারকারী %u আপনাকে একজন বন্ধু পাঠিয়েছেন: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "এই বন্ধুকে নিজের বন্ধু তালিকায় যোগ করা হবে কি?"
-
-msgid "_Add"
-msgstr "যোগ করুন (_A)"
-
-msgid "_Decline"
-msgstr "প্রত্যাখ্যান করুন (_D)"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু বৈধ না হওয়ার ফলে সেটি গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু বৈধ না হওয়ার ফলে সেটি গৃহীত হয়নি।"
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু অত্যাধিক বড় হওয়ার ফলে সেটি গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু অত্যাধিক বড় হওয়ার ফলে সেটি গৃহীত হয়নি।"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু হারের সীমা অতিক্রান্ত হওয়ার ফলে সেটি "
-"গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু হারের সীমা অতিক্রান্ত হওয়ার ফলে সেটি "
-"গৃহীত হয়নি।"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু সংশ্লিষ্ট ব্যবহারকারীর সতর্কতার মাত্রা "
-"অত্যাধিক বেশি হওয়ার ফলে সেটি গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু সংশ্লিষ্ট ব্যবহারকারীর সতর্কতার মাত্রা "
-"অত্যাধিক বেশি হওয়ার ফলে সেটি গৃহীত হয়নি।"
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু আপনার সতর্কতার মাত্রা অত্যাধিক বেশি "
-"হওয়ার ফলে সেটি গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু আপনার সতর্কতার মাত্রা অত্যাধিক বেশি "
-"হওয়ার ফলে সেটি গৃহীত হয়নি।"
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু অজানা কারণের ফলে সেটি গৃহীত হয়নি।"
-msgstr[1] ""
-"%hu-টি বার্তা %s থেকে প্রাপ্ত হয়েছে, কিন্তু অজানা কারণের ফলে সেটি গৃহীত হয়নি।"
-
-msgid "Your AIM connection may be lost."
-msgstr "সম্ভবত AIM সংযোগ বন্ধ হয়ে গিয়েছে।"
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "%s চ্যাট-রুম থেকে আপনাকে বিচ্ছিন্ন করা হয়েছে।"
-
-msgid "The new formatting is invalid."
-msgstr "নতুন বিন্যাসটি বৈধ নয়।"
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"ব্যবহারকারীর নামের বিন্যাসে শুধুমাত্র শূণ্যস্থান ও হরফের ছাঁদ পরিবর্তন করা সম্ভব হবে।"
-
-msgid "Pop-Up Message"
-msgstr "পপ-আপ বার্তা"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "নিম্নলিখিত ব্যবহারকারী অ্যাকাউন্টের নাম %s-র সাথে যুক্ত"
-msgstr[1] "নিম্নলিখিত ব্যবহারকারী অ্যাকাউন্টের নামগুলি %s-র সাথে যুক্ত"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "%s ই-মেইল ঠিকানার জন্য কোনো ফলাফল পাওয়া যায়নি"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "%s নিশ্চিত করার অনুরোধ জানিয়ে আপনি একটি ই-মেইল প্রাপ্ত করবেন।"
-
-msgid "Account Confirmation Requested"
-msgstr "অ্যাকাউন্ট নিশ্চিতির অনুরোধ করা হয়েছে"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"ত্রুটি 0x%04x: অনুরোধ করা নাম ও মূল নাম ভিন্ন হওয়ার ফলে ব্যবহারকারীর নাম বিন্যাস "
-"করতে ব্যর্থ।"
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr "Error 0x%04x: অবৈধ হওয়ার ফলে ব্যবহারকারীর নামের বিন্যাস করা যায়নি।"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Error 0x%04x: অনুরোধ করা নাম অত্যাধিক বড় হওয়ার ফলে ব্যবহারকারী নামের বিন্যাস করা "
-"যায়নি।"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Error 0x%04x: সংশ্লিষ্ট ব্যবহারকারী নামের জন্য একটি অসমাপ্ত অনুরোধ উপস্থিত থাকার "
-"ফলে ই-মেইল ঠিকানা পরিবর্তন করতে ব্যর্থ।"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Error 0x%04x: সংশ্লিষ্ট ই-মেইল ঠিকানার সাথে অত্যাধিক সংখ্যক ব্যবহারকারী "
-"অ্যাকাউন্টের নাম যুক্ত থাকার ফলে ই-মেইল ঠিকানা পরিবর্তন করতে ব্যর্থ।"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Error 0x%04x: উল্লিখিত ঠিকানা অবৈধ হওয়ার ফলে ই-মেইল ঠিকানা পরিবর্তন করতে ব্যর্থ।"
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Error 0x%04x: অজানা ত্রুটি।"
-
-msgid "Error Changing Account Info"
-msgstr "অ্যাকাউন্ট সংক্রান্ত তথ্য পরিবর্তন করতে ত্রুটি"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "%s-র ই-মেইল ঠিকানা হল %s"
-
-msgid "Account Info"
-msgstr "অ্যাকাউন্ট সংক্রান্ত তথ্য"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"আপনার IM ছবি পাঠানো হয়নি। IM ছবি পাঠানোর জন্য Direct Connect-র মাধ্যমে সংযুক্ত "
-"থাকা আবশ্যক।"
-
-msgid "Unable to set AIM profile."
-msgstr "AIM প্রোফাইল নির্ধারণ করতে ব্যর্থ"
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"লগ-ইন প্রক্রিয়া সম্পূর্ণ হওয়ার পূর্বে সম্ভবত প্রোফাইল নির্ধারণের অনুরোধ করা হয়েছে।  "
-"আপনার প্রোফাইল নির্ধারণ করা হয়নি; সম্পূর্ণরূপে সংযুক্ত হলে পুনরায় নির্ধারণের প্রচেষ্টা "
-"করুন।"
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"প্রোফাইলের সর্বাধিক মাপ %d বাইট অতিক্রান্ত হয়েছে।  আপনার ক্ষেত্রে এটি ছাঁটাই করা "
-"হয়েছে।"
-msgstr[1] ""
-"প্রোফাইলের সর্বাধিক মাপ %d বাইট অতিক্রান্ত হয়েছে।  আপনার ক্ষেত্রে এটি ছাঁটাই করা "
-"হয়েছে।"
-
-msgid "Profile too long."
-msgstr "প্রোফাইল অত্যাধিক লম্বা।"
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"অনুপস্থিতির সূচনাকারী বার্তার সর্বাধিক মাপ %d বাইট, অতিক্রান্ত হয়েছে।  আপনার ক্ষেত্রে "
-"এটি ছাঁটাই করা হয়েছে।"
-msgstr[1] ""
-"অনুপস্থিতির সূচনাকারী বার্তার ক্ষেত্রে সর্বাধিক অনুমোদিত মাপ %d বাইট, অতিক্রান্ত "
-"হয়েছে।  আপনার ক্ষেত্রে এটি ছাঁটাই করা হয়েছে।"
-
-msgid "Away message too long."
-msgstr "অনুপস্থিতির বার্তা অত্যাধিক লম্বা।"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"%s-র ব্যবহারকারী অ্যাকাউন্টের নাম অবৈধ হওয়ার ফলে সংশ্লিষ্ট ব্যবহারকারীকে বন্ধু রূপে "
-"যোগ করা যায়নি।  ব্যবহারকারী অ্যাকাউন্টের নামের ক্ষেত্রে বৈধ ই-মেইল ঠিকানা প্রয়োগ "
-"করা আবশ্যক অথবা অক্ষর সহযোগে আরম্ভ হয়ে শুধুমাত্র অক্ষর, সংখ্যা ও শূণ্য স্থান অথবা "
-"শুধুমাত্র সংখ্যা বিশিষ্ট হওয়া আবশ্যক।"
-
-msgid "Unable to Add"
-msgstr "যোগ করতে ব্যর্থ"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "বন্ধু তালিকা উদ্ধার করতে ব্যর্থ"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM সার্ভারগুলি দ্বারা সাময়িকভাবে আপনার বন্ধুদের তালিকা পাঠাতে সক্ষম হয়নি।  আপনার "
-"বন্ধুদের তালিকা হারিয়ে যায়নি ও সম্ভবত কয়েক মিনিটের মধ্যে তা পুনরায় উপলব্ধ হবে।"
-
-msgid "Orphans"
-msgstr "শ্রেণীবিহীন"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"আপনার বন্ধু তালিকায় অত্যাধিক বন্ধু উপস্থিত থাকার ফলে %s-কে বন্ধু রূপে যোগ করা যায়নি।  "
-"অনুগ্রহ করে একজন বন্ধুকে তালিকা থেকে মুছে পুনরায় এই নতুন বন্ধুকে যোগ করার প্রচেষ্টা করুন।"
-
-msgid "(no name)"
-msgstr "(নাম বিহীন)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "অজানা কারণবসত %s-কে বন্ধু রূপে যোগ করা যায়নি।"
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"%s ব্যবহারকারী আপনাকে আপনার বন্ধু তালিকায় তাকে যোগ করার অনুমতি প্রদান করেছেন।  "
-"আপনি কি এই ব্যবহারকারীকে যোগ করতে ইচ্ছুক?"
-
-msgid "Authorization Given"
-msgstr "অনুমোদন প্রদান করা হয়েছে"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr "%s ব্যবহারকারী, ওনার বন্ধু তালিকায় যোগ করার জন্য আপনার অনুরোধ গ্রহণ করেছেন।"
-
-msgid "Authorization Granted"
-msgstr "অনুমোদন প্রদান করা হয়েছে"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"নিম্নলিখিত কারণে %s ব্যবহারকারী, আপনার বন্ধু তালিকার তাকে যোগ করার অনুমতি নাকচ "
-"করেছেন:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "অনুমোদন প্রত্যাখ্যান করা হয়েছে"
-
-msgid "_Exchange:"
-msgstr "বিনিময়: (_E)"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr "আপনার IM ছবি পাঠানো হয়নি। AIM আলাপনের মধ্যে IM-র ছবি পাঠানো সম্ভব নয়।"
-
-msgid "iTunes Music Store Link"
-msgstr "iTunes Music Store-র লিংক"
-
-msgid "Lunch"
-msgstr ""
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "%s সম্বন্ধে বন্ধুর মতামত"
-
-msgid "Buddy Comment:"
-msgstr "বন্ধুর মতামত:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "আপনি %s-র সাথে একটি সরাসরি IM সংযোগ খোলার ইচ্ছা প্রকাশ করেছেন।"
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"এর ফলে আপনার IP ঠিকানা প্রকাশিত হবে ও নিরাপত্তা হানির আশঙ্কা রয়েছে।  আপনি কি "
-"এগিয়ে যেতে ইচ্ছুক?"
-
-msgid "C_onnect"
-msgstr "সংযোগ করুন (_o)"
-
-msgid "You closed the connection."
-msgstr "আপনি সংযোগ বন্ধ করেছেন।"
-
-msgid "Get AIM Info"
-msgstr "AIM সংক্রান্ত তথ্য প্রাপ্ত করুন"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "বন্ধুর মতামত সম্পাদনা করুন"
-
-msgid "Get X-Status Msg"
-msgstr ""
-
-msgid "End Direct IM Session"
-msgstr "সরাসরি IM সেশান সমাপ্ত করা হবে"
-
-msgid "Direct IM"
-msgstr "সরাসরি IM"
-
-msgid "Re-request Authorization"
-msgstr "অনুমোদনের জন্য পুনরায় অনুরোধ করুন"
-
-msgid "Require authorization"
-msgstr "অনুমোদন আবশ্যক"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "ওয়েব সম্পর্কে সচেতন (এই বৈশিষ্ট্য সক্রিয় করা হলে অনেক স্প্যাম বার্তা আসবে!)"
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ-র গোপনীয়তা সম্পর্কিত বিকল্প"
-
-msgid "Change Address To:"
-msgstr "পরিবর্তিত ঠিকানা:"
-
-msgid "you are not waiting for authorization"
-msgstr ""
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "নিম্নলিখিত বন্ধুদের থেকে অনুমোদনের অপেক্ষা করা হচ্ছে"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"সংশ্লিষ্ট বন্ধুদেরকে অনুমোদনের অনুরোধ পুনরায় জানানোর জন্য তাদের নামের উপর মাউসের ডান-"
-"দিকের বাটন ক্লিক করুন ও \"অনুমোদনের জন্য পুনরায় অনুরোধ করুন\" নির্বাচন করুন।"
-
-msgid "Find Buddy by Email"
-msgstr "ই-মেইলের সাহায্যে বন্ধু অনুসন্ধান করুন"
-
-msgid "Search for a buddy by email address"
-msgstr "ই-মেইল ঠিকানা সহযোগে বন্ধু অনুসন্ধান করুন"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "অনুসন্ধানের উদ্দেশ্যে বন্ধুর ই-মেইল ঠিকানা লিখুন।"
-
-msgid "_Search"
-msgstr "অনুসন্ধান (_S)"
-
-msgid "Set User Info (web)..."
-msgstr "ব্যবহারকারীর তথ্য নির্ধারণ করুন (ওয়েব)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "পাসওয়ার্ড পরিবর্তন করুন (ওয়েব)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "IM ফরওয়ার্ডিং কনফিগার করুন (ওয়েব)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "গোপনীয়তা সম্পর্কিত বিকল্প নির্ধারণ করুন..."
-
-msgid "Show Visible List"
-msgstr ""
-
-msgid "Show Invisible List"
-msgstr ""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "অ্যাকাউন্ট নিশ্চিত করুন"
-
-msgid "Display Currently Registered Email Address"
-msgstr "বর্তমানে নিবন্ধিত ই-মেইল ঠিকানা প্রদর্শন করা হবে"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "বর্তমানে নিবন্ধিত ই-মেইল ঠিকানা পরিবর্তন করুন..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "অনুমোদনের অপেক্ষারত বন্ধুদের তালিকা প্রদর্শন করা হবে"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "ই-মেইল ঠিকানা সহযোগে বন্ধু অনুসন্ধান করুন..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"ফাইল বিনিময় ও সরাসরি IM-র জন্য সর্বদা\n"
-"AIM/ICQ প্রক্সি সার্ভার ব্যবহার করা হবে (ধীর \n"
-"গতির হলেও, IP ঠিকানা প্রকাশিত হবে না)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "এক সময়ে একাধিক লগ-ইনের অনুমতি প্রদান করা হবে"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Direct IM-র জন্য %s-কে %s:%hu-এ আমাদের সাথে সংযোগ করার অনুরোধ করা হচ্ছে।"
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "%s-র সাথে সংযোগের প্রচেষ্টা করা হচ্ছে:%hu।"
-
-msgid "Attempting to connect via proxy server."
-msgstr "প্রক্সি-সার্ভারের মাধ্যমে সংযোগের প্রচেষ্টা করা হচ্ছে।"
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s এখন %s-র সাথে সরাসরি সংযোগ করার অনুরোধ জানিয়েছেন"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"এর জন্য দুটি কম্পিউটারের মধ্যে সরাসরি সংযোগ স্থাপন করা আবশ্যক ও IM ছবির জন্য এটি "
-"আবশ্যক। এর ফলে আপনার কম্পিউটারের IP ঠিকানা প্রকাশিত হবে ও নিরাপত্তা বিষয়ক আশঙ্কা "
-"দেওয়ার সম্ভাবনা রয়েছে।"
-
-#. Label
-msgid "Buddy Icon"
-msgstr "বন্ধুর প্রতীক"
-
-msgid "Voice"
-msgstr "ধ্বনি"
-
-msgid "AIM Direct IM"
-msgstr "AIM-র সরাসরি IM"
-
-msgid "Get File"
-msgstr "ফাইল প্রাপ্ত করুন"
-
-msgid "Games"
-msgstr "খেলা"
-
-msgid "ICQ Xtraz"
-msgstr ""
-
-msgid "Add-Ins"
-msgstr "অতিরিক্ত-সামগ্রী"
-
-msgid "Send Buddy List"
-msgstr "বন্ধুর তালিকা পাঠিয়ে দিন"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ সরাসরি সংযোগ"
-
-msgid "AP User"
-msgstr "AP ব্যবহারকারী"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nihilist"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ সার্ভার রিলে"
-
-msgid "Old ICQ UTF8"
-msgstr "পুরোনো ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trillian এনক্রিপশন"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "নিরাপত্তা ব্যবস্থা সক্রিয় রয়েছে"
-
-msgid "Video Chat"
-msgstr "ভিডিওর মাধ্যমে আলাপন"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "সরাসরি ভিডিও প্রচার"
-
-msgid "Camera"
-msgstr "ক্যামেরা"
-
-msgid "Screen Sharing"
-msgstr "পর্দার যৌথ ব্যবহার"
-
-msgid "IP Address"
-msgstr "IP ঠিকানা"
-
-msgid "Warning Level"
-msgstr "সতর্কতার মাত্রা"
-
-msgid "Buddy Comment"
-msgstr "বন্ধুর মন্তব্য"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "ব্যবহারকারীর তথ্য উপলব্ধ নয়: %s"
-
-msgid "Mobile Phone"
-msgstr "মোবাইল ফোন"
-
-msgid "Age"
-msgstr "বয়স"
-
-msgid "Personal Web Page"
-msgstr "ব্যক্তিগত ওয়েব-পেজ"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "অতিরিক্ত তথ্য"
-
-msgid "Home Address"
-msgstr "বাড়ির ঠিকানা"
-
-msgid "Zip Code"
-msgstr "পিন/জিপ কোড"
-
-msgid "Work Address"
-msgstr "কর্মস্থলের ঠিকানা"
-
-msgid "Work Information"
-msgstr "কর্ম সংক্রান্ত তথ্য"
-
-msgid "Company"
-msgstr "কোম্পানি"
-
-msgid "Division"
-msgstr "বিভাগ"
-
-msgid "Position"
-msgstr "অবস্থান"
-
-msgid "Web Page"
-msgstr "ওয়েব পেজ"
-
-msgid "Online Since"
-msgstr "অনলাইন অবস্থার অবকাল"
-
-msgid "Member Since"
-msgstr "সদস্যতার অবকাল"
-
-msgid "Capabilities"
-msgstr "ক্ষমতা"
-
-msgid "Profile"
-msgstr "প্রোফাইল"
-
-msgid "View web profile"
-msgstr "ওয়েব প্রোফাইল প্রদর্শন করুন"
-
-msgid "Invalid SNAC"
-msgstr "অবৈধ SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr ""
-
-msgid "Client rate limit exceeded"
-msgstr ""
-
-msgid "Service unavailable"
-msgstr "পরিসেবা উপলব্ধ নয়"
-
-msgid "Service not defined"
-msgstr "পরিসেবা নির্ধারিত হয়নি"
-
-msgid "Obsolete SNAC"
-msgstr "অবচিত SNAC"
-
-msgid "Not supported by host"
-msgstr "হোস্ট দ্বারা সমর্থিত নয়"
-
-msgid "Not supported by client"
-msgstr "ক্লায়েন্ট দ্বারা সমর্থিত নয়"
-
-msgid "Refused by client"
-msgstr "ক্লায়েন্ট দ্বারা প্রত্যাখ্যান করা হয়েছে"
-
-msgid "Reply too big"
-msgstr "উত্তরের পরিমাণ অত্যাধিক বড়"
-
-msgid "Responses lost"
-msgstr "অসমাপ্ত প্রতিক্রিয়া"
-
-msgid "Request denied"
-msgstr "অনুরোধ প্রত্যাখ্যান করা হয়েছে"
-
-msgid "Busted SNAC payload"
-msgstr "ক্ষতিগ্রস্ত SNAC পে-লোড"
-
-msgid "Insufficient rights"
-msgstr "অপর্যাপ্ত অধিকার"
-
-msgid "In local permit/deny"
-msgstr "স্থানীয় অনুমোদন/প্রত্যাখ্যান"
-
-msgid "Warning level too high (sender)"
-msgstr "সতর্কতার মাত্রা অতি বেশি (প্রেরক)"
-
-msgid "Warning level too high (receiver)"
-msgstr "সতর্কতার মাত্রা অতি বেশি (প্রাপক)"
-
-msgid "User temporarily unavailable"
-msgstr "ব্যবহারকারী সাময়িকরূপে উপলব্ধ নন"
-
-msgid "No match"
-msgstr "মিল পাওয়া যায়নি"
-
-msgid "List overflow"
-msgstr "লিস্ট ওভার-ফ্লো"
-
-msgid "Request ambiguous"
-msgstr "ভ্রান্তিমূলক অনুরোধ"
-
-msgid "Queue full"
-msgstr "সারি পূর্ণ হয়ে গিয়েছে"
-
-msgid "Not while on AOL"
-msgstr "AOL-এ উপস্থিত থাকাকালীন নয়"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "অন-লাইন উপস্থিতি প্রকাশ করুন"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr ""
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "অফ-লাইন অবস্থায় চলুন"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr ""
-
-msgid "you have no buddies on this list"
-msgstr ""
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr ""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr ""
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7907,6 +6728,9 @@ msgstr "ভিডিও কনফারেন্স ব্যবস্থা"
 msgid "Computer"
 msgstr "কম্পিউটার"
 
+msgid "Mobile Phone"
+msgstr "মোবাইল ফোন"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8167,6 +6991,9 @@ msgstr "Realm"
 msgid "Exposure"
 msgstr "এক্সপোজার"
 
+msgid "Encoding"
+msgstr "এনকোডিং"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "সকেট নির্মাণ করতে ব্যর্থ: %s"
@@ -8189,6 +7016,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "%s মীমাংসা করতে ত্রুটি"
 
+msgid "Received invalid data on connection with server"
+msgstr "সার্ভারের সাথে সংযোগ স্থাপন করার সময় অবৈধ তথ্য প্রাপ্ত হয়েছে"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "%s-র দৃষ্টি আকর্ষণের অনুরোধ করা হচ্ছে..."
@@ -8205,6 +7035,12 @@ msgstr "হ্যাঁ (_Y)"
 
 msgid "_No"
 msgstr "না (_N)"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "ঠিক আছে (_O)"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8276,8 +7112,17 @@ msgstr "মান নির্ধারণ বাতিল করুন"
 msgid "Do not disturb"
 msgstr "দয়া করে বিরক্ত করবেন না"
 
+msgid "Invisible"
+msgstr "অদৃশ্য"
+
 msgid "Extended away"
 msgstr "অতিরিক্ত সময়ের জন্য অনুপস্থিত"
+
+msgid "Mobile"
+msgstr "মোবাইল"
+
+msgid "Listening to music"
+msgstr "গান শুনছি"
 
 msgid "Feeling"
 msgstr ""
@@ -8434,33 +7279,41 @@ msgstr ""
 "আপনার %s পড়তে একটি সমস্যা দেখা দিয়েছে।  ফাইলটি লোড করা হয়নি ও পুরোনো ফাইলটির "
 "নাম %s~ রূপে পরিবর্তন করা হয়েছে।"
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin ইন্টারনেট মেসেঞ্জার"
 
 msgid "Internet Messenger"
 msgstr "ইন্টারনেট মেসেঞ্জার"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin ইন্টারনেট মেসেঞ্জার"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"IM-র মাধ্যমে আলাপ।  AIM, Google Talk, Jabber/XMPP, MSN, Yahoo এবং আরো অনেক "
-"সমর্থিত হয়"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -8960,6 +7813,9 @@ msgstr "/সাহায্য (_H)"
 
 msgid "/Help/Online _Help"
 msgstr "/সাহায্য/অন-লাইন সাহায্য (_H)"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr ""
@@ -9494,6 +8350,9 @@ msgid_plural "%d people in room"
 msgstr[0] "রুমের মধ্যে %d জন ব্যক্তি"
 msgstr[1] "রুমের মধ্যে %d জন ব্যক্তি"
 
+msgid "Typing"
+msgstr "টাইপ করা হচ্ছে"
+
 msgid "Stopped Typing"
 msgstr "টাইপ করা থামিয়েছেন"
 
@@ -9601,20 +8460,14 @@ msgstr "ত্রুটি "
 msgid "Fatal Error"
 msgstr "গুরুতর ত্রুটি"
 
-msgid "artist"
-msgstr "শিল্পী"
-
-msgid "voice and video"
-msgstr "ধ্বনি ও ভিডিও"
-
-msgid "support"
-msgstr "সমর্থন"
-
-msgid "webmaster"
-msgstr "ওয়েব-মাস্টার"
+msgid "lead developer"
+msgstr "প্রধান ডিভেলপার"
 
 msgid "win32 port"
 msgstr "win32 পোর্ট"
+
+msgid "artist"
+msgstr "শিল্পী"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9627,9 +8480,18 @@ msgstr "মেইন্টেনার"
 msgid "libfaim maintainer"
 msgstr "libfaim মেইন্টেনার"
 
+msgid "webmaster"
+msgstr "ওয়েব-মাস্টার"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "হ্যাকার ও ড্রাইভার [আলসে]"
+
+msgid "voice and video"
+msgstr "ধ্বনি ও ভিডিও"
+
+msgid "support"
+msgstr "সমর্থন"
 
 msgid "support/QA"
 msgstr "সমর্থন/পরীক্ষা-নিরীক্ষা"
@@ -9639,9 +8501,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "মূল লেখক"
-
-msgid "lead developer"
-msgstr "প্রধান ডিভেলপার"
 
 msgid "Senior Contributor/QA"
 msgstr "প্রবীণ অংশগ্রহণকারী/পরীক্ষক"
@@ -9957,20 +8816,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -11050,12 +9907,12 @@ msgstr "প্রক্সি কনফিগারেশনের প্রো�
 msgid "Cannot start browser configuration program."
 msgstr "ব্রাউজার কনফিগারেশনের প্রোগ্রাম আরম্ভ করতে ব্যর্থ।"
 
-msgid "Disabled"
-msgstr "নিষ্ক্রিয়"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "স্বয়ংক্রিয়ভাবে সনাক্ত IP ঠিকানা ব্যবহার করা হবে: %s (_a)"
+
+msgid "IP Address"
+msgstr "IP ঠিকানা"
 
 msgid "ST_UN server:"
 msgstr "STUN সার্ভার: (_U)"
@@ -11319,6 +10176,37 @@ msgstr "সর্বশেষ প্রস্থানকালে ধার্�
 msgid "Status to a_pply at startup:"
 msgstr "প্রারম্ভকালে ব্যবহারযোগ্য অবস্থা: (_p)"
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr ""
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "ডিভাইস (_D)"
+
+msgid "Audio"
+msgstr "অডিও"
+
+msgid "Input"
+msgstr "ইনপুট"
+
+msgid "Output"
+msgstr "আউটপুট"
+
+msgid "Video"
+msgstr "ভিডিও"
+
 msgid "Interface"
 msgstr "প্রেক্ষাপট"
 
@@ -11330,6 +10218,9 @@ msgstr "অবস্থা / কর্মবিহীন অবস্থা"
 
 msgid "Themes"
 msgstr "থিম"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "সকল ব্যবহারকারী আমার সাথে যোগাযোগ করতে পারবেন"
@@ -11416,6 +10307,46 @@ msgstr "নতুন নাম নির্বাচন করুন"
 
 msgid "Select Folder..."
 msgstr "ফোল্ডার নির্বাচন করুন..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "যোগ করুন (_A)"
 
 #. list button
 msgid "_Get List"
@@ -11599,6 +10530,10 @@ msgstr ""
 "<b>ফাইলের মাপ:</b> %s\n"
 "<b>ছবির মাপ:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "বন্ধুর প্রতীক"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11640,11 +10575,6 @@ msgstr "আপনি কি নিশ্চিতরূপে মুছে ফ�
 
 msgid "Select color"
 msgstr "রং নির্বাচন করুন"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "ওরফে (_A)"
@@ -12532,6 +11462,9 @@ msgstr "অপারেটর"
 msgid "Half Operator"
 msgstr "হাল্ফ-অপারেটর"
 
+msgid "Voice"
+msgstr "ধ্বনি"
+
 msgid "Authorization dialog"
 msgstr "অনুমোদনের ডায়লগ"
 
@@ -12783,35 +11716,51 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
-msgstr "অডিও"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "ভিডিও"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "আউটপুট"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "প্লাগ-ইন (_P)"
-
-msgid "_Device"
-msgstr "ডিভাইস (_D)"
-
-msgid "Input"
-msgstr "ইনপুট"
 
 msgid "P_lugin"
 msgstr "প্লাগ-ইন (_l)"
 
 msgid "D_evice"
 msgstr "ডিভাইস (_e)"
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
-msgstr ""
 
 msgid "Silence threshold:"
 msgstr ""
@@ -12997,8 +11946,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description

@@ -28,6 +28,7 @@
 #include "core.h"
 #include "dbus-maybe.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "network.h"
 #include "notify.h"
 #include "pounce.h"
@@ -1849,8 +1850,8 @@ purple_account_set_status_types(PurpleAccount *account, GList *status_types)
 	/* Out with the old... */
 	if (account->status_types != NULL)
 	{
-		g_list_foreach(account->status_types, (GFunc)purple_status_type_destroy, NULL);
-		g_list_free(account->status_types);
+		g_list_free_full(account->status_types,
+		                 (GDestroyNotify)purple_status_type_destroy);
 	}
 
 	/* In with the new... */

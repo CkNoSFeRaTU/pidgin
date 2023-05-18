@@ -12,17 +12,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:26+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Miloš Popović <gpopac@gmail.com>, 2007-2009\n"
 "Language-Team: Serbian (Latin) (http://www.transifex.com/pidgin/pidgin/"
-"language/sr%40latin/)\n"
+"language/sr@latin/)\n"
 "Language: sr@latin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. Translators may want to transliterate the name.
 #. It is not to be translated.
@@ -1778,7 +1778,6 @@ msgstr "+++ %s se prijavio(la)"
 msgid "+++ %s signed off"
 msgstr "+++ %s se odjavio(la)"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Nepoznata greška"
 
@@ -1794,6 +1793,10 @@ msgstr "Poruka je predugačka."
 
 msgid "Unable to send message."
 msgstr "Ne mogu da pošaljem poruku."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Pošalji poruku"
@@ -2130,19 +2133,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;SAMO-"
-"ODGOVOR&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;SAMO-"
-"ODGOVOR&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>Ne mogu da nađem putanju dnevnika!</b></font>"
@@ -2203,6 +2202,42 @@ msgstr ""
 
 #, c-format
 msgid "Error creating session: %s"
+msgstr ""
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
 msgstr ""
 
 #, c-format
@@ -2736,7 +2771,7 @@ msgstr "Psihički mod za dolazeće razgovore"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3331,7 +3366,16 @@ msgstr "Koristi SSL"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3801,37 +3845,6 @@ msgstr ""
 #, c-format
 msgid "SASL error: %s"
 msgstr ""
-
-msgid "Invalid Encoding"
-msgstr ""
-
-msgid "Unsupported Extension"
-msgstr ""
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr ""
-
-msgid "User not found"
-msgstr "Korisnik nije pronađen"
-
-msgid "Invalid Username Encoding"
-msgstr ""
-
-msgid "Resource Constraint"
-msgstr "Ograničenje resursa"
 
 msgid "Unable to canonicalize username"
 msgstr ""
@@ -4410,6 +4423,9 @@ msgstr "Neispravan mehanizam za ovlašćenje"
 msgid "Authorization mechanism too weak"
 msgstr "Način ovlašćenja nedovoljno siguran"
 
+msgid "Incorrect username or password"
+msgstr "Neispravno korisničko ime ili lozinka"
+
 msgid "Temporary Authentication Failure"
 msgstr "Privremeno neuspešna identifikacija"
 
@@ -4454,6 +4470,9 @@ msgstr "Prekoračenje ovlašćenja"
 
 msgid "Remote Connection Failed"
 msgstr "Udaljena veza neuspešna"
+
+msgid "Resource Constraint"
+msgstr "Ograničenje resursa"
 
 msgid "Restricted XML"
 msgstr "Ograničeni XML"
@@ -4770,6 +4789,19 @@ msgstr "Slanje datoteke korisniku %s nije uspelo jer nije prijavljen"
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Izaberite izvor od %s kome želite da pošaljete datoteku"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr ""
 
@@ -4989,7 +5021,6 @@ msgstr ""
 msgid "Sick"
 msgstr ""
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Pospan"
 
@@ -5078,6 +5109,9 @@ msgstr "Lozinka je istekla"
 msgid "Incorrect password"
 msgstr "Neispravna lozinka"
 
+msgid "User not found"
+msgstr "Korisnik nije pronađen"
+
 msgid "Account has been disabled"
 msgstr "Nalog je isključen"
 
@@ -5098,9 +5132,6 @@ msgstr "Ne možete dodati sami sebe"
 
 msgid "Master archive is misconfigured"
 msgstr "Glavna arhiva nije dobro podešena"
-
-msgid "Incorrect username or password"
-msgstr "Neispravno korisničko ime ili lozinka"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Ne mogu da prepoznam domaćina za uneseno korisničko ime"
@@ -5314,1173 +5345,6 @@ msgstr "Adresa servera"
 
 msgid "Server port"
 msgstr "Port servera"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "Daj mi ovlašćenje kako bih mogao da te dodam u spisak drugara."
-
-msgid "No reason given."
-msgstr "Razlog nije naveden."
-
-msgid "Authorization Denied Message:"
-msgstr "Razlog odbijanja ovlašćenja:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_U redu"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr ""
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr ""
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Uspostavljali ste i prekidali vezu suviše često. Sačekajte deset minuta pa "
-"pokušajte ponovo. Ako nastavite da pokušavate, moraćete da sačekate još duže."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr ""
-
-msgid "The server returned an empty response"
-msgstr ""
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr ""
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(Javila se greška u prijemu ove poruke. Drugar sa kim ste razgovarali "
-"verovatno koristi drugačije kodiranje od očekivanog. Ukoliko znate koje "
-"kodiranje on koristi, možete ga uneti u naprednim opcijama vašeg AIM/ICQ "
-"naloga.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(Došlo je do greške pri prijemu ove poruke. Ili Vi i %s koristite različito "
-"kodiranje karaktera, ili %s ima neku grešku u programu.)"
-
-msgid "Could not join chat room"
-msgstr "Ne mogu da se povežem na pričaonicu"
-
-msgid "Invalid chat room name"
-msgstr "Neispravno ime pričaonice"
-
-msgid "Invalid error"
-msgstr "Neispravna greška (!!!)"
-
-msgid "Not logged in"
-msgstr "Neprijavljen"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr ""
-
-msgid "Cannot send SMS without accepting terms"
-msgstr ""
-
-msgid "Cannot send SMS"
-msgstr ""
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr ""
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr ""
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr ""
-
-msgid "Bot account cannot IM this user"
-msgstr ""
-
-msgid "Bot account reached IM limit"
-msgstr ""
-
-msgid "Bot account reached daily IM limit"
-msgstr ""
-
-msgid "Bot account reached monthly IM limit"
-msgstr ""
-
-msgid "Unable to receive offline messages"
-msgstr ""
-
-msgid "Offline message store full"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Ne mogu da pošaljem poruku: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr ""
-
-msgid "Thinking"
-msgstr ""
-
-msgid "Shopping"
-msgstr ""
-
-msgid "Questioning"
-msgstr ""
-
-msgid "Eating"
-msgstr ""
-
-msgid "Watching a movie"
-msgstr ""
-
-msgid "Typing"
-msgstr "Kuca"
-
-msgid "At the office"
-msgstr ""
-
-msgid "Taking a bath"
-msgstr ""
-
-msgid "Watching TV"
-msgstr ""
-
-msgid "Having fun"
-msgstr ""
-
-msgid "Sleeping"
-msgstr ""
-
-msgid "Using a PDA"
-msgstr ""
-
-msgid "Meeting friends"
-msgstr ""
-
-msgid "On the phone"
-msgstr ""
-
-msgid "Surfing"
-msgstr ""
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Mobilni telefon"
-
-msgid "Searching the web"
-msgstr ""
-
-msgid "At a party"
-msgstr ""
-
-msgid "Having Coffee"
-msgstr ""
-
-#. Playing video games
-msgid "Gaming"
-msgstr ""
-
-msgid "Browsing the web"
-msgstr ""
-
-msgid "Smoking"
-msgstr ""
-
-msgid "Writing"
-msgstr ""
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr ""
-
-msgid "Listening to music"
-msgstr "Slušam muziku"
-
-msgid "Studying"
-msgstr ""
-
-msgid "Working"
-msgstr "Radi"
-
-msgid "In the restroom"
-msgstr ""
-
-msgid "Received invalid data on connection with server"
-msgstr ""
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "Dodatak za AIM protokol"
-
-msgid "ICQ UIN..."
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "Dodatak za ICQ protokol"
-
-msgid "Encoding"
-msgstr "Način zapisa"
-
-msgid "The remote user has closed the connection."
-msgstr "Udaljeni korisnik više nije na mreži"
-
-msgid "The remote user has declined your request."
-msgstr "Udaljeni korisnik je odbio Vaš zahtev."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Prekinuta je veza sa udaljenim korisnikom:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Primljeni pogrešni podaci od udaljenog korisnika."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr ""
-
-msgid "Direct IM established"
-msgstr "Neposredan razgovor je omogućen"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "Datoteka %s je %s, što je veće od maksimalne veličine od %s."
-
-msgid "Free For Chat"
-msgstr "Dostupan za ćaskanje"
-
-msgid "Not Available"
-msgstr "Nedostupan"
-
-msgid "Occupied"
-msgstr "Zauzet"
-
-msgid "Web Aware"
-msgstr "Pratim veb"
-
-msgid "Invisible"
-msgstr "Nevidljiv"
-
-msgid "Evil"
-msgstr ""
-
-msgid "Depression"
-msgstr ""
-
-msgid "At home"
-msgstr ""
-
-msgid "At work"
-msgstr ""
-
-msgid "At lunch"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr ""
-
-msgid "Username sent"
-msgstr "Korisničko ime je poslato"
-
-msgid "Connection established, cookie sent"
-msgstr "Veza je uspostavljena, kolačić je poslat"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Dovršava povezivanje"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr "Veza se uskoro može prekinuti.  Pogledajte %s za dopune."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Neuspelo dobavljanje ispravnog heša za prijavu na AIM."
-
-msgid "Unable to get a valid login hash."
-msgstr "Ne mogu da primi ispravan heš za prijavu."
-
-msgid "Received authorization"
-msgstr "Primio ovlašćenje"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr ""
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr ""
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "Usluga AOL brzih poruka je privremeno nedostupna."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr "Program koji koristite je zastareo. Osvežite ga sa %s"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-msgid "The SecurID key entered is invalid"
-msgstr ""
-
-msgid "Enter SecurID"
-msgstr "Unesite SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Unesite šestocifreni broj sa digitalnog ekrana."
-
-msgid "Password sent"
-msgstr "Lozinka poslata"
-
-msgid "Unable to initialize connection"
-msgstr "Ne mogu da uspostavim vezu."
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Korisnik %u je odbio Vaš zahtev za ovlašćenje da ga dodate u spisak drugara, "
-"a naveo je sledeći razlog:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ ovlašćenje odbijeno."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr "Korisnik %u je prihvatio Vaš zahtev da ga dodate u spisak drugara."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Primili ste naročitu poruku\n"
-"\n"
-"Od: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Primili ste ICQ stranicu\n"
-"\n"
-"Od: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"Primili ste ICQ e-poruku od %s [%s]\n"
-"\n"
-"Poruka glasi:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ korisnik %u Vam je poslao kontakt: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Da li želite da dodate ovaj kontakt u spisak drugara?"
-
-msgid "_Add"
-msgstr "_Dodaj"
-
-msgid "_Decline"
-msgstr "_Odbij"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid "Your AIM connection may be lost."
-msgstr "Možda AIM veza prekinuta."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "Veza sa pričaonicom %s je prekinuta."
-
-msgid "The new formatting is invalid."
-msgstr "Novi zapis je neispravan."
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"Možete izmeniti samo veličinu slova i broju razmaka u korisničkom imenu."
-
-msgid "Pop-Up Message"
-msgstr "Iskačuća poruka"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Nije pronađeno niti jedno poklapanje za adresu e-pošte %s"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "Trebate da primite e-poštu radi potvrđivanja %s."
-
-msgid "Account Confirmation Requested"
-msgstr "Zahteva se potvrda naloga"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"Greška 0x%04x: Ne mogu da ispišem korisničko ime zato što se traženo ime "
-"razlikuje od originala."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr "Greška 0x%04x: Ne mogu da ispišem korisničko ime zato što je pogrešno."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Greška 0x%04x: Ne mogu da ispišem korisničko ime zato što je traženo ime "
-"predugačko."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Greška 0x%04x: Ne mogu da promenim adresu e-pošte zato što je već poslat "
-"zahtev na ovo korisničko ime."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Greška 0x%04x: Ne mogu da promenim adresu e-pošte zato što je previše "
-"korisničkih imena povezano sa datom adresom."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Greška 0x%04x: Ne mogu da promenim adresu e-pošte zato što je uneta adresa "
-"neispravna."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Greška 0x%04x: Nepoznata greška."
-
-msgid "Error Changing Account Info"
-msgstr "Greška pri izmeni podataka o nalogu"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "Adresa e-pošte za %s je %s"
-
-msgid "Account Info"
-msgstr "Podaci o nalogu"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Slika u brzoj poruci nije poslata. Morate biti neposredno povezani za slanje "
-"slika."
-
-msgid "Unable to set AIM profile."
-msgstr "Ne mogu da postavim AIM profil."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Verovatno ste želeli da postavite Vaš profil pre nego što je postupak "
-"prijave završen. Profil nije postavljen. Pokušajte ponovo, kada se propisno "
-"povežete."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid "Profile too long."
-msgstr "Profil je predugačak."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-msgid "Away message too long."
-msgstr "Poruka za odsustvo je predugačka."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid "Unable to Add"
-msgstr "Ne mogu da dodam"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Ne mogu da preuzmem spisak drugara"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM serveri privremeno ne mogu da vam pošalju spisak drugova.  Vaš spisak "
-"drugova nije nestao, i verovatno će biti dostupan za nekoliko minuta."
-
-msgid "Orphans"
-msgstr "Siročići"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-
-msgid "(no name)"
-msgstr "(bez imena)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr ""
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"Korisnik %s vam je dozovolio da ga dodate u spisak drugara. Da li želite da "
-"ga dodate?"
-
-msgid "Authorization Given"
-msgstr "Ovlašćenje je dato"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr "Korisnik %s je odobrio Vaš zahtev da ga dodate u spisak drugara."
-
-msgid "Authorization Granted"
-msgstr "Zahtev odobren"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Korisnik %s je odbio Vaš zahtev da ga dodate u spisak drugara iz sledećeg "
-"razloga:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Zahtev odbijen"
-
-msgid "_Exchange:"
-msgstr "Raz_mena:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr "Slika nije poslata. Ne možete slati slike za vreme AIM ćaskanje."
-
-msgid "iTunes Music Store Link"
-msgstr "Veza do iTjuns muzičke"
-
-msgid "Lunch"
-msgstr ""
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Primedba za drugara %s"
-
-msgid "Buddy Comment:"
-msgstr "Primedba za drugara:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "Izabrali ste da uspostavite vezu za neposredne brze poruke sa %s."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Kako ovo razotkriva Vašu IP adresu, može se smatrati narušavanjem "
-"privatnosti. Želite li da nastavite?"
-
-msgid "C_onnect"
-msgstr "Uspostavi _vezu"
-
-msgid "You closed the connection."
-msgstr ""
-
-msgid "Get AIM Info"
-msgstr "AIM podaci"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Uredi primedbu za drugara"
-
-msgid "Get X-Status Msg"
-msgstr ""
-
-msgid "End Direct IM Session"
-msgstr ""
-
-msgid "Direct IM"
-msgstr "Neposredna poruka"
-
-msgid "Re-request Authorization"
-msgstr "Ponovi zahtev za ovlašćenje"
-
-msgid "Require authorization"
-msgstr "Zahtevaj ovlašćenje"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "Svesnost veba (omogućavanje ovoga će izazvati primanje SPAMA!)"
-
-msgid "ICQ Privacy Options"
-msgstr "Postavke privatnosti za ICQ"
-
-msgid "Change Address To:"
-msgstr "Promena adrese u:"
-
-msgid "you are not waiting for authorization"
-msgstr ""
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Očekujete ovlašćenje od sledećih drugara"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Možete ponoviti zahtev za ovlašćenje od ovih drugara desnim klikom na njih i "
-"izborom „Ponovi zahtev za ovlašćenje“."
-
-msgid "Find Buddy by Email"
-msgstr "Pronađi drugara pomoću adrese e-pošte"
-
-msgid "Search for a buddy by email address"
-msgstr "Pronađi drugara pomoću adrese e-pošte"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Ukucajte e-poštansku adresu drugara koga tražite."
-
-msgid "_Search"
-msgstr "_Traži"
-
-msgid "Set User Info (web)..."
-msgstr "Postavi podatke (preko veba)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Promeni lozinku (preko veba)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Podesi prosleđivanje brzih poruka (preko veba)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Unesi opcije privatnosti..."
-
-msgid "Show Visible List"
-msgstr ""
-
-msgid "Show Invisible List"
-msgstr ""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Potvrdite nalog"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Prikaži trenutno registrovanu adresu e-pošte"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Izmeni trenutno registrovanu adresu e-pošte..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Prikaži drugare za koje se čeka ovlašćenje"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Pronađi drugara prema adresi e-pošte..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"Uvek koristi AIM/ICQ mrežni posrednik\n"
-"za prenos datoteka i brze poruke\n"
-"(sporije, ali ne otkriva vašu IP adresu)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr ""
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Tražim od %s da se poveže na %s:%hu za neposredne brze poruke."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "Pokušavam da se povežem na %s:%hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Pokušavam da se povežem na mrežni posrednik."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s je upravo zatražio neposrednu vezu sa %s"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Ovo zahteva neposrednu vezu između dva računara i neophodno je za slanje "
-"slika. Pošto će se Vaša IP adresa prikazati, ovo se može smatrati "
-"narušavanjem privatnosti."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Sličica drugara"
-
-msgid "Voice"
-msgstr "Glas"
-
-msgid "AIM Direct IM"
-msgstr "Neposredna AIM poruka"
-
-msgid "Get File"
-msgstr "Pribavi datoteku"
-
-msgid "Games"
-msgstr "Igre"
-
-msgid "ICQ Xtraz"
-msgstr ""
-
-msgid "Add-Ins"
-msgstr "Dodaci"
-
-msgid "Send Buddy List"
-msgstr "Pošalji spisak drugara"
-
-msgid "ICQ Direct Connect"
-msgstr "Neposredna ICQ veza"
-
-msgid "AP User"
-msgstr "AP korisnik"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nihilista"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ preusmeravanje servera"
-
-msgid "Old ICQ UTF8"
-msgstr "Stari ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trilijan enkripcija"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Vrhkuka"
-
-msgid "Security Enabled"
-msgstr "Bezbednost uključena"
-
-msgid "Video Chat"
-msgstr "Video ćaskanje"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "Živa slika"
-
-msgid "Camera"
-msgstr "Kamera"
-
-msgid "Screen Sharing"
-msgstr "Deljenje ekrana"
-
-msgid "IP Address"
-msgstr "IP adresa"
-
-msgid "Warning Level"
-msgstr "_Nivoi upozorenja"
-
-msgid "Buddy Comment"
-msgstr "Primedba za drugara:"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Podaci o korisniku %s nedostupni:"
-
-msgid "Mobile Phone"
-msgstr "Mobilni telefon"
-
-msgid "Age"
-msgstr "Starost"
-
-msgid "Personal Web Page"
-msgstr "Lična veb stranica"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Dodatni podaci"
-
-msgid "Home Address"
-msgstr "Adresa stanovanja"
-
-msgid "Zip Code"
-msgstr "Poštanski broj"
-
-msgid "Work Address"
-msgstr "Adresa na poslu"
-
-msgid "Work Information"
-msgstr "Podaci o poslu"
-
-msgid "Company"
-msgstr "Preduzeće"
-
-msgid "Division"
-msgstr "Odeljenje"
-
-msgid "Position"
-msgstr "Pozicija"
-
-msgid "Web Page"
-msgstr "Veb stranica"
-
-msgid "Online Since"
-msgstr "Na vezi od"
-
-msgid "Member Since"
-msgstr "Član od"
-
-msgid "Capabilities"
-msgstr "Mogućnosti"
-
-msgid "Profile"
-msgstr "Profil"
-
-msgid "View web profile"
-msgstr "Prikaži profil sa mreže"
-
-msgid "Invalid SNAC"
-msgstr "Neispravan SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr ""
-
-msgid "Client rate limit exceeded"
-msgstr ""
-
-msgid "Service unavailable"
-msgstr "Usluga je nedostupna"
-
-msgid "Service not defined"
-msgstr "Usluga nije ustanovljena"
-
-msgid "Obsolete SNAC"
-msgstr "Prevaziđeni SNAC"
-
-msgid "Not supported by host"
-msgstr "Domaćin ne podržava"
-
-msgid "Not supported by client"
-msgstr "Program ne podržava"
-
-msgid "Refused by client"
-msgstr "Program je odbio"
-
-msgid "Reply too big"
-msgstr "Odgovor je predugačak"
-
-msgid "Responses lost"
-msgstr "Odgovori su izgubljeni"
-
-msgid "Request denied"
-msgstr "Zahtev je odbijen"
-
-msgid "Busted SNAC payload"
-msgstr "Upropašćen je SNAC koristan paket"
-
-msgid "Insufficient rights"
-msgstr "Nedovoljno ovlašćenja"
-
-msgid "In local permit/deny"
-msgstr "Dozvoli/zabrani u lokalu"
-
-msgid "Warning level too high (sender)"
-msgstr ""
-
-msgid "Warning level too high (receiver)"
-msgstr ""
-
-msgid "User temporarily unavailable"
-msgstr "Korisnik privremeno nedostupan"
-
-msgid "No match"
-msgstr "Nema poklapanja"
-
-msgid "List overflow"
-msgstr "Prekoračenje spiska"
-
-msgid "Request ambiguous"
-msgstr "Zahtev je dvosmislen"
-
-msgid "Queue full"
-msgstr "Red je pun"
-
-msgid "Not while on AOL"
-msgstr "Ne dok je na AOL-u"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Pravi se povezan"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr ""
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Kao nepovezan"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr ""
-
-msgid "you have no buddies on this list"
-msgstr ""
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr ""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr ""
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7798,6 +6662,9 @@ msgstr "Video razgovor"
 msgid "Computer"
 msgstr "Računar"
 
+msgid "Mobile Phone"
+msgstr "Mobilni telefon"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8059,6 +6926,9 @@ msgstr "Područje"
 msgid "Exposure"
 msgstr "Izlaganje"
 
+msgid "Encoding"
+msgstr "Način zapisa"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr ""
@@ -8079,6 +6949,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "Greška pri dobijanju %s"
 
+msgid "Received invalid data on connection with server"
+msgstr ""
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Tražim %sovu pažnju..."
@@ -8095,6 +6968,12 @@ msgstr "_Da"
 
 msgid "_No"
 msgstr "_Ne"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_U redu"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8166,8 +7045,17 @@ msgstr "Isključi"
 msgid "Do not disturb"
 msgstr "Ne uznemiravaj"
 
+msgid "Invisible"
+msgstr "Nevidljiv"
+
 msgid "Extended away"
 msgstr "Produženo odsutan"
+
+msgid "Mobile"
+msgstr "Mobilni telefon"
+
+msgid "Listening to music"
+msgstr "Slušam muziku"
 
 msgid "Feeling"
 msgstr ""
@@ -8329,29 +7217,40 @@ msgid ""
 "the old file has been renamed to %s~."
 msgstr ""
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidžin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidžin Internet pismonoša"
 
 msgid "Internet Messenger"
 msgstr "Internet pismonoša"
 
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidžin Internet pismonoša"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
+msgstr ""
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
 msgstr ""
 
 #. Build the login options frame.
@@ -8850,6 +7749,9 @@ msgstr "/_Pomoć"
 
 msgid "/Help/Online _Help"
 msgstr "/Pomoć/Pomoć iz _programa"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr ""
@@ -9384,6 +8286,9 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+msgid "Typing"
+msgstr "Kuca"
+
 msgid "Stopped Typing"
 msgstr "Prestao da kuca"
 
@@ -9491,20 +8396,14 @@ msgstr "Greška"
 msgid "Fatal Error"
 msgstr "Kobna greška"
 
-msgid "artist"
-msgstr ""
-
-msgid "voice and video"
-msgstr ""
-
-msgid "support"
-msgstr "podrška"
-
-msgid "webmaster"
-msgstr "veb urednik"
+msgid "lead developer"
+msgstr "glavni programer"
 
 msgid "win32 port"
 msgstr "Windows izdanje"
+
+msgid "artist"
+msgstr ""
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9517,9 +8416,18 @@ msgstr "održavalac"
 msgid "libfaim maintainer"
 msgstr "održavalac libfaim-a"
 
+msgid "webmaster"
+msgstr "veb urednik"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "haker i određeni pokretač [lenja buba]"
+
+msgid "voice and video"
+msgstr ""
+
+msgid "support"
+msgstr "podrška"
 
 msgid "support/QA"
 msgstr "podrška/QA"
@@ -9529,9 +8437,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "prvi autor"
-
-msgid "lead developer"
-msgstr "glavni programer"
 
 msgid "Senior Contributor/QA"
 msgstr "Stariji doprinosioci/QA"
@@ -9847,20 +8752,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10920,12 +9823,12 @@ msgstr ""
 msgid "Cannot start browser configuration program."
 msgstr "Ne mogu da pokrenem program za podešavanje veb preglednika."
 
-msgid "Disabled"
-msgstr ""
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr ""
+
+msgid "IP Address"
+msgstr "IP adresa"
 
 msgid "ST_UN server:"
 msgstr ""
@@ -11188,6 +10091,37 @@ msgstr "Koristi stanje kao pri _zadnjem izlazu"
 msgid "Status to a_pply at startup:"
 msgstr "Stanje p_ri pokretanju:"
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr ""
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr ""
+
+msgid "Audio"
+msgstr ""
+
+msgid "Input"
+msgstr ""
+
+msgid "Output"
+msgstr ""
+
+msgid "Video"
+msgstr ""
+
 msgid "Interface"
 msgstr "Okruženje"
 
@@ -11198,6 +10132,9 @@ msgid "Status / Idle"
 msgstr "Stanje / Neaktivan"
 
 msgid "Themes"
+msgstr ""
+
+msgid "Voice/Video"
 msgstr ""
 
 msgid "Allow all users to contact me"
@@ -11282,6 +10219,46 @@ msgstr "Izaberi novo ime"
 
 msgid "Select Folder..."
 msgstr "Izaveri fasciklu..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Dodaj"
 
 #. list button
 msgid "_Get List"
@@ -11460,6 +10437,10 @@ msgstr ""
 "<b>Veličina:</b> %s\n"
 "<b>Dimenzije slike:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Sličica drugara"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr "Datoteka „%s“ je prevelika za %s. Probajte sa manjom slikom.\n"
@@ -11499,11 +10480,6 @@ msgstr ""
 
 msgid "Select color"
 msgstr "Izaberite boju"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidžin"
 
 msgid "_Alias"
 msgstr "N_adimak"
@@ -12375,6 +11351,9 @@ msgstr ""
 msgid "Half Operator"
 msgstr ""
 
+msgid "Voice"
+msgstr "Glas"
+
 msgid "Authorization dialog"
 msgstr ""
 
@@ -12627,34 +11606,50 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
+msgid "ALSA"
 msgstr ""
 
-msgid "Video"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
 msgstr ""
 
-msgid "Output"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
 msgstr ""
 
 msgid "_Plugin"
-msgstr ""
-
-msgid "_Device"
-msgstr ""
-
-msgid "Input"
 msgstr ""
 
 msgid "P_lugin"
 msgstr ""
 
 msgid "D_evice"
-msgstr ""
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
 msgstr ""
 
 msgid "Silence threshold:"
@@ -12840,8 +11835,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description

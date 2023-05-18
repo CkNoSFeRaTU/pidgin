@@ -1142,49 +1142,6 @@ pidgin_parse_x_im_contact(const char *msg, gboolean all_accounts,
 				account = NULL;
 			}
 
-			/* Special case for AIM and ICQ */
-			if (account == NULL && (purple_strequal(protocol, "aim") ||
-									purple_strequal(protocol, "icq")))
-			{
-				for (l = list; l != NULL; l = l->next)
-				{
-					PurpleConnection *gc;
-					PurplePluginProtocolInfo *prpl_info = NULL;
-					PurplePlugin *plugin;
-
-					if (all_accounts)
-					{
-						account = (PurpleAccount *)l->data;
-
-						plugin = purple_plugins_find_with_id(
-							purple_account_get_protocol_id(account));
-
-						if (plugin == NULL)
-						{
-							account = NULL;
-
-							continue;
-						}
-
-						prpl_info = PURPLE_PLUGIN_PROTOCOL_INFO(plugin);
-					}
-					else
-					{
-						gc = (PurpleConnection *)l->data;
-						account = purple_connection_get_account(gc);
-
-						prpl_info = PURPLE_PLUGIN_PROTOCOL_INFO(gc->prpl);
-					}
-
-					protoname = prpl_info->list_icon(account, NULL);
-
-					if (purple_strequal(protoname, "aim") || purple_strequal(protoname, "icq"))
-						break;
-
-					account = NULL;
-				}
-			}
-
 			*ret_account = account;
 		}
 	}
@@ -3288,7 +3245,6 @@ open_file(GtkIMHtml *imhtml, const char *filename)
 	}
 #else
 	char *command = NULL;
-	char *tmp = NULL;
 	GError *error = NULL;
 
 	if (purple_running_gnome())
@@ -3318,8 +3274,8 @@ open_file(GtkIMHtml *imhtml, const char *filename)
 		gint exit_status;
 		if (!g_spawn_command_line_sync(command, NULL, NULL, &exit_status, &error))
 		{
-			tmp = g_strdup_printf(_("Error launching %s: %s"),
-							filename, error->message);
+			gchar *tmp = g_strdup_printf(_("Error launching %s: %s"),
+			                             filename, error->message);
 			purple_notify_error(imhtml, NULL, _("Unable to open file."), tmp);
 			g_free(tmp);
 			g_error_free(error);
@@ -3330,7 +3286,6 @@ open_file(GtkIMHtml *imhtml, const char *filename)
 			char *secondary = g_strdup_printf(_("Process returned error code %d"),
 									exit_status);
 			purple_notify_error(imhtml, NULL, primary, secondary);
-			g_free(tmp);
 		}
 	}
 #endif

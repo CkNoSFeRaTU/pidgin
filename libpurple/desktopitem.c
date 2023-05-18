@@ -59,6 +59,7 @@
 #include <string.h>
 #include <time.h>
 #include "desktopitem.h"
+#include "glibcompat.h"
 
 struct _PurpleDesktopItem {
 	int refcount;
@@ -339,7 +340,7 @@ static Encoding
 get_encoding (FILE *df)
 {
 	gboolean old_kde = FALSE;
-	char     buf [BUFSIZ];
+	char     buf [BUFSIZ] = { 0 };
 	gboolean all_valid_utf8 = TRUE;
 
 	while (my_fgets (buf, sizeof (buf), df) != NULL) {
@@ -1113,15 +1114,12 @@ copy_string_hash (gpointer key, gpointer value, gpointer user_data)
 }
 
 static void
-free_section (gpointer data, gpointer user_data)
+free_section (Section *section)
 {
-	Section *section = data;
-
 	g_free (section->name);
 	section->name = NULL;
 
-	g_list_foreach (section->keys, (GFunc)g_free, NULL);
-	g_list_free (section->keys);
+	g_list_free_full(section->keys, (GDestroyNotify)g_free);
 	section->keys = NULL;
 
 	g_free (section);
@@ -1237,16 +1235,13 @@ purple_desktop_item_unref (PurpleDesktopItem *item)
 	if(item->refcount != 0)
 		return;
 
-	g_list_foreach (item->languages, (GFunc)g_free, NULL);
-	g_list_free (item->languages);
+	g_list_free_full(item->languages, (GDestroyNotify)g_free);
 	item->languages = NULL;
 
-	g_list_foreach (item->keys, (GFunc)g_free, NULL);
-	g_list_free (item->keys);
+	g_list_free_full(item->keys, (GDestroyNotify)g_free);
 	item->keys = NULL;
 
-	g_list_foreach (item->sections, free_section, NULL);
-	g_list_free (item->sections);
+	g_list_free_full(item->sections, (GDestroyNotify)free_section);
 	item->sections = NULL;
 
 	g_hash_table_destroy (item->main_hash);

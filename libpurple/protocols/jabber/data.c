@@ -29,6 +29,7 @@
 
 #include "data.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "xmlnode.h"
 #include "util.h"
 #include "iq.h"
@@ -60,7 +61,7 @@ jabber_data_create_from_data(gconstpointer rawdata, gsize size, const char *type
 	data->size = size;
 	data->ephemeral = ephemeral;
 
-	data->data = g_memdup(rawdata, size);
+	data->data = g_memdup2(rawdata, size);
 
 	return data;
 }

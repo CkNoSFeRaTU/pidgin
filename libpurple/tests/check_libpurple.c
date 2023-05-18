@@ -91,7 +91,6 @@ int main(void)
 	srunner_add_suite(sr, jabber_digest_md5_suite());
 	srunner_add_suite(sr, jabber_jutil_suite());
 	srunner_add_suite(sr, jabber_scram_suite());
-	srunner_add_suite(sr, oscar_util_suite());
 	srunner_add_suite(sr, util_suite());
 	srunner_add_suite(sr, xmlnode_suite());
 

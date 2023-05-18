@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from __future__ import absolute_import, division, print_function
 
@@ -122,32 +122,6 @@ def gochat(account, params, message=None):
 def addbuddy(account, screenname, group="", alias=""):
     cpurple.PurpleBlistRequestAddBuddy(account, screenname, group, alias)
 
-
-def aim(uri):
-    protocol = "prpl-aim"
-    match = re.match(r"^aim:([^?]*)(\?(.*))", uri)
-    if not match:
-        print("Invalid aim URI: %s" % uri)
-        return
-
-    command = unquote_plus(match.group(1))
-    paramstring = match.group(3)
-    params = {}
-    if paramstring:
-        for param in paramstring.split("&"):
-            key, value = extendlist(param.split("=", 1), 2, "")
-            params[key] = unquote_plus(value)
-    accountname = params.get("account", "")
-    screenname = params.get("screenname", "")
-
-    account = findaccount(protocol, accountname)
-
-    if command.lower() == "goim":
-        goim(account, screenname, params.get("message"))
-    elif command.lower() == "gochat":
-        gochat(account, params)
-    elif command.lower() == "addbuddy":
-        addbuddy(account, screenname, params.get("group", ""))
 
 def gg(uri):
     protocol = "prpl-gg"
@@ -317,9 +291,7 @@ def main(argv=sys.argv):
     type = uri.split(":")[0]
 
     try:
-        if type == "aim":
-            aim(uri)
-        elif type == "gg":
+        if type == "gg":
             gg(uri)
         elif type == "icq":
             icq(uri)

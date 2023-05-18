@@ -24,6 +24,8 @@
 #include "imgstore.h"
 #include "wb.h"
 
+#include "glibcompat.h"
+
 static void
 silc_channel_message(SilcClient client, SilcClientConnection conn,
 		     SilcClientEntry sender, SilcChannelEntry channel,
@@ -206,7 +208,7 @@ silcpurple_mime_message(SilcClient client, SilcClientConnection conn,
 		if (channel && !convo)
 			goto out;
 
-		imgid = purple_imgstore_add_with_id(g_memdup(data, data_len), data_len, "");
+		imgid = purple_imgstore_add_with_id(g_memdup2(data, data_len), data_len, "");
 		if (imgid) {
 			cflags |= PURPLE_MESSAGE_IMAGES | PURPLE_MESSAGE_RECV;
 			g_snprintf(tmp, sizeof(tmp), "<IMG ID=\"%d\">", imgid);
@@ -220,7 +222,6 @@ silcpurple_mime_message(SilcClient client, SilcClientConnection conn,
 					    tmp, cflags, time(NULL));
 
 			purple_imgstore_unref_by_id(imgid);
-			cflags = 0;
 			ret = TRUE;
 		}
 		goto out;

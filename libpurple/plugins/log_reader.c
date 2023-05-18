@@ -769,6 +769,7 @@ static GList *msn_logger_list(PurpleLogType type, const char *sn, PurpleAccount 
 			const gchar *name;
 
 			while ((name = g_dir_read_name(dir))) {
+				gchar *file_path = NULL;
 				const char *c = name;
 
 				if (!purple_str_has_prefix(c, username))
@@ -782,16 +783,22 @@ static GList *msn_logger_list(PurpleLogType type, const char *sn, PurpleAccount 
 					c++;
 				}
 
-				path = g_build_filename(path, name, NULL);
+				file_path = g_build_filename(path, name, NULL);
 				if (purple_strequal(c, ".xml") &&
-				    g_file_test(path, G_FILE_TEST_EXISTS)) {
+				    g_file_test(file_path, G_FILE_TEST_EXISTS))
+				{
 					found = TRUE;
+
+					g_free(path);
+					path = file_path;
+
 					g_free(logfile);
 					logfile = g_strdup(name);
+
 					break;
+				} else {
+					g_free(file_path);
 				}
-				else
-					g_free(path);
 			}
 			g_dir_close(dir);
 		}
@@ -1104,9 +1111,13 @@ static char * msn_logger_read (PurpleLog *log, PurpleLogReadFlags *flags)
 		}
 
 		msn_logger_parse_timestamp(message, &tm);
+		if(tm != NULL) {
+			timestamp = g_strdup_printf("<font size=\"2\">(%02u:%02u:%02u)</font> ",
+					tm->tm_hour, tm->tm_min, tm->tm_sec);
+		} else {
+			timestamp = g_strdup_printf("<font size=\"2\">(00:00:00)</font> ");
+		}
 
-		timestamp = g_strdup_printf("<font size=\"2\">(%02u:%02u:%02u)</font> ",
-				tm->tm_hour, tm->tm_min, tm->tm_sec);
 		text = g_string_append(text, timestamp);
 		g_free(timestamp);
 
@@ -2226,7 +2237,6 @@ static GList *amsn_logger_parse_file(char *filename, const char *sn, PurpleAccou
 			log->logger = amsn_logger;
 			log->logger_data = data;
 			list = g_list_prepend(list, log);
-			found_start = FALSE;
 
 			purple_debug_info("aMSN logger",
 			                  "Found log for %s:"

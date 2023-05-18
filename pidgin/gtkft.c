@@ -483,7 +483,6 @@ open_button_cb(GtkButton *button, PidginXferDialog *dialog)
 #else
 	const char *filename = purple_xfer_get_local_filename(dialog->selected_xfer);
 	char *command = NULL;
-	char *tmp = NULL;
 	GError *error = NULL;
 
 	if (purple_running_gnome())
@@ -515,9 +514,9 @@ open_button_cb(GtkButton *button, PidginXferDialog *dialog)
 		gint exit_status;
 		if (!g_spawn_command_line_sync(command, NULL, NULL, &exit_status, &error))
 		{
-			tmp = g_strdup_printf(_("Error launching %s: %s"),
-							purple_xfer_get_local_filename(dialog->selected_xfer),
-							error->message);
+			gchar *tmp = g_strdup_printf(_("Error launching %s: %s"),
+			                             purple_xfer_get_local_filename(dialog->selected_xfer),
+			                             error->message);
 			purple_notify_error(dialog, NULL, _("Unable to open file."), tmp);
 			g_free(tmp);
 			g_error_free(error);
@@ -528,7 +527,6 @@ open_button_cb(GtkButton *button, PidginXferDialog *dialog)
 			char *secondary = g_strdup_printf(_("Process returned error code %d"),
 									exit_status);
 			purple_notify_error(dialog, NULL, primary, secondary);
-			g_free(tmp);
 		}
 	}
 #endif

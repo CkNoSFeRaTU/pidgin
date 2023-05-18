@@ -142,7 +142,6 @@ check_idleness(void)
 	else
 	{
 		/* Don't report idle time */
-		time_idle = 0;
 		report_idle = FALSE;
 
 		/* If we're not reporting idle, we can still do auto-away.

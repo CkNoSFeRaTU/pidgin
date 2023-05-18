@@ -634,6 +634,13 @@ purple_plugin_unload(PurplePlugin *plugin)
 	g_return_val_if_fail(plugin != NULL, FALSE);
 	g_return_val_if_fail(purple_plugin_is_loaded(plugin), FALSE);
 
+	if(plugin->info == NULL) {
+		purple_debug_error("plugin",
+		                   "Failed to unload plugin %s its info is NULL",
+		                   plugin->path);
+		return FALSE;
+	}
+
 	purple_debug_info("plugins", "Unloading plugin %s\n", plugin->info->name);
 
 	/* Unload all plugins that depend on this plugin. */

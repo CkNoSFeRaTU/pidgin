@@ -18,8 +18,8 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02111-1301  USA
  */
 
-#ifndef PURPLE_JABBER_GOOGLE_ROSTER_H_
-#define PURPLE_JABBER_GOOGLE_ROSTER_H_
+#ifndef PURPLE_JABBER_GOOGLE_JINGLEINFO_H
+#define PURPLE_JABBER_GOOGLE_JINGLEINFO_H
 
 #include "jabber.h"
 
@@ -29,4 +29,4 @@ void jabber_google_handle_jingle_info(JabberStream *js, const char *from,
 void jabber_google_send_jingle_info(JabberStream *js);
 
 
-#endif /* PURPLE_JABBER_GOOGLE_ROSTER_H_ */
+#endif /* PURPLE_JABBER_GOOGLE_JINGLEINFO_H */

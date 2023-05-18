@@ -30,10 +30,9 @@ Messaging client.
 .SH DESCRIPTION
 .PP
 \fBfinch\fR is a console-based modular messaging client based on libpurple
-which is capable of connecting to AIM, XMPP, ICQ, IRC, SILC,
+which is capable of connecting to XMPP, IRC, SILC,
 Novell GroupWise, Lotus Sametime, Zephyr, Gadu-Gadu, and QQ all at once. It has
 many common features found in other clients, as well as many unique features.
-Finch is not endorsed by or affiliated with America Online, ICQ, or Microsoft.
 
 .SH OPTIONS
 The following options are provided by \fBfinch\fR using the standard GNU
@@ -291,7 +290,7 @@ q =
 .br
 
 .SH Widget Actions
-You can specifiy key-bindings for specific widgets. The following entries in
+You can specify key-bindings for specific widgets. The following entries in
 \fI~/.gntrc\fR correspond to the default keybindings for the actions:
 
 .br
@@ -582,7 +581,7 @@ If you fix a bug in \fBfinch\fR (or otherwise enhance it), please submit a
 patch (using \fBmtn diff > my.diff\fR against the latest version from the
 Monotone repository) at \fIhttp://developer.pidgin.im/simpleticket\fR
 
-You are also encouraged to drop by at \fB#pidgin\fR on \fIirc.freenode.net\fR
+You are also encouraged to drop by at \fB#pidgin\fR on \fIirc.libera.chat\fR
 to discuss development.
 
 .SH SEE ALSO

@@ -35,6 +35,7 @@
 #include "blist.h"
 #include "accountopt.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "util.h"
 #include "request.h"
 #include "xmlnode.h"
@@ -521,7 +522,7 @@ static void gg_fetch_avatar_cb(PurpleUtilFetchUrlData *url_data, gpointer user_d
 	if (buddy == NULL)
 		goto out;
 
-	buddy_icon_data = g_memdup(data, len);
+	buddy_icon_data = g_memdup2(data, len);
 
 	purple_buddy_icons_set_for_user(account, purple_buddy_get_name(buddy),
 			buddy_icon_data, len, d->avatar_url);
@@ -982,7 +983,7 @@ static void ggp_recv_image_handler(PurpleConnection *gc, const struct gg_event *
 	gchar *handlerid = g_strdup_printf("IMGID_HANDLER-%i", ev->event.image_reply.crc32);
 
 	imgid = purple_imgstore_add_with_id(
-		g_memdup(ev->event.image_reply.image, ev->event.image_reply.size),
+		g_memdup2(ev->event.image_reply.image, ev->event.image_reply.size),
 		ev->event.image_reply.size,
 		ev->event.image_reply.filename);
 
@@ -1728,12 +1729,13 @@ static void ggp_login_to(PurpleAccount *account, uint32_t server)
 	glp->server_addr = server;
 
 	info->session = gg_login(glp);
+	g_free(glp);
+
 	purple_connection_update_progress(gc, _("Connecting"), 0, 2);
 	if (info->session == NULL) {
 		purple_connection_error_reason (gc,
 			PURPLE_CONNECTION_ERROR_NETWORK_ERROR,
 			_("Connection failed"));
-		g_free(glp);
 		return;
 	}
 	gc->inpa = purple_input_add(info->session->fd,
@@ -1921,7 +1923,8 @@ static int ggp_send_im(PurpleConnection *gc, const char *who, const char *msg,
 
 		/* Add text after the images */
 		if(last && *last) {
-			pos = pos + g_utf8_strlen(last, -1);
+			/* this is currently not used, but might be useful later? */
+			/* pos = pos + g_utf8_strlen(last, -1); */
 			g_string_append(string_buffer, last);
 		}
 
@@ -2327,7 +2330,10 @@ static PurplePluginProtocolInfo prpl_info =
 	NULL,				/* set_public_alias */
 	NULL,				/* get_public_alias */
 	NULL,				/* add_buddy_with_invite */
-	NULL				/* add_buddies_with_invite */
+	NULL,				/* add_buddies_with_invite */
+	NULL,				/* get_cb_alias */
+	NULL,				/* chat_can_receive_file */
+	NULL,				/* chat_send_file */
 };
 
 static PurplePluginInfo info = {

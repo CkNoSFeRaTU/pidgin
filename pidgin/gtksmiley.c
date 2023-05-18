@@ -29,6 +29,7 @@
 #include "pidgin.h"
 
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "smiley.h"
 
@@ -716,7 +717,7 @@ smiley_got_url(PurpleUtilFetchUrlData *url_data, gpointer user_data,
 
 	ps = pidgin_smiley_edit(dialog->window, NULL);
 	pidgin_smiley_editor_set_image(ps, image);
-	pidgin_smiley_editor_set_data(ps, g_memdup(smileydata, len), len);
+	pidgin_smiley_editor_set_data(ps, g_memdup2(smileydata, len), len);
 }
 
 static void

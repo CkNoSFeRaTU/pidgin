@@ -390,7 +390,7 @@ int irc_cmd_part(struct irc_conn *irc, const char *cmd, const char *target, cons
 		buf = irc_format(irc, "vc:", "PART", args[0] ? args[0] : target, args[1]);
 	else
 		buf = irc_format(irc, "vc", "PART", args[0] ? args[0] : target);
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 
 	return 0;
@@ -479,7 +479,7 @@ int irc_cmd_quit(struct irc_conn *irc, const char *cmd, const char *target, cons
 		 * decide we want custom quit messages.
 		 */
 		buf = irc_format(irc, "v:", "QUIT", (args && args[0]) ? args[0] : IRC_DEFAULT_QUIT);
-		irc_send(irc, buf);
+		irc_priority_send(irc, buf);
 		g_free(buf);
 
 		irc->quitting = TRUE;

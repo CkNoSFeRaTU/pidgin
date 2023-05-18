@@ -31,6 +31,7 @@
 #include "account.h"
 #include "connection.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "prefs.h"
 #include "pidginstock.h"
 #include "util.h"
@@ -349,8 +350,7 @@ pounce_row_selected_cb(GtkTreeView *tv, GtkTreePath *path,
 		gtk_tree_model_get(GTK_TREE_MODEL(pounce_dialog->treemodel), &iter,
 				PIDGIN_POUNCE_DATA, &pounce_data,
 				-1);
-		g_list_foreach(list, (GFunc)gtk_tree_path_free, NULL);
-		g_list_free(list);
+		g_list_free_full(list, (GDestroyNotify)gtk_tree_path_free);
 
 		pounces = purple_pounces_get_all();
 		for (; pounces != NULL; pounces = pounces->next) {
@@ -482,8 +482,7 @@ searchresults_callback_wrapper_cb(GtkWidget *widget, PidginNotifySearchResultsBu
 
 	button = bd->button;
 	button->callback(purple_account_get_connection(data->account), row, data->user_data);
-	g_list_foreach(row, (GFunc)g_free, NULL);
-	g_list_free(row);
+	g_list_free_full(row, (GDestroyNotify)g_free);
 }
 
 static void *
@@ -725,7 +724,10 @@ pidgin_notify_emails(PurpleConnection *gc, size_t count, gboolean detailed,
 				tmp = g_markup_escape_text(*subjects, -1);
 				subject_text = g_strdup_printf("%s<b>%s</b>: %s", first ? "<br>" : "", _("Subject"), tmp);
 				g_free(tmp);
-				first = FALSE;
+				/* this is a dead assignment, but if you add another row you'll
+				 * need it, so I commented it out for now.
+				 */
+				/* first = FALSE; */
 				subjects++;
 			}
 #define SAFE(x) ((x) ? (x) : "")
@@ -752,7 +754,7 @@ pidgin_notify_emails(PurpleConnection *gc, size_t count, gboolean detailed,
 			notification = g_strdup_printf(ngettext("%s has %d new message.",
 							   "%s has %d new messages.",
 							   (int)count),
-							   *tos, (int)count);
+							   tos != NULL ? *tos : NULL, (int)count);
 			data2 = pidgin_notify_add_mail(mail_dialog->treemodel, account, notification, urls ? *urls : NULL, count, FALSE, &new_data);
 			if (data2 && new_data) {
 				if (data)
@@ -907,11 +909,17 @@ pidgin_notify_searchresults_new_rows(PurpleConnection *gc, PurpleNotifySearchRes
 									   void *data_)
 {
 	PidginNotifySearchResultsData *data = data_;
+	GtkTreeSelection *selection;
 	GtkListStore *model = data->model;
 	GtkTreeIter iter;
 	GdkPixbuf *pixbuf;
 	GList *row, *column;
+	gchar *previous_selection = NULL;
 	guint n;
+
+	selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(data->treeview));
+	if (gtk_tree_selection_get_selected(selection, NULL, &iter))
+		gtk_tree_model_get(GTK_TREE_MODEL(model), &iter, 1, &previous_selection, -1);
 
 	gtk_list_store_clear(data->model);
 
@@ -923,16 +931,32 @@ pidgin_notify_searchresults_new_rows(PurpleConnection *gc, PurpleNotifySearchRes
 		gtk_list_store_set(model, &iter, 0, pixbuf, -1);
 
 		n = 1;
-		for (column = row->data; column != NULL; column = column->next) {
+		column = row->data;
+		/* Select this row, if the first column matches the previously
+		 * selected row OR if there is only one row in the results. */
+		if (!g_strcmp0(previous_selection, column->data) ||
+		    (row == results->rows && !row->next))
+			gtk_tree_selection_select_iter(selection, &iter);
+
+		for (; column != NULL; column = column->next) {
 			GValue v;
 
 			v.g_type = 0;
 			g_value_init(&v, G_TYPE_STRING);
-			g_value_set_string(&v, column->data);
+
+			g_value_set_static_string(&v, column->data);
 			gtk_list_store_set_value(model, &iter, n, &v);
 			n++;
 		}
 	}
+
+	/* The first set of results need to stick around, as we reference
+	 * the buttons from there. But any updates from later calls to
+	 * purple_notify_searchresults_new_rows() must be freed. */
+	if (results != data->results)
+		purple_notify_searchresults_free(results);
+
+	g_free(previous_selection);
 
 	if (pixbuf != NULL)
 		g_object_unref(pixbuf);
@@ -1327,9 +1351,16 @@ pidgin_notify_uri(const char *uri)
 		 * Does Konqueror have options to open in new tab
 		 * and/or current window?
 		 */
+	} else if (purple_strequal(web_browser, "firefox")) {
+		argv = g_slist_append(argv, "firefox");
+		if (place == PIDGIN_BROWSER_NEW_WINDOW) {
+			argv = g_slist_append(argv, "--new-window");
+		} else if (place == PIDGIN_BROWSER_NEW_TAB) {
+			argv = g_slist_append(argv, "--new-tab");
+		}
+		argv = g_slist_append(argv, uri_escaped);
 	} else if (purple_strequal(web_browser, "mozilla") ||
 		purple_strequal(web_browser, "mozilla-firebird") ||
-		purple_strequal(web_browser, "firefox") ||
 		purple_strequal(web_browser, "seamonkey"))
 	{
 		argv = g_slist_append(argv, (gpointer)web_browser);
@@ -1350,20 +1381,6 @@ pidgin_notify_uri(const char *uri)
 		if (uri_custom != NULL) {
 			argv_remote = g_slist_append(argv_remote,
 				(gpointer)web_browser);
-
-			/* Firefox 0.9 and higher require a "-a firefox" option
-			 * when using -remote commands. This breaks older
-			 * versions of mozilla. So we include this other handly
-			 * little string when calling firefox. If the API for
-			 * remote calls changes any more in firefox then firefox
-			 * should probably be split apart from mozilla-firebird
-			 * and mozilla... but this is good for now.
-			 */
-			if (purple_strequal(web_browser, "firefox")) {
-				argv_remote = g_slist_append(argv_remote, "-a");
-				argv_remote = g_slist_append(argv_remote,
-					"firefox");
-			}
 
 			argv_remote = g_slist_append(argv_remote, "-remote");
 			argv_remote = g_slist_append(argv_remote, uri_custom);

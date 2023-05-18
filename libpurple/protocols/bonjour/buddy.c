@@ -22,6 +22,7 @@
 #include "account.h"
 #include "blist.h"
 #include "bonjour.h"
+#include "glibcompat.h"
 #include "mdns_interface.h"
 #include "debug.h"
 
@@ -243,7 +244,7 @@ void bonjour_buddy_got_buddy_icon(BonjourBuddy *buddy, gconstpointer data, gsize
 			  hash, buddy->phsh ? buddy->phsh : "(null)");
 
 	purple_buddy_icons_set_for_user(buddy->account, buddy->name,
-		g_memdup(data, len), len, hash);
+		g_memdup2(data, len), len, hash);
 
 	g_free(hash);
 }

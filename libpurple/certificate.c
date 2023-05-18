@@ -30,6 +30,7 @@
 #include "certificate.h"
 #include "dbus-maybe.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "request.h"
 #include "signals.h"
 #include "util.h"
@@ -957,8 +958,7 @@ x509_ca_uninit(void)
 	x509_ca_certs = NULL;
 	x509_ca_initialized = FALSE;
 	/** TODO: the cert store in the SSL implementation wouldn't be cleared by this */
-	g_list_foreach(x509_ca_paths, (GFunc)g_free, NULL);
-	g_list_free(x509_ca_paths);
+	g_list_free_full(x509_ca_paths, (GDestroyNotify)g_free);
 	x509_ca_paths = NULL;
 }
 
@@ -1796,8 +1796,7 @@ x509_tls_cached_unknown_peer(PurpleCertificateVerificationRequest *vrq,
 	if (valid == FALSE)
 		flags |= PURPLE_CERTIFICATE_INVALID_CHAIN;
 
-	g_slist_foreach(ca_crts, (GFunc)purple_certificate_destroy, NULL);
-	g_slist_free(ca_crts);
+	g_slist_free_full(ca_crts, (GDestroyNotify)purple_certificate_destroy);
 	g_byte_array_free(last_fpr, TRUE);
 
 	x509_tls_cached_check_subject_name(vrq, flags);

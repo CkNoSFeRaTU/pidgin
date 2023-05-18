@@ -201,11 +201,9 @@ EMOTES_SMALL_16_SCALABLE = \
 		emotes/small/16/scalable/pidgin-emotes.svg
 
 PROTOCOLS_16_SCALABLE = \
-		protocols/16/scalable/aim.svg \
 		protocols/16/scalable/bonjour.svg \
 		protocols/16/scalable/gadu-gadu.svg \
 		protocols/16/scalable/novell.svg \
-		protocols/16/scalable/icq.svg \
 		protocols/16/scalable/irc.svg \
 		protocols/16/scalable/jabber.svg \
 		protocols/16/scalable/meanwhile.svg \
@@ -214,13 +212,11 @@ PROTOCOLS_16_SCALABLE = \
 		protocols/16/scalable/zephyr.svg
 
 PROTOCOLS_16 = \
-		protocols/16/aim.png \
 		protocols/16/bonjour.png \
 		protocols/16/facebook.png \
 		protocols/16/gadu-gadu.png \
 		protocols/16/google-talk.png \
 		protocols/16/novell.png \
-		protocols/16/icq.png \
 		protocols/16/irc.png \
 		protocols/16/jabber.png \
 		protocols/16/meanwhile.png \
@@ -250,11 +246,9 @@ ICONS_48 = icons/hicolor/48x48/apps/pidgin.png
 ICONS_SCALABLE = icons/hicolor/scalable/apps/pidgin.svg
 
 PROTOCOLS_22_SCALABLE = \
-		protocols/22/scalable/aim.svg \
 		protocols/22/scalable/bonjour.svg \
 		protocols/22/scalable/gadu-gadu.svg \
 		protocols/22/scalable/novell.svg \
-		protocols/22/scalable/icq.svg \
 		protocols/22/scalable/irc.svg \
 		protocols/22/scalable/jabber.svg \
 		protocols/22/scalable/meanwhile.svg \
@@ -263,13 +257,11 @@ PROTOCOLS_22_SCALABLE = \
 		protocols/22/scalable/zephyr.svg
 
 PROTOCOLS_22 = \
-		protocols/22/aim.png \
 		protocols/22/bonjour.png \
 		protocols/22/facebook.png \
 		protocols/22/gadu-gadu.png \
 		protocols/22/google-talk.png \
 		protocols/22/novell.png \
-		protocols/22/icq.png \
 		protocols/22/irc.png \
 		protocols/22/jabber.png \
 		protocols/22/meanwhile.png \
@@ -278,12 +270,10 @@ PROTOCOLS_22 = \
 		protocols/22/zephyr.png
 
 PROTOCOLS_48 = \
-		protocols/48/aim.png \
 		protocols/48/bonjour.png \
 		protocols/48/facebook.png \
 		protocols/48/gadu-gadu.png \
 		protocols/48/novell.png \
-		protocols/48/icq.png \
 		protocols/48/irc.png \
 		protocols/48/jabber.png \
 		protocols/48/meanwhile.png \
@@ -292,12 +282,10 @@ PROTOCOLS_48 = \
 		protocols/48/zephyr.png
 
 PROTOCOLS_SCALABLE = \
-		protocols/scalable/aim.svg \
 		protocols/scalable/bonjour.svg \
 		protocols/scalable/gadu-gadu.svg \
 		protocols/scalable/google-talk.svg \
 		protocols/scalable/novell.svg \
-		protocols/scalable/icq.svg \
 		protocols/scalable/irc.svg \
 		protocols/scalable/jabber.svg \
 		protocols/scalable/meanwhile.svg \

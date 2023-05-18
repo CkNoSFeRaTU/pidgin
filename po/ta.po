@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:26+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: I Felix <ifelix@redhat.com>, 2010\n"
 "Language-Team: Tamil (http://www.transifex.com/pidgin/pidgin/language/ta/)\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
@@ -1791,7 +1791,6 @@ msgstr "+++ %s நுழைந்துள்ளார்"
 msgid "+++ %s signed off"
 msgstr "+++ %s வெளியேறிவிட்டார்"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "தெரியாத பிழை"
 
@@ -1807,6 +1806,10 @@ msgstr "தகவல் மிக நீளமாக உள்ளது."
 
 msgid "Unable to send message."
 msgstr "தகவல் அனுப்ப இயலவில்லை."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "செய்தியை அனுப்பு"
@@ -2147,19 +2150,15 @@ msgstr "எக்ஸ்எம்எல்"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr ""
@@ -2226,6 +2225,42 @@ msgstr "கலந்துரையாடல் பிழை"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "அமர்வு உருவாக்குவதில் பிழை: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "செயல்நீக்கு"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2769,7 +2804,7 @@ msgstr "உள்வரும் உரையாடலுக்கு உளவ�
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3363,7 +3398,16 @@ msgstr "எஸ்எஸ்எல் பயன்படுத்து"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3832,37 +3876,6 @@ msgstr "SASL அங்கீகரிக்க முடியவில்லை
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL பிழை: %s"
-
-msgid "Invalid Encoding"
-msgstr ""
-
-msgid "Unsupported Extension"
-msgstr ""
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr ""
-
-msgid "User not found"
-msgstr "பயனாளர் காணப்படவில்லை"
-
-msgid "Invalid Username Encoding"
-msgstr ""
-
-msgid "Resource Constraint"
-msgstr "வளம் பற்றாமை"
 
 msgid "Unable to canonicalize username"
 msgstr "பயனர்பெயரை வரையறுக்க முடியவில்லை"
@@ -4441,6 +4454,9 @@ msgstr "செல்லாத உரிமையாக்கல் நிகழ�
 msgid "Authorization mechanism too weak"
 msgstr "உரிமையாக்கல் நிகழ் முறை மிக ஆரோக்கியமற்றுள்ளது"
 
+msgid "Incorrect username or password"
+msgstr "தவறான பயனர்பெயர் அல்லது கடவுச்சொல்"
+
 msgid "Temporary Authentication Failure"
 msgstr "தற்காலிக உரிமையாக்கல் தவறல்"
 
@@ -4485,6 +4501,9 @@ msgstr "சாசன மீறல்"
 
 msgid "Remote Connection Failed"
 msgstr "தொலைவு இணைப்பு தவறியது"
+
+msgid "Resource Constraint"
+msgstr "வளம் பற்றாமை"
 
 msgid "Restricted XML"
 msgstr "தடைசெய்யப்பட்ட எக்ஸ்எம்எல்"
@@ -4807,6 +4826,19 @@ msgstr "%s க்கு கோப்பை அனுப்ப முடியவ
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "நீங்கள் ஒரு கோப்பை அனுப்ப விரும்பிய %sக்கு மறுதீர்வை தேர்ந்தெடு"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr ""
 
@@ -5026,7 +5058,6 @@ msgstr ""
 msgid "Sick"
 msgstr "நோயுற்ற"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "தூக்க கலக்கம்"
 
@@ -5115,6 +5146,9 @@ msgstr "கடவுச்சொல் காலம் முடிந்தத�
 msgid "Incorrect password"
 msgstr "தவறான கடவுச்சொல்"
 
+msgid "User not found"
+msgstr "பயனாளர் காணப்படவில்லை"
+
 msgid "Account has been disabled"
 msgstr "கணக்கு செயலிழக்கப்பட்டது"
 
@@ -5135,9 +5169,6 @@ msgstr "உங்களை நீங்களே சேர்க்க இயல
 
 msgid "Master archive is misconfigured"
 msgstr "முதன்மைப் பெட்டகம் தவறாக வரையறுக்கப்பட்டுள்ளது"
-
-msgid "Incorrect username or password"
-msgstr "தவறான பயனர்பெயர் அல்லது கடவுச்சொல்"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "நீங்கள் உள்ளிட்ட பயனர் பெயருக்கான புரவலனை அடையாளம் காண முடியவில்லை"
@@ -5352,1192 +5383,6 @@ msgstr "சேவையகம் முகவரி"
 
 msgid "Server port"
 msgstr "சேவையகம் தளம்"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "உங்களை என் நண்பர்கள் பட்டியலில் சேர்க்க எனக்கு அனுமதி தாருங்கள்."
-
-msgid "No reason given."
-msgstr "காரணம் கொடுக்கப்படவில்லை."
-
-msgid "Authorization Denied Message:"
-msgstr "அனுமதி மறுத்தல் தகவல்:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "சரி (_O)"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "%sஇலிருந்து எதிர்பாராத பதில் கிடைத்தது: %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "%s லிருந்து எதிர்பாராத பதில் பெறப்பட்டது"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"நீங்கள் அடிக்கடி இணைப்பை பெற்று மற்றும் துண்டித்துள்ளீர்கள். பத்து நிமிடங்கள் பொறுத்து மீண்டும் "
-"தொடங்கவும். தொடர்ந்து முயன்றால் மேலும் அதிக நேரம் காக்க வேண்டியிருக்கும்."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "பிழையை கோரும் %s: %s"
-
-msgid "The server returned an empty response"
-msgstr ""
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"உள்நுழைய ஒரு CAPTCHAஐ நிரப்ப கோரப்படுகிறது, ஆனால் இந்த கிளையன் தற்போது "
-"CAPTCHAகளுக்கு துணைபுரியவில்லை."
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL ஆனது உங்கள் திரையில் பெயரை இங்கே அங்கீகரிக்க அனுமதிக்கவில்லை"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(இந்த செய்தியை பெறுவதில் ஒரு பிழை.  நண்பர் ஒரு  வேறுபட்ட மறைகுறியாக்க மட்டுமின்றி "
-"எதிர்பார்த்துடன் அநேகமாய் பேசுகிறது.  உங்களுக்கு எந்த மறைகுறியாக்கத்துடன் நீங்கள் பயன்படுத்த "
-"தெரிந்தால், கூடுதல் கணக்கு விருப்பங்களான உங்கள் AIM/ICQ கணக்கை நீங்கள் குறிப்பிடலாம்.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(இந்த செய்தியை பெறுவதில் அங்கே ஒரு பிழை.  நீங்கள் %s பல்வேறு மறைகுறி இரண்டையும் "
-"தேர்ந்தெடுக்கிறது, அல்லது %s ஒரு பிழையான க்ளையன்ட் பெற்றுள்ளது.)"
-
-msgid "Could not join chat room"
-msgstr "அரட்டை அறையில் சேர்க்க முடியவில்லை"
-
-msgid "Invalid chat room name"
-msgstr "தவறான அரட்டை அறைப்பெயர்"
-
-msgid "Invalid error"
-msgstr "செல்லுபடியாகாத பிழை"
-
-msgid "Not logged in"
-msgstr "நுழைந்திருக்கவில்லை"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "IM ஐ உருக்கமான கட்டுபாடுகளால் பெற முடியவில்லை "
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "ஏற்றக் கொள்ளும் நிபந்தனைகள் இல்லாமல் SMSஐ அனுப்ப முடியவில்லை"
-
-msgid "Cannot send SMS"
-msgstr "SMSஐ அனுப்ப முடியவில்லை"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "இந்த நாட்டிற்கு SMS ஐ அனுப்ப முடியவில்லை"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "தெரியாத நாட்டிற்கு SMS ஐ அனுப்ப முடியவில்லை"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "பாட் கணக்குகளை IMsல் துவக்க முடியவில்லை"
-
-msgid "Bot account cannot IM this user"
-msgstr "பாட் கணக்கை IM இந்த பயனராக்க முடியவில்லை"
-
-msgid "Bot account reached IM limit"
-msgstr "பாட் கணக்கு IM வரம்பை பெற்றது"
-
-msgid "Bot account reached daily IM limit"
-msgstr "தினந்தோறும் IM வரம்பு பாட் கணக்கை பெற்றது"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "மாதந்நோறும் IM வரம்பிற்கு பாட் கணக்கை பெறுகிறது"
-
-msgid "Unable to receive offline messages"
-msgstr "ஆஃப்லைன் செய்திகளை பெற முடியவில்லை"
-
-msgid "Offline message store full"
-msgstr "ஆஃப்லைன் செய்தி சேமிப்பகம் நிரம்பியது"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "செய்தியை அனுப்ப முடியவில்லை: %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "செய்திகளை அனுப்ப முடியவில்லை: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "%sக்கு செய்தியை அனுப்ப முடியவில்லை: %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "%s க்கு செய்தியை அனுப்ப முடியவில்லை: %s"
-
-msgid "Thinking"
-msgstr ""
-
-msgid "Shopping"
-msgstr ""
-
-msgid "Questioning"
-msgstr ""
-
-msgid "Eating"
-msgstr ""
-
-msgid "Watching a movie"
-msgstr ""
-
-msgid "Typing"
-msgstr "தட்டச்சிடல்"
-
-msgid "At the office"
-msgstr ""
-
-msgid "Taking a bath"
-msgstr ""
-
-msgid "Watching TV"
-msgstr ""
-
-msgid "Having fun"
-msgstr ""
-
-msgid "Sleeping"
-msgstr ""
-
-msgid "Using a PDA"
-msgstr ""
-
-msgid "Meeting friends"
-msgstr ""
-
-msgid "On the phone"
-msgstr ""
-
-msgid "Surfing"
-msgstr ""
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "அலை பேசி"
-
-msgid "Searching the web"
-msgstr ""
-
-msgid "At a party"
-msgstr ""
-
-msgid "Having Coffee"
-msgstr ""
-
-#. Playing video games
-msgid "Gaming"
-msgstr ""
-
-msgid "Browsing the web"
-msgstr ""
-
-msgid "Smoking"
-msgstr ""
-
-msgid "Writing"
-msgstr ""
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr ""
-
-msgid "Listening to music"
-msgstr "இசையை கவனிக்கிறது"
-
-msgid "Studying"
-msgstr ""
-
-msgid "Working"
-msgstr "பணிபுரிகிறது"
-
-msgid "In the restroom"
-msgstr ""
-
-msgid "Received invalid data on connection with server"
-msgstr "சேவையகத்துடன் இணைப்பில் தவறான தரவு பெறப்பட்டது"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM நெறிமுறை சொருகுபொருள்"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ நெறிமுறை சொருகுபொருள்"
-
-msgid "Encoding"
-msgstr "குறிமுறையாக்கம்"
-
-msgid "The remote user has closed the connection."
-msgstr "தொலை பயனர் இணைப்பை முடித்துவிட்டார்."
-
-msgid "The remote user has declined your request."
-msgstr "அந்த தொலை பயனர் உங்கள் கோரிக்கையை மறுக்கிறது."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "தொலை பயனருடன் இணைப்பு தொலைக்கப்பட்டது:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "தொலை பயனருடன் இணைப்பில் தவறான தரவு பெறப்பட்டது."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "தொலை பயனருக்கு ஒரு இணைப்பை நிறுவ முடியவில்லை."
-
-msgid "Direct IM established"
-msgstr "நேரடி IM நிறுவுகிறது"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s ஆனது உங்களுக்கு ஒரு %s கோப்பை அனுப்ப முயற்சிக்கிறது, ஆனால் நாம் %s கோப்புகள் வரை "
-"அனுமதிப்போம் நேரடி IMக்கு மேல்.  கோப்பு இடமாற்றத்திற்கு பதிலாக பயன்படுத்த "
-"முயற்சிக்கிறது.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "%s கோப்பானது %s, அதிகபட்ச அளவான %sஐ விட அதிகமாக உள்ளது."
-
-msgid "Free For Chat"
-msgstr "அரட்டைக்குத் தயார்"
-
-msgid "Not Available"
-msgstr "கிடைக்கவில்லை"
-
-msgid "Occupied"
-msgstr "வேலையாக உள்ளார்"
-
-msgid "Web Aware"
-msgstr "வலை உணர்வுள்ள"
-
-msgid "Invisible"
-msgstr "காணமுடியாத"
-
-msgid "Evil"
-msgstr ""
-
-msgid "Depression"
-msgstr ""
-
-msgid "At home"
-msgstr ""
-
-msgid "At work"
-msgstr ""
-
-msgid "At lunch"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "அங்கீகரிக்கப்பட்ட சேவையகத்தை இணைக்க முடியவில்லை: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "BOS சேவையகத்தை இணைக்க முடியவில்லை: %s"
-
-msgid "Username sent"
-msgstr "பயனர்பெயர் அனுப்பப்பட்டது"
-
-msgid "Connection established, cookie sent"
-msgstr "இணைக்கப் பட்டது. அடையாளக்குறி (குக்கி) அனுப்பப் பட்டது."
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "இணைப்பை உறுதிப்படுத்துகிறது"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"%s ஆக உள்நுழையமுடியவில்லை ஏனெனில் பயனர்பெயர் தவறானது.  பயனர்பெயர்கள் ஒரு சரியான "
-"மின்னஞ்சல் முகவரியை பெற்றிருக்க வேண்டும், அல்லது எழுத்துக்கள் மட்டும் உள்ள ஒரு எழுத்து, "
-"எண்கள் மற்றும் இடைவெளிகள், அல்லது எண்களை மட்டும் பெற்றுள்ளதுடன் துவக்கவும்."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"நீங்கள் கூடிய விரைவில் துண்டிக்கப்படலாம்.  அப்படி இருப்பின், %s கான மைம்படுத்தல்களை சரிபார்."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "சரியான AIM நுழைவு hash ஐ பெற முடியவில்லை."
-
-msgid "Unable to get a valid login hash."
-msgstr "சரியான நுழைவு hash ஐ பெற முடியவில்லை."
-
-msgid "Received authorization"
-msgstr "அதிகாரம் வழங்கப் பட்டது"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "பயனர் பெயர் உள்ளிருக்கவில்லை"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "உங்கள் கணக்கு தற்காலிகமாக நிறுத்தி வைக்கப்பட்டது"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "ஏஓஎல் விரைவு தூதன் சேவை தற்காலிகமாக இல்லை."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"உங்கள் பயனர்பெயர் அடிக்கடி இணைப்பை பெற்று துண்டிக்கப்படலாம். பத்து நிமிடங்கள் பொறுத்து "
-"மீண்டும் தொடங்கவும். தொடர்ந்து முயன்றால், மேலும் அதிக நேரம் காத்திருக்க வேண்டியிருக்கும்."
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-"நீங்கள் பயன் படுத்தும் சேவைப் பயனாளி நிரலின் வடிவ நிலை மிகப்பழையது. இவ்விடத்தில் மேம் "
-"படுத்தவும்.%s"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"உங்கள்  IP அடிக்கடி இணைப்பை பெற்று துண்டிக்கப்படலாம். ஒரு நிமிடம் பொறுத்து மீண்டும் "
-"தொடங்கவும். தொடர்ந்து முயன்றால், மேலும் அதிக நேரம் காத்திருக்க வேண்டியிருக்கும்."
-
-msgid "The SecurID key entered is invalid"
-msgstr "உள்ளிடப் பட்ட SecurID விசை தவறானது"
-
-msgid "Enter SecurID"
-msgstr "(SecurID) எண்ணை கொடுக்கவும்"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "காண்பிக்கப்படும் ஆறு இலக்க எண்ணை உள்ளிடவும்."
-
-msgid "Password sent"
-msgstr "கடவுச்சொல் அனுப்பப்பட்டது"
-
-msgid "Unable to initialize connection"
-msgstr "இணைப்பை துவக்க முடியவில்லை"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"பயனர் %u பட்டியலில் சேர்க்க நீங்கள் கோரிய அனுமதியை பின்வரும் காரணத்திற்காக மறுத்துள்ளார்.:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ஐசீக்யூ அனுமதி மறுக்கப் பட்டது."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr "பயனர் %u பட்டியலில் சேர்க்க நீங்கள் கோரிய அனுமதியை கொடுத்துள்ளார்."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"உங்களுக்கு ஒரு சிறப்புச் செய்தி வந்துள்ளது\n"
-"\n"
-"அனுப்புனர்: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"உங்களுக்கு ஒரு ஐசிக்யூ அழைப்பு வந்துள்ளது\n"
-"\n"
-"அனுப்புனர்: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"உங்களுக்கு ஒரு ஐசிக்யூ மின்னஞ்சல் வந்துள்ளது\n"
-"\n"
-"செய்தி: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ஐசிக்யூ பயனர் %u உங்களுக்கு ஒரு நண்பரை அனுப்பியுள்ளார்: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "இந்த நண்பரை உங்கள் நண்பர் பட்டியலில் சேர்க்கவா?"
-
-msgid "_Add"
-msgstr "_ச சேர்க்கவும்"
-
-msgid "_Decline"
-msgstr "நிராகரி (_D)"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "செல்லுபடியற்றதால் நீங்கள் %hu செய்தியை  %s லிருந்து இழந்தீர்கள் "
-msgstr[1] "செல்லுபடியற்றதால் நீங்கள் %hu செய்திகளை  %s லிருந்து இழந்தீர்கள் "
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "மிகப் பெரியதாக இருந்ததால் நீங்கள் %hu செய்தியை  %s லிருந்து இழந்தீர்கள் "
-msgstr[1] "மிகப் பெரியதாக இருந்ததால் நீங்கள் %hu செய்திகளை %s லிருந்து இழந்தீர்கள் "
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] "மிக வேகமாக இருந்ததால் நீங்கள் %hu செய்தியை  %s லிருந்து இழந்தீர்கள்"
-msgstr[1] "மிக வேகமாக இருந்ததால் நீங்கள் %hu செய்திபளை  %s லிருந்து இழந்தீர்கள்"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"நீங்கள் விடுப்பட்ட %hu செய்தியை %sஇலிருந்து பெற்றீர்கள் ஏனெனில் அவர்களுக்கு எச்சரிக்கை நிலை "
-"மிக அதிகம்."
-msgstr[1] ""
-"நீங்கள் விடுப்பட்ட %hu செய்திகளை %sஇலிருந்து பெற்றீர்கள் ஏனெனில் அவர்களுக்கு எச்சரிக்கை நிலை "
-"மிக அதிகம்."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"நீங்கள் %hu செய்திகளை %s இலிருந்து விட்டுவிட்டீர்கள் ஏனெனில் உங்கள் எச்சரிக்கை நிலை மிக "
-"அதிகம்."
-msgstr[1] ""
-"நீங்கள் %hu செய்தியை %s இலிருந்து விட்டுவிட்டீர்கள் ஏனெனில் உங்கள் எச்சரிக்கை நிலை மிக "
-"அதிகம்."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "தெரியாத காரணத்தால் நீங்கள் %hu செய்தியை %s இலிருந்து விட்டுவிட்டீர்கள்."
-msgstr[1] "தெரியாத காரணத்தால் நீங்கள் %hu செய்திகளை %s இலிருந்து விட்டுவிட்டீர்கள்."
-
-msgid "Your AIM connection may be lost."
-msgstr "உங்கள் ஏஐஎம் இணைப்பு அறுபட்டது போல உள்ளது."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "நீங்கள் இந்த அரட்டை அறையிலிருந்து இணப்பு நீக்கப்பட்டீர்கள் %s."
-
-msgid "The new formatting is invalid."
-msgstr "இந்த புதிய வடிவமைப்பு செல்லுபடியாகாதது"
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr "பயனர்பெயர் வடிவமைப்பால் சிறப்பானைவைகள் மற்றும் வெற்று இடங்களை மட்டுமே மாற்ற இயலும்."
-
-msgid "Pop-Up Message"
-msgstr "துள்ளு தகவல்"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "பின்வரும் பயனர் பெயர் %sஉடன் தொடர்புடையவர்"
-msgstr[1] "பின்வரும் பயனர் பெயர்கள் %sஉடன் தொடர்புடையவர்கள்"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "மின்னஞ்சல் %s க்கு எந்த முடிவும் இல்லை"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "%s ஐ உறுதி செய்யக்கோரி உங்களுக்கு மின்அஞ்சல் வரும்."
-
-msgid "Account Confirmation Requested"
-msgstr "கணக்கு உறுதியாக்கல் கோரிக்கை"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"பிழை 0x%04x: பயனர்பெயரை வடிவமைக்க முடியவில்லை ஏனென்றால் கோரப்பட்ட பெயர் இயல்பானதை "
-"விட்டு மாறுபடுகிறது ."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr "பிழை 0x%04x: பயனர்பெயரை வடிவமைக்க முடியவில்லை ஏனென்றால் அது தவறானது."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"பிழை 0x%04x: பயனர்பெயரை வடிவமைக்க முடியவில்லை ஏனென்றால் கோரப்பட்ட பெயர் மிக நீளமாக "
-"உள்ளது."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"பிழை 0x%04x: மின்னஞ்சல் முகவரியை மாற்ற முடியவில்லை ஏனென்றால் இந்த பயனர்பெயருக்கு "
-"ஏற்கனவே ஒரு கோரிக்கை கிடப்பில் உள்ளது."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"பிழை 0x%04x: மின்னஞ்சல் முகவரியை மாற்ற முடியவில்லை ஏனென்றால் பொடுக்கப்பட்ட "
-"முகவரிகளுக்கு நிறைய  பயனர்பெயர்களுடன் சேர்ந்து உள்ளது."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr "பிழை 0x%04x: மின்னஞ்சலை மாற்ற இயலவில்லை ஏனென்றால் அந்த முகவரி செல்லாதது."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "பிழை0x%04x:  தெரியாத.பிழை."
-
-msgid "Error Changing Account Info"
-msgstr "கணக்குத் தகவல் மாற்றுவதில் பிழை"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "%s யின் மின்அஞ்சல் முகவரி %s"
-
-msgid "Account Info"
-msgstr "கணக்குத் தகவல்"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"உங்களது ஐஎம் பிம்பம் அனுப்பப்படவில்லை.  ஐஎம் பிம்பங்களை அனுப்ப நீங்கள் நேரடி இணைப்புடன் "
-"இருக்கவேண்டும்."
-
-msgid "Unable to set AIM profile."
-msgstr "எய்ம் வரிவடிவத்தை அமைக்க இயலவில்லை"
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"நீங்கள் உள்நுழையும் நடவடிக்கை முடியு முன் உங்கள் விவரக்குறிப்பு அமைக்கும்படி "
-"கேட்டிருக்கலாம். உங்கள்  விவரக்குறிப்பு இன்னும் அமைக்கப் படாமல் உள்ளது. நீங்கள் முழுதும் "
-"இணக்கப் படு முன் அதை அமைக்க முயற்சிக்கவும்."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"அதிகபட்ச  விவரக்குறிப்பு நீளமான %d பைட்டை தாண்டியது.  இது உங்களுக்கு வெட்டப்பட்டது."
-msgstr[1] ""
-"அதிகபட்ச  விவரக்குறிப்பு நீளமான %d பைட்களை தாண்டியது.  இது உங்களுக்கு வெட்டப்பட்டது."
-
-msgid "Profile too long."
-msgstr "மிக நீண்ட விவரக்குறிப்பு "
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"அதிகபட்ச வெளியேறும் செய்தி நீளம் %d பைட்டை தாண்டியது. இது உங்களுக்கு வெட்டப்பட்டது. "
-msgstr[1] ""
-"அதிகபட்ச வெளியேறும் செய்தி நீளம் %d பைட்களை தாண்டியது. இது உங்களுக்கு வெட்டப்பட்டது. "
-
-msgid "Away message too long."
-msgstr "வெளிச்செல் தகவல் மிக நீளமாக உள்ளது."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"நண்பர் %s ஐ சேர்க்க முடியவில்லை ஏனெனில் பயனர்பெயர் தவறானது. பயனர்பெயர்கள் ஒரு சரியான "
-"மின்னஞ்சல் முகவரியாக வேண்டும், அல்லது ஒரு எழுத்தில் ஆரம்பித்து ஒரு எழுத்தை பெற்றிருக்க "
-"வேண்டும், எண்கள் மற்றும் இடைவெளிகள், அல்லது எண்களை மட்டும் பெற்றிருக்க வேண்டும்."
-
-msgid "Unable to Add"
-msgstr "சேர்க்க முடியவில்லை"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "நண்பர் பட்டியலை திரும்ப எடுக்க முடியவில்லை"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM சேவையகத்தில் இருந்து நண்பர் பட்டியலை தற்காலிகமாக அனுப்ப முடியவில்லை. உங்களது நண்பர் "
-"பட்டியல் தொலைக்கப்படவில்லை, மற்றும் அநேகமாக சில நிமிடங்களில் அது கிடைக்கும்."
-
-msgid "Orphans"
-msgstr "அனாதைவரிகள்"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"உங்கள் நண்பர் பட்டியலில் மிகப் பலர் இருப்பதால் நண்பர் %s ஐ  பட்டியலில் சேர்க்க முடியவில்லை. "
-"ஏதேனும் ஒன்றை நீக்கி விட்டு முயற்சிக்கவும்."
-
-msgid "(no name)"
-msgstr "(பெயரற்றது)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "ஒரு தெரியாத காரணத்தினால் நண்பர் %s ஐ சேர்க்க முடியவில்லை."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"பயனர் %s உங்களுக்கு உங்கள் நண்பர் பட்டியலில் அவன் அல்லது அவளை சேர்க்க அனுமதித்துள்ளார்.  இந்த "
-"பயனரை சேர்க்க விரும்புகிறீர்களா?"
-
-msgid "Authorization Given"
-msgstr "அனுமதிக்கப்பட்ட பெயர்"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr "பயனர் %s தம்மை உங்கள் நண்பர் பட்டியலில் சேர்க்க இசைந்துள்ளனர்."
-
-msgid "Authorization Granted"
-msgstr "அனுமதி தரப் பட்டது"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"பயனர் %s தம்மை உங்கள் நண்பர் பட்டியலில் சேர்க்கும் கோரிக்கையை கீழ் கண்ட காரணத்துக்காக "
-"நிராகரித்தார் :\n"
-"%s "
-
-msgid "Authorization Denied"
-msgstr "அனுமதி மறுக்கப் பட்டது"
-
-msgid "_Exchange:"
-msgstr "பரிமாற்றம் (_E):"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"உங்களது ஐஎம் பிம்பம் அனுப்பப்படவில்லை. நீங்கள் ஏஐஎம் அரட்டையில் ஐஎம் பிம்பங்களை அனுப்ப இயலாது."
-
-msgid "iTunes Music Store Link"
-msgstr "iடியூன்கள் மியூசிக் சேகரிப்பு இணைப்பு"
-
-msgid "Lunch"
-msgstr ""
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "%s க்கு நண்பர் குறிப்பு"
-
-msgid "Buddy Comment:"
-msgstr "நண்பர் குறிப்பு:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "%s உடன் நேரடி ஐஎம் இணைப்பை திறக்க நீங்கள் தேர்ந்துள்ளீர்கள்."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"இது உங்கள் IP முகவரியை காட்டுவதால், இது உங்கள் பாதுகாப்பிற்கு ஆபத்தானதாகும். நீங்கள் தொடர "
-"விரும்புகிறீர்களா?"
-
-msgid "C_onnect"
-msgstr "இணை (_o)"
-
-msgid "You closed the connection."
-msgstr "இந்த இணைப்பை மூடிவிட்டீர்கள்."
-
-msgid "Get AIM Info"
-msgstr "AIM தகவலை பெறவும்"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "நண்பர் குறிப்பை திருத்து"
-
-msgid "Get X-Status Msg"
-msgstr ""
-
-msgid "End Direct IM Session"
-msgstr "முடிவு நேரடி IM அமர்வு"
-
-msgid "Direct IM"
-msgstr "நேரடி ஐஎம்"
-
-msgid "Re-request Authorization"
-msgstr "உரிமையாக்கலை (மீண்டும்-)கோருக"
-
-msgid "Require authorization"
-msgstr "உரிமையாக்கல் தேவை"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "வலையுணர்வு (இதை செயல் படுத்தினால் உங்களுக்கு எறிதல் [ஸ்பாம்] வரத்துவங்கும்!)"
-
-msgid "ICQ Privacy Options"
-msgstr "ஐசிக்யூ தனிமை விருப்பங்கள்"
-
-msgid "Change Address To:"
-msgstr "மாற்றவேண்டிய முகவரி:"
-
-msgid "you are not waiting for authorization"
-msgstr ""
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "நீங்கள் பின்வரும் நண்பர்களிடமிருந்து அனுமதிக்கு காத்திருக்கிறீர்கள்"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"நீங்கள் இந்த நண்பர்களிடமிருந்து அனுமதியை மீண்டும் கோரலாம். அதற்கு வலது சொடுக்கி  \"அனுமதி "
-"மீண்டும் கோருக.\" ஐ தேர்வு செய்யவும்."
-
-msgid "Find Buddy by Email"
-msgstr "தோழரை மின்னஞ்சல் கொண்டு தேடு"
-
-msgid "Search for a buddy by email address"
-msgstr "மின்னஞ்சல் முகவரி மூலம் தோழரை தேடு"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "நீங்கள் தேடும் நண்பரின் மின்னஞ்சல் முகவரியை கொடுக்கவும்.."
-
-msgid "_Search"
-msgstr "தேடு (_S)"
-
-msgid "Set User Info (web)..."
-msgstr "பயனர் தகவலை அமை (வெப் )..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "கடவுச்சொல்லை மாற்று (வெப்)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "IM முன்னேறுவதை கட்டமை (இணயம்)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "ஐசீக்யூ அந்தரங்க விருப்பங்கள்"
-
-msgid "Show Visible List"
-msgstr ""
-
-msgid "Show Invisible List"
-msgstr ""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "கணக்கை உறுதிப்படுத்து"
-
-msgid "Display Currently Registered Email Address"
-msgstr "தற்போதைய பதிவுசெய்த மின்னஞ்சல் முகவரிகளை காட்டு"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "தற்போது பதிவு செய்யப்பட்ட மின்னஞ்சல் முகவரிகளை மாற்று..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "உறுதியாக்கலுக்கு காத்திருக்கும் நண்பர்களை காட்டு"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "நண்பருக்கான மின்னஞ்சல் முகவரியின் படி தேடவும்..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"AIM/ICQ ப்ராக்ஸி சேவையகத்திற்கான எப்போதும் பயன்படுத்து\n"
-"கோப்பு இடமாற்றங்கள் மற்றும் நேரடி IM (மெதுவான,\n"
-"உங்களது IP முகவரியை வெளிப்படுத்தவில்லை)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "பல சமகால நிகழ்வுகள் உட்புகுகளை அனுமதி"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "நேரடி ஐஎம் க்காக  %s ஐ %s:%hu இல் நம்முடன் இணைக்க கோருகிறது."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "%sக்கு இணைக்க முயற்சிக்கிறது:%hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "ப்ராக்ஸி சேவையகத்துடன் இணைக்க முயற்சிக்கிறது."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s இப்போதுதான் நேரடியாக %s க்கு இணைக்கும் படி கேட்டார்."
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"இதற்கு இரண்டு கணினிகளுடன் நேரடி இணைப்பு தேவைப்படுகிறது மற்றும் ஐஎம் பிம்பங்களுக்கு இது "
-"தேவை. ஏனென்றால் உங்களது ஐபி முகவரி வெளிப்பட்டது, இது ஒரு பாதுகாப்பு பிரச்னையாக "
-"கருதப்படுகிறது."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "நண்பர் குறும்படம்"
-
-msgid "Voice"
-msgstr "குரல்"
-
-msgid "AIM Direct IM"
-msgstr "ஐஎம் நேரடி ஐஎம்"
-
-msgid "Get File"
-msgstr "கோப்பை கொண்டு வருக"
-
-msgid "Games"
-msgstr ""
-
-msgid "ICQ Xtraz"
-msgstr ""
-
-msgid "Add-Ins"
-msgstr "Add-Ins (சேர்ப்புகள்)"
-
-msgid "Send Buddy List"
-msgstr "நண்பர் பட்டியலை அனுப்பு"
-
-msgid "ICQ Direct Connect"
-msgstr "ஐசீக்யூ நேர் இணைப்பு"
-
-msgid "AP User"
-msgstr "ஏபி பயனாளர் "
-
-msgid "ICQ RTF"
-msgstr "ஐசீக்யூ வடிவமைத்த உரை"
-
-msgid "Nihilist"
-msgstr "புரட்சியாளர்"
-
-msgid "ICQ Server Relay"
-msgstr "ஐசிக்யூ சேவையக ஒளிபரப்பு"
-
-msgid "Old ICQ UTF8"
-msgstr "பழைய ஐசீக்யூ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "ட்ரில்லியன் ரகசியமாக்கல்"
-
-msgid "ICQ UTF8"
-msgstr "ஐசீக்யூ யுடிஎப்8"
-
-msgid "Hiptop"
-msgstr "ஹிப்டாப்"
-
-msgid "Security Enabled"
-msgstr "பாதுகாப்பு செயலாக்கப்பட்டது"
-
-msgid "Video Chat"
-msgstr "வீடியோ அரட்டை"
-
-msgid "iChat AV"
-msgstr "ஐசாட் ஏவி"
-
-msgid "Live Video"
-msgstr "நிகழ் ஒளித்தோற்றம்"
-
-msgid "Camera"
-msgstr "காமிரா"
-
-msgid "Screen Sharing"
-msgstr "திரையை பகிருகிறது"
-
-msgid "IP Address"
-msgstr "ஐபி முகவரிகள்"
-
-msgid "Warning Level"
-msgstr "எச்சரிக்கை நிலை"
-
-msgid "Buddy Comment"
-msgstr ""
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "பயனர் பற்றிய விவரங்கள் கிடைக்கவில்லை: %s"
-
-msgid "Mobile Phone"
-msgstr "அலைபேசி"
-
-msgid "Age"
-msgstr "வயது"
-
-msgid "Personal Web Page"
-msgstr "சொந்த வலைப் பக்கம்"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "கூடுதல் செய்தி"
-
-msgid "Home Address"
-msgstr "வீட்டு முகவரி"
-
-msgid "Zip Code"
-msgstr "அஞ்சல் குறியீடு"
-
-msgid "Work Address"
-msgstr "அலுவலக முகவரி"
-
-msgid "Work Information"
-msgstr "வேலை பற்றிய தகவல்"
-
-msgid "Company"
-msgstr "நிறுவனம்"
-
-msgid "Division"
-msgstr "பிரிவு"
-
-msgid "Position"
-msgstr "இடம்"
-
-msgid "Web Page"
-msgstr "வலைப் பக்கம்"
-
-msgid "Online Since"
-msgstr "இன்னும் இணைப்புடன்"
-
-msgid "Member Since"
-msgstr "இதிலிருந்து அங்கத்தினர்."
-
-msgid "Capabilities"
-msgstr "செயல்திறன்"
-
-msgid "Profile"
-msgstr "விவரக்குறிப்பு"
-
-msgid "View web profile"
-msgstr "இணைய விவரக்குறிப்பை காட்டு"
-
-msgid "Invalid SNAC"
-msgstr "செல்லுபடியாகாத எஸ்என்ஏசி"
-
-msgid "Server rate limit exceeded"
-msgstr ""
-
-msgid "Client rate limit exceeded"
-msgstr ""
-
-msgid "Service unavailable"
-msgstr "சேவை இல்லை"
-
-msgid "Service not defined"
-msgstr "சேவை வரையறுக்கப் படவில்லை"
-
-msgid "Obsolete SNAC"
-msgstr "காலாவதியான எஸ்என்ஏசி"
-
-msgid "Not supported by host"
-msgstr "புரவலனால் ஆதரிக்கப்படவில்லை"
-
-msgid "Not supported by client"
-msgstr "பயனரால் ஆதரிக்கப் படவில்லை"
-
-msgid "Refused by client"
-msgstr "பயனரால் மறுக்கப் பட்டது"
-
-msgid "Reply too big"
-msgstr "பதில் மிகப் பெரியது."
-
-msgid "Responses lost"
-msgstr "பதில்கள் இழக்கப் பட்டன"
-
-msgid "Request denied"
-msgstr "கோரிக்கை நிராகரிக்கப்பட்டது"
-
-msgid "Busted SNAC payload"
-msgstr "உடைந்த எஸ்என்ஏசி (SNAC) பளு"
-
-msgid "Insufficient rights"
-msgstr "உரிமைகள் போதவில்லை"
-
-msgid "In local permit/deny"
-msgstr "உள்ளே அனுமதி /மறு"
-
-msgid "Warning level too high (sender)"
-msgstr "எச்சரிக்கை நிலை மிக அதிகம் (அனுப்புனர்)"
-
-msgid "Warning level too high (receiver)"
-msgstr "எச்சரிக்கை நிலை மிக அதிகம் (பெறுநர்)"
-
-msgid "User temporarily unavailable"
-msgstr "பயனர் தற்காலிகமாக கிடைக்கவில்லை"
-
-msgid "No match"
-msgstr "பொருத்தம் இல்லை"
-
-msgid "List overflow"
-msgstr "பட்டியல்  நிரம்பி வழிகிறது."
-
-msgid "Request ambiguous"
-msgstr "குழப்பமான கோரிக்கை"
-
-msgid "Queue full"
-msgstr "கியூ வரிசை நிறைந்தது"
-
-msgid "Not while on AOL"
-msgstr "ஏஓஎல் இல் உள்ள போது இல்லை"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "தொடர்புள்ள நிலையில் காட்சியளி"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr ""
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "இணைப்பில்லாத நிலையில் இருக்கிறது"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr ""
-
-msgid "you have no buddies on this list"
-msgstr ""
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr ""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr ""
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7854,6 +6699,9 @@ msgstr "வீடியோ கலந்துரையாடல்"
 msgid "Computer"
 msgstr "கணினி"
 
+msgid "Mobile Phone"
+msgstr "அலைபேசி"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8111,6 +6959,9 @@ msgstr "ஆளும் தளம்"
 msgid "Exposure"
 msgstr "வெளிக்காட்டல்"
 
+msgid "Encoding"
+msgstr "குறிமுறையாக்கம்"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "சாக்கெட்டில் உருவாக்க முடியவில்லை: %s"
@@ -8131,6 +6982,9 @@ msgstr "அணுகல் மறுக்கப்பட்டது: HTTP ப�
 msgid "Error resolving %s"
 msgstr "பிழையை மறுதீர்க்கிறது %s"
 
+msgid "Received invalid data on connection with server"
+msgstr "சேவையகத்துடன் இணைப்பில் தவறான தரவு பெறப்பட்டது"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "%s'கள் கவனத்தை கோருகிறது..."
@@ -8147,6 +7001,12 @@ msgstr "ஆம் (_Y)"
 
 msgid "_No"
 msgstr "இல்லை (_N)"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "சரி (_O)"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8218,8 +7078,17 @@ msgstr "அமைப்பு நீக்கம்"
 msgid "Do not disturb"
 msgstr "தொந்தரவு செய்ய வேண்டாம்"
 
+msgid "Invisible"
+msgstr "காணமுடியாத"
+
 msgid "Extended away"
 msgstr "அப்பால் நீட்டப்பட்டது"
+
+msgid "Mobile"
+msgstr "அலை பேசி"
+
+msgid "Listening to music"
+msgstr "இசையை கவனிக்கிறது"
 
 msgid "Feeling"
 msgstr ""
@@ -8376,33 +7245,41 @@ msgstr ""
 "உங்களது %s ஐ படிக்கும்பொழுது பிழை ஏற்பட்டது. அந்த கோப்பு ஏற்றப்படவில்லை, மற்றும் பழைய "
 "கோப்பு %s~ என மறுபெயரிடப்பட்டது."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "பிட்ஜின்"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin இணையத்தள மேலாளர்"
 
 msgid "Internet Messenger"
 msgstr "இணையதள தூதுவர்"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin இணையத்தள மேலாளர்"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"அரட்டை IM முடிந்தது.  AIMக்கு துணைபுரிகிறது, Google Talk, Jabber/XMPP, MSN, "
-"Yahoo மற்றும் மேலும்"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -8901,6 +7778,9 @@ msgstr "/உதவி (_H)"
 
 msgid "/Help/Online _Help"
 msgstr "/உதவி/வலை இணைப்பில் உதவி (_H)"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr ""
@@ -9434,6 +8314,9 @@ msgid_plural "%d people in room"
 msgstr[0] "%d நபர் அறையில்"
 msgstr[1] "%d நபர்கள் அறையில்"
 
+msgid "Typing"
+msgstr "தட்டச்சிடல்"
+
 msgid "Stopped Typing"
 msgstr "தட்டச்சிடல் நிறுத்தப்பட்டது"
 
@@ -9541,20 +8424,14 @@ msgstr "பிழை"
 msgid "Fatal Error"
 msgstr "அகப் பிழை"
 
-msgid "artist"
-msgstr "ஆர்டிஸ்ட்"
-
-msgid "voice and video"
-msgstr "புரல் மற்றும் வீடியோ"
-
-msgid "support"
-msgstr "ஆதரவு"
-
-msgid "webmaster"
-msgstr "வலைமேலாளர்"
+msgid "lead developer"
+msgstr "முன்னணி உருவாக்குபவர்"
 
 msgid "win32 port"
 msgstr "விண்32 தளம்"
+
+msgid "artist"
+msgstr "ஆர்டிஸ்ட்"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9567,9 +8444,18 @@ msgstr "பராமரிப்பாளர்"
 msgid "libfaim maintainer"
 msgstr "libfaim பராமரிப்பாளர்"
 
+msgid "webmaster"
+msgstr "வலைமேலாளர்"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "அத்துமீறர் மற்றும் பணி அமர்வு செய்யப் பட்ட இயக்குநர் [lazy bum]"
+
+msgid "voice and video"
+msgstr "புரல் மற்றும் வீடியோ"
+
+msgid "support"
+msgstr "ஆதரவு"
 
 msgid "support/QA"
 msgstr "ஆதரவு/QA"
@@ -9579,9 +8465,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "இயற் உரிமையாளர்"
-
-msgid "lead developer"
-msgstr "முன்னணி உருவாக்குபவர்"
 
 msgid "Senior Contributor/QA"
 msgstr "மூத்தவர் கொடையாளி/QA"
@@ -9897,20 +8780,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10985,12 +9866,12 @@ msgstr "ப்ராக்ஸி கட்டமை நிரலை துவக
 msgid "Cannot start browser configuration program."
 msgstr "உலாவி கட்டமைப்பு நிரலை துவக்க முடியவில்லை."
 
-msgid "Disabled"
-msgstr "செயல்நீக்கு"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "தானாக கண்டுபிடிக்கப்பட்ட IP முகவரிகளை பயன்படுத்து (_a): %s"
+
+msgid "IP Address"
+msgstr "ஐபி முகவரிகள்"
 
 msgid "ST_UN server:"
 msgstr "ST_UN சேவையகம்:"
@@ -11253,6 +10134,37 @@ msgstr "கடைசி வெளியேற்றத்தின் நில�
 msgid "Status to a_pply at startup:"
 msgstr "துவக்கத்தில் இருக்க வேண்டிய நிலை (_p):"
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr ""
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "சாதனம் (_D)"
+
+msgid "Audio"
+msgstr "ஆடியோ"
+
+msgid "Input"
+msgstr "உள்ளீடு"
+
+msgid "Output"
+msgstr "வெளியீடு"
+
+msgid "Video"
+msgstr "வீடியோ"
+
 msgid "Interface"
 msgstr "இடைமுகம் "
 
@@ -11264,6 +10176,9 @@ msgstr "நிலை / ஓய்வு"
 
 msgid "Themes"
 msgstr "குழுக்கள்"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "அனைத்து பயனாளர்களும் என்னை தொடர்பு கொள்ள அனுமதி"
@@ -11347,6 +10262,46 @@ msgstr "அமர்வுக்கு புதிய பெயர் தேர
 
 msgid "Select Folder..."
 msgstr "அடைவை தேர்ந்தெடுக்கவும்..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_ச சேர்க்கவும்"
 
 #. list button
 msgid "_Get List"
@@ -11528,6 +10483,10 @@ msgstr ""
 "<b>கோப்பு அளவு:</b> %s\n"
 "<b>பிம்ப அளவு:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "நண்பர் குறும்படம்"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11568,11 +10527,6 @@ msgstr "துடைக்க வேண்டுமா?"
 
 msgid "Select color"
 msgstr "நிறம் தேர்வு செய்க"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "பிட்ஜின்"
 
 msgid "_Alias"
 msgstr "புனைப்பெயர் (_A)"
@@ -12456,6 +11410,9 @@ msgstr "இயக்குபவர்"
 msgid "Half Operator"
 msgstr "பாதி இயக்குபவர்"
 
+msgid "Voice"
+msgstr "குரல்"
+
 msgid "Authorization dialog"
 msgstr "அங்கீகரிக்கப்பட்ட உரையாடல்"
 
@@ -12707,35 +11664,51 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
-msgstr "ஆடியோ"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "வீடியோ"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "வெளியீடு"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "சொருகி (_P)"
-
-msgid "_Device"
-msgstr "சாதனம் (_D)"
-
-msgid "Input"
-msgstr "உள்ளீடு"
 
 msgid "P_lugin"
 msgstr "சொருகி (_l)"
 
 msgid "D_evice"
 msgstr "சாதனம் (_e)"
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
-msgstr ""
 
 msgid "Silence threshold:"
 msgstr ""
@@ -12921,8 +11894,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description

@@ -109,6 +109,10 @@ EXE_RC_SRC = win32/pidgin_exe_rc.rc
 EXE_C_SRC = win32/winpidgin.c
 EXE_OBJECTS = $(EXE_C_SRC:%.c=%.o) $(EXE_RC_SRC:%.rc=%.o)
 
+PC_SRC = data/pidgin.pc.in data/pidgin-uninstalled.pc.in \
+	 data/pidgin-2.pc.in data/pidgin-2-uninstalled.pc.in
+PC_FILES = $(PC_SRC:%.pc.in=%.pc)
+
 ##
 ## LIBRARIES
 ##
@@ -136,7 +140,7 @@ include $(PIDGIN_COMMON_RULES)
 ##
 .PHONY: all install install_shallow clean
 
-all: $(EXE_TARGET).exe $(PIDGIN_TARGET).dll
+all: $(EXE_TARGET).exe $(PIDGIN_TARGET).dll $(PC_FILES)
 	$(MAKE) -C $(PIDGIN_PLUGINS_TOP) -f $(MINGW_MAKEFILE)
 
 win32/pidgin_exe_rc.rc: win32/pidgin_exe_rc.rc.in $(PIDGIN_TREE_TOP)/VERSION
@@ -172,5 +176,7 @@ clean:
 	rm -f $(PIDGIN_OBJECTS) $(PIDGIN_RC_SRC) $(EXE_OBJECTS) $(EXE_RC_SRC)
 	rm -f $(PIDGIN_TARGET).dll $(PIDGIN_TARGET).dll.a $(PIDGIN_TARGET).def
 	rm -f $(EXE_TARGET).exe
+	rm -f data/pidgin.pc data/pidgin-uninstalled.pc
+	rm -f data/pidgin-2.pc data/pidgin-2-uninstalled.pc
 
 include $(PIDGIN_COMMON_TARGETS)

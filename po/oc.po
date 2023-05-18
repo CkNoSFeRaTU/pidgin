@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-23 19:10+0000\n"
-"Last-Translator: Cfpo Miègjorn-Pirenèus <inactive+cfpomp@transifex.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Cédric Valmary <cvalmary@yahoo.fr>, 2016\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/pidgin/pidgin/"
 "language/oc/)\n"
 "Language: oc\n"
@@ -1816,7 +1816,6 @@ msgstr "+++ %s ven de se connectar"
 msgid "+++ %s signed off"
 msgstr "+++ %s ven de se desconnectar"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Error desconeguda"
 
@@ -1832,6 +1831,10 @@ msgstr "Lo messatge es tròp long."
 
 msgid "Unable to send message."
 msgstr "Impossible de mandar lo messatge"
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Mandar un messatge"
@@ -2177,19 +2180,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;RESPONSA "
-"AUTOMATICA&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;RESPONSA "
-"AUTOMATICA&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr ""
@@ -2257,6 +2256,42 @@ msgstr "Error de conferéncia"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Error a la creacion de la session : %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Desactivat"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2818,7 +2853,7 @@ msgstr "Mòde psiquic pel començament de las novèlas conversacions"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3414,9 +3449,18 @@ msgstr "Utilizar SSL"
 msgid "Authenticate with SASL"
 msgstr "Autentificacion amb SASL"
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
 msgstr ""
 "Autorizar una autentificacion SASL en clair sus una connexion non chifrada"
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
+msgstr ""
 
 msgid "Bad mode"
 msgstr "Marrit mòde"
@@ -3903,40 +3947,6 @@ msgstr "Fracàs de l'autentificacion SASL"
 #, c-format
 msgid "SASL error: %s"
 msgstr "Error SASL : %s"
-
-msgid "Invalid Encoding"
-msgstr "Encodatge invalid."
-
-msgid "Unsupported Extension"
-msgstr "Extension non suportada"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-"Responsa inesperada del servidor. Aquò poiriá provenir d'una attaque MITM."
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-"Aqueste servidor prend en carga lo « channel binding » sens lo mentionar. "
-"Aquò poiriá indicar una attaque MITM."
-
-msgid "Server does not support channel binding"
-msgstr "Lo servidor ne prend pas en carga lo « channel binding »"
-
-msgid "Unsupported channel binding method"
-msgstr "Metòde de « channel binding » non presa en carga"
-
-msgid "User not found"
-msgstr "Utilizaire pas trobat"
-
-msgid "Invalid Username Encoding"
-msgstr "Encodatge del nom d'utilizaire invalid"
-
-msgid "Resource Constraint"
-msgstr "Limitacion sus la ressorsa"
 
 msgid "Unable to canonicalize username"
 msgstr "Impossible de normalizar lo nom d'utilizaire"
@@ -4525,6 +4535,9 @@ msgstr "Mecanisme d'autorizacion invalid"
 msgid "Authorization mechanism too weak"
 msgstr "Mecanisme d'autorizacion tròp feble"
 
+msgid "Incorrect username or password"
+msgstr "Nom d'utilizaire o senhal incorrècte"
+
 msgid "Temporary Authentication Failure"
 msgstr "Fracàs temporari de l'autentificacion"
 
@@ -4569,6 +4582,9 @@ msgstr "Violacion de las règlas"
 
 msgid "Remote Connection Failed"
 msgstr "Fracàs de la connexion a distància"
+
+msgid "Resource Constraint"
+msgstr "Limitacion sus la ressorsa"
 
 msgid "Restricted XML"
 msgstr "XML restrent"
@@ -4907,6 +4923,19 @@ msgstr ""
 "Veuillez sélectionar demest las ressorsas de %s, a la quala volètz mandar un "
 "fichièr"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr "Espaurit"
 
@@ -5126,7 +5155,6 @@ msgstr "Timid"
 msgid "Sick"
 msgstr "Malaut"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Acossomit"
 
@@ -5215,6 +5243,9 @@ msgstr "Lo senhal a expirat"
 msgid "Incorrect password"
 msgstr "Senhal incorrècte"
 
+msgid "User not found"
+msgstr "Utilizaire pas trobat"
+
 msgid "Account has been disabled"
 msgstr "Lo compté es estat desactivat"
 
@@ -5235,9 +5266,6 @@ msgstr "Impossible de s'apondre en tant que contact"
 
 msgid "Master archive is misconfigured"
 msgstr "L'archive principala es mal configurada"
-
-msgid "Incorrect username or password"
-msgstr "Nom d'utilizaire o senhal incorrècte"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Impossible de reconéisser lo nom d'òste o d'utilizaire sasit"
@@ -5460,1222 +5488,6 @@ msgstr "Òste del servidor"
 
 msgid "Server port"
 msgstr "Pòrt del servidor"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "Autorizatz-me a m'apondre a ma lista de contactes."
-
-msgid "No reason given."
-msgstr "Pas de rason balhada."
-
-msgid "Authorization Denied Message:"
-msgstr "Messatge de refus d'autorizacion :"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_Validar"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "Recepcion d'una responsa non esperada de %s : %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "Recepcion d'una responsa non esperada de %s"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Vos sètz connectat/desconnectat tròp rapidament. Esperatz 10 minutas e "
-"ensajatz tornamai. Se vous persistez ara, il vous faudra esperar encara plus "
-"longtemps."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-"Demandatz un chiframent dins los paramètres del compte, mas un dels "
-"servidors n'es pas capable."
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Error a la demanda de %s : %s"
-
-msgid "The server returned an empty response"
-msgstr "Lo servidor a renviat una responsa vide"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"Lo servidor s'espèra a que respondatz a un CAPTCHA per vos connectar, mas "
-"aqueste client los supòrta pas encara."
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL autoriza pas vòstre nom d'utilizaire per autentificacion aicí."
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(Una error s'es produita a la recepcion d'aqueste messatge. Vòstre "
-"interlocutor utiliza benlèu un encodatge inesperat. Se coneissètz "
-"l'encodatge qu'utiliza, lo podètz completar dins las opcions avançadas de "
-"vòstre compte AIM/ICQ.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(Una error s'es produita a la recepcion d'aqueste messatge. %s e utilizatz "
-"dels encodatges diferents o lo client de %s es defectuós.)"
-
-msgid "Could not join chat room"
-msgstr "Impossible de rejónher lo salon de discussions"
-
-msgid "Invalid chat room name"
-msgstr "Nom de salon invalid"
-
-msgid "Invalid error"
-msgstr "Error invalida"
-
-msgid "Not logged in"
-msgstr "Pas connectat"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "Impossible de recebre lo messatge a causa del contraròtle parental"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "Impossible de mandar de SMS sens acceptar los tèrmes"
-
-msgid "Cannot send SMS"
-msgstr "Impossible de mandar lo SMS"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "Impossible de mandar lo SMS cap a aqueste país"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "Impossible de mandar lo SMS cap a un país desconegut"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "Los comptes Bot pòdon pas començar las conversacions"
-
-msgid "Bot account cannot IM this user"
-msgstr "Lo compte Bot ne pòt pas mandar de messatge a aquesta persona"
-
-msgid "Bot account reached IM limit"
-msgstr "Lo compte Bot a atent son limit de messatges"
-
-msgid "Bot account reached daily IM limit"
-msgstr "Lo compte Bot a atent son limit de messatges quotidians"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "Lo compte Bot a atent son limit de messatges mesadièrs"
-
-msgid "Unable to receive offline messages"
-msgstr "Impossible de recebre los messatges desconnectats"
-
-msgid "Offline message store full"
-msgstr "Emmagazinatge dels messatges desconnectats plen"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "Impossible de mandar lo messatge : %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Impossible de mandar lo messatge : %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "Impossible de mandar lo messatge cap a %s : %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "Impossible de mandar lo messatge cap a %s : %s"
-
-msgid "Thinking"
-msgstr "En plena soscadissa"
-
-msgid "Shopping"
-msgstr "A far crompas"
-
-msgid "Questioning"
-msgstr "En plen questionament"
-
-msgid "Eating"
-msgstr "A manjar"
-
-msgid "Watching a movie"
-msgstr "Gaita un filme"
-
-msgid "Typing"
-msgstr "A picar"
-
-msgid "At the office"
-msgstr "Al trabalh"
-
-msgid "Taking a bath"
-msgstr "Pren un banh"
-
-msgid "Watching TV"
-msgstr "Gaita la television"
-
-msgid "Having fun"
-msgstr "S'amusa"
-
-msgid "Sleeping"
-msgstr "A dormir"
-
-msgid "Using a PDA"
-msgstr "Utiliza un PDA"
-
-msgid "Meeting friends"
-msgstr "Rencontre d'amics"
-
-msgid "On the phone"
-msgstr "Al telefòn"
-
-msgid "Surfing"
-msgstr "Surf"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Telefòn mobil"
-
-msgid "Searching the web"
-msgstr "Recèrca sus internet"
-
-msgid "At a party"
-msgstr "A una fèsta"
-
-msgid "Having Coffee"
-msgstr "Pren un cafè"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "Jòga"
-
-msgid "Browsing the web"
-msgstr "Surfa lo web"
-
-msgid "Smoking"
-msgstr "Fuma"
-
-msgid "Writing"
-msgstr "Escriu"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "Beu"
-
-msgid "Listening to music"
-msgstr "Escota de musica"
-
-msgid "Studying"
-msgstr "A estudiar"
-
-msgid "Working"
-msgstr "Trabalha"
-
-msgid "In the restroom"
-msgstr "Als comuns"
-
-msgid "Received invalid data on connection with server"
-msgstr "Donadas invalidas recebudas a la connexion sul servidor."
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "Empeuton pel protocòl AIM"
-
-msgid "ICQ UIN..."
-msgstr "UIN ICQ..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "Empeuton pel protocòl ICQ"
-
-msgid "Encoding"
-msgstr "Encodatge"
-
-msgid "The remote user has closed the connection."
-msgstr "L'interlocutor a tampat la connexion."
-
-msgid "The remote user has declined your request."
-msgstr "L'interlocutor a refusat vòstra demanda."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Connexion perduda amb l'interlocutor :<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Donadas invalidas recebudas sus la connexion amb l'interlocutor."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "Impossible de se connectar a l'interlocutor."
-
-msgid "Direct IM established"
-msgstr "Connexion dirècta establida."
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s a ensajat de vos mandar un fichièr de %s. Autorizam unicament los "
-"fichièrs d'una talha maximala de %s pels transferiments per messatge. "
-"Utilizatz puslèu lo transferiment de fichièr.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "Lo fichièr %s fait %s, aquò es mai gròs que la talha maximala de %s."
-
-msgid "Free For Chat"
-msgstr "Liure per discutir"
-
-msgid "Not Available"
-msgstr "Pas disponible"
-
-msgid "Occupied"
-msgstr "Ocupat"
-
-msgid "Web Aware"
-msgstr "Sus internet"
-
-msgid "Invisible"
-msgstr "Invisible"
-
-msgid "Evil"
-msgstr "Maissant"
-
-msgid "Depression"
-msgstr "Depression"
-
-msgid "At home"
-msgstr "A l'ostal"
-
-msgid "At work"
-msgstr "Al trabalh"
-
-msgid "At lunch"
-msgstr "Dejunar"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "Impossible de se connectar al servidor d'autentificacion : %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "Impossible de se connectar al servidor BOS : %s"
-
-msgid "Username sent"
-msgstr "Nom d'utilizaire mandat"
-
-msgid "Connection established, cookie sent"
-msgstr "Connexion establida, cookie mandat"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Finalisation de la connexion"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Impossible de se connectar en tant que %s, aqueste nom es pas valid. Los "
-"noms devon siá èsser una adreça electronica valida, siá començar per una "
-"letra e conténer unicament de letras, de chifras e d'espacis, siá conténer "
-"unicament de chifras."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-"Demandatz lo chiframent dins los paramètres del compte, mas vòstre sistèma "
-"n'es pas capable."
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"Riscatz d'èsser desconnectat jos peu. Se c'est lo cas, consultez %s per plus "
-"d'informacions."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Impossible de recuperar un còdi de connexion AIM valide."
-
-msgid "Unable to get a valid login hash."
-msgstr "Impossible de recuperar un còdi de connexion valide."
-
-msgid "Received authorization"
-msgstr "Autorizacion recebuda."
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Aqueste utilizaire existís pas"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Vòstre compte es actualament suspendu."
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "Lo servici es temporàriament indisponible."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Vos sètz connectat/desconnectat tròp rapidament. Esperatz 10 minutas e "
-"ensajatz tornamai. Se vous persistez ara, il vous faudra esperar encara plus "
-"longtemps."
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-"La version del client que vous utilizatz es tròp anciana. Veuillez la metre "
-"a jorn sus %s."
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Vòstra adreça IP se reconnècta tròp rapidament. Esperatz qualques minutas e "
-"ensajatz tornamai. Se contunhatz ara, vos caldrà esperar encara mai "
-"longtemps."
-
-msgid "The SecurID key entered is invalid"
-msgstr "La clau SecurID sasida es invalida."
-
-msgid "Enter SecurID"
-msgstr "Sasissètz vòstre SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Sasissètz las 6 chifras de l'afichatge numeric."
-
-msgid "Password sent"
-msgstr "Senhal mandat"
-
-msgid "Unable to initialize connection"
-msgstr "Impossible de crear una connexion."
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"L'utilizaire %u a refusat vòstra demanda de s'apondre a vòstra lista de "
-"contactes per la rason seguenta :\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "Autorizacion ICQ refusada."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-"L'utilizaire %u a acceptat vòstra demanda de l'apondre a vòstra lista de "
-"contactes."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Avètz recebut un messatge especial\n"
-"\n"
-"De : %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Avètz recebut un mémo ICQ\n"
-"\n"
-"De : %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"Avètz recebut un corrièr ICQ de %s [%s]\n"
-"\n"
-"Lo messatge es :\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "L'utilizaire ICQ %u vos a mandat un contact : %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Volètz l'apondre a vòstra lista de contactes ?"
-
-msgid "_Add"
-msgstr "_Apondre"
-
-msgid "_Decline"
-msgstr "_Refusar"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "Avètz mancat %hu messatge de %s perque lo messatge èra invalid."
-msgstr[1] ""
-"Avètz mancat %hu messatges de %s perque los messatges èran invalids."
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "Avètz mancat %hu messatge de %s perque lo messatge èra tròp gros."
-msgstr[1] ""
-"Avètz mancat %hu messatges de %s perque los messatges èran tròp gros."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"Avètz mancat %hu messatge de %s perque lo quota limit es estat depassat."
-msgstr[1] ""
-"Avètz mancat %hu messatges de %s perque lo quota limit es estat depassat."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"Avètz mancat %hu messatge de %s perque son nivèl d'avertiment es tròp elevat."
-msgstr[1] ""
-"Avètz mancat %hu messatges de %s perque son nivèl d'avertiment es tròp "
-"elevat."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"Avètz mancat %hu messatge de %s perque vòstre nivèl d'avertiment es tròp "
-"elevat."
-msgstr[1] ""
-"Avètz mancat %hu messatges de %s perque vòstre nivèl d'avertiment es tròp "
-"elevat."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "Avètz mancat %hu messatge de %s per de rasons desconegudas."
-msgstr[1] "Avètz mancat %hu messatges de %s per de rasons desconegudas."
-
-msgid "Your AIM connection may be lost."
-msgstr "Vòstra connexion AIM risque d'èsser copada"
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "Sètz estat desconnectat del salon %s"
-
-msgid "The new formatting is invalid."
-msgstr "Lo novèl afichatge es invalid"
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"Lo format d'afichatge del nom d'utilizaire permet unicament de cambiar las "
-"majusculas e los espacis."
-
-msgid "Pop-Up Message"
-msgstr "Messatge en fenèstra"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "Lo nom d'utilizaire seguent es associat a %s"
-msgstr[1] "Los noms d'utilizaire seguents son associats a %s"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Pas cap de resultat per l'adreça electronica %s"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "Deuriatz recebre un corrièr electronic per confirmer %s"
-
-msgid "Account Confirmation Requested"
-msgstr "Confirmation de compte demandada"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"Error 0x%04x : Impossible d'afichar lo nom d'utilizaire perque la version "
-"demandada diffère de l'originale."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-"Error 0x%04x : Impossible d'afichar lo nom d'utilizaire perque es invalid."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Error 0x%04x : Impossible d'afichar lo nom d'utilizaire perque la version "
-"demandada es tròp longue"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Error 0x%04x : Impossible de cambiar l'adreça electronica perque i a una "
-"requèsta en espèra per aqueste identificant."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Error 0x%04x : Impossible de cambiar l'adreça electronica perque i a tròp "
-"d'identificants associats a aquesta adreça."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Error 0x%04x : Impossible de cambiar l'adreça electronica perque es invalida."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Error 0x%04x : error desconeguda."
-
-msgid "Error Changing Account Info"
-msgstr "Error en changeant las informacions del compte"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "L'adreça electronica de %s es %s"
-
-msgid "Account Info"
-msgstr "Entresenhas sul compte"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Vòstre imatge instantanèu es pas estat mandat. Vos cal utilizar una "
-"connexion dirècta per mandar d'imatges."
-
-msgid "Unable to set AIM profile."
-msgstr "Impossible de mandar lo perfil AIM"
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Es impossible de cambiar lo perfile utilizaire pendent la procedura de "
-"connexion. Lo perfil es pas estat cambiat. Ensajat tornamai un còp la "
-"connexion completa."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"La talha maximala de %d caractèr del perfil es estada depassada. Il a été "
-"tronqué automaticament."
-msgstr[1] ""
-"La talha maximala de %d caractèrs del perfil es estada depassada. Il a été "
-"tronqué automaticament."
-
-msgid "Profile too long."
-msgstr "Perfil tròp long."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"La talha maximala de %d caractèr pel messatge d'abséncia es estada "
-"depassada. Il a été tronqué al moment de la mesa a jorn."
-msgstr[1] ""
-"La talha maximala de %d caractèrs pel messatge d'abséncia es estada "
-"depassada. Il a été tronqué al moment de la mesa a jorn."
-
-msgid "Away message too long."
-msgstr "Messatge d'abséncia tròp long"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Impossible d'apondre lo contacte %s perque son nom d'utilizaire es invalid. "
-"Los noms dels contactes devon siá èsser una adreça electronica valida, siá "
-"començar per una letra e conténer unicament de letras, de chifras e "
-"d'espacis, siá conténer unicament de chifras."
-
-msgid "Unable to Add"
-msgstr "Impossible d'apondre"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Impossible de recuperar la lista de contactes"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"Los servidors AIM n'ont pas pu èsser contacté per recuperar la lista de "
-"contactes. Es pas perduda e sera de novèl disponible dins qualques temps."
-
-msgid "Orphans"
-msgstr "Orfanèls"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"Impossible d'apondre lo contacte %s perque i a tròp de contactes dins la "
-"lista. Supprimez un contacte e ensajatz tornamai."
-
-msgid "(no name)"
-msgstr "(pas de nom)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Impossible d'apondre lo contacte %s per una rason desconeguda."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"L'utilizaire %s vous a autorisé a l'apondre a vòstra lista de contactes. "
-"Volètz lo faire ?"
-
-msgid "Authorization Given"
-msgstr "Autorizacion donada"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"L'utilizaire %s a acceptat vòstra demanda de l'apondre a vòstra lista de "
-"contactes."
-
-msgid "Authorization Granted"
-msgstr "Autorizacion acordada"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"L'utilizaire %s a refusat vòstra demanda de l'apondre a vòstra lista de "
-"contactes per la rason seguenta :\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Autorizacion refusada"
-
-msgid "_Exchange:"
-msgstr "_Escambi :"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"Vòstre imatge instantanèu es pas estat mandat. Podètz pas mandar d'imatges "
-"dins las discussions AIM."
-
-msgid "iTunes Music Store Link"
-msgstr "Lien de l'iTunes Music Store"
-
-msgid "Lunch"
-msgstr "Déjeuner"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Comentari per %s"
-
-msgid "Buddy Comment:"
-msgstr "Comentari sul contacte :"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "Connexion dirècta amb %s"
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Aquò revèla vòstra adreça IP e pòt èsser considéré coma una faille de "
-"seguretat. Volètz contunhar ?"
-
-msgid "C_onnect"
-msgstr "Se _connectar"
-
-msgid "You closed the connection."
-msgstr "Avètz tampat la connexion."
-
-msgid "Get AIM Info"
-msgstr "Recuperar las infos AIM"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Modificar lo comentari"
-
-msgid "Get X-Status Msg"
-msgstr "Obténer lo messatge X-Status"
-
-msgid "End Direct IM Session"
-msgstr "Terminer la connexion dirècta"
-
-msgid "Direct IM"
-msgstr "Connexion dirècta"
-
-msgid "Re-request Authorization"
-msgstr "Redemandar autorizacion"
-
-msgid "Require authorization"
-msgstr "Demanda d'autorizacion"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "Sur lo web (activar ceci vous fera recebre del pourriel !)"
-
-msgid "ICQ Privacy Options"
-msgstr "Opcions de confidencialitat ICQ"
-
-msgid "Change Address To:"
-msgstr "Novèla adreça :"
-
-msgid "you are not waiting for authorization"
-msgstr "Esperatz pas cap d'autorizacion"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Esperatz una autorizacion dels contactes seguents"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Podètz redemandar una autorizacion de aquestes contactes en choisissant "
-"« Redemandar autorizacion » sus un clic dreit del contacte."
-
-msgid "Find Buddy by Email"
-msgstr "Cercar un contacte per adreça electronica"
-
-msgid "Search for a buddy by email address"
-msgstr "Recercar per adreça electronica"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Sasissètz l'adreça electronica del contacte que cercatz"
-
-msgid "_Search"
-msgstr "_Recercar"
-
-msgid "Set User Info (web)..."
-msgstr "Definir las entresenhas de l'utilizaire (web)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Cambiar de senhal (web)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Configurar lo transferiment de messatge (web)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Cambiar las opcions de confidencialitat..."
-
-msgid "Show Visible List"
-msgstr "Veire la lista visible"
-
-msgid "Show Invisible List"
-msgstr "Veire la lista invisible"
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Confirmar lo compte"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Afichar l'adreça correnta enregistrada"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Cambiar l'adreça correnta enregistrada..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Afichar las demandas d'autorizacion"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Cercar un contacte per adreça electronica..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"Toujours utilizar lo proxy AIM/ICQ\n"
-"pour lo transferiment de fichièrs\n"
-"(plus lent, mas ne revèla pas vòstra adreça IP)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "Autorizar mantuna connexion simultanèas"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Demanda a %s de se connectar directement a %s:%hu pel messatge"
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "Temptativa de connexion cap a %s:%hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Temptativa de connexion a travèrs d'un proxy."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s demanda una connexion dirècta amb %s"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Una connexion dirècta entre las doas maquinas es necessària pel mandadís "
-"d'imatges. Vòstra adreça IP serà revelada e aquò pòt èsser considerat coma "
-"una falha de seguretat."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Icòna del contacte"
-
-msgid "Voice"
-msgstr "Votz"
-
-msgid "AIM Direct IM"
-msgstr "Connexion dirècta AIM"
-
-msgid "Get File"
-msgstr "Recebre un fichièr"
-
-msgid "Games"
-msgstr "Jòcs"
-
-msgid "ICQ Xtraz"
-msgstr "ICQ Xtraz"
-
-msgid "Add-Ins"
-msgstr "Empeutons"
-
-msgid "Send Buddy List"
-msgstr "Mandar una lista de contactes"
-
-msgid "ICQ Direct Connect"
-msgstr "Connexion dirècta ICQ"
-
-msgid "AP User"
-msgstr "Utilizaire AP"
-
-msgid "ICQ RTF"
-msgstr "RTF ICQ"
-
-msgid "Nihilist"
-msgstr "Nihilista"
-
-msgid "ICQ Server Relay"
-msgstr "Relais de servidor ICQ"
-
-msgid "Old ICQ UTF8"
-msgstr "Ancien ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Chiframent Trillian"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Seguretat activada"
-
-msgid "Video Chat"
-msgstr "Visioconferéncia"
-
-msgid "iChat AV"
-msgstr "Vidèo iChat"
-
-msgid "Live Video"
-msgstr "Live Video"
-
-msgid "Camera"
-msgstr "Aparelh de fotografiar"
-
-msgid "Screen Sharing"
-msgstr "Nom d'utilizaire"
-
-msgid "IP Address"
-msgstr "Adreça IP"
-
-msgid "Warning Level"
-msgstr "Nivèl d'avertiment"
-
-msgid "Buddy Comment"
-msgstr "Comentari"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Las informacions son pas disponiblas : %s"
-
-msgid "Mobile Phone"
-msgstr "Telefòn mobil"
-
-msgid "Age"
-msgstr "Atge"
-
-msgid "Personal Web Page"
-msgstr "Pagina web personala"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Entresenhas suplementàrias"
-
-msgid "Home Address"
-msgstr "Adreça personala"
-
-msgid "Zip Code"
-msgstr "Còdi postal"
-
-msgid "Work Address"
-msgstr "Adreça professionala"
-
-msgid "Work Information"
-msgstr "Entresenhas professionalas"
-
-msgid "Company"
-msgstr "Entrepresa"
-
-msgid "Division"
-msgstr "Division"
-
-msgid "Position"
-msgstr "Posicion"
-
-msgid "Web Page"
-msgstr "Pagina web"
-
-msgid "Online Since"
-msgstr "Connectat dempuèi"
-
-msgid "Member Since"
-msgstr "Sòci dempuèi"
-
-msgid "Capabilities"
-msgstr "Possibilitats"
-
-msgid "Profile"
-msgstr "Perfil"
-
-msgid "View web profile"
-msgstr "Veire lo perfil web"
-
-msgid "Invalid SNAC"
-msgstr "SNAC pas valid"
-
-msgid "Server rate limit exceeded"
-msgstr "Velocitat del servidor depassada"
-
-msgid "Client rate limit exceeded"
-msgstr "Velocitat del client depassada"
-
-msgid "Service unavailable"
-msgstr "Servici non disponible"
-
-msgid "Service not defined"
-msgstr "Servici non défini"
-
-msgid "Obsolete SNAC"
-msgstr "SNAC obsolète"
-
-msgid "Not supported by host"
-msgstr "Pas suportat per l'òste"
-
-msgid "Not supported by client"
-msgstr "Pas suportat pel client"
-
-msgid "Refused by client"
-msgstr "Refusat pel client"
-
-msgid "Reply too big"
-msgstr "Responsa tròp gròssa"
-
-msgid "Responses lost"
-msgstr "Responsas perdudas"
-
-msgid "Request denied"
-msgstr "Requèsta refusada"
-
-msgid "Busted SNAC payload"
-msgstr "Carga SNAC incorrècta"
-
-msgid "Insufficient rights"
-msgstr "Dreits insufisents"
-
-msgid "In local permit/deny"
-msgstr "Dins l'autorizacion/interdiccion locala"
-
-msgid "Warning level too high (sender)"
-msgstr "Nivèl d'avertiment tròp elevat (emission)"
-
-msgid "Warning level too high (receiver)"
-msgstr "Nivèl d'avertiment tròp elevat (recepcion)"
-
-msgid "User temporarily unavailable"
-msgstr "L'utilizaire es temporàriament indisponible."
-
-msgid "No match"
-msgstr "Pas cap de resultat"
-
-msgid "List overflow"
-msgstr "Depassament de lista"
-
-msgid "Request ambiguous"
-msgstr "Requèsta ambigüa"
-
-msgid "Queue full"
-msgstr "File d'espèra plena"
-
-msgid "Not while on AOL"
-msgstr "Impossible sus AOL"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Se far veire connectat"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "Aparéisser pas connectat"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Invisible"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "Ne pas apparaître desconnectat"
-
-msgid "you have no buddies on this list"
-msgstr "Avètz pas cap de contacte sus aquesta lista"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-"Podètz apondre un contacte a aquesta lista en clicant amb lo boton dreit sus "
-"el e en choisissant « %s »"
-
-msgid "Visible List"
-msgstr "Tièra visibla"
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr "Aquestes contactes vos veiràn quand vous passerez « Invisible »"
-
-msgid "Invisible List"
-msgstr "Tièra invisibla"
-
-msgid "These buddies will always see you as offline"
-msgstr "Aquestes contactes vos veiràn pas jamais connectats"
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -8000,6 +6812,9 @@ msgstr "Visioconferéncia"
 msgid "Computer"
 msgstr "Ordenador"
 
+msgid "Mobile Phone"
+msgstr "Telefòn mobil"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8267,6 +7082,9 @@ msgstr "Domeni"
 msgid "Exposure"
 msgstr "Exposicion"
 
+msgid "Encoding"
+msgstr "Encodatge"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "Impossible de crear la miniaplicacion : %s"
@@ -8287,6 +7105,9 @@ msgstr "Accès interdit : lo proxy autoriza pas lo passatge pel pòrt %d"
 msgid "Error resolving %s"
 msgstr "Error a la resolucion del nom %s."
 
+msgid "Received invalid data on connection with server"
+msgstr "Donadas invalidas recebudas a la connexion sul servidor."
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Attire l'atencion de %s..."
@@ -8303,6 +7124,12 @@ msgstr "Ò_c"
 
 msgid "_No"
 msgstr "_Non"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_Validar"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8374,8 +7201,17 @@ msgstr "Pas definit"
 msgid "Do not disturb"
 msgstr "Ne pas déranger"
 
+msgid "Invisible"
+msgstr "Invisible"
+
 msgid "Extended away"
 msgstr "Longue abséncia"
+
+msgid "Mobile"
+msgstr "Telefòn mobil"
+
+msgid "Listening to music"
+msgstr "Escota de musica"
 
 msgid "Feeling"
 msgstr "Ressent"
@@ -8532,33 +7368,41 @@ msgstr ""
 "Una error s'es produita a la lectura de « %s ». Es pas estat cargat e "
 "l'ancian fichièr a été renommé « %s~ »."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Messatjariá Internet Pidgin"
 
 msgid "Internet Messenger"
 msgstr "Messatjariá instantanèa"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Messatjariá Internet Pidgin"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"Conversacion per messatges instantanèus. Supòrta AIM, Google Talk, Jabber/"
-"XMPP, MSN, Yahoo e d'autres"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -9061,6 +7905,9 @@ msgstr "/_Ajuda"
 
 msgid "/Help/Online _Help"
 msgstr "/Ajuda/A_juda en linha"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr "/Ajuda/_Informacions sul programa"
@@ -9601,6 +8448,9 @@ msgid_plural "%d people in room"
 msgstr[0] "%d persona dins la sala"
 msgstr[1] "%d personas dins la sala"
 
+msgid "Typing"
+msgstr "A picar"
+
 msgid "Stopped Typing"
 msgstr "S'arrèsta d'escriure"
 
@@ -9711,20 +8561,14 @@ msgstr "Error "
 msgid "Fatal Error"
 msgstr "Error critica"
 
-msgid "artist"
-msgstr "artista"
-
-msgid "voice and video"
-msgstr "votz e vidèo"
-
-msgid "support"
-msgstr "supòrt"
-
-msgid "webmaster"
-msgstr "webmèstre"
+msgid "lead developer"
+msgstr "encodaire principal"
 
 msgid "win32 port"
 msgstr "portatge win32"
+
+msgid "artist"
+msgstr "artista"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9737,9 +8581,18 @@ msgstr "manteneire"
 msgid "libfaim maintainer"
 msgstr "manteneire de libfaim"
 
+msgid "webmaster"
+msgstr "webmèstre"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "hacker e conductor designat [feignasse]"
+
+msgid "voice and video"
+msgstr "votz e vidèo"
+
+msgid "support"
+msgstr "supòrt"
 
 msgid "support/QA"
 msgstr "assisténcia/FAQ"
@@ -9749,9 +8602,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "autor original"
-
-msgid "lead developer"
-msgstr "encodaire principal"
 
 msgid "Senior Contributor/QA"
 msgstr "contribuant senior/QA"
@@ -10074,23 +8924,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>Liens utiles</B></FONT><BR>\t<A HREF=\"%s\">Site web</"
-"A><BR>\t<A HREF=\"%s\">Foire Aux Questions</A><BR>\tIRC Salon IRC : #pidgin "
-"sus irc.freenode.net<BR>\tSalon XMPP : devel@conference.pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -11171,12 +10016,12 @@ msgstr "Impossible d'aviar lo programa de configuracion del proxy."
 msgid "Cannot start browser configuration program."
 msgstr "Impossible d'aviar lo programa de configuracion del navigador."
 
-msgid "Disabled"
-msgstr "Desactivat"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "_Deteccion auto de l'adreça IP : %s"
+
+msgid "IP Address"
+msgstr "Adreça IP"
 
 msgid "ST_UN server:"
 msgstr "Servidor ST_UN :"
@@ -11442,6 +10287,37 @@ msgstr "Utilizar lo _darrièr estat actiu a l'aviada"
 msgid "Status to a_pply at startup:"
 msgstr "Estat d'a_plicar a l'aviada :"
 
+msgid "DROP"
+msgstr "Copar"
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr "Volum :"
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "_Periferic"
+
+msgid "Audio"
+msgstr "Àudio"
+
+msgid "Input"
+msgstr "Entrada"
+
+msgid "Output"
+msgstr "Sortida"
+
+msgid "Video"
+msgstr "Vidèo"
+
 msgid "Interface"
 msgstr "Interfaç"
 
@@ -11453,6 +10329,9 @@ msgstr "Estat / inactivitat"
 
 msgid "Themes"
 msgstr "Tèmas"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "Autorizar totes los utilizaires a me contactar"
@@ -11536,6 +10415,46 @@ msgstr "Causissètz un nom novèl"
 
 msgid "Select Folder..."
 msgstr "Seleccionar un repertòri"
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Apondre"
 
 #. list button
 msgid "_Get List"
@@ -11718,6 +10637,10 @@ msgstr ""
 "<b>Talha de fichièr :</b> %s\n"
 "<b>Talha d'imatge :</b> %d x %d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Icòna del contacte"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11758,11 +10681,6 @@ msgstr "Sètz segur que volètz l'escafar ?"
 
 msgid "Select color"
 msgstr "Seleccionar una color"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_Aliàs"
@@ -12666,6 +11584,9 @@ msgstr "Operador"
 msgid "Half Operator"
 msgstr "Miègoperador"
 
+msgid "Voice"
+msgstr "Votz"
+
 msgid "Authorization dialog"
 msgstr "Bóstia de messatge per autorizacion"
 
@@ -12924,35 +11845,51 @@ msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 "Provesís l'integracion amb lo menú de messatjariá e lo lanceur d'Unity."
 
-msgid "Audio"
-msgstr "Àudio"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "Vidèo"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "Sortida"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "Em_peuton"
-
-msgid "_Device"
-msgstr "_Periferic"
-
-msgid "Input"
-msgstr "Entrada"
 
 msgid "P_lugin"
 msgstr "E_mpeuton"
 
 msgid "D_evice"
 msgstr "P_eriferic"
-
-msgid "DROP"
-msgstr "Copar"
-
-msgid "Volume:"
-msgstr "Volum :"
 
 msgid "Silence threshold:"
 msgstr "Sulhet del silenci :"
@@ -13146,8 +12083,8 @@ msgstr "Correccion ortografica"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 "Error al moment de l'installacion del corrector ortografic ($R3).$\\rSe una "
 "novèla temptativa fracassa, seguissètz las instruccions sus http://developer."

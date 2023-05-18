@@ -130,11 +130,9 @@ add_columns(GevoAssociateBuddyDialog *dialog)
 }
 
 static void
-populate_treeview(GevoAssociateBuddyDialog *dialog, const gchar *uri)
-{
+populate_treeview(GevoAssociateBuddyDialog *dialog, const gchar *uid) {
 	EBook *book;
 	EBookQuery *query;
-	const char *prpl_id;
 	gboolean status;
 	GList *cards, *c;
 	GError *err = NULL;
@@ -154,8 +152,7 @@ populate_treeview(GevoAssociateBuddyDialog *dialog, const gchar *uri)
 
 	gtk_list_store_clear(dialog->model);
 
-	if (!gevo_load_addressbook(uri, &book, &err))
-	{
+	if(!gevo_load_addressbook(uid, &book, &err)) {
 		purple_debug_error("evolution",
 						 "Error retrieving addressbook: %s\n", err->message);
 		g_error_free(err);
@@ -187,8 +184,6 @@ populate_treeview(GevoAssociateBuddyDialog *dialog, const gchar *uri)
 
 		return;
 	}
-
-	prpl_id = purple_account_get_protocol_id(dialog->buddy->account);
 
 	for (c = cards; c != NULL; c = c->next)
 	{
@@ -241,16 +236,17 @@ static void
 addrbook_change_cb(GtkComboBox *combo, GevoAssociateBuddyDialog *dialog)
 {
 	GtkTreeIter iter;
-	const char *esource_uri;
+	const char *esource_uid;
 
-	if (!gtk_combo_box_get_active_iter(combo, &iter))
+	if(!gtk_combo_box_get_active_iter(combo, &iter)) {
 		return;
+	}
 
 	gtk_tree_model_get(GTK_TREE_MODEL(dialog->addrbooks), &iter,
-					   ADDRBOOK_COLUMN_URI, &esource_uri,
-					   -1);
+	                   ADDRBOOK_COLUMN_UID, &esource_uid,
+	                   -1);
 
-	populate_treeview(dialog, esource_uri);
+	populate_treeview(dialog, esource_uid);
 }
 
 static void

@@ -31,6 +31,7 @@
 #include "core.h"
 #include "dbus-maybe.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "prefs.h"
 #include "status.h"
@@ -296,8 +297,8 @@ purple_status_type_destroy(PurpleStatusType *status_type)
 	g_free(status_type->name);
 	g_free(status_type->primary_attr_id);
 
-	g_list_foreach(status_type->attrs, (GFunc)purple_status_attr_destroy, NULL);
-	g_list_free(status_type->attrs);
+	g_list_free_full(status_type->attrs,
+	                 (GDestroyNotify)purple_status_attr_destroy);
 
 	PURPLE_DBUS_UNREGISTER_POINTER(status_type);
 	g_free(status_type);
@@ -1174,8 +1175,7 @@ purple_presence_destroy(PurplePresence *presence)
 		g_free(presence->u.chat.user);
 	}
 
-	g_list_foreach(presence->statuses, (GFunc)purple_status_destroy, NULL);
-	g_list_free(presence->statuses);
+	g_list_free_full(presence->statuses, (GDestroyNotify)purple_status_destroy);
 
 	g_hash_table_destroy(presence->status_table);
 

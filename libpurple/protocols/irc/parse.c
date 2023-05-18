@@ -645,7 +645,7 @@ char *irc_format(struct irc_conn *irc, const char *format, ...)
 			break;
 		case ':':
 			g_string_append_c(string, ':');
-			/* no break! */
+			/* fallthrough */
 		case 't':
 		case 'n':
 		case 'c':

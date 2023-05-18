@@ -977,13 +977,30 @@ void serv_send_file(PurpleConnection *gc, const char *who, const char *file)
 	PurplePlugin *prpl;
 	PurplePluginProtocolInfo *prpl_info;
 
-	if (gc) {
-		prpl = purple_connection_get_prpl(gc);
-		prpl_info = PURPLE_PLUGIN_PROTOCOL_INFO(prpl);
+	g_return_if_fail(gc != NULL);
 
-		if (prpl_info->send_file &&
-				(!prpl_info->can_receive_file
-						|| prpl_info->can_receive_file(gc, who)))
-			prpl_info->send_file(gc, who, file);
+	prpl = purple_connection_get_prpl(gc);
+	prpl_info = PURPLE_PLUGIN_PROTOCOL_INFO(prpl);
+
+	if (prpl_info->send_file && (!prpl_info->can_receive_file
+				     || prpl_info->can_receive_file(gc, who))) {
+		prpl_info->send_file(gc, who, file);
+	}
+}
+
+void serv_chat_send_file(PurpleConnection *gc, int id, const char *file)
+{
+	PurplePlugin *prpl;
+	PurplePluginProtocolInfo *prpl_info;
+
+	g_return_if_fail(gc != NULL);
+
+	prpl = purple_connection_get_prpl(gc);
+	prpl_info = PURPLE_PLUGIN_PROTOCOL_INFO(prpl);
+
+	if (PURPLE_PROTOCOL_PLUGIN_HAS_FUNC(prpl_info, chat_send_file) &&
+	    (!PURPLE_PROTOCOL_PLUGIN_HAS_FUNC(prpl_info, chat_can_receive_file)
+	     || prpl_info->chat_can_receive_file(gc, id))) {
+		prpl_info->chat_send_file(gc, id, file);
 	}
 }

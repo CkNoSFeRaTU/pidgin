@@ -27,7 +27,7 @@ $(top_builddir)/libpurple/dbus-types.h: always
 
 music-messaging-bindings.c: $(top_srcdir)/libpurple/dbus-analyze-functions.py $(musicmessaging_la_SOURCES)
 	cat $(srcdir)/$(musicmessaging_la_SOURCES) | \
-	$(PYTHON) $(top_srcdir)/libpurple/dbus-analyze-functions.py --export-only > $@
+	$(PYTHON3) $(top_srcdir)/libpurple/dbus-analyze-functions.py --export-only > $@
 
 $(musicmessaging_la_OBJECTS) musicmessaging.so: music-messaging-bindings.c $(top_builddir)/libpurple/dbus-types.h
 

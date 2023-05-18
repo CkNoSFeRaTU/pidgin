@@ -10,6 +10,16 @@ include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak
 TARGET = libpurple
 NEEDED_DLLS = $(LIBXML2_TOP)/bin/libxml2-2.dll
 
+# gcc 4.8 on windows moved to dynamically linking libgcc. So if we're building
+# under msys2 we assume we're using gcc >= 4.8 and need to copy libgcc and
+# libwinpthread from the system into our install bundle.
+#
+# See https://gcc.gnu.org/gcc-4.8/changes.html#windows for more info.
+ifeq ($(MSYSTEM),MINGW32)
+NEEDED_DLLS += $(MSYSTEM_PREFIX)/bin/libgcc_s_dw2-1.dll \
+               $(MSYSTEM_PREFIX)/bin/libwinpthread-1.dll
+endif
+
 ifeq ($(CYRUS_SASL), 1)
 NEEDED_DLLS += $(CYRUS_SASL_TOP)/bin/libsasl2-3.dll
 
@@ -108,8 +118,11 @@ C_SRC =	\
 			win32/win32dep.c
 
 RC_SRC = win32/libpurplerc.rc
-
 OBJECTS = $(C_SRC:%.c=%.o) $(RC_SRC:%.rc=%.o)
+
+PC_SRC = data/purple.pc.in data/purple-uninstalled.pc.in \
+	 data/purple-2.pc.in data/purple-2-uninstalled.pc.in
+PC_FILES = $(PC_SRC:%.pc.in=%.pc)
 
 ##
 ## LIBRARIES
@@ -131,7 +144,7 @@ include $(PIDGIN_COMMON_RULES)
 ##
 .PHONY: all install install_shallow clean
 
-all: $(TARGET).dll
+all: $(TARGET).dll $(PC_FILES)
 	$(MAKE) -C $(PURPLE_PROTOS_TOP) -f $(MINGW_MAKEFILE)
 	$(MAKE) -C $(PURPLE_PLUGINS_TOP) -f $(MINGW_MAKEFILE)
 
@@ -162,6 +175,8 @@ $(TARGET).dll $(TARGET).dll.a: $(OBJECTS)
 clean:
 	rm -f $(OBJECTS) $(RC_SRC) $(PURPLE_VERSION_H) $(PURPLE_PURPLE_H)
 	rm -f $(TARGET).dll $(TARGET).dll.a $(TARGET).def
+	rm -f data/pidgin.pc data/pidgin-uninstalled.pc
+	rm -f data/pidgin-2.pc data/pidgin-2-uninstalled.pc
 	$(MAKE) -C $(PURPLE_PROTOS_TOP) -f $(MINGW_MAKEFILE) clean
 	$(MAKE) -C $(PURPLE_PLUGINS_TOP) -f $(MINGW_MAKEFILE) clean
 

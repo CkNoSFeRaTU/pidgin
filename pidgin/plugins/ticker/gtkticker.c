@@ -1,5 +1,7 @@
-/* GTK - The GIMP Toolkit
- * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+/*
+ * Pidgin Ticker Plugin
+ *
+ * Copyright 2000 Syd Logan
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -15,10 +17,6 @@
  * License along with this library; if not, write to the
  * Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
  * Boston, MA 02111-1301, USA.
- */
-
-/*
- * GtkTicker Copyright 2000 Syd Logan
  */
 
 /* FIXME: GTK+ deprecated GTK_WIDGET_MAPPED/REALIZED, but don't provide

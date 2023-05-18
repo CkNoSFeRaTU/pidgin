@@ -615,7 +615,7 @@ static void
 purple_smiley_set_data_impl(PurpleSmiley *smiley, guchar *smiley_data,
 				size_t smiley_data_len)
 {
-	PurpleStoredImage *old_img, *new_img;
+	PurpleStoredImage *old_img = NULL, *new_img = NULL;
 	const char *old_filename = NULL;
 	const char *new_filename = NULL;
 
@@ -623,7 +623,10 @@ purple_smiley_set_data_impl(PurpleSmiley *smiley, guchar *smiley_data,
 	g_return_if_fail(smiley_data != NULL);
 	g_return_if_fail(smiley_data_len > 0);
 
-	old_img = smiley->img;
+	if(smiley->img != NULL) {
+		old_img = smiley->img;
+		purple_imgstore_ref(old_img);
+	}
 
 	new_img = purple_smiley_data_new(smiley_data, smiley_data_len);
 

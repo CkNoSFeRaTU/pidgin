@@ -21,3 +21,10 @@ EXTRA_DIST =	\
 		Makefile.mingw \
 		$(CERTIFICATES) \
 		$(EXTRA_CERTS)
+
+CLEANFILES = certdata.txt
+
+.PHONY: certs
+certs:
+	./mk-ca-bundle.pl mozilla.pem
+

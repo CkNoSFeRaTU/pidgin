@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 15:00+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Naoki Matsumoto (nekomatu) <nekomatu@gmail.com>, 2015\n"
 "Language-Team: Japanese (http://www.transifex.com/pidgin/pidgin/language/"
 "ja/)\n"
 "Language: ja\n"
@@ -1779,7 +1779,6 @@ msgstr "+++ %s さんがサイン・インしました"
 msgid "+++ %s signed off"
 msgstr "+++ %s さんがサイン・アウトしました"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "原因不明のエラー"
 
@@ -1795,6 +1794,10 @@ msgstr "メッセージが長すぎます"
 
 msgid "Unable to send message."
 msgstr "メッセージを送信できません"
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "メッセージの送信"
@@ -2136,19 +2139,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>ログ・ファイルが見つかりません!</b></font>"
@@ -2210,6 +2209,42 @@ msgstr "会議でエラー"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "セッションの作成でエラー: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2754,7 +2789,7 @@ msgstr "受信した会話をサイキック・モードで表示します"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3349,7 +3384,16 @@ msgstr "SSL を使う"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3823,37 +3867,6 @@ msgstr "SASL 認証に失敗しました"
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL のエラー: %s"
-
-msgid "Invalid Encoding"
-msgstr "不正なエンコード"
-
-msgid "Unsupported Extension"
-msgstr "サポートしていない拡張"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr "サーバから想定外の応答がありました。中間者攻撃の可能性があります。"
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr ""
-
-msgid "User not found"
-msgstr "ユーザが見つかりません"
-
-msgid "Invalid Username Encoding"
-msgstr "ユーザ名のエンコーディングが正しくありません"
-
-msgid "Resource Constraint"
-msgstr "リソース制限"
 
 msgid "Unable to canonicalize username"
 msgstr "ユーザ名を正規化できません"
@@ -4433,6 +4446,9 @@ msgstr "不正な承認メカニズムです"
 msgid "Authorization mechanism too weak"
 msgstr "承認メカニズムが不十分です"
 
+msgid "Incorrect username or password"
+msgstr ""
+
 msgid "Temporary Authentication Failure"
 msgstr "テンポラリな認証に失敗しました"
 
@@ -4477,6 +4493,9 @@ msgstr "ポリシー違反"
 
 msgid "Remote Connection Failed"
 msgstr "リモート接続に失敗しました"
+
+msgid "Resource Constraint"
+msgstr "リソース制限"
 
 msgid "Restricted XML"
 msgstr "制限付き XML"
@@ -4795,6 +4814,19 @@ msgstr ""
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr ""
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr ""
 
@@ -5014,7 +5046,6 @@ msgstr ""
 msgid "Sick"
 msgstr ""
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "眠いよ"
 
@@ -5101,6 +5132,9 @@ msgstr "パスワードの有効期限が切れています"
 msgid "Incorrect password"
 msgstr "パスワードが間違っています"
 
+msgid "User not found"
+msgstr "ユーザが見つかりません"
+
 msgid "Account has been disabled"
 msgstr "アカウントが無効になっています"
 
@@ -5121,9 +5155,6 @@ msgstr "あなた自身を追加できません"
 
 msgid "Master archive is misconfigured"
 msgstr "マスター・アーカイブの設定が間違っています"
-
-msgid "Incorrect username or password"
-msgstr ""
 
 msgid "Could not recognize the host of the username you entered"
 msgstr ""
@@ -5336,1147 +5367,6 @@ msgstr "サーバのアドレス"
 
 msgid "Server port"
 msgstr "サーバのポート"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "私があなたを仲間リストに追加できるように承認してください。"
-
-msgid "No reason given."
-msgstr "理由はわかりません。"
-
-msgid "Authorization Denied Message:"
-msgstr "承認拒否メッセージ:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "OK(_O)"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr ""
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr ""
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"接続と切断を繰り返し行いました。10 分程待ってから再び試みてください。そのまま"
-"続行すると、さらに長く待たなければならなくなりますよ。"
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr ""
-
-msgid "The server returned an empty response"
-msgstr ""
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr ""
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(このメッセージを受信する際にエラーが発生しました。会話している仲間はおそらく"
-"別のエンコーディングを使用していると思われます。相手が使用しているエンコー"
-"ディングがわかるのであれば、アカウント・ダイアログの拡張オプションで指定して"
-"みてください。)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(このメッセージを受信する際にエラーが発生しました。%s さんとは異なるエンコー"
-"ディングで会話しているか、あるいは %s さんがおかしなクライアントを使っている"
-"と思われます。)"
-
-msgid "Could not join chat room"
-msgstr ""
-
-msgid "Invalid chat room name"
-msgstr ""
-
-msgid "Invalid error"
-msgstr "不正なエラー"
-
-msgid "Not logged in"
-msgstr "ログインしていません"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr ""
-
-msgid "Cannot send SMS without accepting terms"
-msgstr ""
-
-msgid "Cannot send SMS"
-msgstr ""
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr ""
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr ""
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr ""
-
-msgid "Bot account cannot IM this user"
-msgstr ""
-
-msgid "Bot account reached IM limit"
-msgstr ""
-
-msgid "Bot account reached daily IM limit"
-msgstr ""
-
-msgid "Bot account reached monthly IM limit"
-msgstr ""
-
-msgid "Unable to receive offline messages"
-msgstr ""
-
-msgid "Offline message store full"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "メッセージを送信できません: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr ""
-
-msgid "Thinking"
-msgstr "考え中"
-
-msgid "Shopping"
-msgstr "買い物中"
-
-msgid "Questioning"
-msgstr "質問中"
-
-msgid "Eating"
-msgstr "食事中"
-
-msgid "Watching a movie"
-msgstr "映画を見てる"
-
-msgid "Typing"
-msgstr "入力中です"
-
-msgid "At the office"
-msgstr "オフィスに居る"
-
-msgid "Taking a bath"
-msgstr "風呂に入ってる"
-
-msgid "Watching TV"
-msgstr "TV 見てる"
-
-msgid "Having fun"
-msgstr "楽しんでる"
-
-msgid "Sleeping"
-msgstr "眠ってます"
-
-msgid "Using a PDA"
-msgstr "PDA 使用中"
-
-msgid "Meeting friends"
-msgstr "友だちと会っている"
-
-msgid "On the phone"
-msgstr "電話中"
-
-msgid "Surfing"
-msgstr "サーフィン中"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "移動中"
-
-msgid "Searching the web"
-msgstr "ウェブを検索中"
-
-msgid "At a party"
-msgstr "パーティ出席中"
-
-msgid "Having Coffee"
-msgstr "コーヒー飲んでる"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "ゲームしてる"
-
-msgid "Browsing the web"
-msgstr "ウェブ見てる"
-
-msgid "Smoking"
-msgstr "煙草吸ってる"
-
-msgid "Writing"
-msgstr "書いてる"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "呑んでる"
-
-msgid "Listening to music"
-msgstr "音楽聴いてる"
-
-msgid "Studying"
-msgstr "勉強中"
-
-msgid "Working"
-msgstr ""
-
-msgid "In the restroom"
-msgstr "トイレ"
-
-msgid "Received invalid data on connection with server"
-msgstr "サーバとの接続で不正なデータを受け取りました"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM プロトコルのプラグイン"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ プロトコル・プラグイン"
-
-msgid "Encoding"
-msgstr "エンコーディング"
-
-msgid "The remote user has closed the connection."
-msgstr "リモート・ユーザが接続を閉じました"
-
-msgid "The remote user has declined your request."
-msgstr "リモート・ユーザはあなたの要求を却下しました"
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "リモート・ユーザとの接続が切れました:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "リモート・ユーザとの接続で不正なデータを受け取りました"
-
-msgid "Unable to establish a connection with the remote user."
-msgstr ""
-
-msgid "Direct IM established"
-msgstr "Direct IM を確立しました"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "ファイル %s は %s です (%s の最大サイズを超えています)"
-
-msgid "Free For Chat"
-msgstr "チャットできます"
-
-msgid "Not Available"
-msgstr "不在です"
-
-msgid "Occupied"
-msgstr "多忙です"
-
-msgid "Web Aware"
-msgstr "ウェブは見てます"
-
-msgid "Invisible"
-msgstr "隠れています"
-
-msgid "Evil"
-msgstr ""
-
-msgid "Depression"
-msgstr ""
-
-msgid "At home"
-msgstr ""
-
-msgid "At work"
-msgstr ""
-
-msgid "At lunch"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr ""
-
-msgid "Username sent"
-msgstr ""
-
-msgid "Connection established, cookie sent"
-msgstr "(接続完了) cookie を送信しました"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "接続の最終調整中"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "妥当な AIM ログインの hash 値を取得することができませんでした。"
-
-msgid "Unable to get a valid login hash."
-msgstr "妥当なログインの hash 値を取得できませんでした。"
-
-msgid "Received authorization"
-msgstr "承認を受信しました"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr ""
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr ""
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL インスタント・メッセンジャー・サービスは一時的に利用不可です"
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr "クライアントのバージョンが古すぎます。%s にアップグレードしましょう。"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-msgid "The SecurID key entered is invalid"
-msgstr ""
-
-msgid "Enter SecurID"
-msgstr "セキュア ID の入力"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "デジタル表示から6桁の数字を入力してください。"
-
-msgid "Password sent"
-msgstr "パスワードの送信中"
-
-msgid "Unable to initialize connection"
-msgstr "新しい接続を開けません"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"ユーザの %u さんが次の理由で仲間リストに追加する要求を拒否しました:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ の承認が拒否されました"
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr "ユーザの %u さんが仲間リストに追加するあなたの要求を承認しました"
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"特別なメッセージを受信しました\n"
-"\n"
-"差出人: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"ICQ ページを受信しています\n"
-"\n"
-"差出人: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"%s [%s] さんからの ICQ E-メールを受信しました\n"
-"\n"
-"メッセージは:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ ユーザの %u さんはあなたに仲間リストを送信しています: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "この相手を仲間リストに追加しますか?"
-
-msgid "_Add"
-msgstr "追加(_A)"
-
-msgid "_Decline"
-msgstr "断る(_D)"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] ""
-"%2$s さんからの %1$hu 通のメッセージは妥当でないので受け取れませんでした。"
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] ""
-"%2$s さんからの %1$hu 個のメッセージは大きすぎるために受け取れませんでした。"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"速度制限を上回ったので %2$s さんからの %1$hu通のメッセージを受け取れませんで"
-"した。"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] ""
-"原因は不明ですが、%2$s さんからの %1$hu 個のメッセージを受け取れませんでし"
-"た。"
-
-msgid "Your AIM connection may be lost."
-msgstr "AIM への接続が切れたようです"
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "チャット・ルーム %s から切断されました"
-
-msgid "The new formatting is invalid."
-msgstr "新しい書式が間違っています"
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-
-msgid "Pop-Up Message"
-msgstr "ポップアップ・メッセージ"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] ""
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "E-メール・アドレス %s に対する結果を得られませんでした"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "%s さんを確認するための問い合わせメールを受信してください"
-
-msgid "Account Confirmation Requested"
-msgstr "アカウント認証を要求しました"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"エラー 0x%04x: このアドレスが間違っているので、この E-メール・アドレスに変更"
-"できません"
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "エラー 0x%04x: 原因不明のエラーです"
-
-msgid "Error Changing Account Info"
-msgstr "アカウント情報変更エラー"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "%s さんの E-メール・アドレスは %s です"
-
-msgid "Account Info"
-msgstr "アカウント情報"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"IM 画像が送信されませんでした。IM 画像を送信するには Direct Connected になっ"
-"てください"
-
-msgid "Unable to set AIM profile."
-msgstr "AIM プロフィールをセットできません"
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"ログインの手続きが完了する前にユーザプロフィールを設定しようとしているようで"
-"す。あなたのプロフィールは設定されずに残っています。接続が完了してから再度試"
-"してください。"
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] "プロフィールの長さが上限値 ( %dバイト) に達したので切りつめました"
-
-msgid "Profile too long."
-msgstr "プロフィールが長すぎます"
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] "離席メッセージの長さが上限値 ( %dバイト) に達したので切りつめました"
-
-msgid "Away message too long."
-msgstr "離席メッセージが長すぎます"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid "Unable to Add"
-msgstr "追加できません"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr ""
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-
-msgid "Orphans"
-msgstr "みなしご"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-
-msgid "(no name)"
-msgstr "(名前無し)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr ""
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-
-msgid "Authorization Given"
-msgstr "承認が得られました"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr "ユーザの %s さんは仲間リストに追加するあなたの要求を承認しました"
-
-msgid "Authorization Granted"
-msgstr "承認が得られました"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"ユーザの %s さんは次の理由のために仲間リストに追加するあなたの要求を拒否しま"
-"した:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "承認は拒否されました"
-
-msgid "_Exchange:"
-msgstr "交換(_E):"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"IM 画像が送信されませんでした。AIM チャットで IM 画像を送信できません。"
-
-msgid "iTunes Music Store Link"
-msgstr "iTunes 楽曲ストアのリンク"
-
-msgid "Lunch"
-msgstr ""
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "%s さんに対する仲間のコメント"
-
-msgid "Buddy Comment:"
-msgstr "仲間のコメント:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "%s を利用した Direct IM 接続の開始を選択しています。"
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"理由は、あなたの IP アドレスを開示することになるからです。これにより個人情報"
-"に関する危険性が高まります。続行してもよろしいですか?"
-
-msgid "C_onnect"
-msgstr "接続する(_O)"
-
-msgid "You closed the connection."
-msgstr ""
-
-msgid "Get AIM Info"
-msgstr "AIM 情報の取得"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "仲間のコメントの編集"
-
-msgid "Get X-Status Msg"
-msgstr ""
-
-msgid "End Direct IM Session"
-msgstr ""
-
-msgid "Direct IM"
-msgstr "Direct IM"
-
-msgid "Re-request Authorization"
-msgstr "承認の再要求"
-
-msgid "Require authorization"
-msgstr "承認が必要です"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr ""
-"ウェブは知っている (これを有効にすると SPAM を受け取ることになりますよ!)"
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ プライバシーのオプション"
-
-msgid "Change Address To:"
-msgstr "変更するアドレス:"
-
-msgid "you are not waiting for authorization"
-msgstr ""
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "あなたは次の仲間からの承認を待っています"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"右クリックして \"承認の再要求\" を選択することで、これらの仲間からの承認をも"
-"う一度要求できます。"
-
-msgid "Find Buddy by Email"
-msgstr "E-メールから仲間を捜す"
-
-msgid "Search for a buddy by email address"
-msgstr "E-メール・アドレスから仲間を検索します"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "検索する仲間の E-メール・アドレスを入力してください"
-
-msgid "_Search"
-msgstr "検索(_S)"
-
-msgid "Set User Info (web)..."
-msgstr ""
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr ""
-
-msgid "Configure IM Forwarding (web)"
-msgstr ""
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "プライバシー・オプションの追加..."
-
-msgid "Show Visible List"
-msgstr ""
-
-msgid "Show Invisible List"
-msgstr ""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "アカウントの確認"
-
-msgid "Display Currently Registered Email Address"
-msgstr "現在登録されている E-メール・アドレスの表示"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "現在登録されている E-メール・アドレスの変更..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "承認を待っている仲間を表示"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "E-メールで仲間の検索..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-
-msgid "Allow multiple simultaneous logins"
-msgstr ""
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Direct IM で %s は %s:%hu で問い合わせがきています。"
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "%s:%hu にコンタクトを試みています"
-
-msgid "Attempting to connect via proxy server."
-msgstr "プロキシ・サーバを介してコンタクトを試みています..."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s は直接 %s に接続するように要求しました。"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"これを行うには 2 台のコンピュータを直接接続しなければならず、IM 画像に必要で"
-"す。IP アドレスが明らかになるので、プライバシーに対するリスクが発生するかもし"
-"れません。"
-
-#. Label
-msgid "Buddy Icon"
-msgstr "仲間アイコン"
-
-msgid "Voice"
-msgstr "音声"
-
-msgid "AIM Direct IM"
-msgstr "AIM Direct IM"
-
-msgid "Get File"
-msgstr "ファイルの取得"
-
-msgid "Games"
-msgstr "ゲーム"
-
-msgid "ICQ Xtraz"
-msgstr ""
-
-msgid "Add-Ins"
-msgstr "追加"
-
-msgid "Send Buddy List"
-msgstr "仲間リストの送信"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ Direct 接続"
-
-msgid "AP User"
-msgstr "AP ユーザ"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "ニヒリスト"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ サーバ中継"
-
-msgid "Old ICQ UTF8"
-msgstr "古い ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trillian 暗号化"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "ヒップトップ"
-
-msgid "Security Enabled"
-msgstr "セキュリティは有効"
-
-msgid "Video Chat"
-msgstr "ビデオ・チャット"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "ライブ・ビデオ"
-
-msgid "Camera"
-msgstr "カメラ"
-
-msgid "Screen Sharing"
-msgstr ""
-
-msgid "IP Address"
-msgstr "IP アドレス"
-
-msgid "Warning Level"
-msgstr "警告レベル"
-
-msgid "Buddy Comment"
-msgstr "仲間のコメント"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "ユーザ情報は有効ではありません: %s"
-
-msgid "Mobile Phone"
-msgstr "携帯電話"
-
-msgid "Age"
-msgstr "年齢"
-
-msgid "Personal Web Page"
-msgstr "個人的なウェブページ"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "追加情報"
-
-msgid "Home Address"
-msgstr "自宅の住所"
-
-msgid "Zip Code"
-msgstr "郵便番号"
-
-msgid "Work Address"
-msgstr "勤務先の住所"
-
-msgid "Work Information"
-msgstr "職業"
-
-msgid "Company"
-msgstr "勤務先"
-
-msgid "Division"
-msgstr "所属"
-
-msgid "Position"
-msgstr "役職"
-
-msgid "Web Page"
-msgstr "ウェブページ"
-
-msgid "Online Since"
-msgstr "サイン・インした日時"
-
-msgid "Member Since"
-msgstr "メンバになった日時"
-
-msgid "Capabilities"
-msgstr "機能"
-
-msgid "Profile"
-msgstr "プロフィール"
-
-msgid "View web profile"
-msgstr ""
-
-msgid "Invalid SNAC"
-msgstr "不正な SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr ""
-
-msgid "Client rate limit exceeded"
-msgstr ""
-
-msgid "Service unavailable"
-msgstr "サービスが利用できません"
-
-msgid "Service not defined"
-msgstr "サービスが定義されていません"
-
-msgid "Obsolete SNAC"
-msgstr "旧式の SNAC"
-
-msgid "Not supported by host"
-msgstr "ホストではサポートしていません"
-
-msgid "Not supported by client"
-msgstr "クライアントではサポートしていません"
-
-msgid "Refused by client"
-msgstr "クライアントに拒否されました"
-
-msgid "Reply too big"
-msgstr "返信が大きすぎます"
-
-msgid "Responses lost"
-msgstr "応答がありません"
-
-msgid "Request denied"
-msgstr "リクエストが拒否されました"
-
-msgid "Busted SNAC payload"
-msgstr "SNAC 格納エリアが壊れました"
-
-msgid "Insufficient rights"
-msgstr "不十分な要求です"
-
-msgid "In local permit/deny"
-msgstr "局所的な許可/不許可"
-
-msgid "Warning level too high (sender)"
-msgstr ""
-
-msgid "Warning level too high (receiver)"
-msgstr ""
-
-msgid "User temporarily unavailable"
-msgstr "ユーザが一時的に無効です"
-
-msgid "No match"
-msgstr "マッチしません"
-
-msgid "List overflow"
-msgstr "リスト溢れ"
-
-msgid "Request ambiguous"
-msgstr "要求が曖昧です"
-
-msgid "Queue full"
-msgstr "キューが一杯です"
-
-msgid "Not while on AOL"
-msgstr "AOL に居る時はできません"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "オンラインのようです"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr ""
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "オフラインのようです"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr ""
-
-msgid "you have no buddies on this list"
-msgstr ""
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr ""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr ""
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7798,6 +6688,9 @@ msgstr "ビデオ会議"
 msgid "Computer"
 msgstr "コンピュータ"
 
+msgid "Mobile Phone"
+msgstr "携帯電話"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8066,6 +6959,9 @@ msgstr "Realm"
 msgid "Exposure"
 msgstr "Exposure"
 
+msgid "Encoding"
+msgstr "エンコーディング"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "ソケットを生成できません: %s"
@@ -8088,6 +6984,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "%s を解決する際にエラー"
 
+msgid "Received invalid data on connection with server"
+msgstr "サーバとの接続で不正なデータを受け取りました"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr ""
@@ -8104,6 +7003,12 @@ msgstr "はい(_Y)"
 
 msgid "_No"
 msgstr "いいえ(_N)"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "OK(_O)"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8175,8 +7080,17 @@ msgstr "解除"
 msgid "Do not disturb"
 msgstr "邪魔しないでね"
 
+msgid "Invisible"
+msgstr "隠れています"
+
 msgid "Extended away"
 msgstr ""
+
+msgid "Mobile"
+msgstr "移動中"
+
+msgid "Listening to music"
+msgstr "音楽聴いてる"
 
 msgid "Feeling"
 msgstr ""
@@ -8325,29 +7239,40 @@ msgid ""
 "the old file has been renamed to %s~."
 msgstr ""
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin インターネット・メッセンジャー"
 
 msgid "Internet Messenger"
 msgstr "インターネット・メッセンジャー"
 
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin インターネット・メッセンジャー"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
+msgstr ""
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
 msgstr ""
 
 #. Build the login options frame.
@@ -8844,6 +7769,9 @@ msgstr "/ヘルプ(_H)"
 
 msgid "/Help/Online _Help"
 msgstr "/ヘルプ/オンライン・ヘルプ(_H)"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr "/ヘルプ/ビルド情報(_B)"
@@ -9363,6 +8291,9 @@ msgid "%d person in room"
 msgid_plural "%d people in room"
 msgstr[0] "チャットルームに %d人にいます"
 
+msgid "Typing"
+msgstr "入力中です"
+
 msgid "Stopped Typing"
 msgstr "入力を止めたようです"
 
@@ -9471,20 +8402,14 @@ msgstr "エラー"
 msgid "Fatal Error"
 msgstr "致命的なエラー"
 
-msgid "artist"
-msgstr "アーティスト"
-
-msgid "voice and video"
-msgstr "声とビデオ"
-
-msgid "support"
-msgstr "サポート"
-
-msgid "webmaster"
-msgstr "ウェブマスタ"
+msgid "lead developer"
+msgstr "メインの開発者"
 
 msgid "win32 port"
 msgstr "Win32 のポーティング"
+
+msgid "artist"
+msgstr "アーティスト"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9497,9 +8422,18 @@ msgstr "メンテナ"
 msgid "libfaim maintainer"
 msgstr "libfaim のメンテナ"
 
+msgid "webmaster"
+msgstr "ウェブマスタ"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "ハッカーと指定したドライバ [lazy bum]"
+
+msgid "voice and video"
+msgstr "声とビデオ"
+
+msgid "support"
+msgstr "サポート"
 
 msgid "support/QA"
 msgstr "サポート/QA"
@@ -9509,9 +8443,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "オリジナルの作者"
-
-msgid "lead developer"
-msgstr "メインの開発者"
 
 msgid "Senior Contributor/QA"
 msgstr ""
@@ -9833,23 +8764,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>有用なリソース</B></FONT><BR>\t<A HREF=\"%s\">ウェブサイ"
-"ト</A><BR>\t<A HREF=\"%s\">よくある質問と答え</A><BR>\tIRC チャンネル: "
-"#pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10893,12 +9819,12 @@ msgstr "プロキシの設定プログラムを起動できません。"
 msgid "Cannot start browser configuration program."
 msgstr "ブラウザの設定プログラムを起動できません。"
 
-msgid "Disabled"
-msgstr ""
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "自動的に検出した IP アドレスを使用(_A): %s"
+
+msgid "IP Address"
+msgstr "IP アドレス"
 
 msgid "ST_UN server:"
 msgstr "STUN サーバ(_U):"
@@ -11161,6 +10087,37 @@ msgstr "最後に終了した時の状態を継承する(_E)"
 msgid "Status to a_pply at startup:"
 msgstr "起動時に適用する状態(_P):"
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr "音量:"
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "デバイス(_D)"
+
+msgid "Audio"
+msgstr "オーディオ"
+
+msgid "Input"
+msgstr "入力"
+
+msgid "Output"
+msgstr ""
+
+msgid "Video"
+msgstr "ビデオ"
+
 msgid "Interface"
 msgstr "インターフェース"
 
@@ -11172,6 +10129,9 @@ msgstr "状態/待機"
 
 msgid "Themes"
 msgstr "テーマ"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "すべてのユーザからのコンタクトを許可する"
@@ -11255,6 +10215,46 @@ msgstr "別の名前を付ける"
 
 msgid "Select Folder..."
 msgstr "フォルダの選択..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "追加(_A)"
 
 #. list button
 msgid "_Get List"
@@ -11434,6 +10434,10 @@ msgstr ""
 "<b>サイズ:</b> %s\n"
 "<b>画像のサイズ:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "仲間アイコン"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11475,11 +10479,6 @@ msgstr "本当に閉じてもよいですか?"
 
 msgid "Select color"
 msgstr "色の選択"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "別名(_A)"
@@ -12344,6 +11343,9 @@ msgstr ""
 msgid "Half Operator"
 msgstr ""
 
+msgid "Voice"
+msgstr "音声"
+
 msgid "Authorization dialog"
 msgstr ""
 
@@ -12595,35 +11597,51 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
-msgstr "オーディオ"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "ビデオ"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
 msgstr ""
 
 msgid "_Plugin"
 msgstr "プラグイン(_P)"
-
-msgid "_Device"
-msgstr "デバイス(_D)"
-
-msgid "Input"
-msgstr "入力"
 
 msgid "P_lugin"
 msgstr "プラグイン(_L)"
 
 msgid "D_evice"
 msgstr "デバイス(_E)"
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
-msgstr "音量:"
 
 msgid "Silence threshold:"
 msgstr ""
@@ -12809,8 +11827,8 @@ msgstr "スペルチェックのサポート"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description

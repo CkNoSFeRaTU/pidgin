@@ -87,6 +87,15 @@ void purple_smarshal_VOID__POINTER_POINTER_OBJECT_OBJECT (GClosure     *closure,
                                                           gpointer      invocation_hint,
                                                           gpointer      marshal_data);
 
+/* VOID:STRING,STRING,POINTER (./marshallers.list:10) */
+extern
+void purple_smarshal_VOID__STRING_STRING_POINTER (GClosure     *closure,
+                                                  GValue       *return_value,
+                                                  guint         n_param_values,
+                                                  const GValue *param_values,
+                                                  gpointer      invocation_hint,
+                                                  gpointer      marshal_data);
+
 
 G_END_DECLS
 

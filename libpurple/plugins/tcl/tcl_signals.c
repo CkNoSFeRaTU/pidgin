@@ -371,8 +371,10 @@ static void *tcl_signal_callback(va_list args, struct tcl_signal_handler *handle
 		case PURPLE_TYPE_STRING:
 			if (purple_value_is_outgoing(handler->argtypes[i])) {
 				if (vals[i] != NULL && *(char **)vals[i] != NULL) {
-					g_free(*strs[i]);
-					*strs[i] = g_strdup(vals[i]);
+					if(strs[i] != NULL) {
+						g_free(*strs[i]);
+						*strs[i] = g_strdup(vals[i]);
+					}
 				}
 				ckfree(vals[i]);
 			}

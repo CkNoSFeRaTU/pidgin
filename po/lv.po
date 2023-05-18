@@ -6,16 +6,16 @@
 # ajijaija <aija@laka.lv>, 2016
 # ajijaija <aija@laka.lv>, 2016
 # Anita Reitere <nitalynx@gmail.com>, 2015
-# Ingmārs Dīriņš <melhiors14@gmail.com>, 2016,2018
+# Ingmārs Dīriņš <melhiors14@gmail.com>, 2016,2018,2020
 # Raitis Nugumanovs <rower@altnet.lv>, 2016
-# Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>, 2014
+# Rūdolfs Mazurs <alta.liepa@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2018-03-07 17:42+0000\n"
-"Last-Translator: Ingmārs Dīriņš <melhiors14@gmail.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Ingmārs Dīriņš <melhiors14@gmail.com>, 2016,2018,2020\n"
 "Language-Team: Latvian (http://www.transifex.com/pidgin/pidgin/language/"
 "lv/)\n"
 "Language: lv\n"
@@ -1384,7 +1384,7 @@ msgid "Invalid title"
 msgstr "Nederīgs nosaukums"
 
 msgid "Please enter a non-empty title for the status."
-msgstr "Lūdzu, ievadiet ne-tukšu nosaukumu statusam."
+msgstr "Lūdzu, ievadiet netukšu nosaukumu statusam."
 
 msgid "Duplicate title"
 msgstr "Dublēt nosaukumu"
@@ -1739,7 +1739,7 @@ msgstr "Sertificēšanas institūcijas"
 #. Scheme name
 #. Pool name
 msgid "SSL Peers Cache"
-msgstr "SSL vienādrangu kešs"
+msgstr "SSL vienādranga kešatmiņa"
 
 #. Make messages
 #, c-format
@@ -1820,7 +1820,6 @@ msgstr "+++ %s pierakstījās"
 msgid "+++ %s signed off"
 msgstr "+++ %s atrakstījās"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Nezināma kļūda"
 
@@ -1836,6 +1835,10 @@ msgstr "Ziņojums ir pārāk liels."
 
 msgid "Unable to send message."
 msgstr "Nespēj nosūtīt ziņojumu."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Sūtīt ziņojumu"
@@ -1912,8 +1915,8 @@ msgid ""
 "True if the command specified in the \"command\" key should handle \"gg\" "
 "URLs."
 msgstr ""
-"Patiess, ja komandai, norādītai \"komanda\" atslēgā, vajadzētu apdarināt \"gg"
-"\" vietrāžus URL."
+"Patiess, ja komandai, norādītai \"komanda\" atslēgā, vajadzētu apdarināt "
+"\"gg\" vietrāžus URL."
 
 msgid "The handler for \"gg\" URLs"
 msgstr "Apdarinātājs priekš \"gg\" vietrāžiem URL"
@@ -2185,19 +2188,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTOMĀTISKĀ-"
-"ATBILDE&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTOMĀTISKĀ-"
-"ATBILDE&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>Nespēj atrast žurnāla ceļu!</b></font>"
@@ -2270,6 +2269,42 @@ msgstr "Konferences kļūda"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Kļūda, veidojot sesiju: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr "Testēt skaņu"
+
+msgid "Disabled"
+msgstr "Izslēgts"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2819,10 +2854,8 @@ msgstr "Ekstrasensorais režīms ienākošajai sarunai"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
-"Izraisa sarunas logu parādīšanos, tiklīdz citi lietotāji sāk jums sūtīt "
-"ziņojumus. Šis darbojas priekš AIM, ICQ, XMPP un Sametime."
 
 msgid "You feel a disturbance in the force..."
 msgstr "Jūs jūtat traucēšanu spēkā..."
@@ -3417,9 +3450,18 @@ msgstr "Lietot SSL"
 msgid "Authenticate with SASL"
 msgstr "Autentificēties ar SASL"
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
 msgstr ""
 "Atļaut atklāta teksta SASL autentifikāciju pāri nešifrētam savienojumam"
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
+msgstr ""
 
 msgid "Bad mode"
 msgstr "Slikts režīms"
@@ -3900,40 +3942,6 @@ msgstr "SASL autentifikācija neizdevās"
 msgid "SASL error: %s"
 msgstr "SASL kļūda: %s"
 
-msgid "Invalid Encoding"
-msgstr "Nederīgs iekodējums"
-
-msgid "Unsupported Extension"
-msgstr "Neatbalstīts paplašinājums"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-"Negaidīta atbilde no servera.  Tas varētu norādīt uz iespējamu MITM uzbrukumu"
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-"Serveris atbalsta kanālu saistīšanu, bet tas, šķiet, to neizreklamē. Tas "
-"norāda visdrīzākais uz MITM uzbrukumu"
-
-msgid "Server does not support channel binding"
-msgstr "Serveris neatbalsta kanālu saistīšanu"
-
-msgid "Unsupported channel binding method"
-msgstr "Neatbalstīta kanālu saistīšanas metode"
-
-msgid "User not found"
-msgstr "Lietotājs nav atrasts"
-
-msgid "Invalid Username Encoding"
-msgstr "Nederīgs lietotājvārda iekodējums"
-
-msgid "Resource Constraint"
-msgstr "Resursa ierobežojums"
-
 msgid "Unable to canonicalize username"
 msgstr "Nespēj kanonizēt lietotājvārdu"
 
@@ -4085,7 +4093,7 @@ msgid "Cancel Presence Notification"
 msgstr "Atcelt klātbūtnes paziņošanu"
 
 msgid "Un-hide From"
-msgstr "At-slēpt no"
+msgstr "Atsaukt slēpšanu no"
 
 msgid "Temporarily Hide From"
 msgstr "Īslaicīgi slēpt no"
@@ -4489,7 +4497,7 @@ msgid "Remote Server Not Found"
 msgstr "Attālinātais serveris nav atrasts"
 
 msgid "Remote Server Timeout"
-msgstr "Attālinātā servera noilgums"
+msgstr "Attālinātā servera noildze"
 
 msgid "Server Overloaded"
 msgstr "Serveris pārslogots"
@@ -4518,6 +4526,9 @@ msgstr "Nederīgs autorizācijas mehānisms"
 msgid "Authorization mechanism too weak"
 msgstr "Autorizācijas mehānisms pārāk vājš"
 
+msgid "Incorrect username or password"
+msgstr "Nepareizs lietotājvārds vai parole"
+
 msgid "Temporary Authentication Failure"
 msgstr "Īslaicīga autentificēšanas kļūme"
 
@@ -4534,7 +4545,7 @@ msgid "Resource Conflict"
 msgstr "Resursa konflikts"
 
 msgid "Connection Timeout"
-msgstr "Savienojuma noilgums"
+msgstr "Savienojuma noildze"
 
 msgid "Host Gone"
 msgstr "Resursdators aizgājis"
@@ -4555,13 +4566,16 @@ msgid "Invalid XML"
 msgstr "Nederīgs XML"
 
 msgid "Non-matching Hosts"
-msgstr "Ne-atbilstoši resursdatori"
+msgstr "Neatbilstoši resursdatori"
 
 msgid "Policy Violation"
 msgstr "Politikas pārkāpums"
 
 msgid "Remote Connection Failed"
 msgstr "Attālinātais savienojums neizdevās"
+
+msgid "Resource Constraint"
+msgstr "Resursa ierobežojums"
 
 msgid "Restricted XML"
 msgstr "Ierobežots XML"
@@ -4884,6 +4898,19 @@ msgstr "Nespēj nosūtīt datni %s, nav parakstījies uz lietotāja klātbūtni"
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Lūdzu, atlasiet %s resursu, uz kuru jūs vēlētos nosūtīt datni"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr "Nobijies"
 
@@ -5103,7 +5130,6 @@ msgstr "Kautrīgs"
 msgid "Sick"
 msgstr "Slims"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Miegains"
 
@@ -5192,6 +5218,9 @@ msgstr "Parole ir izbeigusies"
 msgid "Incorrect password"
 msgstr "Nepareiza parole"
 
+msgid "User not found"
+msgstr "Lietotājs nav atrasts"
+
 msgid "Account has been disabled"
 msgstr "Konts ir ticis izslēgts"
 
@@ -5212,9 +5241,6 @@ msgstr "Nevar pievienot sevi"
 
 msgid "Master archive is misconfigured"
 msgstr "Galvenais arhīvs ir nepareizi konfigurēts"
-
-msgid "Incorrect username or password"
-msgstr "Nepareizs lietotājvārds vai parole"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Nevarēja atpazīt resursdatoru lietotājvārdam, kuru jūs ievadījāt"
@@ -5431,1238 +5457,6 @@ msgstr "Servera adrese"
 
 msgid "Server port"
 msgstr "Servera ports"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr ""
-"Lūdzu, autorizējiet mani, lai es varu pievienot jūs savam draugu sarakstam."
-
-msgid "No reason given."
-msgstr "Nav dots iemesls."
-
-msgid "Authorization Denied Message:"
-msgstr "Autorizācijas lieguma ziņojums:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_Labi"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "Saņemta negaidīta atbilde no %s: %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "Saņemta negaidīta atbilde no %s"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Jūs esat bijis pievienojies un atvienojies pārāk bieži. Pagaidiet desmit "
-"minūtes un mēģiniet vēlreiz. Ja jūs turpināsiet mēģināt, jums vajadzēs "
-"gaidīt pat ilgāk."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-"Jūs pieprasījāt šifrēšanu savos konta iestatījumos, bet viens no serveriem "
-"to neatbalsta."
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Kļūda, pieprasot %s: %s"
-
-msgid "The server returned an empty response"
-msgstr "Serveris atgrieza tukšu atbildi"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"Serveris pieprasīja, lai jūs aizpildiet CAPTCHA, lai ierakstītos, bet šis "
-"klients pašlaik neatbalsta CAPTCHAs."
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL neatļauj jūsu ekrāna vārdam autentificēties šeit"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(Bija kļūda, saņemot šo ziņojumu.  Draugs, ar kuru jūs runājat, varbūt lieto "
-"savādāku iekodējumu nekā gaidīts.  Ja jūs zināt, kuru iekodējumu viņš lieto, "
-"jūs varat norādīt to paplašinātajās konta opcijās jūsu AIM/ICQ kontam.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(Bija kļūda, saņemot šo ziņojumu. Vai nu jūs un %s esat atlasījuši "
-"atšķirīgus iekodējumus vai %s ir kļūdains klients.)"
-
-msgid "Could not join chat room"
-msgstr "Nevarēja pievienoties tērzētavai"
-
-msgid "Invalid chat room name"
-msgstr "Nederīgs tērzētavas nosaukums"
-
-msgid "Invalid error"
-msgstr "Nederīga kļūda"
-
-msgid "Not logged in"
-msgstr "Nav ierakstījies"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "Nevar saņemt TZ dēļ vecāku kontroles"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "Nevar nosūtīt SMS bez piekrišanas noteikumiem"
-
-msgid "Cannot send SMS"
-msgstr "Nevar nosūtīt SMS"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "Nevar nosūtīt SMS uz šo valsti"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "Nevar nosūtīt SMS uz nezināmu valsti"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "Robotprogrammatūras konts nevar uzsākt TZas"
-
-msgid "Bot account cannot IM this user"
-msgstr "Robotprogrammatūras konts nevar TZot šo lietotāju"
-
-msgid "Bot account reached IM limit"
-msgstr "Robotprogrammatūras konts sasniedza TZ ierobežojumu"
-
-msgid "Bot account reached daily IM limit"
-msgstr "Robotprogrammatūras konts sasniedza ikdienas TZ ierobežojumu"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "Robotprogrammatūras konts sasniedza ikmēneša TZ ierobežojumu"
-
-msgid "Unable to receive offline messages"
-msgstr "Nespēj saņemt bezsaistes ziņojumus"
-
-msgid "Offline message store full"
-msgstr "Bezsaistes ziņojumu krātuve pilna"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "Nespēj nosūtīt ziņojumu: %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Nespēj nosūtīt ziņojumu: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "Nespēj nosūtīt ziņojumu uz %s: %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "Nespēj nosūtīt ziņojumu uz %s: %s"
-
-msgid "Thinking"
-msgstr "Domā"
-
-msgid "Shopping"
-msgstr "Iepērkas"
-
-msgid "Questioning"
-msgstr "Izjautā"
-
-msgid "Eating"
-msgstr "Ed"
-
-msgid "Watching a movie"
-msgstr "Skatās filmu"
-
-msgid "Typing"
-msgstr "Raksta"
-
-msgid "At the office"
-msgstr "Birojā"
-
-msgid "Taking a bath"
-msgstr "Vannojās"
-
-msgid "Watching TV"
-msgstr "Skatās TV"
-
-msgid "Having fun"
-msgstr "Izklaidējas"
-
-msgid "Sleeping"
-msgstr "Guļ"
-
-msgid "Using a PDA"
-msgstr "Lieto plaukstdatoru"
-
-msgid "Meeting friends"
-msgstr "Satiek draugus"
-
-msgid "On the phone"
-msgstr "Pa telefonu"
-
-msgid "Surfing"
-msgstr "Sērfo"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Mobils"
-
-msgid "Searching the web"
-msgstr "Meklē tīmeklī"
-
-msgid "At a party"
-msgstr "Ballītē"
-
-msgid "Having Coffee"
-msgstr "Dzer kafiju"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "Spēlē spēles"
-
-msgid "Browsing the web"
-msgstr "Pārlūko tīmekli"
-
-msgid "Smoking"
-msgstr "Smēķē"
-
-msgid "Writing"
-msgstr "Raksta"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "Dzer"
-
-msgid "Listening to music"
-msgstr "Klausās mūziku"
-
-msgid "Studying"
-msgstr "Studē"
-
-msgid "Working"
-msgstr "Strādā"
-
-msgid "In the restroom"
-msgstr "Atpūtas istabā"
-
-msgid "Received invalid data on connection with server"
-msgstr "Saņemti nederīgi dati savienojumā ar serveri"
-
-msgid "Error parsing response from authentication server"
-msgstr "Kļūda, sintaktiski analizējot atbildi no autorizācijas servera"
-
-msgid "Unknown error during authentication"
-msgstr "Nezināma kļūda autorizācijas laikā"
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM protokola spraudnis"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ protokola spraudnis"
-
-msgid "Encoding"
-msgstr "Iekodējums"
-
-msgid "The remote user has closed the connection."
-msgstr "Attālais lietotājs aizvēra savienojumu."
-
-msgid "The remote user has declined your request."
-msgstr "Attālais lietotājs ir noraidījis jūsu pieprasījumu."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Pazudis savienojums ar attālo lietotāju:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Saņemti nederīgi dati savienojumā ar attālo lietotāju."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "Nespēj nodibināt savienojumu ar attālināto lietotāju."
-
-msgid "Direct IM established"
-msgstr "Tiešā TZ nodibināta"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s mēģināja nosūtīt jums %s datni, bet mēs atļaujam tikai datnes līdz %s "
-"pāri tiešajai TZ.  Mēģiniet tās vietā lietot datnes pārsūtīšanu.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "Datne %s ir %s, kas ir lielāka par %s maksimuma izmēru."
-
-msgid "Free For Chat"
-msgstr "Brīvs tērzēšanai"
-
-msgid "Not Available"
-msgstr "Nav pieejams"
-
-msgid "Occupied"
-msgstr "Aizņemts"
-
-msgid "Web Aware"
-msgstr "Tīmekļa zinīgs"
-
-msgid "Invisible"
-msgstr "Neredzams"
-
-msgid "Evil"
-msgstr "Ļauns"
-
-msgid "Depression"
-msgstr "Depresija"
-
-msgid "At home"
-msgstr "Mājās"
-
-msgid "At work"
-msgstr "Darbā"
-
-msgid "At lunch"
-msgstr "Pusdienās"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "Nespēj pievienoties pie autentifikācijas servera: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "Nespēj pievienoties pie BOS servera: %s"
-
-msgid "Username sent"
-msgstr "Lietotājvārds nosūtīts"
-
-msgid "Connection established, cookie sent"
-msgstr "Savienojums nodibināts, sīkdatne nosūtīta"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Noslēdz savienojumu"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Nespēj pierakstīties kā %s tāpēc, ka lietotājvārds ir nederīgs.  "
-"Lietotājvārdiem jābūt derīgām e-pasta adresēm vai jāsākas ar burtu un "
-"jāsatur tikai burtus, ciparus un atstarpes, vai jāsatur tikai ciparus."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-"Jūs pieprasījāt šifrēšanu savos konta iestatījumos, bet šifrēšana nav jūsu "
-"sistēmas atbalstīta."
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-"Jūs pieprasījāt Kerberos autorizāciju, bet šifrēšana ir izslēgta jūsu konta "
-"iestatījumos."
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"Jūs drīzumā varētu tikt atvienots.  Ja tā, pārbaudiet %s pēc atjauninājumiem."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Nespēj iegūt derīgu AIM ierakstīšanās jaucēju."
-
-msgid "Unable to get a valid login hash."
-msgstr "Nespēj iegūt derīgu ierakstīšanās jaucēju."
-
-msgid "Received authorization"
-msgstr "Saņemta autorizācija"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Lietotājvārds nepastāv"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Jūsu konts pašlaik ir aizturēts"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL Instant Messenger pakalpojums īslaicīgi nav pieejams."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Jūsu lietotājvārds ir bijis pievienojies un atvienojies pārāk bieži. "
-"Pagaidiet desmit minūtes un mēģiniet vēlreiz. Ja jūs turpināsiet mēģināt, "
-"jums vajadzēs gaidīt pat ilgāk."
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-"Klienta versija, kuru jūs lietojat, ir pārāk veca. Lūdzu, atjauniniet uz %s"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Jūsu IP adrese ir bijusi pievienojusies un atvienojusies pārāk bieži. "
-"Pagaidiet minūti un mēģiniet vēlreiz. Ja jūs turpināsiet mēģināt, jums "
-"vajadzēs gaidīt pat ilgāk."
-
-msgid "The SecurID key entered is invalid"
-msgstr "Ievadītā SecurID atslēga ir nederīga"
-
-msgid "Enter SecurID"
-msgstr "Ievadiet SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Ievadiet 6 ciparu numuru no digitālā displeja."
-
-msgid "Password sent"
-msgstr "Parole nosūtīta"
-
-msgid "Unable to initialize connection"
-msgstr "Nespēj inicializēt savienojumu"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Lietotājs %u ir atteicis jūsu pieprasījumu pievienot viņu savam draugu "
-"sarakstam dēļ sekojoša iemesla:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ autorizācija liegta."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-"Lietotājs %u piešķīra atļauju jums pieprasīt pievienot viņu jūsu draugu "
-"sarakstam."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Jūs esat saņēmis īpašu ziņojumu\n"
-"\n"
-"No: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Jūs esat saņēmis ICQ lapu\n"
-"\n"
-"No: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"Jūs esat saņēmis ICQ e-pastu no %s [%s]\n"
-"\n"
-"Ziņojums ir:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ lietotājs %u ir nosūtījis jums draugu: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Vai jūs vēlaties pievienot šo draugu savam draugu sarakstam?"
-
-msgid "_Add"
-msgstr "_Pievienot"
-
-msgid "_Decline"
-msgstr "_Noraidīt"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "Jums iztrūka %hu ziņojums no %s tāpēc, ka tas bija nederīgs."
-msgstr[1] "Jums iztrūka %hu ziņojumi no %s tāpēc, ka tie bija nederīgi."
-msgstr[2] "Jums iztrūka %hu ziņojumu no %s tāpēc, ka tie bija nederīgi."
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "Jums iztrūka %hu ziņojums no %s tāpēc, ka tas bija pārāk liels."
-msgstr[1] "Jums iztrūka %hu ziņojumi no %s tāpēc, ka tie bija pārāk lieli."
-msgstr[2] "Jums iztrūka %hu ziņojumu no %s tāpēc, ka tie bija pārāk lieli."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"Jums iztrūka %hu ziņojums no %s tāpēc, ka ātruma ierobežojums ir ticis "
-"pārsniegts."
-msgstr[1] ""
-"Jums iztrūka %hu ziņojumi no %s tāpēc, ka ātruma ierobežojums ir ticis "
-"pārsniegts."
-msgstr[2] ""
-"Jums iztrūka %hu ziņojumu no %s tāpēc, ka ātruma ierobežojums ir ticis "
-"pārsniegts."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"Jums iztrūka %hu ziņojums no %s tāpēc, ka viņa/viņas brīdinājuma līmenis ir "
-"pārāk augsts."
-msgstr[1] ""
-"Jums iztrūka %hu ziņojumi no %s tāpēc, ka viņa/viņas brīdinājuma līmenis ir "
-"pārāk augsts."
-msgstr[2] ""
-"Jums iztrūka %hu ziņojumu no %s tāpēc, ka viņa/viņas brīdinājuma līmenis ir "
-"pārāk augsts."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"Jums iztrūka %hu ziņojums no %s tāpēc, ka jūsu brīdinājuma līmenis ir pārāk "
-"augsts."
-msgstr[1] ""
-"Jums iztrūka %hu ziņojumi no %s tāpēc, ka jūsu brīdinājuma līmenis ir pārāk "
-"augsts."
-msgstr[2] ""
-"Jums iztrūka %hu ziņojumu no %s tāpēc, ka jūsu brīdinājuma līmenis ir pārāk "
-"augsts."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "Jums iztrūka %hu ziņojums no %s nezināma iemesla dēļ."
-msgstr[1] "Jums iztrūka %hu ziņojumi no %s nezināma iemesla dēļ."
-msgstr[2] "Jums iztrūka %hu ziņojumu no %s nezināma iemesla dēļ."
-
-msgid "Your AIM connection may be lost."
-msgstr "Jūsu AIM savienojums varētu būt pazudis."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "Jūs tikāt atvienots no tērzētavas %s."
-
-msgid "The new formatting is invalid."
-msgstr "Jaunā formatēšana ir nederīga."
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"Lietotāja vārda formatēšana var izmainīt tikai lielos burtus un tukšumzīmes."
-
-msgid "Pop-Up Message"
-msgstr "Uznirstošais ziņojums"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "Sekojošie lietotājvārdi ir asociēti ar %s"
-msgstr[1] "Sekojošie lietotājvārdi ir asociēti ar %s"
-msgstr[2] "Sekojošie lietotājvārdi ir asociēti ar %s"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Nav atrastu rezultātu e-pasta adresei %s"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "Jums vajadzētu saņemt e-pastu, kurš vaicā apstiprināt %s."
-
-msgid "Account Confirmation Requested"
-msgstr "Konta apstiprināšana pieprasīta"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"Kļūda 0x%04x: nespēj formatēt lietotājvārdu tāpēc, ka pieprasītais vārds "
-"atšķiras no sākotnējā."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr "Kļūda 0x%04x: nespēj formatēt lietotājvārdu tāpēc, ka tas ir nederīgs."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Kļūda 0x%04x: nespēj formatēt lietotājvārdu tāpēc, ka pieprasītais vārds ir "
-"pārāk garš."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Kļūda 0x%04x: Nespēj nomainīt e-pasta adresi tāpēc, ka jau ir pieprasījums, "
-"kurš gaida uz šo lietotājvārdu."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Kļūda 0x%04x: Nespēj nomainīt e-pasta adresi tāpēc, ka dotajai adresei ir "
-"pārāk daudz ar to asociēto lietotājvārdu."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Kļūda 0x%04x: Nespēj nomainīt e-pastu tāpēc, ka dotā adrese ir nederīga."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Kļūda 0x%04x: Nezināma kļūda."
-
-msgid "Error Changing Account Info"
-msgstr "Kļūda, mainot konta informāciju"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "E-pasta adrese priekš %s ir %s"
-
-msgid "Account Info"
-msgstr "Konta informācija"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Jūsu TZ attēls netika nosūtīts. Jums jābūt tieši savienotam, lai nosūtītu TZ "
-"attālus."
-
-msgid "Unable to set AIM profile."
-msgstr "Nespēj iestatīt AIM profilu."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Jūs varbūt esat pieprasījis iestatīt savu profilu pirms ierakstīšanās "
-"procedūra bija pabeigusies.  Jūsu profils paliek neiestatīts; mēģiniet "
-"iestatīt to atkal, kad jūs esat pilnībā savienojies."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"%d baita profila garuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-msgstr[1] ""
-"%d baitu profila garuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-msgstr[2] ""
-"%d baitu profila garuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-
-msgid "Profile too long."
-msgstr "Pārāk garš profils."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"%d baita prombūtnes ziņojuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-msgstr[1] ""
-"%d baitu prombūtnes ziņojuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-msgstr[2] ""
-"%d baitu prombūtnes ziņojuma maksimums ir ticis pārsniegts.  Tas ir ticis "
-"saīsināts priekš jums."
-
-msgid "Away message too long."
-msgstr "Prombūtnes ziņojums pārāk garš."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Nespēj pievienot draugu %s tāpēc, ka lietotājvārds ir nederīgs.  "
-"Lietotājvārdiem jābūt derīgām e-pasta adresēm vai jāsākas ar burtu un "
-"jāsatur tikai burtus, ciparus un atstarpes, vai jāsatur tikai ciparus."
-
-msgid "Unable to Add"
-msgstr "Nespēj pievienot"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Nespēj izgūt draugu sarakstu"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM serveri īslaicīgi nebija spējīgi nosūtīt jums draugu sarakstu.  Jūsu "
-"draugu saraksts nav pazudis un varbūt kļūs pieejams dažu minūšu laikā."
-
-msgid "Orphans"
-msgstr "Bāreņi"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"Nespēj pievienot draugu %s tāpēc, ka jums ir pārāk daudz draugu jūsu draugu "
-"sarakstā.  Lūdzu, noņemiet vienu un mēģiniet vēlreiz."
-
-msgid "(no name)"
-msgstr "(nav nosaukuma)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Nespēj pievienot draugu %s nezināma iemesla dēļ."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"Lietotājs %s ir devis jums atļauju pievienot viņu savam draugu sarakstam.  "
-"Vai jūs vēlaties pievienot šo lietotāju?"
-
-msgid "Authorization Given"
-msgstr "Autorizācija dota"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"Lietotājs %s piešķīra atļauju jums pieprasīt pievienot viņu jūsu draugu "
-"sarakstam."
-
-msgid "Authorization Granted"
-msgstr "Autorizācija piešķirta"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Lietotājs %s ir atteicis jūsu pieprasījumu pievienot viņu savam draugu "
-"sarakstam dēļ sekojoša iemesla:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Autorizācija liegta"
-
-msgid "_Exchange:"
-msgstr "_Apmaiņa:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"Jūsu TZ attēls netika nosūtīts. Jūs nevarat nosūtīt TZ attēlus AIM "
-"tērzēšanās."
-
-msgid "iTunes Music Store Link"
-msgstr "iTunes mūzikas veikala saite"
-
-msgid "Lunch"
-msgstr "Pusdienas"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Drauga komentārs priekš %s"
-
-msgid "Buddy Comment:"
-msgstr "Drauga komentārs: "
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "Jūs esat izvēlējies atvērt Tiešās TZ savienojumu ar %s."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Tādēļ, ka šis atklāj jūsu IP adresi, tas varētu tikt uzskatīts par "
-"drošībasrisku.  Vai jūs vēlaties turpināt?"
-
-msgid "C_onnect"
-msgstr "Savien_ot"
-
-msgid "You closed the connection."
-msgstr "Jūs slēdzāt savienojumu."
-
-msgid "Get AIM Info"
-msgstr "Iegūt AIM informāciju"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Rediģēt drauga komentāru"
-
-msgid "Get X-Status Msg"
-msgstr "Iegūt X-Status ziņojumu"
-
-msgid "End Direct IM Session"
-msgstr "Beigt tiešās TZ sesiju"
-
-msgid "Direct IM"
-msgstr "Tiešā TZ"
-
-msgid "Re-request Authorization"
-msgstr "Atkārtoti pieprasīt autorizāciju"
-
-msgid "Require authorization"
-msgstr "Pieprasa autorizāciju"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "Tīmekļa zinīgs (šī ieslēgšana izraisīs to, ka jūs saņemsiet MĒSTULES!)"
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ privātuma opcijas"
-
-msgid "Change Address To:"
-msgstr "Mainīt adresi uz:"
-
-msgid "you are not waiting for authorization"
-msgstr "jūs negaidāt autorizāciju"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Jūs gaidāt autorizāciju no sekojošiem draugiem"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Jūs varat atkārtoti pieprasīt autorizāciju no šiem draugiem, veicot labo "
-"klikšķi uz viņiem un atlasot \"Atkārtoti pieprasīt autorizāciju.\""
-
-msgid "Find Buddy by Email"
-msgstr "Atrast draugu pēc e-pasta"
-
-msgid "Search for a buddy by email address"
-msgstr "Meklēt draugu pēc e-pasta adreses"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Ierakstiet drauga, kuru jūs meklējiet, e-pasta adresi."
-
-msgid "_Search"
-msgstr "_Meklēt"
-
-msgid "Set User Info (web)..."
-msgstr "Iestatīt lietotāja informāciju (tīmekļa)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Mainīt paroli (tīmekļa)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Konfigurēt TZ pāradresēšanu (tīmekļa)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Iestatīt privātuma opcijas..."
-
-msgid "Show Visible List"
-msgstr "Rādīt redzamo sarakstu"
-
-msgid "Show Invisible List"
-msgstr "Rādīt neredzamo sarakstu"
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Apstiprināt kontu"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Attēlot pašlaik reģistrēto e-pasta adresi"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Mainīt pašlaik reģistrēto e-pasta adresi..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Rādīt autorizāciju gaidošos draugus"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Meklēt draugu pēc e-pasta adreses..."
-
-msgid "clientLogin"
-msgstr "clientLogin"
-
-msgid "Kerberos"
-msgstr "Kerberos"
-
-msgid "MD5-based"
-msgstr "uz MD5 bāzēts"
-
-msgid "Authentication method"
-msgstr "Autentificēšanas metode"
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"Vienmēr lietot AIM/ICQ starpniekserveri priekš\n"
-"datņu pārsūtījumiem un tiešajām TZ (lēnāks,\n"
-"bet neatklāj jūsu IP adresi)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "Atļaut vairākas vienlaicīgas ierakstīšanās"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Vaicā %s pievienoties pie mums pie %s:%hu priekš tiešās TZ."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "Mēģina pievienoties pie %s:%hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Mēģina pievienoties caur starpniekserveri."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s tikko vaicāja tieši pievienoties pie %s"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Šis pieprasa tiešu savienojumu starp diviem datoriem un ir vajadzīgs TZ "
-"attēliem.  Tādēļ, ka jūsu IP adrese tiks atklāta, šis varētu tikt uzskatīts "
-"par risku privātumam."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Drauga ikona"
-
-msgid "Voice"
-msgstr "Balss"
-
-msgid "AIM Direct IM"
-msgstr "AIM tiešā TZ"
-
-msgid "Get File"
-msgstr "Iegūt datni"
-
-msgid "Games"
-msgstr "Spēles"
-
-msgid "ICQ Xtraz"
-msgstr "ICQ Xtraz"
-
-msgid "Add-Ins"
-msgstr "Pievienojumprogrammas"
-
-msgid "Send Buddy List"
-msgstr "Sūtīt draugu sarakstu"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ tiešā savienošana"
-
-msgid "AP User"
-msgstr "AP lietotājs"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nihilists"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ servera retranslēšana"
-
-msgid "Old ICQ UTF8"
-msgstr "Vecais ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trillian šifrēšana"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Drošība ieslēgta"
-
-msgid "Video Chat"
-msgstr "Video tērzēšana"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "Dzīvais video"
-
-msgid "Camera"
-msgstr "Kamera"
-
-msgid "Screen Sharing"
-msgstr "Ekrāna koplietošana"
-
-msgid "IP Address"
-msgstr "IP adrese"
-
-msgid "Warning Level"
-msgstr "Brīdinājuma līmenis"
-
-msgid "Buddy Comment"
-msgstr "Drauga komentārs"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Lietotāja informācija nav pieejama: %s"
-
-msgid "Mobile Phone"
-msgstr "Mobilais tālrunis"
-
-msgid "Age"
-msgstr "Vecums"
-
-msgid "Personal Web Page"
-msgstr "Personīgā Tīmekļa lapa"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Papildu informācija"
-
-msgid "Home Address"
-msgstr "Mājas adrese"
-
-msgid "Zip Code"
-msgstr "Pasta indekss"
-
-msgid "Work Address"
-msgstr "Darba adrese"
-
-msgid "Work Information"
-msgstr "Darba informācija"
-
-msgid "Company"
-msgstr "Uzņēmums"
-
-msgid "Division"
-msgstr "Struktūrvienība"
-
-msgid "Position"
-msgstr "Amats"
-
-msgid "Web Page"
-msgstr "Tīmekļa lapa"
-
-msgid "Online Since"
-msgstr "Tiešsaistē kopš"
-
-msgid "Member Since"
-msgstr "Biedrs kopš"
-
-msgid "Capabilities"
-msgstr "Spējas"
-
-msgid "Profile"
-msgstr "Profils"
-
-msgid "View web profile"
-msgstr "Skatīt tīmekļa profilu"
-
-msgid "Invalid SNAC"
-msgstr "Nederīgs SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr "Servera ātruma ierobežojums pārsniegts"
-
-msgid "Client rate limit exceeded"
-msgstr "Klienta ātruma ierobežojums pārsniegts"
-
-msgid "Service unavailable"
-msgstr "Pakalpojums nepieejams"
-
-msgid "Service not defined"
-msgstr "Pakalpojums nav definēts"
-
-msgid "Obsolete SNAC"
-msgstr "Novecojis SNAC"
-
-msgid "Not supported by host"
-msgstr "Nav resursdatora atbalstīts"
-
-msgid "Not supported by client"
-msgstr "Nav klienta atbalstīts"
-
-msgid "Refused by client"
-msgstr "Klienta atteikts"
-
-msgid "Reply too big"
-msgstr "Atbilde pārāk liela"
-
-msgid "Responses lost"
-msgstr "Atbildes zaudētas"
-
-msgid "Request denied"
-msgstr "Pieprasījums liegts"
-
-msgid "Busted SNAC payload"
-msgstr "Arestētā SNAC lietderīgā slodze"
-
-msgid "Insufficient rights"
-msgstr "Nepietiekamas tiesības"
-
-msgid "In local permit/deny"
-msgstr "Lokālajā atļaujā/atteikumā"
-
-msgid "Warning level too high (sender)"
-msgstr "Brīdinājuma līmenis pārāk augsts (sūtītājs)"
-
-msgid "Warning level too high (receiver)"
-msgstr "Brīdinājuma līmenis pārāk augsts (saņēmējs)"
-
-msgid "User temporarily unavailable"
-msgstr "Lietotājs īslaicīgi nav pieejams"
-
-msgid "No match"
-msgstr "Nav sakritības"
-
-msgid "List overflow"
-msgstr "Saraksta pārpilde"
-
-msgid "Request ambiguous"
-msgstr "Neviennozīmīgs pieprasījums"
-
-msgid "Queue full"
-msgstr "Rinda pilna"
-
-msgid "Not while on AOL"
-msgstr "Ne kamēr uz AOL"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Parādās tiešsaistē"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "Neparādās tiešsaistē"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Parādās bezsaistē"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "Neparādās bezsaistē"
-
-msgid "you have no buddies on this list"
-msgstr "jums nav draugu šajā sarakstā"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-"Jūs varat pievienot draugu šim sarakstam, veicot labo klikšķi uz viņa un "
-"atlasot \"%s\""
-
-msgid "Visible List"
-msgstr "Redzamais saraksts"
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-"Šie draugi redzēs jūsu statusu, kad jūs pārslēgsieties uz \"Neredzams\""
-
-msgid "Invisible List"
-msgstr "Neredzamais saraksts"
-
-msgid "These buddies will always see you as offline"
-msgstr "Šie draugi jūs vienmēr redzēs kā esošu bezsaistē"
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7006,7 +5800,7 @@ msgid "Key Agreement failed"
 msgstr "Atslēgu vienošanās neizdevās"
 
 msgid "Timeout during key agreement"
-msgstr "Noilgums atslēgu vienošanās laikā"
+msgstr "Noildze atslēgu vienošanās laikā"
 
 msgid "Key agreement was aborted"
 msgstr "Atslēgu vienošanās tika pārtraukta"
@@ -7990,6 +6784,9 @@ msgstr "Video konferencēšana"
 msgid "Computer"
 msgstr "Dators"
 
+msgid "Mobile Phone"
+msgstr "Mobilais tālrunis"
+
 msgid "PDA"
 msgstr "Plaukstdators"
 
@@ -8252,6 +7049,9 @@ msgstr "Apgabals"
 msgid "Exposure"
 msgstr "Ekspozīcija"
 
+msgid "Encoding"
+msgstr "Iekodējums"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "Nespēj izveidot ligzdu: %s"
@@ -8272,6 +7072,9 @@ msgstr "Piekļuve liegta: HTTP starpniekserveris aizliedz porta %d tunelēšanu"
 msgid "Error resolving %s"
 msgstr "Kļūda, atrisinot %s"
 
+msgid "Received invalid data on connection with server"
+msgstr "Saņemti nederīgi dati savienojumā ar serveri"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Notiek %s uzmanības pieprasīšana..."
@@ -8288,6 +7091,12 @@ msgstr "_Jā"
 
 msgid "_No"
 msgstr "_Nē"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_Labi"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8359,8 +7168,17 @@ msgstr "Atiestatīt"
 msgid "Do not disturb"
 msgstr "Netraucēt"
 
+msgid "Invisible"
+msgstr "Neredzams"
+
 msgid "Extended away"
 msgstr "Paplašinātā prombūtne"
+
+msgid "Mobile"
+msgstr "Mobils"
+
+msgid "Listening to music"
+msgstr "Klausās mūziku"
 
 msgid "Feeling"
 msgstr "Sajūta"
@@ -8523,37 +7341,41 @@ msgstr ""
 "Tika sastapta kļūda, nolasot jūsu %s.  Datne netika ielādēta un vecā datne "
 "ir tika pārdēvēta uz %s~."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr "Tūlītējās ziņojumapmaiņas klients"
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
-"Pidgin ir tērzēšanas programma, kura ļauj jums pieteikties kontos uz "
-"vairākiem tērzēšanas tīkliem vienlaicīgi."
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
-"Tas nozīmē, ka jūs varat tērzēt ar draugiem AIM, runāt ar draugu Google Talk "
-"un sēdēt IRC tērzētavā visur vienlaicīgi."
 
-msgid "The buddy list showing friends on different networks."
-msgstr "Draugu saraksts, kurš parāda draugus dažādos tīklos."
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin Interneta ziņnesis"
+msgid "Buddy list showing friends on different networks"
+msgstr ""
 
 msgid "Internet Messenger"
 msgstr "Interneta ziņnesis"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin Interneta ziņnesis"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"Tērzēšana pāri TZ.  Atbalsta AIM, Google Talk, Jabber/XMPP, MSN, Yahoo un "
-"vairāk"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -9061,6 +7883,9 @@ msgstr "/_Palīdzība"
 msgid "/Help/Online _Help"
 msgstr "/Palīdzība/Tiešsaistes _palīdzība"
 
+msgid "/Help/D_onate"
+msgstr ""
+
 msgid "/Help/_Build Information"
 msgstr "/Palīdzība/_Būvējuma informācija"
 
@@ -9366,7 +8191,7 @@ msgid "Save Conversation"
 msgstr "Saglabāt sarunu"
 
 msgid "Un-Ignore"
-msgstr "At-ignorēt"
+msgstr "Atsaukt ignorēšanu"
 
 msgid "Ignore"
 msgstr "Ignorēt"
@@ -9602,6 +8427,9 @@ msgstr[0] "%d cilvēks istabā"
 msgstr[1] "%d cilvēki istabā"
 msgstr[2] "%d cilvēku istabā"
 
+msgid "Typing"
+msgstr "Raksta"
+
 msgid "Stopped Typing"
 msgstr "Pārstāja rakstīt"
 
@@ -9711,20 +8539,14 @@ msgstr "Kļūda"
 msgid "Fatal Error"
 msgstr "Fatāla kļūda"
 
-msgid "artist"
-msgstr "izpildītājs"
-
-msgid "voice and video"
-msgstr "balss un video"
-
-msgid "support"
-msgstr "atbalsts"
-
-msgid "webmaster"
-msgstr "tīmekļa pārzinis"
+msgid "lead developer"
+msgstr "vadošais izstrādātājs"
 
 msgid "win32 port"
 msgstr "win32 pielāgojums"
+
+msgid "artist"
+msgstr "izpildītājs"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9737,9 +8559,18 @@ msgstr "uzturētājs"
 msgid "libfaim maintainer"
 msgstr "libfaim uzturētājs"
 
+msgid "webmaster"
+msgstr "tīmekļa pārzinis"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "urķis un nozīmētais vadītājs [slinkais dibens]"
+
+msgid "voice and video"
+msgstr "balss un video"
+
+msgid "support"
+msgstr "atbalsts"
 
 msgid "support/QA"
 msgstr "atbalsts/kvalitātes nodrošināšana"
@@ -9749,9 +8580,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "sākotnējais autors"
-
-msgid "lead developer"
-msgstr "vadošais izstrādātājs"
 
 msgid "Senior Contributor/QA"
 msgstr "Vecākais atbalstītājs/kvalitātes nodrošināšana"
@@ -10073,31 +8901,19 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>Noderīgi resursi</B></FONT><BR>\t<A HREF=\"%s\">Tīmekļa "
-"vietne</A><BR>\t<A HREF=\"%s\">Bieži uzdotie jautājumi</A><BR>\tIRC kanāls: "
-"#pidgin uz irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
-"<font size=\"4\"><b>Palīdzība no citiem Pidgin lietotājiem</b></font> ir "
-"pieejama, sūtot epastu uz <a href=\"mailto:support@pidgin.im"
-"\">support@pidgin.im</a><br/> Šis ir <b>publisks</b> adresātu saraksts! (<a "
-"href=\"http://pidgin.im/pipermail/support/\">arhīvs</a>)<br/>Mēs nevaram "
-"palīdzēt ar trešās puses protokoliem vai spraudņiem!<br/>Šī saraksta primārā "
-"valoda ir <b>angļu</b>.  Jūs esat laipni lūgts izlikt ziņas citā valodā, bet "
-"atbildes varētu būt mazāk noderīgas.<br/>"
 
 #, c-format
 msgid "About %s"
@@ -11186,12 +10002,12 @@ msgstr "Nevar sākt starpniekservera konfigurācijas programmu."
 msgid "Cannot start browser configuration program."
 msgstr "Nevar sākt pārlūka konfigurācijas programmu."
 
-msgid "Disabled"
-msgstr "Izslēgts"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "Lietot _automātiski noteikto IP adresi: %s"
+
+msgid "IP Address"
+msgstr "IP adrese"
 
 msgid "ST_UN server:"
 msgstr "ST_UN serveris:"
@@ -11454,6 +10270,37 @@ msgstr "Lietot statusu no pēdējās izi_ešanas pie sāknēšanas"
 msgid "Status to a_pply at startup:"
 msgstr "Statuss, kuru _pielietot pie sāknēšanas:"
 
+msgid "DROP"
+msgstr "DROP"
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr "Klusuma slieksnis: %d%%"
+
+msgid "Volume:"
+msgstr "Skaļums:"
+
+msgid "Test Audio"
+msgstr "Testēt audio"
+
+msgid "Test Video"
+msgstr "Testēt video"
+
+msgid "_Device"
+msgstr "_Ierīce"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Input"
+msgstr "Ievade"
+
+msgid "Output"
+msgstr "Izvade"
+
+msgid "Video"
+msgstr "Video"
+
 msgid "Interface"
 msgstr "Saskarne"
 
@@ -11465,6 +10312,9 @@ msgstr "Statuss / dīkstāve"
 
 msgid "Themes"
 msgstr "Motīvi"
+
+msgid "Voice/Video"
+msgstr "Balss/Video"
 
 msgid "Allow all users to contact me"
 msgstr "Atļaut visiem lietotājiem sazināties ar mani"
@@ -11550,6 +10400,46 @@ msgstr "Izvēlieties jaunu nosaukumu"
 
 msgid "Select Folder..."
 msgstr "Atlasiet mapi..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr "Testēt attēlu"
+
+msgid "Select window"
+msgstr "Atlasīt logu"
+
+msgid "Use monitor"
+msgstr "Lietot monitoru"
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr "Nezināma izvade"
+
+msgid "_Add"
+msgstr "_Pievienot"
 
 #. list button
 msgid "_Get List"
@@ -11719,7 +10609,7 @@ msgid ""
 "You dragged a desktop launcher. Most likely you wanted to send the target of "
 "this launcher instead of this launcher itself."
 msgstr ""
-"Jūs pavilkāt darbvirsmas palaidēju. Visdrīzākais jūs vēlējāties nosūtīt šī "
+"Jūs pavilkāt darbvirsmas palaidēju. Visticamāk, jūs vēlējāties nosūtīt šī "
 "palaidēja mērķi, nevis pašu palaidēju."
 
 #, c-format
@@ -11731,6 +10621,10 @@ msgstr ""
 "<b>Datne:</b> %s\n"
 "<b>Datnes izmērs:</b> %s\n"
 "<b>Attēla izmērs:</b> %dx%d"
+
+#. Label
+msgid "Buddy Icon"
+msgstr "Drauga ikona"
 
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
@@ -11771,11 +10665,6 @@ msgstr "Vai jūs tiešām vēlaties attīrīt?"
 
 msgid "Select color"
 msgstr "Atlasiet krāsu"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_Pseidonīms"
@@ -12672,6 +11561,9 @@ msgstr "Operators"
 msgid "Half Operator"
 msgstr "Pa pusei operators"
 
+msgid "Voice"
+msgstr "Balss"
+
 msgid "Authorization dialog"
 msgstr "Autorizācijas dialoglodziņš"
 
@@ -12925,35 +11817,51 @@ msgstr "Nodrošina integrāciju ar Unity."
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr "Nodrošina integrāciju ar Unity ziņojumapmaiņas izvēlni un palaidēju."
 
-msgid "Audio"
-msgstr "Audio"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "Video"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "Izvade"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "S_praudnis"
-
-msgid "_Device"
-msgstr "_Ierīce"
-
-msgid "Input"
-msgstr "Ievade"
 
 msgid "P_lugin"
 msgstr "_Spraudnis"
 
 msgid "D_evice"
 msgstr "I_erīce"
-
-msgid "DROP"
-msgstr "DROP"
-
-msgid "Volume:"
-msgstr "Skaļums:"
 
 msgid "Silence threshold:"
 msgstr "Klusuma slieksnis:"
@@ -13149,8 +12057,8 @@ msgstr "Pareizrakstības pārbaudes atbalsts"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 "Kļūda, instalējot pareizrakstības pārbaudi ($R3).$\\rJa mēģināšana vēlreiz "
 "neizdodas, pašrocīgās instalācijas instrukcijas ir pie: http://developer."

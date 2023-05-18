@@ -1,8 +1,5 @@
 /*
- * Purple Ticker Plugin
- * The line below doesn't apply at all, does it?  It should be Syd, Sean, and
- * maybe Nathan, I believe.
- * Copyright (C) 1995-1997 Peter Mattis, Spencer Kimball and Josh MacDonald
+ * Pidgin Ticker Plugin
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public

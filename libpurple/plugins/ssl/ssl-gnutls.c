@@ -403,6 +403,10 @@ ssl_gnutls_connect(PurpleSslConnection *gsc)
 
 	gnutls_transport_set_ptr(gnutls_data->session, GINT_TO_POINTER(gsc->fd));
 
+	/* SNI support. */
+	if (gsc->host && !g_hostname_is_ip_address(gsc->host))
+		gnutls_server_name_set(gnutls_data->session, GNUTLS_NAME_DNS, gsc->host, strlen(gsc->host));
+
 	gnutls_data->handshake_handler = purple_input_add(gsc->fd,
 		PURPLE_INPUT_READ, ssl_gnutls_handshake_cb, gsc);
 
@@ -447,9 +451,10 @@ static size_t
 ssl_gnutls_read(PurpleSslConnection *gsc, void *data, size_t len)
 {
 	PurpleSslGnutlsData *gnutls_data = PURPLE_SSL_GNUTLS_DATA(gsc);
-	ssize_t s;
+	ssize_t s = 0;
 
-	s = gnutls_record_recv(gnutls_data->session, data, len);
+	if(gnutls_data)
+		s = gnutls_record_recv(gnutls_data->session, data, len);
 
 	if(s == GNUTLS_E_AGAIN || s == GNUTLS_E_INTERRUPTED) {
 		s = -1;
@@ -712,13 +717,13 @@ x509_import_from_file(const gchar * filename)
 	/* Next, we'll simply yank the entire contents of the file
 	   into memory */
 	/* TODO: Should I worry about very large files here? */
-	g_return_val_if_fail(
-		g_file_get_contents(filename,
-			    &buf,
-			    &buf_sz,
-			    NULL      /* No error checking for now */
-		),
-		NULL);
+	if (!g_file_get_contents(filename,
+			&buf,
+			&buf_sz,
+			NULL      /* No error checking for now */
+			)) {
+		return NULL;
+	}
 
 	/* Load the datum struct */
 	dt.data = (unsigned char *) buf;

@@ -6,7 +6,6 @@ EXTRA_DIST = \
 		HACKING \
 		Makefile.mingw \
 		PLUGIN_HOWTO \
-		README.hg \
 		README.mingw \
 		config.h.mingw \
 		doxy2devhelp.xsl \
@@ -50,7 +49,7 @@ version-check:
 	head ChangeLog.API | grep "^version $(PACKAGE_VERSION):$$" >/dev/null
 
 # Ensure we're working from a tag...
-	test x`hg log -r "tag($(PACKAGE_VERSION))" --template "{node}"` = x`hg log -r . -T '{node}'`
+	test x`hg log -r "tag(v$(PACKAGE_VERSION))" --template "{node}"` = x`hg log -r . -T '{node}'`
 # ... and have no changes in the working copy.
 	test "x`hg st -mard`" = x
 
@@ -141,3 +140,8 @@ distuninstallcheck_listfiles = \
 
 DISTCLEANFILES= intltool-extract intltool-merge intltool-update \
 			package_revision_raw.txt
+
+# This file isn't cleaned up due to an upstream intltool bug
+# https://bugs.launchpad.net/intltool/+bug/1712194
+DISTCLEANFILES += po/.intltool-merge-cache.lock
+

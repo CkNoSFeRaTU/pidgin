@@ -165,7 +165,8 @@ pidgin_themes_destroy_smiley_theme_smileys(struct smiley_theme *theme)
 	GHashTable *already_freed;
 	struct smiley_list *wer;
 
-	already_freed = g_hash_table_new(g_direct_hash, g_direct_equal);
+	already_freed = g_hash_table_new_full(g_direct_hash, g_direct_equal, g_free,
+	                                      NULL);
 	for (wer = theme->list; wer != NULL; wer = theme->list) {
 		while (wer->smileys) {
 			GtkIMHtmlSmiley *uio = wer->smileys->data;
@@ -175,12 +176,19 @@ pidgin_themes_destroy_smiley_theme_smileys(struct smiley_theme *theme)
 					0, 0, NULL, NULL, uio);
 			}
 
-			if (uio->icon)
+			if (uio->icon) {
 				g_object_unref(uio->icon);
-			if (g_hash_table_lookup(already_freed, uio->file) == NULL) {
-				g_free(uio->file);
-				g_hash_table_insert(already_freed, uio->file, GINT_TO_POINTER(1));
 			}
+
+			if(g_hash_table_lookup(already_freed, uio->file) == NULL) {
+				/* we abuse the key destroy function to free the filename when
+				 * the hash table is destroyed. We pass the same pointer as both
+				 * key and value because GHashTable optimizes for that by not
+				 * allocating additional memory.
+				 */
+				g_hash_table_insert(already_freed, uio->file, uio->file);
+			}
+
 			g_free(uio->smile);
 			g_free(uio);
 			wer->smileys = g_slist_delete_link(wer->smileys, wer->smileys);

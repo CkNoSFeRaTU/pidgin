@@ -189,7 +189,7 @@ int tcl_cmd_account(ClientData unused, Tcl_Interp *interp, int objc, Tcl_Obj *CO
 						 purple_account_get_enabled(account,
 									    purple_core_get_ui())));
 		} else {
-			if ((error = Tcl_GetBooleanFromObj(interp, objv[3], &b)) != TCL_OK)
+			if (Tcl_GetBooleanFromObj(interp, objv[3], &b) != TCL_OK)
 				return TCL_ERROR;
 			purple_account_set_enabled(account, purple_core_get_ui(), b);
 		}
@@ -1319,14 +1319,12 @@ int tcl_cmd_presence(ClientData unused, Tcl_Interp *interp, int objc, Tcl_Obj *C
 			}
 			break;
 		}
-		if ((error = Tcl_GetBooleanFromObj(interp, objv[3], &idle)) != TCL_OK)
+		if (Tcl_GetBooleanFromObj(interp, objv[3], &idle) != TCL_OK)
 			return TCL_ERROR;
 		if (objc == 4) {
 			purple_presence_set_idle(presence, idle, time(NULL));
 		} else if (objc == 5) {
-			if ((error = Tcl_GetIntFromObj(interp,
-		                                       objv[4],
-		                                       &idle_time)) != TCL_OK)
+			if (Tcl_GetIntFromObj(interp, objv[4], &idle_time) != TCL_OK)
 				return TCL_ERROR;
 			purple_presence_set_idle(presence, idle, idle_time);
 		}

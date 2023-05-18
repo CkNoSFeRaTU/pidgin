@@ -6,6 +6,7 @@
 
 #include "conversation.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "log.h"
 #include "notify.h"
 #include "prefs.h"
@@ -150,8 +151,7 @@ static void historize(PurpleConversation *c)
 	g_object_ref(G_OBJECT(gtkconv->imhtml));
 	g_idle_add(_scroll_imhtml_to_end, gtkconv->imhtml);
 
-	g_list_foreach(logs, (GFunc)purple_log_free, NULL);
-	g_list_free(logs);
+	g_list_free_full(logs, (GDestroyNotify)purple_log_free);
 }
 
 static void

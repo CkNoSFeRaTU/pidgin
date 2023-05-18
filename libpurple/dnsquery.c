@@ -29,6 +29,7 @@
 #include "internal.h"
 #include "debug.h"
 #include "dnsquery.h"
+#include "glibcompat.h"
 #include "network.h"
 #include "notify.h"
 #include "prefs.h"
@@ -109,12 +110,14 @@ purple_dnsquery_resolved(PurpleDnsQueryData *query_data, GSList *hosts)
 		 * Callback is a required parameter, but it can get set to
 		 * NULL if we cancel a thread-based DNS lookup.  So we need
 		 * to free hosts.
+		 *
+		 * The host's list is pairs of file descriptors and sockaddr_in's.
 		 */
 		while (hosts != NULL)
 		{
-			hosts = g_slist_remove(hosts, hosts->data);
+			hosts = g_slist_delete_link(hosts, hosts);
 			g_free(hosts->data);
-			hosts = g_slist_remove(hosts, hosts->data);
+			hosts = g_slist_delete_link(hosts, hosts);
 		}
 	}
 
@@ -169,7 +172,7 @@ resolve_ip(PurpleDnsQueryData *query_data)
 	{
 		GSList *hosts = NULL;
 		hosts = g_slist_append(hosts, GINT_TO_POINTER(res->ai_addrlen));
-		hosts = g_slist_append(hosts, g_memdup(res->ai_addr, res->ai_addrlen));
+		hosts = g_slist_append(hosts, g_memdup2(res->ai_addr, res->ai_addrlen));
 		purple_dnsquery_resolved(query_data, hosts);
 
 		freeaddrinfo(res);
@@ -187,7 +190,7 @@ resolve_ip(PurpleDnsQueryData *query_data)
 		sin.sin_family = AF_INET;
 		sin.sin_port = htons(query_data->port);
 		hosts = g_slist_append(hosts, GINT_TO_POINTER(sizeof(sin)));
-		hosts = g_slist_append(hosts, g_memdup(&sin, sizeof(sin)));
+		hosts = g_slist_append(hosts, g_memdup2(&sin, sizeof(sin)));
 		purple_dnsquery_resolved(query_data, hosts);
 
 		return TRUE;
@@ -471,8 +474,7 @@ purple_dnsquery_resolver_new(gboolean show_debug)
 		return NULL;
 	}
 
-	resolver = g_new(PurpleDnsQueryResolverProcess, 1);
-	resolver->inpa = 0;
+	resolver = g_new0(PurpleDnsQueryResolverProcess, 1);
 
 	cope_with_gdb_brokenness();
 
@@ -779,7 +781,7 @@ dns_thread(gpointer data)
 			query_data->hosts = g_slist_append(query_data->hosts,
 				GSIZE_TO_POINTER(res->ai_addrlen));
 			query_data->hosts = g_slist_append(query_data->hosts,
-				g_memdup(res->ai_addr, res->ai_addrlen));
+				g_memdup2(res->ai_addr, res->ai_addrlen));
 			res = res->ai_next;
 		}
 		freeaddrinfo(tmp);
@@ -796,7 +798,7 @@ dns_thread(gpointer data)
 		query_data->hosts = g_slist_append(query_data->hosts,
 				GSIZE_TO_POINTER(sizeof(sin)));
 		query_data->hosts = g_slist_append(query_data->hosts,
-				g_memdup(&sin, sizeof(sin)));
+				g_memdup2(&sin, sizeof(sin)));
 	} else {
 		query_data->error_message = g_strdup_printf(_("Error resolving %s: %d"), query_data->hostname, h_errno);
 	}
@@ -874,7 +876,7 @@ resolve_host(PurpleDnsQueryData *query_data)
 	sin.sin_port = htons(query_data->port);
 
 	hosts = g_slist_append(hosts, GINT_TO_POINTER(sizeof(sin)));
-	hosts = g_slist_append(hosts, g_memdup(&sin, sizeof(sin)));
+	hosts = g_slist_append(hosts, g_memdup2(&sin, sizeof(sin)));
 
 	purple_dnsquery_resolved(query_data, hosts);
 }

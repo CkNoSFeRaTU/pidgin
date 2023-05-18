@@ -28,6 +28,7 @@
 
 #include "account.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "log.h"
 #include "notify.h"
 #include "request.h"
@@ -216,8 +217,7 @@ static void destroy_cb(GtkWidget *w, gint resp, struct log_viewer_hash_t *ht) {
 
 	purple_request_close_with_handle(lv);
 
-	g_list_foreach(lv->logs, (GFunc)purple_log_free, NULL);
-	g_list_free(lv->logs);
+	g_list_free_full(lv->logs, (GDestroyNotify)purple_log_free);
 
 	g_free(lv->search);
 	g_free(lv);

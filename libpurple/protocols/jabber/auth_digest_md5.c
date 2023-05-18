@@ -131,7 +131,7 @@ generate_response_value(JabberID *jid, const char *passwd, const char *nonce,
 
 	a1 = g_strdup_printf("xxxxxxxxxxxxxxxx:%s:%s", nonce, cnonce);
 	a1len = strlen(a1);
-	g_memmove(a1, result, 16);
+	memmove(a1, result, 16);
 
 	purple_cipher_context_reset(context, NULL);
 	purple_cipher_context_append(context, (const guchar *)a1, a1len);

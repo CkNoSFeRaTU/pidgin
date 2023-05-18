@@ -26,6 +26,7 @@
 #include "internal.h"
 #include "dbus-maybe.h"
 #include "ft.h"
+#include "glibcompat.h"
 #include "network.h"
 #include "notify.h"
 #include "prefs.h"
@@ -289,7 +290,7 @@ purple_xfer_conversation_write_internal(PurpleXfer *xfer,
 
 	thumbnail_data = purple_xfer_get_thumbnail(xfer, &size);
 
-	conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM, xfer->who,
+	conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_ANY, xfer->who,
 											   purple_xfer_get_account(xfer));
 
 	if (conv == NULL)
@@ -302,7 +303,7 @@ purple_xfer_conversation_write_internal(PurpleXfer *xfer,
 
 	if (print_thumbnail && thumbnail_data) {
 		gchar *message_with_img;
-		gpointer data = g_memdup(thumbnail_data, size);
+		gpointer data = g_memdup2(thumbnail_data, size);
 		int id = purple_imgstore_add_with_id(data, size, NULL);
 
 		message_with_img =
@@ -898,7 +899,7 @@ purple_xfer_set_completed(PurpleXfer *xfer, gboolean completed)
 		else
 			msg = g_strdup(_("File transfer complete"));
 
-		conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_IM, xfer->who,
+		conv = purple_find_conversation_with_account(PURPLE_CONV_TYPE_ANY, xfer->who,
 		                                             purple_xfer_get_account(xfer));
 
 		if (conv != NULL)
@@ -1106,11 +1107,12 @@ purple_xfer_write(PurpleXfer *xfer, const guchar *buffer, gsize size)
 		r = write(xfer->fd, buffer, s);
 		if (r < 0 && errno == EAGAIN)
 			r = 0;
+
+		if ((purple_xfer_get_bytes_sent(xfer) + r) >= purple_xfer_get_size(xfer) &&
+		    !purple_xfer_is_completed(xfer)) {
+			purple_xfer_set_completed(xfer, TRUE);
+		}
 	}
-	if (r >= 0 && (purple_xfer_get_bytes_sent(xfer)+r) >= purple_xfer_get_size(xfer) &&
-		!purple_xfer_is_completed(xfer))
-		purple_xfer_set_completed(xfer, TRUE);
-	
 
 	return r;
 }
@@ -1221,6 +1223,7 @@ do_transfer(PurpleXfer *xfer)
 
 	if (xfer->type == PURPLE_XFER_RECEIVE) {
 		r = purple_xfer_read(xfer, &buffer);
+
 		if (r > 0) {
 			size_t wc;
 			if (ui_ops && ui_ops->ui_write)
@@ -1235,9 +1238,13 @@ do_transfer(PurpleXfer *xfer)
 				return;
 			}
 
-			if ((purple_xfer_get_size(xfer) > 0) &&
-				((purple_xfer_get_bytes_sent(xfer)+r) >= purple_xfer_get_size(xfer)))
-				purple_xfer_set_completed(xfer, TRUE);
+			if(xfer->ops.read == NULL) {
+				if ((purple_xfer_get_size(xfer) > 0) &&
+				    ((purple_xfer_get_bytes_sent(xfer) + r) >= purple_xfer_get_size(xfer))) {
+					purple_xfer_set_completed(xfer, TRUE);
+				}
+			}
+
 		} else if(r < 0) {
 			purple_xfer_cancel_remote(xfer);
 			g_free(buffer);
@@ -1564,8 +1571,9 @@ purple_xfer_end(PurpleXfer *xfer)
 		xfer->watcher = 0;
 	}
 
-	if (xfer->fd != -1)
+	if (xfer->fd != -1) {
 		close(xfer->fd);
+	}
 
 	if (xfer->dest_fp != NULL) {
 		fclose(xfer->dest_fp);
@@ -1788,10 +1796,10 @@ purple_xfer_set_thumbnail(PurpleXfer *xfer, gconstpointer thumbnail,
 
 	/* Hold onto these in case they are equal to passed-in pointers */
 	gpointer *old_thumbnail_data = priv->thumbnail_data;
-	const gchar *old_mimetype = priv->thumbnail_mimetype;
+	gchar *old_mimetype = priv->thumbnail_mimetype;
 
 	if (thumbnail && size > 0) {
-		priv->thumbnail_data = g_memdup(thumbnail, size);
+		priv->thumbnail_data = g_memdup2(thumbnail, size);
 		priv->thumbnail_size = size;
 		priv->thumbnail_mimetype = g_strdup(mimetype);
 	} else {

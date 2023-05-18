@@ -27,6 +27,7 @@
 #include "internal.h"
 
 #include "account.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "request.h"
 #include "savedstatuses.h"
@@ -211,8 +212,7 @@ status_window_use_cb(GtkButton *button, StatusWindow *dialog)
 		purple_savedstatus_activate(saved_status);
 	}
 
-	g_list_foreach(list, (GFunc)gtk_tree_path_free, NULL);
-	g_list_free(list);
+	g_list_free_full(list, (GDestroyNotify)gtk_tree_path_free);
 }
 
 static void
@@ -249,8 +249,7 @@ static void
 status_window_delete_cancel_cb(gpointer data)
 {
 	GList *sel_titles = data;
-	g_list_foreach(sel_titles, (GFunc) g_free, NULL);
-	g_list_free(sel_titles);
+	g_list_free_full(sel_titles, (GDestroyNotify)g_free);
 }
 
 static void

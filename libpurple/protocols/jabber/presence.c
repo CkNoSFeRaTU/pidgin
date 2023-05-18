@@ -25,6 +25,7 @@
 #include "account.h"
 #include "conversation.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "request.h"
 #include "server.h"
@@ -338,7 +339,7 @@ xmlnode *jabber_presence_create_js(JabberStream *js, JabberBuddyState state, con
 	}
 
 	/* if we are idle and not offline, include idle */
-	if (js->idle && state != JABBER_BUDDY_STATE_UNAVAILABLE) {
+	if (js != NULL && js->idle && state != JABBER_BUDDY_STATE_UNAVAILABLE) {
 		xmlnode *query = xmlnode_new_child(presence, "query");
 		gchar seconds[10];
 		g_snprintf(seconds, 10, "%d", (int) (time(NULL) - js->idle));
@@ -349,7 +350,10 @@ xmlnode *jabber_presence_create_js(JabberStream *js, JabberBuddyState state, con
 
 	/* JEP-0115 */
 	/* calculate hash */
-	jabber_caps_calculate_own_hash(js);
+	if(js != NULL) {
+		jabber_caps_calculate_own_hash(js);
+	}
+
 	/* create xml */
 	c = xmlnode_new_child(presence, "c");
 	xmlnode_set_namespace(c, "http://jabber.org/protocol/caps");
@@ -491,16 +495,14 @@ jabber_presence_set_capabilities(JabberCapsClientInfo *info, GList *exts,
 		g_free(userdata->from);
 		g_free(userdata);
 		if (exts) {
-			g_list_foreach(exts, (GFunc)g_free, NULL);
-			g_list_free(exts);
+			g_list_free_full(exts, g_free);
 		}
 		return;
 	}
 
 	/* Any old jbr->caps.info is owned by the caps code */
 	if (jbr->caps.exts) {
-		g_list_foreach(jbr->caps.exts, (GFunc)g_free, NULL);
-		g_list_free(jbr->caps.exts);
+		g_list_free_full(jbr->caps.exts, g_free);
 	}
 
 	jbr->caps.info = info;

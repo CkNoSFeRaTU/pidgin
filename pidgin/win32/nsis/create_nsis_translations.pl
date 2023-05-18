@@ -276,7 +276,11 @@ $gcomprisLanguages .= '
 $gcomprisLanguages .= '
 !macro GCOMPRIS_MACRO_INCLUDE_LANGFILE LANG FILE
   !insertmacro GCOMPRIS_MACRO_LANGUAGEFILE_BEGIN "${LANG}"
-  !include "${FILE}"
+  !if /FileExists "${FILE}.utf8"
+    !include /CHARSET=UTF8 "${FILE}.utf8"
+  !else
+    !include /CHARSET=ACP "${FILE}"
+  !endif
   !insertmacro GCOMPRIS_MACRO_LANGUAGEFILE_END
 !macroend
 ';

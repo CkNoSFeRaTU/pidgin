@@ -11,17 +11,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-23 18:36+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Algimantas Margevičius <algimantas@margevicius.lt>, "
+"2012-2014,2016\n"
 "Language-Team: Lithuanian (http://www.transifex.com/pidgin/pidgin/language/"
 "lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
-"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
 
 #. Translators may want to transliterate the name.
 #. It is not to be translated.
@@ -660,6 +662,7 @@ msgid_plural "List of %d users:\n"
 msgstr[0] "Sąrašas su %d naudotoju:\n"
 msgstr[1] "Sąrašas su %d naudotojais:\n"
 msgstr[2] "Sąrašas su %d naudotojų:\n"
+msgstr[3] "Sąrašas su %d naudotojų:\n"
 
 msgid "Supported debug options are: plugins version"
 msgstr "Palaikomos derinimo parinktys: plugins version"
@@ -775,6 +778,7 @@ msgid_plural "File Transfers - %d%% of %d files"
 msgstr[0] "Failų perdavimai – %d%% iš %d failo"
 msgstr[1] "Failų perdavimai – %d%% iš %d failų"
 msgstr[2] "Failų perdavimai – %d%% iš %d failų"
+msgstr[3] "Failų perdavimai – %d%% iš %d failų"
 
 #. Create the window.
 msgid "File Transfers"
@@ -946,6 +950,7 @@ msgid_plural "%s (%s) has %d new messages."
 msgstr[0] "%s (%s) turi %d naują pranešimą."
 msgstr[1] "%s (%s) turi %d naujus pranešimus."
 msgstr[2] "%s (%s) turi %d naujų pranešimų."
+msgstr[3] "%s (%s) turi %d naujų pranešimų."
 
 msgid "New Mail"
 msgstr "Naujas paštas"
@@ -1832,7 +1837,6 @@ msgstr "+++ %s prisijungė"
 msgid "+++ %s signed off"
 msgstr "+++ %s atsijungė"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Nežinoma klaida"
 
@@ -1848,6 +1852,10 @@ msgstr "Žinutė per ilga."
 
 msgid "Unable to send message."
 msgstr "Negalima išsiųsti žinutės."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Nusiųsti žinutę"
@@ -2192,19 +2200,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTOMATINIS "
-"ATSAKYMAS&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTOMATINIS "
-"ATSAKYMAS&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>Negalima rasti žurnalų kelio!</b></font>"
@@ -2276,6 +2280,42 @@ msgstr "Konferencijos klaida"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Seanso sukūrimo klaida: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Išjungta"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2823,7 +2863,7 @@ msgstr "Išankstinis įeinančių žinučių numatymas"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3418,8 +3458,17 @@ msgstr "Naudoti SSL"
 msgid "Authenticate with SASL"
 msgstr "Nustatyti tapatybę su SASL"
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
 msgstr "Leisti tapatybės nustatymą grynu tekstu nekoduojamame duomenų sraute"
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
+msgstr ""
 
 msgid "Bad mode"
 msgstr "Bloga būsena"
@@ -3901,39 +3950,6 @@ msgstr "SASL atpažinimas nepavyko"
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL klaida: %s"
-
-msgid "Invalid Encoding"
-msgstr "Netinkamas kodavimas"
-
-msgid "Unsupported Extension"
-msgstr "Nepalaikomas plėtinys"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr "Netikėtas serverio atsakas.  Tai gali reikšti MITM ataką."
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-"Serveris nepalaiko kanalų susiejimų, bet atrodo to neskelbia.  Greičiausiai "
-"tai MITM ataka."
-
-msgid "Server does not support channel binding"
-msgstr "Serveris nepalaiko kanalų susiejimų."
-
-msgid "Unsupported channel binding method"
-msgstr "Nepalaikomas kanalų susiejimo metodas"
-
-msgid "User not found"
-msgstr "Naudotojas nerastas"
-
-msgid "Invalid Username Encoding"
-msgstr "Netinkamas naudotojo kodavimas"
-
-msgid "Resource Constraint"
-msgstr "Išteklių apribojimas"
 
 msgid "Unable to canonicalize username"
 msgstr "Nepavyko kanonizuoti naudotojo vardo"
@@ -4515,6 +4531,9 @@ msgstr "Neteisingas prieigos suteikimo mechanizmas"
 msgid "Authorization mechanism too weak"
 msgstr "Prieigos suteikimo mechanizmas per silpnas"
 
+msgid "Incorrect username or password"
+msgstr "Neteisingas naudotojo vardas ar slaptažodis"
+
 msgid "Temporary Authentication Failure"
 msgstr "Laikina prieigos suteikimo nesėkmė"
 
@@ -4559,6 +4578,9 @@ msgstr "Taisyklių pažeidimas"
 
 msgid "Remote Connection Failed"
 msgstr "Nuotolinė jungtis nepavyko"
+
+msgid "Resource Constraint"
+msgstr "Išteklių apribojimas"
 
 msgid "Restricted XML"
 msgstr "Apribotas XML"
@@ -4888,6 +4910,19 @@ msgstr ""
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Parinkite %s išteklių, į kurį norite nusiųsti failą"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr "Išsigandęs"
 
@@ -5107,7 +5142,6 @@ msgstr "Drovus"
 msgid "Sick"
 msgstr "Sergantis"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Mieguistas"
 
@@ -5196,6 +5230,9 @@ msgstr "Slaptažodžio galiojimo laikas pasibaigė"
 msgid "Incorrect password"
 msgstr "Neteisingas slaptažodis"
 
+msgid "User not found"
+msgstr "Naudotojas nerastas"
+
 msgid "Account has been disabled"
 msgstr "Neveiksni paskyra"
 
@@ -5216,9 +5253,6 @@ msgstr "Negalima pridėti savęs"
 
 msgid "Master archive is misconfigured"
 msgstr "Pagrindinis archyvas yra blogai sukonfigūruotas"
-
-msgid "Incorrect username or password"
-msgstr "Neteisingas naudotojo vardas ar slaptažodis"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Nepavyko atpažinti mazgo, priklausančio šiam naudotojo vardui"
@@ -5436,1241 +5470,6 @@ msgstr "Serverio adresas"
 
 msgid "Server port"
 msgstr "Serverio prievadas"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr ""
-"Prašau suteikti man prieigos teisę, kad aš galėčiau įtraukti Jus į savo "
-"bičiulių sąrašą."
-
-msgid "No reason given."
-msgstr "Nenurodyta priežastis."
-
-msgid "Authorization Denied Message:"
-msgstr "Prieigos teisės nesuteikimo žinutė:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_Gerai"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "Iš %s gautas netikėtas atsakymas: %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "Gautas nelauktas atsakymas iš %s"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Jūs per dažnai prisijunginėjote ir atsijunginėjote. Palaukite dešimt minučių "
-"ir bandykite vėl. Jei vis tiek bandysite jungtis, Jums reikės laukti dar "
-"ilgiau."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-"Jūs nustatymuose pasirinkote naudoti šifravimą, bet vienas iš serverių jo "
-"nepalaiko."
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Užklausos %s metu gauta klaida: %s"
-
-msgid "The server returned an empty response"
-msgstr "Serveris grąžino tuščią atsakymą"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"Serveris jūsų paprašė įrašyti CAPTCHA, bet šis klientas nepalaiko CAPTCHA."
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL neleidžia jūsų vardui prisijungti"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(Priimant šią žinutę įvyko klaida.  Greičiausiai bičiulis su kuriuo "
-"bendraujate naudoja kitokią koduotę nei buvo numatyta.  Jei žinote, kokią "
-"koduotę jis naudoja, galite ją nurodyti papildomose AIM/ICQ paskyros "
-"nuostatose."
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(Šio pranešimo gavimo metu įvyko klaida.  Arba Jūs ir %s esate pasirinkę "
-"skirtingas koduotes, arba %s naudoja kliento programą su riktais.)"
-
-msgid "Could not join chat room"
-msgstr "Nepavyko prisijungti prie pokalbių kambario"
-
-msgid "Invalid chat room name"
-msgstr "Neteisingas pokalbių kambario pavadinimas"
-
-msgid "Invalid error"
-msgstr "Neteisinga klaida"
-
-msgid "Not logged in"
-msgstr "Neprisijungęs"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "Dėl tėvų kontrolės neįmanoma gauti IM"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "Neįmanoma siųsti SMS nesutikus su sąlygomis"
-
-msgid "Cannot send SMS"
-msgstr "Nepavyko išsiųsti SMS"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "Siųsti sms į šią šalį negalima"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "Siųsti sms į nežinomą šalį negalima"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "Bot'ų paskyros negali pradėti IM"
-
-msgid "Bot account cannot IM this user"
-msgstr "Bot'ų paskyros negali IM šio naudotojo"
-
-msgid "Bot account reached IM limit"
-msgstr "Bot paskyra pasiekė IM limitą"
-
-msgid "Bot account reached daily IM limit"
-msgstr "Bot paskyra pasiekė dienos IM limitą"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "Bot paskyra pasiekė mėnesio IM limitą"
-
-msgid "Unable to receive offline messages"
-msgstr "Nepavyko gauti žinučių darbui atsijungus"
-
-msgid "Offline message store full"
-msgstr "Darbo neprisijungus žinučių saugykla pilna"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "Žinutės išsiųsti nepavyko: %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Negalima išsiųsti žinutės: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "Žinutės į %s išsiųsti nepavyko: %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "Žinutės skirtos %s išsiųsti nepavyko: %s"
-
-msgid "Thinking"
-msgstr "Galvoju"
-
-msgid "Shopping"
-msgstr "Apsipirkinėju"
-
-msgid "Questioning"
-msgstr "Klausinėju"
-
-msgid "Eating"
-msgstr "Valgau"
-
-msgid "Watching a movie"
-msgstr "Žiūriu filmą"
-
-msgid "Typing"
-msgstr "Renkamas tekstas"
-
-msgid "At the office"
-msgstr "Darbe"
-
-msgid "Taking a bath"
-msgstr "Maudausi"
-
-msgid "Watching TV"
-msgstr "Žiūriu TV"
-
-msgid "Having fun"
-msgstr "Linksminuosi"
-
-msgid "Sleeping"
-msgstr "Miegu"
-
-msgid "Using a PDA"
-msgstr "Naudoju PDA"
-
-msgid "Meeting friends"
-msgstr "Su draugais"
-
-msgid "On the phone"
-msgstr "Kalbu telefonu"
-
-msgid "Surfing"
-msgstr "Naršau"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Mobilus"
-
-msgid "Searching the web"
-msgstr "Naršau internete"
-
-msgid "At a party"
-msgstr "Vakarėlyje"
-
-msgid "Having Coffee"
-msgstr "Geriu kavą"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "Žaidžiu"
-
-msgid "Browsing the web"
-msgstr "Naršau internete"
-
-msgid "Smoking"
-msgstr "Rūkau"
-
-msgid "Writing"
-msgstr "Rašau"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "Geriu"
-
-msgid "Listening to music"
-msgstr "Klausausi muzikos"
-
-msgid "Studying"
-msgstr "Mokausi"
-
-msgid "Working"
-msgstr "Dirba"
-
-msgid "In the restroom"
-msgstr "Tualete"
-
-msgid "Received invalid data on connection with server"
-msgstr "Jungtimi su serveriu gauti neteisingi duomenys."
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM protokolo papildinys"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ protokolo papildinys"
-
-msgid "Encoding"
-msgstr "Koduotė"
-
-msgid "The remote user has closed the connection."
-msgstr "Nutolęs naudotojas uždarė jungtį."
-
-msgid "The remote user has declined your request."
-msgstr "Nutolęs naudotojas atmetė Jūsų prašymą."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Prarastas ryšys su nutolusiu naudotoju:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Gauti neteisingi duomenys ryšiu su nutolusiu naudotoju."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "Nepavyko užmegzti ryšio su nutolusiu naudotoju."
-
-msgid "Direct IM established"
-msgstr "Sukurtas tiesioginis pokalbių ryšis"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s bandė jums atsiųsti failą %s, tačiau tiesioginiu ryšiu failai leidžiami "
-"tik iki %s.  Pabandykite naudoti failų perdavimą vietoje tiesioginio ryšio.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr ""
-"Failas „%s“ yra %s dydžio – didesnis nei maksimalus leidžiamas dydis %s."
-
-msgid "Free For Chat"
-msgstr "Prieinamas pokalbiui"
-
-msgid "Not Available"
-msgstr "Neprieinamas"
-
-msgid "Occupied"
-msgstr "Užimtas"
-
-msgid "Web Aware"
-msgstr "Žinantis apie žiniatinklį"
-
-msgid "Invisible"
-msgstr "Nematomas"
-
-msgid "Evil"
-msgstr "Blogas"
-
-msgid "Depression"
-msgstr "Depresija"
-
-msgid "At home"
-msgstr "Namie"
-
-msgid "At work"
-msgstr "Darbe"
-
-msgid "At lunch"
-msgstr "Pietauju"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "Nepavyko prisijungti prie tapatybės nustatymo serverio: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "Nepavyko prisijungti prie BOS serverio: %s"
-
-msgid "Username sent"
-msgstr "Naudotojo vardas nusiųstas"
-
-msgid "Connection established, cookie sent"
-msgstr "Jungtis nustatyta, nusiųstas slapukas"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Pabaigiama jungtis"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Nepavyko prisijungti vardu %s, nes jis neteisingas.  Naudotojo vardas turi "
-"būti arba teisingas el. pašto adresas, arba prasidėti raide ir turėti tik "
-"raides, skaitmenis ir tarpus, arba turėti tik skaitmenis."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-"Paskyros nustatymuose pasirinkote šifravimą, bet jūsų sistema šifravimo "
-"nepalaiko."
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"Jus netrukus gali atjungti.  Jei taip atsitiks, patikrinkite %s, ar nėra "
-"atnaujinimų."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Nepavyko gauti teisingos AIM prisijungimo maišos."
-
-msgid "Unable to get a valid login hash."
-msgstr "Nepavyko gauti teisingos prisijungimo maišos."
-
-msgid "Received authorization"
-msgstr "Gauta prieigos teisė"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Naudotojas neegzistuoja"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Jūsų paskyra šiuo metu suspenduota"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL IM tarnyba laikinai neprieinama"
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Jūsų naudotojo vardas prijungiamas ir atjungiamas per dažnai. Palaukite "
-"dešimt minučių ir bandykite dar kartą. Jei bandysite tęsti, jums teks laukti "
-"dar ilgiau."
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-"Jūsų naudojama kliento programos versija yra per sena. Prašome atnaujinti "
-"svetainėje %s"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Jūsų IP prijungiamas ir atjungiamas per dažnai. Palaukite dešimt minučių ir "
-"bandykite dar kartą. Jei bandysite tęsti, jums teks laukti dar ilgiau."
-
-msgid "The SecurID key entered is invalid"
-msgstr "Įvestas SecurID raktas yra neteisingas."
-
-msgid "Enter SecurID"
-msgstr "Įveskite SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Įveskite 6 skaitmenų skaičių iš skaitmeninio displėjaus."
-
-msgid "Password sent"
-msgstr "Slaptažodis išsiųstas"
-
-msgid "Unable to initialize connection"
-msgstr "Nepavyko sukurti jungties"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Naudotojas %u atmetė Jūsų prašymą įtraukti jį į Jūsų bičiulių sąrašą dėl "
-"šios priežasties:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ prieigos teisė nesuteikta."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr "Naudotojas %u suteikė Jums teisę įtraukti jį į Jūsų bičiulių sąrašą."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Jūs gavote ypatingą žinutę\n"
-"\n"
-"Nuo: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Jūs gavote ICQ mobiliąją žinutę\n"
-"\n"
-"Nuo: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"Jūs gavote ICQ el. pašto laišką nuo %s [%s]\n"
-"\n"
-"Laiškas yra:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ naudotojas %u atsiuntė bičiulio adresą: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Ar norite įtraukti šį bičiulį į Jūsų bičiulių sąrašą?"
-
-msgid "_Add"
-msgstr "_Pridėti"
-
-msgid "_Decline"
-msgstr "_Atsisakyti"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "Jūs praleidote %hu neteisingą pranešimą nuo naudotojo %s."
-msgstr[1] "Jūs praleidote %hu neteisingus pranešimus nuo naudotojo %s."
-msgstr[2] "Jūs praleidote %hu neteisingų pranešimų nuo naudotojo %s."
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "Jūs praleidote %hu per ilgą pranešimą nuo naudotojo %s."
-msgstr[1] "Jūs praleidote %hu per ilgus pranešimus nuo naudotojo %s."
-msgstr[2] "Jūs praleidote %hu per ilgų pranešimų nuo naudotojo %s."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"Jūs praleidote %hu pranešimą nuo naudotojo %s, kadangi viršyta spartos riba."
-msgstr[1] ""
-"Jūs praleidote %hu pranešimus nuo naudotojo %s, kadangi viršyta spartos riba."
-msgstr[2] ""
-"Jūs praleidote %hu pranešimų nuo naudotojo %s, kadangi viršyta spartos riba."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"Jūs praleidote %hu žinutę nuo naudotojo %s, kadangi jo/jos perspėjimo lygis "
-"yra per aukštas."
-msgstr[1] ""
-"Jūs praleidote %hu žinutes nuo naudotojo %s, kadangi jo/jos perspėjimo lygis "
-"yra per aukštas."
-msgstr[2] ""
-"Jūs praleidote %hu žinučių nuo naudotojo %s, kadangi jo/jos perspėjimo lygis "
-"yra yra per aukštas."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"Jūs praleidote %hu žinutę nuo naudotojo %s, kadangi Jūsų perspėjimo lygis "
-"yra per aukštas."
-msgstr[1] ""
-"Jūs praleidote %hu žinutes nuo naudotojo %s, kadangi Jūsų perspėjimo lygis "
-"yra per aukštas."
-msgstr[2] ""
-"Jūs praleidote %hu žinučių nuo naudotojo %s, kadangi Jūsų perspėjimo lygis "
-"yra per aukštas."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] ""
-"Jūs praleidote %hu pranešimą nuo naudotojo %s dėl nežinomos priežasties."
-msgstr[1] ""
-"Jūs praleidote %hu pranešimus nuo naudotojo %s dėl nežinomos priežasties."
-msgstr[2] ""
-"Jūs praleidote %hu pranešimų nuo naudotojo %s dėl nežinomos priežasties."
-
-msgid "Your AIM connection may be lost."
-msgstr "Jūsų AIM jungtis gali būti prarasta."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "Jūs buvote atjungtas nuo pokalbių kambario %s."
-
-msgid "The new formatting is invalid."
-msgstr "Nauja formato informacija yra neteisinga."
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"Naudotojo vardo formatavimas gali pakeisti tik keitimą didžiosiomis raidėmis "
-"ir matomus tarpus."
-
-msgid "Pop-Up Message"
-msgstr "Iššokanti žinutė"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "Tolesni naudotojų vardai yra susieti su %s"
-msgstr[1] "Tolesni naudotojų vardai yra susieti su %s"
-msgstr[2] "Tolesni naudotojų vardai yra susieti su %s"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Pagal el. pašto adresą %s jokių rezultatų nerasta"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "Jūs turėtumėte gauti el. laišką, prašantį patvirtinti %s."
-
-msgid "Account Confirmation Requested"
-msgstr "Paprašyta abonento patvirtinimo"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"Klaida 0x%04x: neįmanoma taikyti formato naudotojo vardui, nes paprašytasis "
-"vardas skiriasi nuo pradinio vardo."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-"Klaida 0x%04x: neįmanoma taikyti formato naudotojo vardui, nes paprašytasis "
-"vardas yra neteisingas."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Klaida 0x%04x: neįmanoma taikyti formato naudotojo vardui, nes paprašytasis "
-"vardas yra per ilgas."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Klaida 0x%04x: neįmanoma pakeisti el. pašto adreso, kadangi šiuo metu laukia "
-"užklausa šiam naudotojo vardui."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Klaida 0x%04x: neįmanoma pakeisti el. pašto adreso, kadangi duotas adresas "
-"turi per daug su juo susietų naudotojų vardų."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Klaida 0x%04x: neįmanoma pakeisti el. pašto adreso, kadangi duotas adresas "
-"yra neteisingas."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Klaida 0x%04x: nežinoma klaida."
-
-msgid "Error Changing Account Info"
-msgstr "Abonento informacijos keitimo klaida"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "Naudotojo %s el. pašto adresas yra %s"
-
-msgid "Account Info"
-msgstr "Abonento informacija"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Jūsų IM vaizdas negalėjo būti išsiųstas. IM vaizdų siuntimui jūs turite būti "
-"tiesiogiai prisijungęs."
-
-msgid "Unable to set AIM profile."
-msgstr "Negalima nustatyti AIM profilio."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Turbūt Jūs pabandėte nustatyti profilį dar nepasibaigus seanso pradžios "
-"procedūrai.  Jūsų profilis lieka nenustatytas.  Pabandykite jį nustatyti dar "
-"kartą, kai būsite galutinai prisijungęs."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"Viršytas maksimalus %d baito profilio ilgis, todėl profilis buvo "
-"sutrumpintas."
-msgstr[1] ""
-"Viršytas maksimalus %d baitų profilio ilgis, todėl profilis buvo "
-"sutrumpintas."
-msgstr[2] ""
-"Viršytas maksimalus %d baitų profilio ilgis, todėl profilis buvo "
-"sutrumpintas."
-
-msgid "Profile too long."
-msgstr "Profilis per ilgas."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"Viršytas maksimalus %d baito pasitraukimo žinutės ilgis, todėl žinutė buvo "
-"sutrumpinta."
-msgstr[1] ""
-"Viršytas maksimalus %d baitų pasitraukimo žinutės ilgis, todėl žinutė buvo "
-"sutrumpinta."
-msgstr[2] ""
-"Viršytas maksimalus %d baitų pasitraukimo žinutės ilgis, todėl žinutė buvo "
-"sutrumpinta."
-
-msgid "Away message too long."
-msgstr "Pasitraukimo žinutė per ilga."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Nepavyko pridėti bičiulio %s, nes toks naudotojo vardas neteisingas.  Vardas "
-"turi būti arba teisingas el. pašto adresas, arba turi prasidėti raide ir "
-"turėti tik raides, skaitmenis ir tarpus, arba turėti tik skaitmenis."
-
-msgid "Unable to Add"
-msgstr "Negalima pridėti"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Negalima gauti bičiulių sąrašo"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM serveriai laikinai negalėjo išsiųsti Jūsų bičiulių sąrašo.  Jis nėra "
-"prarastas ir greičiausiai taps prieinamas už kelių minučių."
-
-msgid "Orphans"
-msgstr "Našlaičiai"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"Nepavyko pridėti bičiulio %s, nes turite per daug bičiulių savo bičiulių "
-"sąraše.  Prašome vieną pašalinti ir bandyti iš naujo."
-
-msgid "(no name)"
-msgstr "(nėra vardo)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Bičiulio %s pridėti nepavyko dėl nežinomos priežasties."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"Naudotojas %s suteikė Jums teisę pridėti jį į savo bičiulių sąrašą.  Ar "
-"norite tai padaryti?"
-
-msgid "Authorization Given"
-msgstr "Suteikta prieigos teisė"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"Naudotojas %s patenkino Jūsų prašymą įtraukti jį į Jūsų bičiulių sąrašą."
-
-msgid "Authorization Granted"
-msgstr "Suteikta prieigos teisė"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"Naudotojas %s atmetė Jūsų prašymą įtraukti jį į Jūsų bičiulių sąrašą dėl "
-"šios priežasties:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Nesuteikta prieigos teisė"
-
-msgid "_Exchange:"
-msgstr "Kom_utatorius:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"Jūsų IM vaizdas nebuvo nusiųstas. Jūs negalite siųsti IM vaizdų AIM "
-"pokalbiuose."
-
-msgid "iTunes Music Store Link"
-msgstr "Muzikos parduotuvės „iTunes“ nuoroda"
-
-msgid "Lunch"
-msgstr "Pietūs"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Bičiulio komentaras apie %s"
-
-msgid "Buddy Comment:"
-msgstr "Bičiulio komentaras:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "Jūs pasirinkote sukurti tiesioginį ryšį su %s."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Kadangi tai atskleidžia Jūsų IP adresą, tai gali būti pavojus saugumui.  Ar "
-"norite tęsti?"
-
-msgid "C_onnect"
-msgstr "_Jungtis"
-
-msgid "You closed the connection."
-msgstr "Tu uždarei jungtį."
-
-msgid "Get AIM Info"
-msgstr "Gauti AIM informaciją"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Redaguoti bičiulio komentarą"
-
-msgid "Get X-Status Msg"
-msgstr "Gauti X-Status Msg"
-
-msgid "End Direct IM Session"
-msgstr "Pabaigti tiesioginio ryšio seansą"
-
-msgid "Direct IM"
-msgstr "Tiesioginis ryšys"
-
-msgid "Re-request Authorization"
-msgstr "Iš naujo paprašyti prieigos teisės"
-
-msgid "Require authorization"
-msgstr "Būtina prieigos teisė"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr ""
-"Pasiekiamas per žiniatinklį (angl. web aware).  Parinkties aktyvavimas gali "
-"tapti šlamšto gavimo priežastimi!"
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ privatumo parinktys"
-
-msgid "Change Address To:"
-msgstr "Pakeisti adresą į:"
-
-msgid "you are not waiting for authorization"
-msgstr "jūs nelaukiate tapatybės patvirtinimo"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Jūs laukiate prieigos suteikimo iš šių bičiulių"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Jūs galite iš naujo paprašyti prieigos suteikimo iš šių bičiulių "
-"spragtelėdamas dešiniuoju klavišu ant jų ir pasirinkdamas „Iš naujo "
-"paprašyti prieigos teisės“."
-
-msgid "Find Buddy by Email"
-msgstr "Surasti bičiulį pagal el. pašto adresą"
-
-msgid "Search for a buddy by email address"
-msgstr "Ieškoti bičiulio pagal el. pašto adresą"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Įveskite bičiulio, kurio ieškote, el. pašto adresą."
-
-msgid "_Search"
-msgstr "_Ieškoti"
-
-msgid "Set User Info (web)..."
-msgstr "Nustatyti naudotojo informaciją (žiniatinklis)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Pakeisti slaptažodį (žiniatinklis)..."
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Konfigūruoti žinučių persiuntimą (žiniatinklis)..."
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Nustatyti privatumo parinktis..."
-
-msgid "Show Visible List"
-msgstr "Rodyti matomų sąrašą"
-
-msgid "Show Invisible List"
-msgstr "Rodyti nematomą sąrašą"
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Patvirtinti abonentą"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Parodyti šiuo metu registruotą el. pašto adresą"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Pakeisti šiuo metu registruotą el. pašto adresą..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Parodyti bičiulius, laukiančius prieigos suteikimo"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Ieškoti bičiulio pagal el. pašto adresą..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"Visada naudoti ICQ įgaliotąjį serverį failų perdavimams ir tiesioginiam "
-"bendravimui (lėčiau, bet neatskleidžia Jūsų IP adreso.)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "Leisti kelis prisijungimus vienu metu"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "Prašoma %s prisijungti prie mūsų tiesioginiu ryšiu adresu %s:%hu."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "Bandoma prisijungti prie %s:%hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Bandoma jungtis per įgaliotąjį serverį."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s ką tik paprašė tiesiogiai prisijungti prie %s"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Tai reikalauja tiesioginės jungties tarp dviejų kompiuterių ir yra būtina IM "
-"vaizdams.  Kadangi Jūsų IP adresas bus atskleistas, tai gali būti privatumo "
-"rizika."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Naudotojo paveiksliukas"
-
-msgid "Voice"
-msgstr "Balsas"
-
-msgid "AIM Direct IM"
-msgstr "AIM tiesioginės greitosios žinutės"
-
-msgid "Get File"
-msgstr "Gauti failai"
-
-msgid "Games"
-msgstr "Žaidimai"
-
-msgid "ICQ Xtraz"
-msgstr "ICQ Xtraz"
-
-msgid "Add-Ins"
-msgstr "Papildiniai"
-
-msgid "Send Buddy List"
-msgstr "Nusiųsti bičiulių sąrašą"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ tiesioginė jungtis"
-
-msgid "AP User"
-msgstr "AP naudotojas"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nihilistas"
-
-msgid "ICQ Server Relay"
-msgstr "Perdavimas per ICQ serverį"
-
-msgid "Old ICQ UTF8"
-msgstr "Senas ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trillian užkodavimas"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Su saugumu"
-
-msgid "Video Chat"
-msgstr "Vaizdinis pokalbis"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "Tiesioginis vaizdas"
-
-msgid "Camera"
-msgstr "Kamera"
-
-msgid "Screen Sharing"
-msgstr "Ekrano dalinimasis"
-
-msgid "IP Address"
-msgstr "IP adresas"
-
-msgid "Warning Level"
-msgstr "Perspėjimo lygis"
-
-msgid "Buddy Comment"
-msgstr "Bičiulio komentaras"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Naudotojo informacija neprieinama: %s"
-
-msgid "Mobile Phone"
-msgstr "Mobilus telefonas"
-
-msgid "Age"
-msgstr "Amžius"
-
-msgid "Personal Web Page"
-msgstr "Asmeninė svetainė"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Papildoma informacija"
-
-msgid "Home Address"
-msgstr "Namų adresas"
-
-msgid "Zip Code"
-msgstr "Pašto kodas"
-
-msgid "Work Address"
-msgstr "Darbo adresas"
-
-msgid "Work Information"
-msgstr "Darbovietės informacija"
-
-msgid "Company"
-msgstr "Kompanija"
-
-msgid "Division"
-msgstr "Skyrius"
-
-msgid "Position"
-msgstr "Pareigos"
-
-msgid "Web Page"
-msgstr "Svetainė"
-
-msgid "Online Since"
-msgstr "Prisijungęs nuo"
-
-msgid "Member Since"
-msgstr "Narys nuo"
-
-msgid "Capabilities"
-msgstr "Sugebėjimai"
-
-msgid "Profile"
-msgstr "Profilis"
-
-msgid "View web profile"
-msgstr "Žiūrėti profilį žiniatinklyje"
-
-msgid "Invalid SNAC"
-msgstr "Neteisingas SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr "Peržengtas serverio santykio limitas"
-
-msgid "Client rate limit exceeded"
-msgstr "Viršytas klientų santykio limitas"
-
-msgid "Service unavailable"
-msgstr "Tarnyba neprieinama"
-
-msgid "Service not defined"
-msgstr "Tarnyba neaprašyta"
-
-msgid "Obsolete SNAC"
-msgstr "SNAC pasenęs"
-
-msgid "Not supported by host"
-msgstr "Nepalaikoma mazgo"
-
-msgid "Not supported by client"
-msgstr "Nepalaikoma kliento"
-
-msgid "Refused by client"
-msgstr "Atsisakyta kliento"
-
-msgid "Reply too big"
-msgstr "Atsakas per didelis"
-
-msgid "Responses lost"
-msgstr "Prarasti atsakai"
-
-msgid "Request denied"
-msgstr "Užklausa negalima"
-
-msgid "Busted SNAC payload"
-msgstr "Neteisingas SNAC turinys"
-
-msgid "Insufficient rights"
-msgstr "Nepakankamos teisės"
-
-msgid "In local permit/deny"
-msgstr "Yra vietiniame leidimo ar draudimo sąraše"
-
-msgid "Warning level too high (sender)"
-msgstr "Per aukštas siuntėjo perspėjimo lygis"
-
-msgid "Warning level too high (receiver)"
-msgstr "Per aukštas gavėjo perspėjimo lygis"
-
-msgid "User temporarily unavailable"
-msgstr "Naudotojas laikinai neprieinamas"
-
-msgid "No match"
-msgstr "Nėra atitikmens"
-
-msgid "List overflow"
-msgstr "Sąrašo perpildymas"
-
-msgid "Request ambiguous"
-msgstr "Nevienareikšmė užklausa"
-
-msgid "Queue full"
-msgstr "Eilė pilna"
-
-msgid "Not while on AOL"
-msgstr "Negalima prisijungus per AOL"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Atrodyti prisijungusiu"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "Nerodyti jog prisijungęs"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Atrodyti atsijungusiu"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "Nerodyti jog atsijungęs"
-
-msgid "you have no buddies on this list"
-msgstr "šiame sąraše jūs neturite bičiulių"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-"Bičiulius galite pridėti paspausdami dešinį pelės mygtuką ant jų ir "
-"pasirinkdami “%s“"
-
-msgid "Visible List"
-msgstr "Matomų sąrašas"
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr "Šie bičiuliai matys jūsų būseną kai persijungsite į „Nematomas“"
-
-msgid "Invisible List"
-msgstr "Nematomų sąrašas"
-
-msgid "These buddies will always see you as offline"
-msgstr "Šie bičiuliai visada matys jus kaip neprisijungusį"
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7998,6 +6797,9 @@ msgstr "Vaizdo konferencija"
 msgid "Computer"
 msgstr "Kompiuteris"
 
+msgid "Mobile Phone"
+msgstr "Mobilus telefonas"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8263,6 +7065,9 @@ msgstr "Sritis"
 msgid "Exposure"
 msgstr "Atskleidimas"
 
+msgid "Encoding"
+msgstr "Koduotė"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "Nepavyko sukurti jungties: %s"
@@ -8284,6 +7089,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "Klaida nustatant %s"
 
+msgid "Received invalid data on connection with server"
+msgstr "Jungtimi su serveriu gauti neteisingi duomenys."
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Prašoma %s dėmesio..."
@@ -8300,6 +7108,12 @@ msgstr "_Taip"
 
 msgid "_No"
 msgstr "_Ne"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_Gerai"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8371,8 +7185,17 @@ msgstr "Atstatyti"
 msgid "Do not disturb"
 msgstr "Netrukdyti"
 
+msgid "Invisible"
+msgstr "Nematomas"
+
 msgid "Extended away"
 msgstr "Ilgam pasitraukęs"
+
+msgid "Mobile"
+msgstr "Mobilus"
+
+msgid "Listening to music"
+msgstr "Klausausi muzikos"
 
 msgid "Feeling"
 msgstr "Jaučiamasi"
@@ -8427,6 +7250,7 @@ msgid_plural "%d seconds"
 msgstr[0] "%d sekundė"
 msgstr[1] "%d sekundės"
 msgstr[2] "%d sekundžių"
+msgstr[3] "%d sekundžių"
 
 #, c-format
 msgid "%d day"
@@ -8434,6 +7258,7 @@ msgid_plural "%d days"
 msgstr[0] "%d diena"
 msgstr[1] "%d dienos"
 msgstr[2] "%d dienų"
+msgstr[3] "%d dienų"
 
 #, c-format
 msgid "%s, %d hour"
@@ -8441,6 +7266,7 @@ msgid_plural "%s, %d hours"
 msgstr[0] "%s, %d valanda"
 msgstr[1] "%s, %d valandos"
 msgstr[2] "%s, %d valandų"
+msgstr[3] "%s, %d valandų"
 
 #, c-format
 msgid "%d hour"
@@ -8448,6 +7274,7 @@ msgid_plural "%d hours"
 msgstr[0] "%d valanda"
 msgstr[1] "%d valandos"
 msgstr[2] "%d valandų"
+msgstr[3] "%d valandų"
 
 #, c-format
 msgid "%s, %d minute"
@@ -8455,6 +7282,7 @@ msgid_plural "%s, %d minutes"
 msgstr[0] "%s, %d minutė"
 msgstr[1] "%s, %d minutės"
 msgstr[2] "%s, %d minučių"
+msgstr[3] "%s, %d minučių"
 
 #, c-format
 msgid "%d minute"
@@ -8462,6 +7290,7 @@ msgid_plural "%d minutes"
 msgstr[0] "%d minutė"
 msgstr[1] "%d minutės"
 msgstr[2] "%d minučių"
+msgstr[3] "%d minučių"
 
 #, c-format
 msgid "Could not open %s: Redirected too many times"
@@ -8536,35 +7365,41 @@ msgstr ""
 "Failo %s skaitymo metu įvyko klaida.  Failas įkeltas nebuvo, o senasis "
 "failas pervadintas į %s~."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr "Pokalbių klientas"
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
-"„Pidgin“ yra programa kuri suteikia galimybę vienu metu būti prijungus prie "
-"kelių pokalbių tinklų."
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
-msgstr "Draugų sąrašas rodo draugus skirtinguose tinkluose."
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin pokalbiai internete"
+msgid "Buddy list showing friends on different networks"
+msgstr ""
 
 msgid "Internet Messenger"
 msgstr "Pokalbiai internete"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin pokalbiai internete"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"Bendraukite per IM.  Palaikoma AIM, Google Talk, Jabber/XMPP, MSN, Yahoo ir "
-"daug kitų"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -8834,6 +7669,7 @@ msgid_plural ""
 msgstr[0] "Šiuo metu turite %d kontaktą vardu %s.  Ar norite juos sujungti?"
 msgstr[1] "Šiuo metu turite %d kontaktus vardu %s.  Ar norite juos sujungti?"
 msgstr[2] "Šiuo metu turite %d kontaktų vardu %s.  Ar norite juos sujungti?"
+msgstr[3] "Šiuo metu turite %d kontaktų vardu %s.  Ar norite juos sujungti?"
 
 msgid ""
 "Merging these contacts will cause them to share a single entry on the buddy "
@@ -9067,6 +7903,9 @@ msgstr "/_Pagalba"
 msgid "/Help/Online _Help"
 msgstr "/Pagalba/_Žinynas internete"
 
+msgid "/Help/D_onate"
+msgstr ""
+
 msgid "/Help/_Build Information"
 msgstr "/Pagalba/_Kūrimo informacija"
 
@@ -9171,6 +8010,7 @@ msgid_plural "%d unread messages from %s\n"
 msgstr[0] "%d neperskaityta žinutė iš %s\n"
 msgstr[1] "%d neperskaitytos žinutės iš %s\n"
 msgstr[2] "%d neperskaitytų žinučių iš %s\n"
+msgstr[3] "%d neperskaitytų žinučių iš %s\n"
 
 msgid "Manually"
 msgstr "rankiniu būdu"
@@ -9208,6 +8048,7 @@ msgid_plural ""
 msgstr[0] "%d paskyra buvo išjungta, nes prisijungėte iš kitur:"
 msgstr[1] "%d paskyros buvo išjungtos, nes prisijungėte iš kitur:"
 msgstr[2] "%d paskyrų buvo išjungta, nes prisijungėte iš kitur:"
+msgstr[3] "%d paskyrų buvo išjungta, nes prisijungėte iš kitur:"
 
 msgid "<b>Username:</b>"
 msgstr "<b>Naudotojo vardas:</b>"
@@ -9603,6 +8444,10 @@ msgid_plural "%d people in room"
 msgstr[0] "%d asmuo kambaryje"
 msgstr[1] "%d asmenys kambaryje"
 msgstr[2] "%d asmenų kambaryje"
+msgstr[3] "%d asmenų kambaryje"
+
+msgid "Typing"
+msgstr "Renkamas tekstas"
 
 msgid "Stopped Typing"
 msgstr "Nustota rinkti tekstą"
@@ -9713,20 +8558,14 @@ msgstr "Klaidos "
 msgid "Fatal Error"
 msgstr "Lemtingos klaidos"
 
-msgid "artist"
-msgstr "dailininkas"
-
-msgid "voice and video"
-msgstr "garsas ir vaizdas"
-
-msgid "support"
-msgstr "palaikymas"
-
-msgid "webmaster"
-msgstr "svetainės administratorius"
+msgid "lead developer"
+msgstr "pagrindinis kūrėjas"
 
 msgid "win32 port"
 msgstr "perkėlimas į win32"
+
+msgid "artist"
+msgstr "dailininkas"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9739,9 +8578,18 @@ msgstr "prižiūrėtojas"
 msgid "libfaim maintainer"
 msgstr "libfaim prižiūrėtojas"
 
+msgid "webmaster"
+msgstr "svetainės administratorius"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "hakeris ir negeriantis, nes prie vairo [tingus bastūnas]"
+
+msgid "voice and video"
+msgstr "garsas ir vaizdas"
+
+msgid "support"
+msgstr "palaikymas"
 
 msgid "support/QA"
 msgstr "priežiūra ir kokybės kontrolė"
@@ -9751,9 +8599,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "pradinis autorius"
-
-msgid "lead developer"
-msgstr "pagrindinis kūrėjas"
 
 msgid "Senior Contributor/QA"
 msgstr "Vyresnysis bendradarbis/kokybės kontrolė"
@@ -10075,24 +8920,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>Naudingos nuorodos</B></FONT><BR>\t<A HREF=\"%s"
-"\">Tinklapis</A><BR>\t<A HREF=\"%s\">Dažnai užduodami klausimai</A><BR>\tIRC "
-"Kanalas: #pidgin serveryje irc.freenode.net<BR>\tXMPP MUC: devel@conference."
-"pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10192,6 +9031,9 @@ msgstr[1] ""
 "Jūs ruošiatės pašalinti kontaktą su %s ir turintį dar %d kitas bičiulio "
 "paskyras iš Jūsų bičiulių sąrašo.  Ar norite tęsti?"
 msgstr[2] ""
+"Jūs ruošiatės pašalinti kontaktą su %s ir turintį dar %d kitų bičiulio "
+"paskyrų iš Jūsų bičiulių sąrašo.  Ar norite tęsti?"
+msgstr[3] ""
 "Jūs ruošiatės pašalinti kontaktą su %s ir turintį dar %d kitų bičiulio "
 "paskyrų iš Jūsų bičiulių sąrašo.  Ar norite tęsti?"
 
@@ -10797,6 +9639,7 @@ msgid_plural "%s has %d new messages."
 msgstr[0] "%s turi %d naują pranešimą."
 msgstr[1] "%s turi %d naujus pranešimus."
 msgstr[2] "%s turi %d naujų pranešimų."
+msgstr[3] "%s turi %d naujų pranešimų."
 
 #, c-format
 msgid "<b>%d new email.</b>"
@@ -10804,6 +9647,7 @@ msgid_plural "<b>%d new emails.</b>"
 msgstr[0] "<b>%d naujas laiškas.</b>"
 msgstr[1] "<b>%d nauji laiškai.</b>"
 msgstr[2] "<b>%d naujų laiškų.</b>"
+msgstr[3] "<b>%d naujų laiškų.</b>"
 
 #, c-format
 msgid "The browser command \"%s\" is invalid."
@@ -11169,12 +10013,12 @@ msgstr "Nepavyko paleisti įgaliotojo serverio konfigūravimo programos."
 msgid "Cannot start browser configuration program."
 msgstr "Nepavyko paleisti naršyklės nustatymų programos."
 
-msgid "Disabled"
-msgstr "Išjungta"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "Naudoti _automatiškai aptiktą IP adresą: %s"
+
+msgid "IP Address"
+msgstr "IP adresas"
 
 msgid "ST_UN server:"
 msgstr "ST_UN Serveris:"
@@ -11437,6 +10281,37 @@ msgstr "Programos paleidimo metu nustatyti paskutinę prieš tai naudotą būsen
 msgid "Status to a_pply at startup:"
 msgstr "Programos paleidimo metu nustatyti būseną:"
 
+msgid "DROP"
+msgstr "DROP"
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr "Garsumas:"
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "_Įrenginys"
+
+msgid "Audio"
+msgstr "Garsas"
+
+msgid "Input"
+msgstr "Įvestis"
+
+msgid "Output"
+msgstr "Išvestis"
+
+msgid "Video"
+msgstr "Vaizdas"
+
 msgid "Interface"
 msgstr "Sąsaja"
 
@@ -11448,6 +10323,9 @@ msgstr "Būsenos ir neveiklumas"
 
 msgid "Themes"
 msgstr "Temos"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "Leisti visiems naudotojams susisiekti su manimi"
@@ -11532,6 +10410,46 @@ msgstr "Parinkti kitą vardą"
 
 msgid "Select Folder..."
 msgstr "Pasirinkite aplanką..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Pridėti"
 
 #. list button
 msgid "_Get List"
@@ -11714,6 +10632,10 @@ msgstr ""
 "<b>Failo dydis:</b> %s\n"
 "<b>Vaizdo dydis:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Naudotojo paveiksliukas"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11754,11 +10676,6 @@ msgstr "Ar tikrai norite išvalyti?"
 
 msgid "Select color"
 msgstr "Pasirinkite spalvą"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_Alternatyvusis vardas"
@@ -12647,6 +11564,9 @@ msgstr "Operatorius"
 msgid "Half Operator"
 msgstr "Pusiau operatorius"
 
+msgid "Voice"
+msgstr "Balsas"
+
 msgid "Authorization dialog"
 msgstr "Prieigos teisės dialogo langas"
 
@@ -12898,35 +11818,51 @@ msgstr "Suteikia Unity integravimą."
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr "Suteikia integravimą į Unity pranešimų meniu ir leistuką."
 
-msgid "Audio"
-msgstr "Garsas"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "Vaizdas"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "Išvestis"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "_Papildinys"
-
-msgid "_Device"
-msgstr "_Įrenginys"
-
-msgid "Input"
-msgstr "Įvestis"
 
 msgid "P_lugin"
 msgstr "P_apildinys"
 
 msgid "D_evice"
 msgstr "Į_renginys"
-
-msgid "DROP"
-msgstr "DROP"
-
-msgid "Volume:"
-msgstr "Garsumas:"
 
 msgid "Silence threshold:"
 msgstr "Tylos slenkstis:"
@@ -13123,8 +12059,8 @@ msgstr "Rašybos tikrinimo palaikymas"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 "Klaida diegiant rašybos tikrinimą ($R3).$\\rJei bandant dar kartą nepavyks, "
 "rankinio diegimo vadovą galite rasti čia: http://developer.pidgin.im/wiki/"

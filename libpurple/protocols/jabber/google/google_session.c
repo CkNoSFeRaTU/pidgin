@@ -562,6 +562,7 @@ google_session_handle_initiate(JabberStream *js, GoogleSession *session, xmlnode
 		(GoogleAVSessionData *) session->session_data;
 
 	if (session->state != UNINIT) {
+		google_session_destroy(session);
 		purple_debug_error("jabber", "Received initiate for active session.\n");
 		return FALSE;
 	}
@@ -574,6 +575,7 @@ google_session_handle_initiate(JabberStream *js, GoogleSession *session, xmlnode
 	else if (purple_strequal(xmlns, NS_GOOGLE_SESSION_VIDEO))
 		session_data->video = TRUE;
 	else {
+		google_session_destroy(session);
 		purple_debug_error("jabber", "Received initiate with "
 				"invalid namespace %s.\n", xmlns);
 		return FALSE;

@@ -76,7 +76,10 @@ static GSList *window_list = NULL;
 
 /* Set window transparency level */
 static void set_wintrans(GtkWidget *window, int alpha, gboolean enabled,
-		gboolean always_on_top) {
+                         gboolean always_on_top)
+{
+	g_return_if_fail(GTK_IS_WIDGET(window));
+
 	if (enabled) {
 		gdk_window_set_opacity(window->window, alpha / 255.0);
 		gdk_window_set_keep_above(window->window, always_on_top);
@@ -530,7 +533,7 @@ static GtkWidget *get_config_frame(PurplePlugin *plugin) {
 		G_CALLBACK(update_convs_wintrans),
 		(gpointer) OPT_WINTRANS_IM_SLIDER);
 
-	button = pidgin_prefs_checkbox(
+	pidgin_prefs_checkbox(
 		_("Remove IM window transparency on focus"),
 		OPT_WINTRANS_IM_ONFOCUS, trans_box);
 
@@ -579,7 +582,7 @@ static GtkWidget *get_config_frame(PurplePlugin *plugin) {
 	gtk_widget_show(trans_box);
 	g_signal_connect(GTK_OBJECT(button), "clicked",
 		G_CALLBACK(pidgin_toggle_sensitive), trans_box);
-	button = pidgin_prefs_checkbox(
+	pidgin_prefs_checkbox(
 		_("Remove Buddy List window transparency on focus"),
 		OPT_WINTRANS_BL_ONFOCUS, trans_box);
 	button = pidgin_prefs_checkbox(_("Always on top"), OPT_WINTRANS_BL_ONTOP,

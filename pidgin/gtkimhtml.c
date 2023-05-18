@@ -31,6 +31,7 @@
 #endif
 
 #include "internal.h"
+#include "glibcompat.h"
 #include "pidgin.h"
 #include "pidginstock.h"
 #include "gtkutils.h"
@@ -65,6 +66,9 @@
 #include <pango/pango-font.h>
 
 #define TOOLTIP_TIMEOUT 500
+
+/* GTK_IMHTML_MAX_CONSEC_RESIZES is also defined in gtkconv.c */
+#define GTK_IMHTML_MAX_CONSEC_RESIZES 6
 
 static GtkTextViewClass *parent_class = NULL;
 
@@ -353,7 +357,9 @@ gtk_smiley_tree_insert (GtkSmileyTree *tree,
 		} else
 			index = GPOINTER_TO_INT(pos) - GPOINTER_TO_INT(t->values->str);
 
-		t = t->children [index];
+		if(t->children != NULL) {
+			t = t->children [index];
+		}
 
 		x++;
 	} while (*x);
@@ -392,6 +398,59 @@ static void gtk_imhtml_size_allocate(GtkWidget *widget, GtkAllocation *alloc)
 	int height = 0, y = 0;
 	GtkTextIter iter;
 	gboolean scroll = TRUE;
+	PidginConversation *gtkconv;
+	GtkIMHtml *entry, *messages;
+	int resize_count;
+	int entry_rc;
+	int messages_rc;
+
+	gtkconv = g_object_get_data(G_OBJECT(imhtml), "gtkconv");
+
+	if(gtkconv != NULL) {
+		entry = GTK_IMHTML(gtkconv->entry);
+		messages = GTK_IMHTML(gtkconv->imhtml);
+
+		entry_rc = GPOINTER_TO_INT(
+			g_object_get_data(
+				G_OBJECT(entry), "resize-count"));
+
+		messages_rc = GPOINTER_TO_INT(
+			g_object_get_data(
+				G_OBJECT(messages), "resize-count"));
+
+		resize_count = GPOINTER_TO_INT(
+			g_object_get_data(
+				G_OBJECT(imhtml), "resize-count"));
+
+		if(imhtml == entry) {
+			if(entry_rc >= GTK_IMHTML_MAX_CONSEC_RESIZES ||
+			   messages_rc >= GTK_IMHTML_MAX_CONSEC_RESIZES) {
+				return;
+			}
+		} else if(imhtml == messages) {
+			if(resize_count >= GTK_IMHTML_MAX_CONSEC_RESIZES) {
+				g_object_set_data(
+					G_OBJECT(entry), "resize-count",
+					GINT_TO_POINTER(
+						GTK_IMHTML_MAX_CONSEC_RESIZES + 1));
+
+				return;
+			}
+
+			if(entry_rc == GTK_IMHTML_MAX_CONSEC_RESIZES + 1) {
+				g_object_set_data(G_OBJECT(messages), "resize-count",
+						  GINT_TO_POINTER(0));
+				return;
+			}
+
+			g_object_set_data(G_OBJECT(entry), "resize-count",
+					  GINT_TO_POINTER(0));
+		}
+
+		resize_count++;
+		g_object_set_data(G_OBJECT(imhtml), "resize-count",
+				  GINT_TO_POINTER(resize_count));
+	}
 
 	gtk_text_buffer_get_end_iter(imhtml->text_buffer, &iter);
 
@@ -543,7 +602,7 @@ gtk_imhtml_tip (gpointer data)
 	PangoLayout *layout;
 	PangoFont *font;
 
-	gint gap, x, y, h, w, scr_w, baseline_skip;
+	gint x, y, h, w, scr_w, baseline_skip;
 
 	g_return_val_if_fail(GTK_IS_IMHTML(imhtml), FALSE);
 
@@ -597,11 +656,7 @@ gtk_imhtml_tip (gpointer data)
 	font_metrics = pango_font_get_metrics(font, NULL);
 
 	pango_layout_get_pixel_size(layout, &scr_w, NULL);
-	gap = PANGO_PIXELS((pango_font_metrics_get_ascent(font_metrics) +
-					   pango_font_metrics_get_descent(font_metrics))/ 4);
 
-	if (gap < 2)
-		gap = 2;
 	baseline_skip = PANGO_PIXELS(pango_font_metrics_get_ascent(font_metrics) +
 								pango_font_metrics_get_descent(font_metrics));
 	w = 8 + scr_w;
@@ -1168,6 +1223,8 @@ static void imhtml_paste_insert(GtkIMHtml *imhtml, const char *text, gboolean pl
 	if (!imhtml->wbfo && !plaintext)
 		gtk_imhtml_close_tags(imhtml, &iter);
 
+	g_object_set_data(G_OBJECT(imhtml), "resize-count",
+			  GINT_TO_POINTER(0));
 }
 
 static void paste_plaintext_received_cb (GtkClipboard *clipboard, const gchar *text, gpointer data)
@@ -1186,6 +1243,9 @@ static void paste_received_cb (GtkClipboard *clipboard, GtkSelectionData *select
 {
 	char *text;
 	GtkIMHtml *imhtml = data;
+
+	g_object_set_data(G_OBJECT(imhtml), "resize-count",
+			  GINT_TO_POINTER(0));
 
 	if (!gtk_text_view_get_editable(GTK_TEXT_VIEW(imhtml)))
 		return;
@@ -1283,6 +1343,9 @@ static void smart_backspace_cb(GtkIMHtml *imhtml, gpointer blah)
 
 	/* ok, then we need to insert the image buffer text before the anchor */
 	gtk_text_buffer_insert(imhtml->text_buffer, &iter, text, -1);
+
+	g_object_set_data(G_OBJECT(imhtml), "resize-count",
+			  GINT_TO_POINTER(0));
 }
 
 static void paste_clipboard_cb(GtkIMHtml *imhtml, gpointer blah)
@@ -1308,6 +1371,8 @@ static void imhtml_realized_remove_primary(GtkIMHtml *imhtml, gpointer unused)
 	gtk_text_buffer_remove_selection_clipboard(GTK_IMHTML(imhtml)->text_buffer,
 	                                            gtk_widget_get_clipboard(GTK_WIDGET(imhtml), GDK_SELECTION_PRIMARY));
 
+	g_object_set_data(G_OBJECT(imhtml), "resize-count",
+			  GINT_TO_POINTER(0));
 }
 
 static void imhtml_destroy_add_primary(GtkIMHtml *imhtml, gpointer unused)
@@ -1388,6 +1453,9 @@ imhtml_paste_cb(GtkIMHtml *imhtml, const char *str)
 		g_signal_emit_by_name(imhtml, "paste_clipboard");
 	else if (purple_strequal(str, "text"))
 		paste_unformatted_cb(NULL, imhtml);
+
+	g_object_set_data(G_OBJECT(imhtml), "resize-count",
+			  GINT_TO_POINTER(0));
 }
 
 static void imhtml_toggle_format(GtkIMHtml *imhtml, GtkIMHtmlButtons buttons)
@@ -2054,48 +2122,44 @@ static gint
 gtk_smiley_tree_lookup (GtkSmileyTree *tree,
 			const gchar   *text)
 {
-	gunichar text_ch = g_utf8_get_char(text);
 	GtkSmileyTree *t = tree;
+	const gchar *x = text;
+	const gchar *amp;
+	gint alen;
 	gint len = 0;
 	gint lastlen = 0;
-	
-	while (text_ch) {
-		const gchar *amp;
+
+	while (*x) {
 		gchar *pos;
-		gint alen;
 
 		if (!t->values)
 			break;
 
-		if((amp = purple_markup_unescape_entity(text, &alen))) {
+		if(*x == '&' && (amp = purple_markup_unescape_entity(x, &alen))) {
 			gboolean matched = TRUE;
-			const char *amp_next = g_utf8_next_char(amp);
-			
 			/* Make sure all chars of the unescaped value match */
-			while (g_utf8_get_char(amp_next)) {
-				pos = g_utf8_strchr (t->values->str, -1, g_utf8_get_char(amp));
+			while (*(amp + 1)) {
+				pos = strchr (t->values->str, *amp);
 				if (pos)
 					t = t->children [GPOINTER_TO_INT(pos) - GPOINTER_TO_INT(t->values->str)];
 				else {
 					matched = FALSE;
 					break;
 				}
-				amp = amp_next;
-				amp_next = g_utf8_next_char(amp_next);
+				amp++;
 			}
-			
 			if (!matched)
 				break;
-			
-			pos = g_utf8_strchr (t->values->str, -1, g_utf8_get_char(amp));
+
+			pos = strchr (t->values->str, *amp);
 		}
-		else if (text_ch == '<') /* Because we're all WYSIWYG now, a '<'
+		else if (*x == '<') /* Because we're all WYSIWYG now, a '<'
 				     * char should only appear as the start of a tag.  Perhaps a safer (but costlier)
 				     * check would be to call gtk_imhtml_is_tag on it */
 			break;
 		else {
-			alen = g_unichar_to_utf8 (text_ch, NULL);
-			pos = g_utf8_strchr (t->values->str, -1, text_ch);
+			alen = 1;
+			pos = strchr (t->values->str, *x);
 		}
 
 		if (pos) {
@@ -2105,9 +2169,8 @@ gtk_smiley_tree_lookup (GtkSmileyTree *tree,
 		} else
 			break;
 
+		x += alen;
 		len += alen;
-		text = g_utf8_next_char(text);
-		text_ch = g_utf8_get_char(text);
 	}
 
 	if (t->image)
@@ -2739,7 +2802,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						if ((bold == 0) && (imhtml->format_functions & GTK_IMHTML_BOLD))
 							gtk_imhtml_toggle_bold(imhtml);
 						bold++;
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 					}
 					break;
 				case 3:		/* /B */
@@ -2747,7 +2811,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 55:	/* /STRONG */
 					if (!(options & GTK_IMHTML_NO_FORMATTING)) {
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 
 						if (bold) {
 							bold--;
@@ -2761,7 +2826,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 52:	/* EM */
 					if (!(options & GTK_IMHTML_NO_FORMATTING)) {
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						if ((italics == 0) && (imhtml->format_functions & GTK_IMHTML_ITALIC))
 							gtk_imhtml_toggle_italic(imhtml);
 						italics++;
@@ -2772,7 +2838,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 53:	/* /EM */
 					if (!(options & GTK_IMHTML_NO_FORMATTING)) {
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						if (italics) {
 							italics--;
 							if ((italics == 0) && (imhtml->format_functions & GTK_IMHTML_ITALIC) && !imhtml->wbfo)
@@ -2784,7 +2851,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 10:	/* UNDERLINE */
 					if (!(options & GTK_IMHTML_NO_FORMATTING)) {
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						if ((underline == 0) && (imhtml->format_functions & GTK_IMHTML_UNDERLINE))
 							gtk_imhtml_toggle_underline(imhtml);
 						underline++;
@@ -2794,7 +2862,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 12:	/* /UNDERLINE */
 					if (!(options & GTK_IMHTML_NO_FORMATTING)) {
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						if (underline) {
 							underline--;
 							if ((underline == 0) && (imhtml->format_functions & GTK_IMHTML_UNDERLINE) && !imhtml->wbfo)
@@ -2805,7 +2874,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 13:	/* S */
 				case 14:	/* STRIKE */
 					gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 					if ((strike == 0) && (imhtml->format_functions & GTK_IMHTML_STRIKE))
 						gtk_imhtml_toggle_strike(imhtml);
 					strike++;
@@ -2813,7 +2883,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 15:	/* /S */
 				case 16:	/* /STRIKE */
 					gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 					if (strike)
 						strike--;
 					if ((strike == 0) && (imhtml->format_functions & GTK_IMHTML_STRIKE) && !imhtml->wbfo)
@@ -2867,6 +2938,13 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 					wpos++;
 					br = TRUE;
 					break;
+				case 29:	/* P */
+					if(wpos > 0) {
+						ws[wpos] = '\n';
+						wpos++;
+						br = TRUE;
+					}
+					break;
 				case 26:        /* HR */
 				case 42:        /* HR (opt) */
 				{
@@ -2884,7 +2962,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 					        gtk_text_view_get_right_margin(GTK_TEXT_VIEW(imhtml));
 					scalable->scale(scalable, rect.width - minus, rect.height);
 					imhtml->scalables = g_list_append(imhtml->scalables, sd);
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 					ws[wpos++] = '\n';
 
 					break;
@@ -2893,7 +2972,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 					if (fonts && !imhtml->wbfo) {
 						GtkIMHtmlFontDetail *font = fonts->data;
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						/* NEW_BIT (NEW_TEXT_BIT); */
 
 						if (font->face && (imhtml->format_functions & GTK_IMHTML_FACE)) {
@@ -2933,10 +3013,10 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				case 28:        /* /A    */
 					gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
 					gtk_imhtml_toggle_link(imhtml, NULL);
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 					break;
 
-				case 29:	/* P */
 				case 30:	/* /P */
 				case 31:	/* H3 */
 				case 32:	/* /H3 */
@@ -2946,7 +3026,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 					break;
 				case 36:	/* /BODY */
 					gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 					gtk_imhtml_toggle_background(imhtml, NULL);
 					break;
 				case 37:	/* FONT */
@@ -2968,7 +3049,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 							break;
 
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 
 						font = g_new0 (GtkIMHtmlFontDetail, 1);
 						if (fonts)
@@ -3027,7 +3109,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						char *bgcolor = gtk_imhtml_get_html_opt (tag, "BGCOLOR=");
 						if (bgcolor && (imhtml->format_functions & GTK_IMHTML_BACKCOLOR)) {
 							gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-							ws[0] = '\0'; wpos = 0;
+							ws[0] = '\0';
+							wpos = 0;
 							/* NEW_BIT(NEW_TEXT_BIT); */
 							g_free(bg);
 							bg = bgcolor;
@@ -3041,7 +3124,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						gchar *href = gtk_imhtml_get_html_opt (tag, "HREF=");
 						if (href && (imhtml->format_functions & GTK_IMHTML_LINK)) {
 							gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-							ws[0] = '\0'; wpos = 0;
+							ws[0] = '\0';
+							wpos = 0;
 							gtk_imhtml_toggle_link(imhtml, href);
 						}
 						g_free(href);
@@ -3053,7 +3137,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						char *id;
 
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 
 						if (!(imhtml->format_functions & GTK_IMHTML_IMAGE))
 							break;
@@ -3122,7 +3207,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 
 
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						/* NEW_BIT (NEW_TEXT_BIT); */
 
 						/* Bi-Directional text support */
@@ -3134,7 +3220,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 							ws[wpos++]  = 0xAB;
 							ws[wpos]  = '\0';
 							gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-							ws[0] = '\0'; wpos = 0;
+							ws[0] = '\0';
+							wpos = 0;
 						}
 						g_free(direction);
 
@@ -3283,7 +3370,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						GtkIMHtmlFontDetail *oldfont = NULL;
 						GtkIMHtmlFontDetail *font = fonts->data;
 						gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-						ws[0] = '\0'; wpos = 0;
+						ws[0] = '\0';
+						wpos = 0;
 						/* NEW_BIT (NEW_TEXT_BIT); */
 						fonts = g_slist_remove (fonts, font);
 						if (fonts)
@@ -3354,7 +3442,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 						gtk_text_buffer_insert_with_tags_by_name(imhtml->text_buffer, iter, ws, wpos, "comment", NULL);
 					}
 #endif
-					ws[0] = '\0'; wpos = 0;
+					ws[0] = '\0';
+					wpos = 0;
 
 					/* NEW_BIT (NEW_COMMENT_BIT); */
 					break;
@@ -3380,7 +3469,7 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				sml = imhtml->protocol_name;
 
 			gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-			wpos = g_snprintf (ws, smilelen + 1, "%s", c);
+			g_snprintf (ws, smilelen + 1, "%s", c);
 
 			gtk_imhtml_insert_smiley_at_iter(imhtml, sml, ws, iter);
 
@@ -3400,7 +3489,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				ws[wpos] = '\n';
 				wpos++;
 				gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-				ws[0] = '\0'; wpos = 0;
+				ws[0] = '\0';
+				wpos = 0;
 				/* NEW_BIT (NEW_TEXT_BIT); */
 			} else if (!br) {  /* Don't insert a space immediately after an HTML break */
 				/* A newline is defined by HTML as whitespace, which means we have to replace it with a word boundary.
@@ -3411,7 +3501,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				ws[wpos] = ' ';
 				wpos++;
 				gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-				ws[0] = '\0'; wpos = 0;
+				ws[0] = '\0';
+				wpos = 0;
 			}
 			c++;
 			pos++;
@@ -3422,7 +3513,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 			br = FALSE;
 			if (wpos > 0) {
 				gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-				ws[0] = '\0'; wpos = 0;
+				ws[0] = '\0';
+				wpos = 0;
 			}
 			while (len_protocol--) {
 				/* Skip the next len_protocol characters, but
@@ -3447,7 +3539,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 				ws[wpos] = '\0';
 				gtk_imhtml_toggle_link(imhtml, ws);
 				gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-				ws[0] = '\0'; wpos = 0;
+				ws[0] = '\0';
+				wpos = 0;
 				gtk_imhtml_toggle_link(imhtml, NULL);
 			}
 		} else if (*c) {
@@ -3459,7 +3552,8 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 		}
 	}
 	gtk_text_buffer_insert(imhtml->text_buffer, iter, ws, wpos);
-	ws[0] = '\0'; wpos = 0;
+	ws[0] = '\0';
+	wpos = 0;
 
 	/* NEW_BIT(NEW_TEXT_BIT); */
 
@@ -3485,7 +3579,7 @@ void gtk_imhtml_insert_html_at_iter(GtkIMHtml        *imhtml,
 		ws[wpos]  = '\0';
 		gtk_text_buffer_insert(imhtml->text_buffer, &line_iter, ws, wpos);
 		gtk_text_buffer_get_end_iter(gtk_text_iter_get_buffer(&line_iter), iter);
-		ws[0] = '\0'; wpos = 0;
+		ws[0] = '\0';
 	}
 
 	while (fonts) {
@@ -3545,9 +3639,7 @@ gtk_imhtml_set_protocol_name(GtkIMHtml *imhtml, const gchar *protocol_name) {
 
 void
 gtk_imhtml_delete(GtkIMHtml *imhtml, GtkTextIter *start, GtkTextIter *end) {
-	GList *l;
-	GSList *sl;
-	GtkTextIter i, i_s, i_e;
+	GtkTextIter i_s, i_e;
 	GObject *object = g_object_ref(G_OBJECT(imhtml));
 
 	if (start == NULL) {
@@ -3560,37 +3652,11 @@ gtk_imhtml_delete(GtkIMHtml *imhtml, GtkTextIter *start, GtkTextIter *end) {
 		end = &i_e;
 	}
 
-	l = imhtml->scalables;
-	while (l) {
-		GList *next = l->next;
-		struct scalable_data *sd = l->data;
-		gtk_text_buffer_get_iter_at_mark(imhtml->text_buffer,
-			&i, sd->mark);
-		if (gtk_text_iter_in_range(&i, start, end)) {
-			GtkIMHtmlScalable *scale = GTK_IMHTML_SCALABLE(sd->scalable);
-			scale->free(scale);
-			g_free(sd);
-			imhtml->scalables = g_list_delete_link(imhtml->scalables, l);
-		}
-		l = next;
-	}
-
-	sl = imhtml->im_images;
-	while (sl) {
-		GSList *next = sl->next;
-		struct im_image_data *img_data = sl->data;
-		gtk_text_buffer_get_iter_at_mark(imhtml->text_buffer,
-			&i, img_data->mark);
-		if (gtk_text_iter_in_range(&i, start, end)) {
-			if (imhtml->funcs->image_unref)
-				imhtml->funcs->image_unref(img_data->id);
-			imhtml->im_images = g_slist_delete_link(imhtml->im_images, sl);
-			g_free(img_data);
-		}
-		sl = next;
-	}
+	/* This will cause the signal handler to get called which will call
+	 * delete_cb and clean up everything else. */
 	gtk_text_buffer_delete(imhtml->text_buffer, start, end);
 
+	/* This is wrong, but i'm not trying to total what we actually removed. */
 	g_object_set_data(G_OBJECT(imhtml), "gtkimhtml_numsmileys_total", GINT_TO_POINTER(0));
 
 	g_object_unref(object);
@@ -4358,6 +4424,7 @@ static void insert_ca_cb(GtkTextBuffer *buffer, GtkTextIter *arg1, GtkTextChildA
 
 static void insert_cb(GtkTextBuffer *buffer, GtkTextIter *end, gchar *text, gint len, GtkIMHtml *imhtml)
 {
+	PidginConversation *gtkconv;
 	GtkTextIter start;
 
 	if (!len)
@@ -4367,15 +4434,27 @@ static void insert_cb(GtkTextBuffer *buffer, GtkTextIter *end, gchar *text, gint
 	gtk_text_iter_set_offset(&start, imhtml->insert_offset);
 
 	gtk_imhtml_apply_tags_on_insert(imhtml, &start, end);
+
+	gtkconv = g_object_get_data(G_OBJECT(imhtml), "gtkconv");
+	if(gtkconv != NULL) {
+		g_object_set_data(G_OBJECT(gtkconv->entry), "resize-count",
+				  GINT_TO_POINTER(0));
+		g_object_set_data(G_OBJECT(gtkconv->imhtml), "resize-count",
+				  GINT_TO_POINTER(0));
+	}
 }
 
 static void delete_cb(GtkTextBuffer *buffer, GtkTextIter *start, GtkTextIter *end, GtkIMHtml *imhtml)
 {
-	GSList *tags, *l;
+	PidginConversation *gtkconv;
+	GList *l;
+	GSList *tags, *sl;
+	GtkTextIter i;
 
+	/* clean up tags */
 	tags = gtk_text_iter_get_tags(start);
-	for (l = tags; l != NULL; l = l->next) {
-		GtkTextTag *tag = GTK_TEXT_TAG(l->data);
+	for (sl = tags; sl != NULL; sl = sl->next) {
+		GtkTextTag *tag = GTK_TEXT_TAG(sl->data);
 
 		if (tag &&							/* Remove the formatting only if */
 				gtk_text_iter_starts_word(start) &&				/* beginning of a word */
@@ -4390,6 +4469,46 @@ static void delete_cb(GtkTextBuffer *buffer, GtkTextIter *start, GtkTextIter *en
 		}
 	}
 	g_slist_free(tags);
+
+	/* remove scalables */
+	l = imhtml->scalables;
+	while (l) {
+		GList *next = l->next;
+		struct scalable_data *sd = l->data;
+
+		gtk_text_buffer_get_iter_at_mark(imhtml->text_buffer, &i, sd->mark);
+		if (gtk_text_iter_in_range(&i, start, end)) {
+			GtkIMHtmlScalable *scale = GTK_IMHTML_SCALABLE(sd->scalable);
+			scale->free(scale);
+			g_free(sd);
+			imhtml->scalables = g_list_delete_link(imhtml->scalables, l);
+		}
+		l = next;
+	}
+
+	/* remove images */
+	sl = imhtml->im_images;
+	while (sl) {
+		GSList *next = sl->next;
+		struct im_image_data *img_data = sl->data;
+		gtk_text_buffer_get_iter_at_mark(imhtml->text_buffer,
+			&i, img_data->mark);
+		if (gtk_text_iter_in_range(&i, start, end)) {
+			if (imhtml->funcs->image_unref)
+				imhtml->funcs->image_unref(img_data->id);
+			imhtml->im_images = g_slist_delete_link(imhtml->im_images, sl);
+			g_free(img_data);
+		}
+		sl = next;
+	}
+
+	gtkconv = g_object_get_data(G_OBJECT(imhtml), "gtkconv");
+	if(gtkconv != NULL) {
+		g_object_set_data(G_OBJECT(gtkconv->entry), "resize-count",
+				  GINT_TO_POINTER(0));
+		g_object_set_data(G_OBJECT(gtkconv->imhtml), "resize-count",
+				  GINT_TO_POINTER(0));
+	}
 }
 
 static void gtk_imhtml_apply_tags_on_insert(GtkIMHtml *imhtml, GtkTextIter *start, GtkTextIter *end)
@@ -5697,8 +5816,7 @@ static void gtk_custom_smiley_closed(GdkPixbufLoader *loader, gpointer user_data
 			if (smiley->imhtml) {
 				if (wids) {
 					GList *children = gtk_container_get_children(GTK_CONTAINER(wids->data));
-					g_list_foreach(children, (GFunc)gtk_widget_destroy, NULL);
-					g_list_free(children);
+					g_list_free_full(children, (GDestroyNotify)gtk_widget_destroy);
 					gtk_container_add(GTK_CONTAINER(wids->data), icon);
 				} else
 					gtk_text_view_add_child_at_anchor(GTK_TEXT_VIEW(smiley->imhtml), icon, anchor);

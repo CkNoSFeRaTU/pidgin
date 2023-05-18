@@ -22,6 +22,7 @@
  */
 #define _PURPLE_DNSSRV_C_
 
+#include "glibcompat.h"
 #include "internal.h"
 #include "util.h"
 
@@ -159,11 +160,15 @@ select_random_response(GList *list, PurpleSrvResponseContainer **container_ptr)
 	r = runningtotal ? g_random_int_range(1, runningtotal + 1) : 0;
 	cur = list;
 	while (r > ((PurpleSrvResponseContainer *)cur->data)->sum) {
+		if(cur->next == NULL) {
+			break;
+		}
+
 		cur = cur->next;
 	}
 
 	/* Set the return parameter and remove cur from the list */
-	*container_ptr =  cur->data;
+	*container_ptr = cur->data;
 	return g_list_delete_link(list, cur);
 }
 
@@ -197,9 +202,18 @@ srv_reorder(GList *list, int num)
 	cur = list;
 	while (container_list) {
 		container_list = select_random_response(container_list, &container);
+
+		if(container == NULL) {
+			break;
+		}
+
 		cur->data = container->response;
 		g_free(container);
 		cur = cur->next;
+
+		if(cur == NULL) {
+			break;
+		}
 	}
 }
 
@@ -213,7 +227,7 @@ srv_reorder(GList *list, int num)
 static GList *
 purple_srv_sort(GList *list)
 {
-	int pref, count;
+	int count;
 	GList *cur, *start;
 
 	if (!list || !list->next) {
@@ -227,9 +241,14 @@ purple_srv_sort(GList *list)
 	count = 1;
 	while (cur) {
 		PurpleSrvResponse *next_response;
-		pref = ((PurpleSrvResponse *)cur->data)->pref;
+		PurpleSrvResponse *resp = (PurpleSrvResponse *)cur->data;
 		next_response = cur->next ? cur->next->data : NULL;
-		if (!next_response || next_response->pref != pref) {
+
+		if(resp == NULL) {
+			continue;
+		}
+
+		if (!next_response || next_response->pref != resp->pref) {
 			/*
 			 * The 'count' records starting at 'start' all have the same
 			 * priority.  Sort them by weight.
@@ -463,7 +482,7 @@ end:
 		}
 
 		g_free(ret->data);
-		ret = g_list_remove(ret, ret->data);
+		ret = g_list_delete_link(ret, ret);
 	}
 
 	close(out);
@@ -539,16 +558,16 @@ resolved(gpointer data, gint source, PurpleInputCondition cond)
 							purple_debug_error("dnssrv","unable to read txt "
 									"response length: %s\n", g_strerror(errno));
 							size = 0;
-							g_list_foreach(responses, (GFunc)purple_txt_response_destroy, NULL);
-							g_list_free(responses);
+							g_list_free_full(responses,
+							                 (GDestroyNotify)purple_txt_response_destroy);
 							responses = NULL;
 							break;
 						}
 						if (len > MAX_ADDR_RESPONSE_LEN) {
 							purple_debug_error("dnssrv", "we've read invalid number\n");
 							size = 0;
-							g_list_foreach(responses, (GFunc)purple_txt_response_destroy, NULL);
-							g_list_free(responses);
+							g_list_free_full(responses,
+							                 (GDestroyNotify)purple_txt_response_destroy);
 							responses = NULL;
 							break;
 						}
@@ -562,8 +581,8 @@ resolved(gpointer data, gint source, PurpleInputCondition cond)
 									"response: %s\n", g_strerror(errno));
 							size = 0;
 							purple_txt_response_destroy(res);
-							g_list_foreach(responses, (GFunc)purple_txt_response_destroy, NULL);
-							g_list_free(responses);
+							g_list_free_full(responses,
+							                 (GDestroyNotify)purple_txt_response_destroy);
 							responses = NULL;
 							break;
 						}

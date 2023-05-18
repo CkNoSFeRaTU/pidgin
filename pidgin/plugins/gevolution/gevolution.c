@@ -21,6 +21,8 @@
 #include "internal.h"
 #include "pidgin.h"
 
+#include "libpurple/glibcompat.h"
+
 #include "connection.h"
 #include "debug.h"
 #include "prefs.h"
@@ -340,7 +342,7 @@ plugin_load(PurplePlugin *plugin)
 
 	backup_blist_ui_ops = purple_blist_get_ui_ops();
 
-	blist_ui_ops = g_memdup(backup_blist_ui_ops, sizeof(PurpleBlistUiOps));
+	blist_ui_ops = g_memdup2(backup_blist_ui_ops, sizeof(PurpleBlistUiOps));
 	blist_ui_ops->request_add_buddy = request_add_buddy;
 
 	purple_blist_set_ui_ops(blist_ui_ops);

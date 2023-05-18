@@ -29,6 +29,7 @@ ShowInstDetails show
 ShowUninstDetails show
 SetDateSave on
 RequestExecutionLevel highest
+Unicode true
 
 ; $name and $INSTDIR are set in .onInit function..
 
@@ -69,6 +70,7 @@ RequestExecutionLevel highest
 !define GTK_MIN_VERSION				"2.14.0"
 
 !define DOWNLOADER_URL				"https://pidgin.im/win32/download_redir.php?version=${PIDGIN_VERSION}"
+!define DICTIONARY_URL        "https://downloads.sourceforge.net/project/pidgin/dictionaries/${DICTIONARY_TIMESTAMP}"
 
 !define MEMENTO_REGISTRY_ROOT			HKLM
 !define MEMENTO_REGISTRY_KEY			"${PIDGIN_UNINSTALL_KEY}"
@@ -89,8 +91,8 @@ VIAddVersionKey "FileDescription" "Pidgin Installer"
 ;--------------------------------
 ;Reserve files used in .onInit
 ;for faster start-up
-ReserveFile "${NSISDIR}\Plugins\System.dll"
-ReserveFile "${NSISDIR}\Plugins\UserInfo.dll"
+ReserveFile "${NSISDIR}\Plugins\x86-unicode\System.dll"
+ReserveFile "${NSISDIR}\Plugins\x86-unicode\UserInfo.dll"
 !insertmacro MUI_RESERVEFILE_INSTALLOPTIONS
 !insertmacro MUI_RESERVEFILE_LANGDLL
 
@@ -256,10 +258,9 @@ Section $(GTKSECTIONTITLE) SecGtk
   retry:
   StrCpy $R2 "${DOWNLOADER_URL}&gtk_version=${GTK_INSTALL_VERSION}&dl_pkg=gtk"
   DetailPrint "Downloading GTK+ Runtime ... ($R2)"
-  NSISdl::download /TIMEOUT=10000 "$R2" "$R1"
+  inetc::get /CONNECTTIMEOUT=10 "$R2" "$R1" /END
   Pop $R0
-  ;StrCmp $R0 "cancel" done
-  StrCmp $R0 "success" 0 prompt_retry
+  StrCmp $R0 "OK" 0 prompt_retry
 
   Push "${GTK_SHA1SUM}"
   Push "$R1" ; Filename
@@ -387,7 +388,6 @@ SectionGroupEnd
   SectionEnd
 !macroend
 SectionGroup /e $(URIHANDLERSSECTIONTITLE) SecURIHandlers
-  !insertmacro URI_SECTION "aim"
   !insertmacro URI_SECTION "xmpp"
 SectionGroupEnd
 
@@ -410,15 +410,14 @@ ${MementoSectionDone}
 ;--------------------------------
 ;Spell Checking
 
-!macro SPELLCHECK_SECTION lang lang_name lang_file
+!macro SPELLCHECK_SECTION lang lang_name
   Section /o "${lang_name}" SecSpell_${lang}
-    Push ${lang_file}
     Push ${lang}
     Call InstallDict
   SectionEnd
 !macroend
 SectionGroup $(PIDGINSPELLCHECKSECTIONTITLE) SecSpellCheck
-  !include "pidgin-spellcheck.nsh"
+  !include /CHARSET=ACP "pidgin-spellcheck.nsh"
 SectionGroupEnd
 
 Section /o $(DEBUGSYMBOLSSECTIONTITLE) SecDebugSymbols
@@ -436,10 +435,10 @@ Section /o $(DEBUGSYMBOLSSECTIONTITLE) SecDebugSymbols
   retry:
   StrCpy $R2 "${DOWNLOADER_URL}&dl_pkg=dbgsym"
   DetailPrint "Downloading Debug Symbols... ($R2)"
-  NSISdl::download /TIMEOUT=10000 "$R2" "$R1"
+  inetc::get /CONNECTTIMEOUT=10 "$R2" "$R1" /END
   Pop $R0
-  StrCmp $R0 "cancel" done
-  StrCmp $R0 "success" 0 prompt_retry
+  StrCmp $R0 "Cancelled" done
+  StrCmp $R0 "OK" 0 prompt_retry
 
   Push "${DEBUG_SYMBOLS_SHA1SUM}"
   Push "$R1" ; Filename
@@ -581,6 +580,7 @@ Section Uninstall
     Delete "$INSTDIR\plugins\ticker.dll"
     Delete "$INSTDIR\plugins\timestamp.dll"
     Delete "$INSTDIR\plugins\timestamp_format.dll"
+    Delete "$INSTDIR\plugins\transparency.dll"
     Delete "$INSTDIR\plugins\win2ktrans.dll"
     Delete "$INSTDIR\plugins\winprefs.dll"
     Delete "$INSTDIR\plugins\xmppconsole.dll"
@@ -616,6 +616,7 @@ Section Uninstall
     RMDir "$INSTDIR\spellcheck\lib"
     RMDir "$INSTDIR\spellcheck"
     Delete "$INSTDIR\freebl3.dll"
+    Delete "$INSTDIR\libgcc_s_dw2-1.dll"
     Delete "$INSTDIR\libjabber.dll"
     Delete "$INSTDIR\libnspr4.dll"
     Delete "$INSTDIR\libmeanwhile-1.dll"
@@ -627,6 +628,7 @@ Section Uninstall
     Delete "$INSTDIR\libsilc-1-1-4.dll"
     Delete "$INSTDIR\libsilcclient-1-1-4.dll"
     Delete "$INSTDIR\libssp-0.dll"
+    Delete "$INSTDIR\libwinpthread-1.dll"
     Delete "$INSTDIR\libxml2-2.dll"
     Delete "$INSTDIR\libymsg.dll"
     Delete "$INSTDIR\nss3.dll"
@@ -980,7 +982,7 @@ Function ${UN}RunCheck
   ; Close the Handle (needed if we're retrying)
   IntCmp $R1 0 +2
     System::Call 'kernel32::CloseHandle(i $R1) i .R1'
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "pidgin_is_running") i .R1 ?e'
+  System::Call 'kernel32::CreateMutexW(i 0, i 0, t "pidgin_is_running") i .R1 ?e'
   Pop $R0
   IntCmp $R0 0 +3 ;This could check for ERROR_ALREADY_EXISTS(183), but lets just assume
     MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION $(PIDGINISRUNNING) /SD IDCANCEL IDRETRY retry_runcheck
@@ -1010,7 +1012,7 @@ Function .onInit
   ; Close the Handle (needed if we're retrying)
   IntCmp $R1 0 +2
     System::Call 'kernel32::CloseHandle(i $R1) i .R1'
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "pidgin_installer_running") i .R1 ?e'
+  System::Call 'kernel32::CreateMutexW(i 0, i 0, t "pidgin_installer_running") i .R1 ?e'
   Pop $R0
   IntCmp $R0 0 +3 ;This could check for ERROR_ALREADY_EXISTS(183), but lets just assume
     MessageBox MB_RETRYCANCEL|MB_ICONEXCLAMATION $(INSTALLERISRUNNING) /SD IDCANCEL IDRETRY retry_runcheck
@@ -1246,13 +1248,10 @@ FunctionEnd
 Function InstallDict
   Push $R0
   Exch
-  Pop $R0 ;This is the language code
+  Pop $R4 ;This is the language code
   Push $R1
-  Exch 2
-  Pop $R1 ;This is the language file
   Push $R2
   Push $R3
-  Push $R4
 
   ClearErrors
   IfFileExists "$INSTDIR\spellcheck\share\enchant\myspell\$R0.dic" installed
@@ -1260,33 +1259,34 @@ Function InstallDict
   InitPluginsDir
 
   ; We need to download and install dictionary
-  StrCpy $R2 "$PLUGINSDIR\$R1"
-  StrCpy $R3 "${DOWNLOADER_URL}&dl_pkg=oo_dict&lang=$R1&lang_file=$R1"
-  DetailPrint "Downloading the $R0 Dictionary... ($R3)"
+  StrCpy $R1 "$PLUGINSDIR\$R4.zip"
+  StrCpy $R2 "${DICTIONARY_URL}/$R4.zip"
   retry:
-  NSISdl::download /TIMEOUT=10000 "$R3" "$R2"
-  Pop $R4
-  StrCmp $R4 "cancel" done
-  StrCmp $R4 "success" +3
-    MessageBox MB_RETRYCANCEL "$(PIDGINSPELLCHECKERROR)" /SD IDCANCEL IDRETRY retry IDCANCEL done
-    Goto done
+  DetailPrint "Downloading the $R4 Dictionary... ($R2)"
+  inetc::get /CONNECTTIMEOUT=10 "$R2" "$R1" /END
+  Pop $R0
+  StrCmp $R0 "OK" 0 prompt_retry
+
   SetOutPath "$INSTDIR\spellcheck\share\enchant\myspell"
-  nsisunz::UnzipToLog "$R2" "$OUTDIR"
+  nsisunz::UnzipToLog "$R1" "$OUTDIR"
   SetOutPath "$INSTDIR"
-  Pop $R3
-  StrCmp $R3 "success" installed
-    DetailPrint "$R3" ;print error message to log
+  Pop $R0
+  StrCmp $R0 "success" installed
+    DetailPrint "$R2" ;print error message to log
     Goto done
 
   installed: ;The dictionary is currently installed, no error message
-    DetailPrint "$R0 Dictionary is installed"
+    DetailPrint "$R4 Dictionary is installed"
+  goto done
+
+  prompt_retry:
+    MessageBox MB_RETRYCANCEL "$(PIDGINSPELLCHECKERROR)" /SD IDCANCEL IDRETRY retry IDCANCEL done
 
   done:
-  Pop $R4
   Pop $R3
   Pop $R2
+  Pop $R1
   Pop $R0
-  Exch $R1
 FunctionEnd
 
 !ifndef OFFLINE_INSTALLER
@@ -1301,12 +1301,12 @@ Function CheckSHA1Sum
   Pop $R2 ;SHA1sum
   Push $R1
 
-  SHA1Plugin::FileSum "$R0"
-  Pop $R1
+  ClearErrors
+  Crypto::HashFile "SHA1" "$R0"
   Pop $R0
 
-  StrCmp "$R1" "0" +4
-    DetailPrint "SHA1Sum calculation error: $R0"
+  IfErrors 0 +4
+    DetailPrint "SHA1Sum calculation error"
     IntOp $R1 0 + 1
     Goto done
 

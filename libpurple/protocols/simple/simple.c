@@ -31,6 +31,7 @@
 #include "conversation.h"
 #include "dnsquery.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "privacy.h"
 #include "prpl.h"
@@ -357,7 +358,7 @@ static void fill_auth(struct simple_account_data *sip, const gchar *hdr, struct 
 		while(parts[i]) {
 			purple_debug_info("simple", "parts[i] %s\n", parts[i]);
 			if((tmp = parse_attribute("gssapi-data=\"", parts[i]))) {
-				auth->nonce = g_memdup(purple_ntlm_parse_type2(tmp, &auth->flags), 8);
+				auth->nonce = g_memdup2(purple_ntlm_parse_type2(tmp, &auth->flags), 8);
 				g_free(tmp);
 			}
 			if((tmp = parse_attribute("targetname=\"",
@@ -619,6 +620,11 @@ static struct transaction *transactions_find(struct simple_account_data *sip, st
 	if (cseq) {
 		while(transactions) {
 			trans = transactions->data;
+
+			purple_debug_info("simple",
+			                  "received CSeq %s vs known transaction CSeq %s\n",
+			                  cseq, trans->cseq);
+
 			if(purple_strequal(trans->cseq, cseq)) {
 				return trans;
 			}
@@ -1569,7 +1575,7 @@ static void process_input_message(struct simple_account_data *sip, struct sipmsg
 							/* This is encountered when a generic (MESSAGE, NOTIFY, etc)
 							 * was denied until further authorization is provided.
 							 */
-							gchar *resend, *auth;
+							gchar *resend, *auth, *cseq;
 							const gchar *ptmp;
 
 							if(sip->registrar.retries > SIMPLE_REGISTER_RETRY_MAX) return;
@@ -1582,10 +1588,22 @@ static void process_input_message(struct simple_account_data *sip, struct sipmsg
 							sipmsg_remove_header(trans->msg, "Authorization");
 							sipmsg_add_header(trans->msg, "Authorization", auth);
 							g_free(auth);
+
+							/* bump cseq */
+							sipmsg_remove_header(trans->msg, "CSeq");
+							sip->cseq++;
+							cseq = g_strdup_printf("%d %s", sip->cseq, trans->msg->method);
+							sipmsg_add_header(trans->msg, "CSeq", cseq);
+							g_free(cseq);
+							trans->cseq = sipmsg_find_header(trans->msg, "CSeq");
+
 							resend = sipmsg_to_string(trans->msg);
 							/* resend request */
 							sendout_pkt(sip->gc, resend);
 							g_free(resend);
+
+							/* exit here - no need to call callback, don't remove trans */
+							return;
 						} else {
 							/* Reset any count of retries that may have
 							 * accumulated in the above branch.
@@ -1813,14 +1831,14 @@ static void simple_udp_host_resolved(GSList *hosts, gpointer data, const char *e
 	}
 
 	addr_size = GPOINTER_TO_INT(hosts->data);
-	hosts = g_slist_remove(hosts, hosts->data);
+	hosts = g_slist_delete_link(hosts, hosts);
 	memcpy(&(sip->serveraddr), hosts->data, addr_size);
 	g_free(hosts->data);
-	hosts = g_slist_remove(hosts, hosts->data);
+	hosts = g_slist_delete_link(hosts, hosts);
 	while(hosts) {
-		hosts = g_slist_remove(hosts, hosts->data);
+		hosts = g_slist_delete_link(hosts, hosts);
 		g_free(hosts->data);
-		hosts = g_slist_remove(hosts, hosts->data);
+		hosts = g_slist_delete_link(hosts, hosts);
 	}
 
 	/* create socket for incoming connections */
@@ -2119,7 +2137,10 @@ static PurplePluginProtocolInfo prpl_info =
 	NULL,					/* set_public_alias */
 	NULL,					/* get_public_alias */
 	NULL,					/* add_buddy_with_invite */
-	NULL					/* add_buddies_with_invite */
+	NULL,					/* add_buddies_with_invite */
+	NULL,					/* get_cb_alias */
+	NULL,					/* chat_can_receive_file */
+	NULL,					/* chat_send_file */
 };
 
 

@@ -57,6 +57,12 @@
 #include <idna.h>
 #endif
 
+#ifdef __HAIKU__
+#  ifndef SIOCGIFCONF
+#    include <sys/sockio.h>
+#  endif
+#endif
+
 /*
  * Calling sizeof(struct ifreq) isn't always correct on
  * Mac OS X (and maybe others).
@@ -435,6 +441,14 @@ purple_network_do_listen(unsigned short port, int socket_family, int socket_type
 	 * XXX - Try IPv6 addresses first?
 	 */
 	for (next = res; next != NULL; next = next->ai_next) {
+#if _WIN32
+		/*
+		 * On Windows, the address family for the transport
+		 * address should always be set to AF_INET.
+		 */
+		if(next->ai_family != AF_INET)
+			continue;
+#endif
 		listenfd = socket(next->ai_family, next->ai_socktype, next->ai_protocol);
 		if (listenfd < 0)
 			continue;
@@ -592,7 +606,7 @@ void purple_network_listen_cancel(PurpleNetworkListenData *listen_data)
 unsigned short
 purple_network_get_port_from_fd(int fd)
 {
-	struct sockaddr_in addr;
+	common_sockaddr_t addr;
 	socklen_t len;
 
 	g_return_val_if_fail(fd >= 0, 0);
@@ -603,7 +617,7 @@ purple_network_get_port_from_fd(int fd)
 		return 0;
 	}
 
-	return ntohs(addr.sin_port);
+	return ntohs(addr.in.sin_port);
 }
 
 #ifdef _WIN32
@@ -939,8 +953,13 @@ nm_update_state(NMState state)
 #if NM_CHECK_VERSION(0,8,992)
 		case NM_STATE_DISCONNECTING:
 #endif
+#if NM_CHECK_VERSION(1,0,0)
+			if (prev != NM_STATE_CONNECTED_GLOBAL && prev != NM_STATE_UNKNOWN)
+				break;
+#else
 			if (prev != NM_STATE_CONNECTED && prev != NM_STATE_UNKNOWN)
 				break;
+#endif
 			if (ui_ops != NULL && ui_ops->network_disconnected != NULL)
 				ui_ops->network_disconnected();
 			break;
@@ -1225,9 +1244,9 @@ purple_network_init(void)
 	purple_prefs_add_int	 ("/purple/network/turn_port_tcp", 3478);
 	purple_prefs_add_string("/purple/network/turn_username", "");
 	purple_prefs_add_string("/purple/network/turn_password", "");
-	purple_prefs_add_bool  ("/purple/network/auto_ip", TRUE);
+	purple_prefs_add_bool  ("/purple/network/auto_ip", FALSE);
 	purple_prefs_add_string("/purple/network/public_ip", "");
-	purple_prefs_add_bool  ("/purple/network/map_ports", TRUE);
+	purple_prefs_add_bool  ("/purple/network/map_ports", FALSE);
 	purple_prefs_add_bool  ("/purple/network/ports_range_use", FALSE);
 	purple_prefs_add_int   ("/purple/network/ports_range_start", 1024);
 	purple_prefs_add_int   ("/purple/network/ports_range_end", 2048);

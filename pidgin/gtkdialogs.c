@@ -72,46 +72,33 @@ struct artist {
 
 /* Order: Alphabetical by Last Name */
 static const struct developer developers[] = {
-	{"Daniel 'datallah' Atallah",          NULL,                  NULL},
-	{"Paul 'darkrain42' Aurich",           NULL,                  NULL},
-	{"Ethan 'Paco-Paco' Blanton",          NULL,                  NULL},
-	{"Hylke Bons",                         N_("artist"),          "hylkebons@gmail.com"},
-	{"Sadrul Habib Chowdhury",             NULL,                  NULL},
-	{"Mark 'KingAnt' Doliner",             NULL,                  "mark@kingant.net"},
-	{"Gary 'grim' Kramlich",               NULL,                  "grim@pidgin.im"},
+	{"Gary 'grim' Kramlich",               N_("lead developer"),  "grim@pidgin.im"},
 	{"Richard 'rlaager' Laager",           NULL,                  "rlaager@pidgin.im"},
-	{"Marcus 'malu' Lundblad",             NULL,                  NULL},
-	{"Sulabh 'sulabh_m' Mahajan",          NULL,                  NULL},
-	{"Richard 'wabz' Nelson",              NULL,                  NULL},
-	{"Etan 'deryni' Reisner",              NULL,                  NULL},
-	{"Michael 'Maiku' Ruprecht",           N_("voice and video"), NULL},
+	{"Eion Robb",                          NULL,                  NULL},
 	{"Elliott 'QuLogic' Sales de Andrade", NULL,                  NULL},
-	{"Luke 'LSchiere' Schierer",           N_("support"),         "lschiere@users.sf.net"},
-	{"Evan Schoenberg",                    NULL,                  NULL},
-	{"Kevin 'SimGuy' Stange",              N_("webmaster"),       NULL},
-	{"Will 'resiak' Thompson",             NULL,                  NULL},
-	{"Stu 'nosnilmot' Tomlinson",          NULL,                  NULL},
-	{"Jorge 'Masca' Villaseñor",           NULL,                  NULL},
-	{"Tomasz Wasilczyk",                   NULL,                  "https://www.wasilczyk.pl"},
 	{NULL, NULL, NULL}
 };
 
 /* Order: Alphabetical by Last Name */
 static const struct developer patch_writers[] = {
-	{"Jakub 'haakon' Adam",            NULL,                        NULL},
-	{"Krzysztof Klinikowski",          NULL,                        NULL},
-	{"Eion Robb",                      NULL,                        NULL},
+	{"Markus 'ivanhoe' Fischer", NULL, NULL},
 	{NULL, NULL, NULL}
 };
 
 /* Order: Alphabetical by Last Name */
 static const struct developer retired_developers[] = {
+	{"Daniel 'datallah' Atallah",   NULL,                      NULL},
+	{"Paul 'darkrain42' Aurich",    NULL,                      NULL},
 	{"John 'rekkanoryo' Bailey",    NULL,                      NULL},
+	{"Ethan 'Paco-Paco' Blanton",   NULL,                      NULL},
 	{"Herman Bloggs",               N_("win32 port"),          "herman@bluedigits.com"},
+	{"Hylke Bons",                  N_("artist"),              "hylkebons@gmail.com"},
 	{"Thomas Butter",               NULL,                      NULL},
 	/* Translators: This is a person's name. For most languages we recommend
 	   not translating it. */
 	{N_("Ka-Hing Cheung"),          NULL,                      NULL},
+	{"Sadrul Habib Chowdhury",      NULL,                      NULL},
+	{"Mark 'KingAnt' Doliner",      NULL,                      "mark@kingant.net"},
 	{"Jim Duchek",                  N_("maintainer"),          "jim@linuxpimps.com"},
 	{"Sean Egan",                   NULL,                      "sean.egan@gmail.com"},
 	{"Rob Flynn",                   N_("maintainer"),          NULL},
@@ -121,21 +108,35 @@ static const struct developer retired_developers[] = {
 	{"Ivan Komarov",                NULL,                      "ivan.komarov@pidgin.im"},
 	/* If "lazy bum" translates literally into a serious insult, use something else or omit it. */
 	{"Syd Logan",                   N_("hacker and designated driver [lazy bum]"), NULL},
+	{"Marcus 'malu' Lundblad",      NULL,                      NULL},
+	{"Sulabh 'sulabh_m' Mahajan",   NULL,                      NULL},
+	{"Richard 'wabz' Nelson",       NULL,                      NULL},
 	{"Christopher 'siege' O'Brien", NULL,                      "taliesein@users.sf.net"},
 	{"Bartosz Oler",                NULL,                      NULL},
+	{"Etan 'deryni' Reisner",       NULL,                      NULL},
 	{"Tim 'marv' Ringenbach",       NULL,                      NULL},
+	{"Michael 'Maiku' Ruprecht",    N_("voice and video"),     NULL},
+	{"Luke 'LSchiere' Schierer",    N_("support"),            "lschiere@users.sf.net"},
 	{"Megan 'Cae' Schneider",       N_("support/QA"),          NULL},
+	{"Evan Schoenberg",             NULL,                      NULL},
 	{"Jim Seymour",                 N_("XMPP"),                NULL},
 	{"Mark Spencer",                N_("original author"),     "markster@marko.net"},
+	{"Kevin 'SimGuy' Stange",       N_("webmaster"),           NULL},
+	{"Will 'resiak' Thompson",      NULL,                      NULL},
+	{"Stu 'nosnilmot' Tomlinson",   NULL,                      NULL},
+	{"Jorge 'Masca' Villaseñor",    NULL,                      NULL},
 	{"Nathan 'faceprint' Walp",     NULL,                      NULL},
 	{"Eric Warmenhoven",            N_("lead developer"),      "warmenhoven@yahoo.com"},
+	{"Tomasz Wasilczyk",            NULL,                      "https://www.wasilczyk.pl"},
 	{NULL, NULL, NULL}
 };
 
 /* Order: Alphabetical by Last Name */
 static const struct developer retired_patch_writers[] = {
+	{"Jakub 'haakon' Adam",       NULL, NULL},
 	{"Felipe 'shx' Contreras",    NULL, NULL},
 	{"Decklin Foster",            NULL, NULL},
+	{"Krzysztof Klinikowski",     NULL, NULL},
 	{"Peter 'Bleeter' Lawler",    NULL, NULL},
 	{"Robert 'Robot101' McQueen", NULL, NULL},
 	{"Benjamin Miller",           NULL, NULL},
@@ -538,7 +539,7 @@ void pidgin_dialogs_about(void)
 	g_string_append_printf(str,
 			_("<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
 			  "HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked "
-			  "Questions</A><BR>\tIRC Channel: #pidgin on irc.freenode.net<BR>"
+			  "Questions</A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>"
 			  "\tXMPP MUC: devel@conference.pidgin.im<BR><BR>"), PURPLE_WEBSITE,
 			"http://developer.pidgin.im/wiki/FAQ");
 
@@ -551,14 +552,13 @@ void pidgin_dialogs_about(void)
 
 	g_string_append(str,
 			_("<font size=\"4\"><b>Help from other Pidgin users</b></font> is "
-			  "available by emailing <a "
-			  "href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>"
-			  "This is a <b>public</b> mailing list! "
-			  "(<a href=\"http://pidgin.im/pipermail/support/\">archive</a>)<br/>"
-			  "We can't help with third-party protocols or plugins!<br/>"
-			  "This list's primary language is <b>English</b>.  You are "
-			  "welcome to post in another language, but the responses may "
-			  "be less helpful.<br/>"));
+			  "available via <a "
+			  "href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. "
+			  "This is a <b>public</b> forum and an account is required to "
+			  "post new messages!<br/>This forum's primary language is "
+			  "<b>English</b>. You are welcome to post in another language, "
+			  "but the responses may be less helpful.<br/>"
+			 ));
 
 	tmp = g_strdup_printf(_("About %s"), PIDGIN_NAME);
 	about = pidgin_build_help_dialog(tmp, "about", str);

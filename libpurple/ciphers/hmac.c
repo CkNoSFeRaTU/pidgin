@@ -21,6 +21,8 @@
  */
 #include <cipher.h>
 
+#include "glibcompat.h"
+
 #include <util.h>
 
 struct HMAC_Context {
@@ -157,7 +159,7 @@ hmac_set_key_with_len(PurpleCipherContext *context, const guchar * key, size_t k
 		full_key = g_malloc(100); /* TODO: Should be enough for now... */
 		purple_cipher_context_digest(hctx->hash, 100, full_key, &key_len);
 	} else
-		full_key = g_memdup(key, key_len);
+		full_key = g_memdup2(key, key_len);
 
 	if (key_len < blocksize) {
 		full_key = g_realloc(full_key, blocksize);

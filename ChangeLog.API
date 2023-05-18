@@ -1,5 +1,42 @@
 Pidgin and Finch: The Pimpin' Penguin IM Clients That're Good for the Soul
 
+version 2.14.10:
+	* no changes
+
+version 2.14.9:
+	* no changes
+
+version 2.14.8:
+	* no changes
+
+version 2.14.7:
+	* no changes
+
+version 2.14.6:
+	* No changes
+
+version 2.14.5:
+	* No changes
+
+version 2.14.4:
+	* No changes
+
+version 2.14.3:
+	* No changes
+
+version 2.14.2:
+	* No changes
+
+version 2.14.1:
+	* No changes
+
+version 2.14.0:
+	libpurple:
+		Added:
+		* purple_media_manager_enumerate_elements
+		* purple_request_screenshare_media
+		* purple_media_set_require_encryption
+
 version 2.13.0:
 	libpurple:
 		Added:

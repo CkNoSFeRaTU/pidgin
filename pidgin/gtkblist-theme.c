@@ -23,6 +23,8 @@
 #include "internal.h"
 #include "gtkblist-theme.h"
 
+#include "glibcompat.h"
+
 #define PIDGIN_BLIST_THEME_GET_PRIVATE(Gobject) \
 	((PidginBlistThemePrivate *) ((PIDGIN_BLIST_THEME(Gobject))->priv))
 
@@ -729,7 +731,7 @@ pidgin_blist_theme_set_layout(PidginBlistTheme *theme, const PidginBlistLayout *
 	priv = PIDGIN_BLIST_THEME_GET_PRIVATE(G_OBJECT(theme));
 
 	g_free(priv->layout);
-	priv->layout = g_memdup(layout, sizeof(PidginBlistLayout));
+	priv->layout = g_memdup2(layout, sizeof(PidginBlistLayout));
 }
 
 void

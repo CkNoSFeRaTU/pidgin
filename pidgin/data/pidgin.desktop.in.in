@@ -1,11 +1,14 @@
 [Desktop Entry]
-_Name=Pidgin Internet Messenger
+_Name=Pidgin
 _GenericName=Internet Messenger
-_Comment=Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more
+_X-GNOME-FullName=Pidgin Internet Messenger
+_Comment=Chat over IM.  Supports XMPP, IRC, and more
+# TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+_Keywords=chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;simple;xmpp;zephyr
 Exec=pidgin
 Icon=pidgin
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Network;InstantMessaging;
+Categories=GTK;Network;InstantMessaging;
 @USES_MM_CHAT_SECTION@

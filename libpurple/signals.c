@@ -27,6 +27,7 @@
 
 #include "dbus-maybe.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "signals.h"
 #include "value.h"
 
@@ -84,8 +85,7 @@ destroy_instance_data(PurpleInstanceData *instance_data)
 static void
 destroy_signal_data(PurpleSignalData *signal_data)
 {
-	g_list_foreach(signal_data->handlers, (GFunc)g_free, NULL);
-	g_list_free(signal_data->handlers);
+	g_list_free_full(signal_data->handlers, (GDestroyNotify)g_free);
 
 	if (signal_data->values != NULL)
 	{

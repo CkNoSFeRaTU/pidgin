@@ -121,7 +121,7 @@ _wait_for_socket_close(gpointer data, gint source, PurpleInputCondition cond)
 	ret = recv(source, buf, 1, 0);
 
 	if (ret == 0 || (ret == -1 && !(errno == EAGAIN || errno == EWOULDBLOCK))) {
-		purple_debug_info("bonjour", "Client completed recieving; closing server socket.\n");
+		purple_debug_info("bonjour", "Client completed receiving; closing server socket.\n");
 		purple_input_remove(sc->handle);
 		close(sc->fd);
 		g_free(sc);

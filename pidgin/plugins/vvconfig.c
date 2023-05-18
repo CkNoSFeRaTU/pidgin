@@ -39,43 +39,43 @@ static PurpleMediaElementInfo *old_video_src = NULL, *old_video_sink = NULL,
 		*old_audio_src = NULL, *old_audio_sink = NULL;
 
 static const gchar *AUDIO_SRC_PLUGINS[] = {
-	"alsasrc",	"ALSA",
+	"alsasrc", N_("ALSA"),
 	/* "esdmon",	"ESD", ? */
-	"osssrc",	"OSS",
-	"pulsesrc",	"PulseAudio",
-	"sndiosrc",	"sndio",
+	"osssrc", N_("OSS"),
+	"pulsesrc", N_("PulseAudio"),
+	"sndiosrc", N_("sndio"),
 	/* "audiotestsrc wave=silence", "Silence", */
-	"audiotestsrc",	"Test Sound",
+	"audiotestsrc", N_("Test Sound"),
 	NULL
 };
 
 static const gchar *AUDIO_SINK_PLUGINS[] = {
-	"alsasink",	"ALSA",
-	"artsdsink",	"aRts",
-	"esdsink",	"ESD",
-	"osssink",	"OSS",
-	"pulsesink",	"PulseAudio",
-	"sndiosink",	"sndio",
+	"alsasink", N_("ALSA"),
+	"artsdsink", N_("aRts"),
+	"esdsink", N_("ESD"),
+	"osssink", N_("OSS"),
+	"pulsesink", N_("PulseAudio"),
+	"sndiosink", N_("sndio"),
 	NULL
 };
 
 static const gchar *VIDEO_SRC_PLUGINS[] = {
-	"videotestsrc",	"Test Input",
-	"dshowvideosrc","DirectDraw",
-	"ksvideosrc",	"KS Video",
-	"qcamsrc",	"Quickcam",
-	"v4lsrc",	"Video4Linux",
-	"v4l2src",	"Video4Linux2",
-	"v4lmjpegsrc",	"Video4Linux MJPEG",
+	"videotestsrc", N_("Test Input"),
+	"dshowvideosrc", N_("DirectDraw"),
+	"ksvideosrc", N_("KS Video"),
+	"qcamsrc", N_("Quickcam"),
+	"v4lsrc", N_("Video4Linux"),
+	"v4l2src", N_("Video4Linux2"),
+	"v4lmjpegsrc", N_("Video4Linux MJPEG"),
 	NULL
 };
 
 static const gchar *VIDEO_SINK_PLUGINS[] = {
 	/* "aasink",	"AALib", Didn't work for me */
-	"directdrawsink","DirectDraw",
-	"glimagesink",	"OpenGL",
-	"ximagesink",	"X Window System",
-	"xvimagesink",	"X Window System (Xv)",
+	"directdrawsink", N_("DirectDraw"),
+	"glimagesink",	N_("OpenGL"),
+	"ximagesink",	N_("X Window System"),
+	"xvimagesink",	N_("X Window System (Xv)"),
 	NULL
 };
 
@@ -110,7 +110,7 @@ get_element_devices(const gchar *element_name)
 	}
 
 #if GST_CHECK_VERSION(1,0,0)
-	purple_debug_info("vvconfig", "'%s' - gstreamer-1.0 doesn't suport "
+	purple_debug_info("vvconfig", "'%s' - gstreamer-1.0 doesn't support "
 		"property probing\n", element_name);
 #else
 	if (!g_object_class_find_property(klass, "device") ||
@@ -254,7 +254,13 @@ device_changed_cb(const gchar *name, PurplePrefType type,
 	devices = get_element_devices(value);
 	if (g_list_find_custom(devices, purple_prefs_get_string(pref),
 			(GCompareFunc)strcmp) == NULL)
-		purple_prefs_set_string(pref, g_list_next(devices)->data);
+	{
+		GList *next = g_list_next(devices);
+
+		if(next != NULL) {
+			purple_prefs_set_string(pref, next->data);
+		}
+	}
 	widget = pidgin_prefs_dropdown_from_list(parent,
 			label, PURPLE_PREF_STRING,
 			pref, devices);
@@ -292,7 +298,12 @@ get_plugin_frame(GtkWidget *parent, GtkSizeGroup *sg,
 	devices = get_element_devices(purple_prefs_get_string(plugin_pref));
 	if (g_list_find_custom(devices, purple_prefs_get_string(device_pref),
 			(GCompareFunc) strcmp) == NULL)
-		purple_prefs_set_string(device_pref, g_list_next(devices)->data);
+	{
+		GList *next = g_list_next(devices);
+		if(next != NULL) {
+			purple_prefs_set_string(device_pref, next->data);
+		}
+	}
 	widget = pidgin_prefs_dropdown_from_list(vbox, device_label,
 			PURPLE_PREF_STRING, device_pref, devices);
 	g_list_free(devices);
@@ -665,7 +676,10 @@ gst_bus_cb(GstBus *bus, GstMessage *msg, BusCbCtx *ctx)
 			GstElement *valve;
 
 			percent = gst_msg_db_to_percent(msg, "rms");
-			gtk_progress_bar_set_fraction(ctx->level, percent * 5);
+			percent *= 5;
+			if (percent > 1.0)
+				percent = 1.0;
+			gtk_progress_bar_set_fraction(ctx->level, percent);
 
 			percent = gst_msg_db_to_percent(msg, "decay");
 			threshold = gtk_range_get_value(ctx->threshold) / 100.0;

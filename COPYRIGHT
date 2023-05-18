@@ -25,6 +25,7 @@ Haval A. Ahmed
 Thijs Alkemade
 Manuel Amador
 Matt Amato
+and
 Josef Andrysek
 Geoffrey Antos
 Daniel Atallah
@@ -52,7 +53,7 @@ Stefan Becker
 Carlos Bederian
 Dave Bell
 Matthew W.S. Bell
-bellet
+Fabrice Bellet <fabrice@bellet.info>
 Igor Belyi
 David Benjamin
 Brian Bernas
@@ -98,6 +99,7 @@ Damien Carbery
 Michael Carlson
 Rodrigo Tobar Carrizo
 Keegan Carruthers-Smith
+Ed Catmur
 Ludovico Cavedon
 Steve Cavilia
 Julien Cegarra
@@ -139,6 +141,7 @@ Steven Danna
 Simon Danner
 Chris Davies
 Josh Davis
+defanor
 Martijn Dekker
 Florian Delizy
 Jiri Denemark
@@ -151,6 +154,7 @@ Chandrakant Dhutadmal
 Andrew Dieffenbach
 Ingmārs Dīriņš
 Finlay Dobbie
+dohmniq
 Mark Doliner
 Nuno Donato
 Jim Duchek
@@ -189,7 +193,7 @@ Chris Foote
 Alan Ford
 Nathan Fredrickson
 Chris J. Friesen
-Free Software Foundation
+Free Software Foundation, Inc.
 Decklin Foster
 Francesco Fracassi
 Adam Fritzler
@@ -222,6 +226,7 @@ Vladislav Guberinić
 Gideon N. Guillen
 Aman Gupta
 Ashish Gupta
+Robbert Haarman
 Christian Hammond
 Erick Hamness
 Fred Hampton
@@ -254,6 +259,7 @@ Juanjo Molinero Horno
 Dustin Howett
 Nathanael Hoyle
 Greg Hudson
+Richard Hughes
 Magnus Hult
 Karsten Huneycutt
 Andrew Hunt
@@ -263,6 +269,7 @@ Thomas Huriaux
 Instant Messaging Freedom, Inc.
 Vitaliy Ischenko
 Intel Corporation
+itsnotabigtruck
 Andrew Ivanov
 Scott Jackson
 Hans Petter Jansson
@@ -308,6 +315,7 @@ Daniel Larsson
 Julia Lawall
 Peter Lawler
 Vadim Lebedev
+Justin Lechner
 Ho-seok Lee
 Jean-Yves Lefort
 Moses Lei
@@ -320,6 +328,7 @@ Shivaram Lingamneni
 Artem Litvinovich
 Josh Littlefield
 Daniel Ljungborg
+Johann Lochner
 Syd Logan
 Lokheed
 Norberto Lopes
@@ -367,6 +376,7 @@ Paul Miller
 Arkadiusz Miskiewicz
 David Mohr
 Kartik Mohta
+Mihai Moldovan
 Andrew Molloy
 Tomasz Mon
 Michael Monreal
@@ -377,6 +387,7 @@ John Moody
 Tim Mooney
 Sergio Moretto
 Nader Morshed
+Evert Mouw
 Keith Moyer
 Andrei Mozzhuhin
 Christian Muise
@@ -390,7 +401,7 @@ Andreas Nilsson
 Allan Nordhøy
 Henning Norén
 Szilard Novaki
-Novell
+Novell, Inc.
 Padraig O'Briain
 Christopher O'Brien (siege)
 Peter O'Gorman
@@ -403,6 +414,7 @@ Bartosz Oler
 Oliver
 The openSUSE Project
 Jürgen Orschiedt
+Michael Osborne
 Stefan Ott
 Shawn Outman
 Nathan Owens (pianocomp81)
@@ -449,6 +461,7 @@ David Raeman
 R. Ramkumar
 Rajesh Ranjan
 Mart Raudsepp
+Red Hat Inc.
 Etan Reisner
 David Reiss
 Luoh Ren-Shan
@@ -466,6 +479,7 @@ Luciano Miguel Ferreira Rocha
 Andrew Rodland
 Miguel Rodríguez (migrax)
 Adi Roiban
+Ivan Romanov
 Martin Rosinski
 Bob Rossi
 Jason Roth
@@ -474,6 +488,7 @@ Peter Ruibal
 Michael Ruprecht
 Sam S.
 Thanumalayan S.
+Mohammed Sadiq
 Jonathan Sailor
 Elliott Sales de Andrade
 Catalin Salgau
@@ -531,10 +546,12 @@ Peter Speybrouck
 Lex Spoon
 Chris Stafford
 Kevin Stange
+Stars
 Ferdinand Stehle
 Joshua Stein
 Jakub Steiner
 Richard Stellingwerff
+Belgin Știrbu
 Charlie Stockman
 David Stoddard
 Adam Strzelecki
@@ -543,6 +560,7 @@ Oleg Sukhodolsky
 Sun Microsystems
 Marcus Sundberg
 Mårten Svantesson (fursten)
+Jan Synacek <jsynacek@redhat.com>
 Amir Szekely (kichik)
 Gábor Szuromi (kukkerman)
 Jakub Szypulka
@@ -555,9 +573,11 @@ Peter Teichman
 Philip Tellis
 Michael Terry
 Arun A. Tharuvai
+Samuel Thibault
 Cestonaro Thilo
 Will Thompson
 Douglas Thrift (douglaswth)
+tiagosalem
 Mark Tiefenbruck
 Andrew Tinney
 Jeffery To
@@ -585,6 +605,7 @@ Martijn van Beers
 Gideon van Melle
 Arjan van de Ven
 Philip Van Hoof
+Ankit Vani
 Kristof Vansant
 James Vega
 David Vermeille
@@ -628,6 +649,7 @@ Pui Lam Wong
 Justin Wood
 David Woodhouse
 Ximian
+Colin Xu
 Ma Xuan
 Yonas Yanfa
 Jared Yanovich
@@ -637,7 +659,9 @@ Yuriy Yevgrafov
 Jan Zachorowski
 zelch
 Nickolai Zeldovich
+Alynx Zhou
 Tom Zickel
 Marco Ziech
 Piotr Zielinski
+Jordy Zomer
 Jeroen Zwartepoorte

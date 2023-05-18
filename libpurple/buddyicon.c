@@ -1045,18 +1045,19 @@ migrate_buddy_icon(PurpleBlistNode *node, const char *setting_name,
 			return;
 		}
 
-		g_free(path);
-
 		new_filename = purple_util_get_image_filename(icon_data, icon_len);
 		if (new_filename == NULL)
 		{
 			purple_debug_error("buddyicon",
 				"New icon filename is NULL. This should never happen! "
 				"The old filename was: %s\n", path);
+			g_free(path);
 			delete_buddy_icon_settings(node, setting_name);
+
 			g_return_if_reached();
 		}
 
+		g_free(path);
 		path = g_build_filename(dirname, new_filename, NULL);
 		if ((file = g_fopen(path, "wb")) != NULL)
 		{

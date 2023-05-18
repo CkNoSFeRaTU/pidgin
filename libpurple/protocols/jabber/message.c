@@ -207,7 +207,7 @@ static void handle_chat(JabberMessage *jm)
 
 			if(jbr->thread_id)
 				g_free(jbr->thread_id);
-			jbr->thread_id = g_strdup(jbr->thread_id);
+			jbr->thread_id = g_strdup(jm->thread_id);
 		}
 
 		serv_got_im(gc, contact, body->str, (jm->outgoing ? PURPLE_MESSAGE_SEND : PURPLE_MESSAGE_RECV), jm->sent);
@@ -900,7 +900,7 @@ void jabber_message_parse(JabberStream *js, xmlnode *packet)
 		case JABBER_MESSAGE_OTHER:
 			purple_debug_info("jabber",
 					"Received message of unknown type: %s\n", type);
-			/* Fall-through is intentional */
+			/* FALL-THROUGH */
 		case JABBER_MESSAGE_NORMAL:
 		case JABBER_MESSAGE_CHAT:
 			handle_chat(jm);
@@ -1069,26 +1069,20 @@ jabber_message_smileyfy_xhtml(JabberMessage *jm, const char *xhtml)
 			for (iterator = found_smileys; iterator ;
 				iterator = g_list_next(iterator)) {
 				PurpleSmiley *smiley = (PurpleSmiley *) iterator->data;
-				const gchar *shortcut = purple_smiley_get_shortcut(smiley);
-				const JabberData *data =
-					jabber_data_find_local_by_alt(shortcut);
 				PurpleStoredImage *image = purple_smiley_get_stored_image(smiley);
 
 				if (purple_imgstore_get_size(image) <= JABBER_DATA_MAX_SIZE) {
-					/* the object has not been sent before */
-					if (!data) {
-						const gchar *ext = purple_imgstore_get_extension(image);
-						JabberStream *js = jm->js;
-
-						JabberData *new_data =
-							jabber_data_create_from_data(purple_imgstore_get_data(image),
-								purple_imgstore_get_size(image),
-								jabber_message_get_mimetype_from_ext(ext), FALSE, js);
-						purple_debug_info("jabber",
-							"cache local smiley alt = %s, cid = %s\n",
-							shortcut, jabber_data_get_cid(new_data));
-						jabber_data_associate_local(new_data, shortcut);
-					}
+					const gchar *shortcut = purple_smiley_get_shortcut(smiley);
+					const gchar *ext = purple_imgstore_get_extension(image);
+					JabberStream *js = jm->js;
+					JabberData *data =
+						jabber_data_create_from_data(purple_imgstore_get_data(image),
+									     purple_imgstore_get_size(image),
+									     jabber_message_get_mimetype_from_ext(ext), FALSE, js);
+					purple_debug_info("jabber",
+							  "cache local smiley alt = %s, cid = %s\n",
+							  shortcut, jabber_data_get_cid(data));
+					jabber_data_associate_local(data, shortcut);
 					valid_smileys = g_list_append(valid_smileys, smiley);
 				} else {
 					has_too_large_smiley = TRUE;
@@ -1283,12 +1277,13 @@ int jabber_message_send_im(PurpleConnection *gc, const char *who, const char *ms
 	jm->id = jabber_get_next_id(jm->js);
 
 	if(jbr) {
-		if(jbr->thread_id)
-			jm->thread_id = jbr->thread_id;
+		if(jbr->thread_id) {
+			jm->thread_id = g_strdup(jbr->thread_id);
+		}
 
-		if (jbr->chat_states == JABBER_CHAT_STATES_UNSUPPORTED)
+		if (jbr->chat_states == JABBER_CHAT_STATES_UNSUPPORTED) {
 			jm->chat_state = JM_STATE_NONE;
-		else {
+		} else {
 			/* if(JABBER_CHAT_STATES_UNKNOWN == jbr->chat_states)
 			   jbr->chat_states = JABBER_CHAT_STATES_UNSUPPORTED; */
 		}

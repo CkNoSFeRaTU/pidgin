@@ -30,6 +30,7 @@
 #define _PURPLE_XMLNODE_C_
 
 #include "internal.h"
+#include "glibcompat.h"
 #include "debug.h"
 
 #include <libxml/parser.h>
@@ -113,7 +114,7 @@ xmlnode_insert_data(xmlnode *node, const char *data, gssize size)
 
 	child = new_node(NULL, XMLNODE_TYPE_DATA);
 
-	child->data = g_memdup(data, real_size);
+	child->data = g_memdup2(data, real_size);
 	child->data_sz = real_size;
 
 	xmlnode_insert_child(node, child);
@@ -724,8 +725,15 @@ xmlnode_from_str(const char *str, gssize size)
 	ret = xpd->current;
 	if (xpd->error) {
 		ret = NULL;
-		if (xpd->current)
+		if (xpd->current) {
+			/* If an error occurred while parsing, we may be
+			 * pointing at some random child, so walk back up the
+			 * tree in order to free everything. */
+			while (xpd->current->parent != NULL) {
+				xpd->current = xpd->current->parent;
+			}
 			xmlnode_free(xpd->current);
+		}
 	}
 
 	g_free(xpd);
@@ -824,7 +832,7 @@ xmlnode_copy(const xmlnode *src)
 	ret->xmlns = g_strdup(src->xmlns);
 	if (src->data) {
 		if (src->data_sz) {
-			ret->data = g_memdup(src->data, src->data_sz);
+			ret->data = g_memdup2(src->data, src->data_sz);
 			ret->data_sz = src->data_sz;
 		} else {
 			ret->data = g_strdup(src->data);

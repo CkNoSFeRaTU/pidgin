@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 12:43+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Yin May Oo <yinmayoo@gmail.com>, 2012\n"
 "Language-Team: Burmese (Myanmar) (http://www.transifex.com/pidgin/pidgin/"
 "language/my_MM/)\n"
 "Language: my_MM\n"
@@ -1777,7 +1777,6 @@ msgstr "+++ %s ဝင်လာသည်။"
 msgid "+++ %s signed off"
 msgstr "+++ %s ထွက်သွားသည်။"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "အမျိုးအမည်မသိ ချို့ယွင်းချက်"
 
@@ -1793,6 +1792,10 @@ msgstr "စာ ရှည်လွန်းသည်။"
 
 msgid "Unable to send message."
 msgstr "စာ ပို့ရန် မဖြစ်နိုင်ပါ။"
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "စာပို့ရန်"
@@ -2127,19 +2130,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;အလိုအလျှောက် "
-"အကြောင်းပြန်ကြားချက်&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;အလိုအလျောက်-"
-"အကြောင်းပြန်ကြားချက်&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>မှတ်တမ်း လမ်းကြောင်းကို မရှာနိုင်ပါ။</b></font>"
@@ -2202,6 +2201,42 @@ msgstr "ဆွေးနွေးခန်းဆိုင်ရာ ချို�
 #, c-format
 msgid "Error creating session: %s"
 msgstr "ဆက်ရှင် %s ကို ပြုလုပ်ရာတွင် ချို့ယွင်းမှု"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "ပိတ်ထားသည်"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2742,7 +2777,7 @@ msgstr "ဝင်ရောက်လာသော စကားပြောဆိ�
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3332,7 +3367,16 @@ msgstr "SSL သုံးရန်"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3793,39 +3837,6 @@ msgstr "SASL စစ်ဆေးအတည်ပြုမှု မအောင်
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL ချို့ယွင်းချက် - %s"
-
-msgid "Invalid Encoding"
-msgstr "စာဝှက်စနစ် အမှား"
-
-msgid "Unsupported Extension"
-msgstr "ထောက်ပံ့မထားသော ဖိုင်အမျိုးအစား"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr "ဆာဗာထံမှ မမျှော်လင့်သော တုံ့ပြန်ချက်။ ဤအချက်က MITM ၏ ဖြစ်နိုင်ချေ တိုက်ခိုက်မှုကို ညွန်ပြနိုင်သည်"
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-"ဆာဗာသည် ချာနယ် ပူးပေါင်းခြင်းကို ထောက်ပံ့ပေးသည်၊ သို့သော် ၄င်းကို ကြော်ငြာထားပုံ မပေါ်ပါ။  ဤအချက်က "
-"MITM ၏ ဖြစ်နိုင်ချေ တိုက်ခိုက်မှုကို ညွန်​ပြနေသည်။"
-
-msgid "Server does not support channel binding"
-msgstr "ချာနယ် ပူးပေါင်းခြင်းကို ဆာဗာမှ ပံ့ပိုးမပေးပါ"
-
-msgid "Unsupported channel binding method"
-msgstr "ထောက်ပံ့မထားသော ချာနယ် ပူးပေါင်းမှု နည်းစနစ်"
-
-msgid "User not found"
-msgstr "သုံးစွဲသူကို မတွေ့ပါ"
-
-msgid "Invalid Username Encoding"
-msgstr "သုံးစွဲသူ စာဝှက်ခြင်း အမှား"
-
-msgid "Resource Constraint"
-msgstr "ရင်းမြစ် ကန့်သတ်ချက်"
 
 msgid "Unable to canonicalize username"
 msgstr "သုံးစွဲသူအမည်ကို စံသတ်မှတ်ရန် မဖြစ်နိုင်ပါ။"
@@ -4403,6 +4414,9 @@ msgstr "တရားမဝင်သော ခွင့်ပြုမှု ယ�
 msgid "Authorization mechanism too weak"
 msgstr "ခွင်ပြုမှု ယန္တရား အလွန် အားနည်းနေသည်"
 
+msgid "Incorrect username or password"
+msgstr "သုံးစွဲသူအမည် (သို့) စကားဝှက် မမှန်ပါ"
+
 msgid "Temporary Authentication Failure"
 msgstr "ယာယီ အတည်ပြုမှု မအောင်မြင်ပါ"
 
@@ -4447,6 +4461,9 @@ msgstr "ပေါ်လစီ ချိုးဖောက်မှု"
 
 msgid "Remote Connection Failed"
 msgstr "အဝေးမှ ဆက်သွယ်မှုလိုင်း ပြတ်နေသည်"
+
+msgid "Resource Constraint"
+msgstr "ရင်းမြစ် ကန့်သတ်ချက်"
 
 msgid "Restricted XML"
 msgstr "ကန့်သတ်ထားသော XML"
@@ -4765,6 +4782,19 @@ msgstr "%s ထံသို့ ဖိုင်ပို့၍ မရပါ၊ လ
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "%s အရင်းအမြစ်ထံ သင် ပေးပို့လိုသော ဖိုင်တပုဒ်ကို ရွေးပါ။"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr "စိုးရိမ်သည်"
 
@@ -4984,7 +5014,6 @@ msgstr "ရှက်ကြောက်သည်"
 msgid "Sick"
 msgstr "ဖျားသည်"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "အိပ်ငိုက်သည်"
 
@@ -5073,6 +5102,9 @@ msgstr "စကားဝှက် သုံးစွဲမရတော့ပါ"
 msgid "Incorrect password"
 msgstr "စကားဝှက် အမှား"
 
+msgid "User not found"
+msgstr "သုံးစွဲသူကို မတွေ့ပါ"
+
 msgid "Account has been disabled"
 msgstr "အကောင့်ကို ပိတ်ထားသည်"
 
@@ -5093,9 +5125,6 @@ msgstr "သင့်ကိုယ်သင် ထည့်သွင်း၍ မ�
 
 msgid "Master archive is misconfigured"
 msgstr "Master archive ကို မှားယွင်းစွာ ပြင်ဆင်ထားသည်"
-
-msgid "Incorrect username or password"
-msgstr "သုံးစွဲသူအမည် (သို့) စကားဝှက် မမှန်ပါ"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "သင် ရေးထည့်သော သုံးစွဲသူအမည်၏ host ကို မမှတ်မိပါ"
@@ -5305,1169 +5334,6 @@ msgstr "ဆာဗာလိပ်စာ"
 
 msgid "Server port"
 msgstr "ဆာဗာ port"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "သင့်ကို ကျွန်တော့် မိတ်ဆွေစာရင်းထဲ ထည့်သွင်းနိုင်ရန် လုပ်ပိုင်ခွင့် ပေးပါ။"
-
-msgid "No reason given."
-msgstr "အကြောင်းပြချက် ပေးမထားပါ။"
-
-msgid "Authorization Denied Message:"
-msgstr "လုပ်ပိုင်ခွင့် ငြင်းပယ်သော စာတမ်း -"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_O ဟုတ်ပြီ"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "%s ထံမှ မမျှော်လင့်သော တုံ့ပြန်မှု ရရှိသည့်အရာ - %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "%s ထံမှ မမျှော်လင့်သော တုံ့ပြန်မှု ရရှိသည်"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"သင်သည် အဆက်အသွယ် လုပ်ခြင်း၊ အဆက်အသွယ် ဖြတ်ခြင်းတို့ကို ကြိမ်ဖန်များစွာ လုပ်ဆောင်နေသည်။ ဆယ်မိနစ် "
-"စောင့်ဆိုင်းပြီး ထပ်ကြိုးစားပါ။ ဒီတိုင်း ဆက်လုပ်နေပါက၊ ဒီ့ထက် အချိန်ုကြာကြာ ပိုစောင့်ရလိမ့်မည်။ "
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-"သင့်အကောင့် ချိန်ညှိချက်များထဲ၌ စာဝှက်စနစ် လိုအပ်နေသည်၊ သို့သော် ဆာဗာ တစ်ခုက ၄င်းကို အထောက်အပံ့  မပေးပါ။"
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "%s တောင်းဆိုမှု ချို့ယွင်းချက် - %s"
-
-msgid "The server returned an empty response"
-msgstr "ဆာဗာထံမှ တုံ့ပြန်မှု အလွတ် ရောက်ရှိလာသည်"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"အကောင့်ထဲ ဝင်ရောက်ရန် ဆာဗာသည် CAPTCHA ကို ဖြည့်စွက်ရန် တောင်းဆိုနေသည်၊  သို့သော် သုံးစွဲသူဖက်၌ CAPTCHA "
-"များကို လောလောဆယ် ထောက်ပံ့မှု မပေးသေးပါ။"
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL သည် သင့် ဖော်ပြအမည်ကို ဤနေရာ၌ အတည်ပြုခွင့် မ​ပြုပါ"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(ဤစာကို လက်ခံရာတွင် ချို့ယွင်းချက် ရှိသည်။ သင်နှင့် စကားပြောနေသော မိတ်ဆွေသည် မျှော်လင့်မထားသော စာဝှက်စနစ် "
-"တမျိုးကို အသုံးပြုနေ၍ ဖြစ်မည်။ သူ အသုံးပြုနေသော စာဝှက်စနစ်ကို သိရှိပါက၊ ၄င်းကို အဆင့်မြင့် အကောင့် "
-"ရွေးစရာများထဲ၌ သင့် AIM/ICQ အကောင့်အတွက် သတ်မှတ်ပေးနိုင်သည်)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(ဤစာကို လက်ခံရာတွင် ချို့ယွင်းချက် ရှိသည်။ သင် (သို့) %s ၌ စာဝှက်စနစ် တမျိုး ရှိနေသည်၊ (သို့) %s ၌ သုံးစွဲသူ "
-"buggy တဦး ရှိနေသည်)"
-
-msgid "Could not join chat room"
-msgstr "စကားပြောခန်းတွင် မပါ၀င်နိုင်ပါ"
-
-msgid "Invalid chat room name"
-msgstr "မှားနေသော စကားပြောခန်း အမည်"
-
-msgid "Invalid error"
-msgstr "မှားယွင်းနေသော ချို့ယွင်းချက်"
-
-msgid "Not logged in"
-msgstr "အကောင့်ထဲ မဝင်ပါ"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "အုပ်ထိန်းသူ၏ ထိန်းချုပ်မှုများကြောင့် IM ကို လက်ခံနိုင်ပါ"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr "စည်းကမ်းများကို လက်မခံဘဲ SMS ပေးပို့၌ မရပါ"
-
-msgid "Cannot send SMS"
-msgstr "SMS ပေးပို့၍ မရပါ"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "ဤနိုင်ငံ၌ SMS ပေးပို့၍ မရပါ"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "အမည်မသိ နိုင်ငံသို့ SMS ပေးပို့၍ မရပါ"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "Bot အကောင့်သည် IMs ကို မသုံးစွဲနိုင်ပါ။"
-
-msgid "Bot account cannot IM this user"
-msgstr "Bot အကောင့်သည် ဤသုံးစွဲသူကို IMs ၍ မရပါ"
-
-msgid "Bot account reached IM limit"
-msgstr "Bot အကောင့်သည် IMs အကန့်အသတ် ရောက်ရှိနေပြီ"
-
-msgid "Bot account reached daily IM limit"
-msgstr "Bot အကောင့်သည် IMs နေ့စဉ် ကန့်သတ်ချက် ရောက်ရှိနေပြီ"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "Bot အကောင့်သည် IMs လစဉ် ကန့်သတ်ချက် ရောက်ရှိနေပြီသည်"
-
-msgid "Unable to receive offline messages"
-msgstr "အော့ဖ်လိုင်း စာများကို မရရှိနိုင်ပါ"
-
-msgid "Offline message store full"
-msgstr "အော့ဖ်လိုင်းစာ ပြည့်နေသည်"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "စာပို့၍ မရပါ -  %s (%s)"
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "စာပို့၍ မရပါ -  %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "%s ထံ စာပို့၍ မရပါ -  %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "%s ထံ စာပို့၍ မရပါ -  %s"
-
-msgid "Thinking"
-msgstr "စဉ်းစားနေသည်"
-
-msgid "Shopping"
-msgstr "ဈေးဝယ်နေသည်"
-
-msgid "Questioning"
-msgstr "မေးမြန်းနေသည်"
-
-msgid "Eating"
-msgstr "စားနေသည်"
-
-msgid "Watching a movie"
-msgstr "ရုပ်ရှင်ကြည့်နေသည်"
-
-msgid "Typing"
-msgstr "စာရိုက်နေသည်"
-
-msgid "At the office"
-msgstr "ရုံးမှာ ရှိသည်"
-
-msgid "Taking a bath"
-msgstr "ရေချိုးနေသည်"
-
-msgid "Watching TV"
-msgstr "တီဗီကြည့်နေသည်"
-
-msgid "Having fun"
-msgstr "ပျော်နေသည်"
-
-msgid "Sleeping"
-msgstr "အိပ်နေသည်"
-
-msgid "Using a PDA"
-msgstr "PDA သုံးနေသည်"
-
-msgid "Meeting friends"
-msgstr "မိတ်ဆွေများနှင့် တွေ့ဆုံနေသည်"
-
-msgid "On the phone"
-msgstr "ဖုန်းပြောနေသည်"
-
-msgid "Surfing"
-msgstr "လှိုင်းစီးနေသည်"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "လက်ကိုင်ဖုန်း"
-
-msgid "Searching the web"
-msgstr "ကွန်ယက်ထဲ ရှာဖွေနေသည်"
-
-msgid "At a party"
-msgstr "ပါတီပွဲမှာ ရှိနေသည်"
-
-msgid "Having Coffee"
-msgstr "ကော်ဖီသောက်နေသည်"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "ဂိမ်းက​စားနေသည်"
-
-msgid "Browsing the web"
-msgstr "ကွန်ရက် စာမျက်နှာ ကြည့်နေသည်"
-
-msgid "Smoking"
-msgstr "ဆေးလိပ်သောက်နေသည်"
-
-msgid "Writing"
-msgstr "စာရေးနေသည်"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "အရက်သောက်နေသည်"
-
-msgid "Listening to music"
-msgstr "သီချင်းနားထောင်နေသည်"
-
-msgid "Studying"
-msgstr "စာလေ့လာနေသည်"
-
-msgid "Working"
-msgstr "အလုပ်လုပ်နေသည်"
-
-msgid "In the restroom"
-msgstr "သန့်စင်ခန်း သွားနေသည်"
-
-msgid "Received invalid data on connection with server"
-msgstr "ဆာဗာနှင့် ဆက်သွယ်ရာ၌ ဒေတာ အမှား လက်ခံရရှိသည်"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM ပရိုတိုကော ပလပ်အင်"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ ပရိုတိုကော ပလပ်အင်"
-
-msgid "Encoding"
-msgstr "ဝှက်စာရေးနေသည်"
-
-msgid "The remote user has closed the connection."
-msgstr "အဝေးမှ သုံးစွဲသူသည် ဆက်သွယ်မှုလိုင်းကို ပိတ်လိုက်သည်။"
-
-msgid "The remote user has declined your request."
-msgstr "အဝေးမှ သုံးစွဲသူသည် သင့် တောင်းဆိုချက်ကို ငြင်းလိုက်သည်။"
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "ဆက်သွယ်မှုလိုင်း ပြတ်တောက်သွားသော အဝေးမှ သုံးစွဲသူ - <br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "အဝေးမှ သုံးစွဲသူနှင့် ဆက်သွယ်ရာတွင် ဒေတာ အမှားကို လက်ခံရရှိသည်။"
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "အဝေးမှ သုံးစွဲသူနှင့် အဆက်အသွယ် လုပ်၍ မရနိုင်ပါ။"
-
-msgid "Direct IM established"
-msgstr "တိုက်ရိုက် IM ကို တည်ဆောက်လိုက်ပြီ"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s သည် သင့်ကို %s ဖိုင် တစ်ပုဒ် ပေးပို့ရန် ကြိုးစားနေသည်၊ သို့သော် Direct IM နဲ့ပါတ်သက်ပြီး ဖိုင်များကို %s "
-"အထိသာ ခွင့်ပြုထားသည်။ ၄င်းအစား ဖိုင်ပြောင်းရွေ့မှုကို စမ်းသုံးကြည့်ပါ။\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "%s ဖိုင်သည် %s ဖြစ်သည်၊ ၄င်းသည် %s ၏ အကြီးဆုံး အရွယ်အစားထက် ပိုကြီးသည်။"
-
-msgid "Free For Chat"
-msgstr "လွတ်လွတ်လပ်လပ် စကားပြောနိုင်သည်"
-
-msgid "Not Available"
-msgstr "မရနိုင်ပါ"
-
-msgid "Occupied"
-msgstr "နေရာယူထားပြီ"
-
-msgid "Web Aware"
-msgstr "ကွန်ယက် စောင့်ကြပ်မှု"
-
-msgid "Invisible"
-msgstr "မမြင်နိုင်ပါ"
-
-msgid "Evil"
-msgstr "ဆိုးသည်"
-
-msgid "Depression"
-msgstr "စိတ်ဓာတ်ကျခြင်း"
-
-msgid "At home"
-msgstr "အိမ်မှာ"
-
-msgid "At work"
-msgstr "လုပ်ငန်းခွင်မှာ"
-
-msgid "At lunch"
-msgstr "နေ့လည်စာ စားချိန်မှာ"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "စစ်ဆေးအတည်ပြုရန် အဆက်အသွယ် လုပ်၍မရသော ဆာဗာ - %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "အဆက်အသွယ် လုပ်၍မရသော BOS ဆာဗာ - %s"
-
-msgid "Username sent"
-msgstr "သုံးစွဲသူအမည်ကို ပို့လိုက်ပြီ"
-
-msgid "Connection established, cookie sent"
-msgstr "ဆက်သွယ်မှုလိုင်း ချိတ်ဆက်လိုက်ပြီ၊ cookie ကို ပေးပို့လိုက်ပြီ"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "ဆက်သွယ်မှုလိုင်းကို အပြီးသတ်နေသည်"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"သုံးစွဲသူအမည် မှားနေသောကြောင့် %s အဖြစ် အကောင့်ထဲ ဝင်ရောက်ရန် မဖြစ်ပါ။ သုံးစွဲသူအမည်သည် အီးမေးလ်လိပ်စာ "
-"အမှန် ဖြစ်ရမည်၊ (သို့) စာနှင့် စပြီး စာလုံးများ၊ ဂဏန်းများနှင့် ကွက်လပ်များ ပါ၀င်ရမည်၊ (သို့) ဂဏန်း "
-"သက်သက် ဖြစ်ရမည်။"
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr "သင့်အကောင့် ချိန်ညှိချက်များထဲ၌ စာဝှက်စနစ် လိုအပ်သည်၊ သို့သော် စာဝှက်စနစ်ကို သင့်စက်က ထောက်ပံ့မထားပါ။"
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr "သင့်ကို မကြာခင် အဆက်ဖြတ် ခံရမည်။ သို့ဖြစ်ပါက မွမ်းမံချက်များအတွက် %s ကို စစ်ဆေးပါ။"
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "AIM login hash အမှန်ကို မရနိုင်ပါ။"
-
-msgid "Unable to get a valid login hash."
-msgstr "Login hash အမှန်ကို မရနိုင်ပါ။"
-
-msgid "Received authorization"
-msgstr "လုပ်ပိုင်ခွင့် ရရှိထားသည်"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "သုံးစွဲသူအမည် မရှိပါ"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "သင့်အကောင့်ကို လောလောဆယ် ဆိုင်းငံ့ထားသည်"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL လက်ငင်း စာတိုပို့စနစ်ကို ခေတ္တ ရပ်နားထားသည်။"
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"သင့် သုံးစွဲသူအမည်ဖြင့် အဆက်အသွယ်လုပ်ခြင်း၊ အဆက်အသွယ် ဖြတ်ခြင်း အကြိမ်ရေ များနေသည်။ ဆယ်မိနစ် စောင့်ပြီး "
-"ထပ်ကြိုးစားပါ။ သင် ဆက်လုပ်နေပါက ပို၍ အချိန်ကြာကြာ စောင့်နေရမည်။"
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr "သင် သုံးစွဲနေသော သုံးစွဲသူ ဗားရှင်းမှာ အလွန်ဟောင်းနေသည်။ %s ၌ မွမ်းမံလိုက်ပါ။"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"သင့် IP လိပ်စာဖြင့် အဆက်အသွယ်လုပ်ခြင်း၊ အဆက်အသွယ် ဖြတ်ခြင်း အကြိမ်ရေ များနေသည်။ ဆယ်မိနစ် စောင့်ပြီး "
-"ထပ်ကြိုးစားပါ။ သင် ဆက်လုပ်နေပါက ပို၍ အချိန်ကြာကြာ စောင့်နေရမည်။ "
-
-msgid "The SecurID key entered is invalid"
-msgstr "ရေးထည့်လိုက်သော SecurID ကီး မမှန်ပါ"
-
-msgid "Enter SecurID"
-msgstr "SecurID ရေးထည့်ရန်"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "ဒစ်ဂျစ်တယ် မျက်နှာပြင်မှ ဒစ်ဂျစ်ဂဏန်း ၆ လုံး ရေးထည့်ပါ။"
-
-msgid "Password sent"
-msgstr "စကားဝှက် ပေးပို့ပြီ"
-
-msgid "Unable to initialize connection"
-msgstr "ဆက်သွယ်မှုလိုင်း စဖွင့်၍ မရပါ"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"သုံးစွဲသူ %u သည် သင်၏ မိတ်ဆွေစာရင်းထဲ၌ ထည့်သွင်းရန် သင်၏ တောင်းဆိုချက်ကို အောက်ပါ အကြောင်းကြောင့် "
-"ငြင်းပယ်လိုက်သည် - \n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ လုပ်ပိုင်ခွင့်ကို ငြင်းပယ်ခံရသည်။"
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr "သုံးစွဲသူ %u သည် သင့် မိတ်ဆွေစာရင်းထဲ ထည့်သွင်းရန် သင့် တောင်းဆိုချက်ကို  ခွင့်ပြုလိုက်ပြီ။ ​"
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"သင် လက်ခံရရှိသော အထူး စာတစ်စောင်\n"
-"\n"
-"မှ - %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"သင် လက်ခံရရှိသော ICQ စာမျက်နှာ\n"
-"\n"
-"မှ: -%s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"သင် လက်ခံရသော ICQ အီးမေးလ် ပေးပို့သူ %s [%s]\n"
-"\n"
-"အကြောင်းအရာ -\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "ICQ သုံးစွဲသူ %u က သင့်ဆီ ပေးပို့လိုက်သော မိတ်ဆွေ - %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "ဤမိတ်ဆွေကို သင့် မိတ်ဆွေစာရင်းထဲ ထည့်သွင်းလိုသလား?"
-
-msgid "_Add"
-msgstr "_A ထည့်သွင်းရန်"
-
-msgid "_Decline"
-msgstr "_D ငြင်းပယ်ရန်"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "%2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာ မှန်ကန်မှု မရှိသောကြောင့် လက်ခံရရှိခြင်း မရှိပါ။"
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "%2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာ ရှည်လွန်းသောကြောင့် လက်ခံရရှိခြင်း မရှိပါ။"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"%2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာ၏ သတ်မှတ်နှုန်းကျော်လွန်းသွားသောကြောင့် လက်ခံရရှိခြင်း မရှိပါ။"
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"သူ/သူမ၏ သတိပေးချက် အဆင့် မြင့်လွန်းသောကြောင့် %2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာကို လက်ခံရရှိခြင်း မရှိပါ။"
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"သင် သတိပေးချက် အဆင့် မြင့်လွန်းသောကြောင့် %2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာကို လက်ခံရရှိခြင်း မရှိပါ။"
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "အမည်မသိသော အကြောင်းကြောင့် %2$s ထံမှ ပေးပို့လိုက်သော %1$hu စာကို လက်ခံရရှိခြင်း မရှိပါ။"
-
-msgid "Your AIM connection may be lost."
-msgstr "သင့် AIM အဆက်အသွယ် ပြတ်သွားသည်။"
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "သင့်ကို စကားပြောခန်း %s မှ အဆက်ဖြတ်ခံရသည်။ "
-
-msgid "The new formatting is invalid."
-msgstr "ပုံဖော်မှု အသစ် မမှန်ပါ။"
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr "သုံးစွဲသူအမည် ပုံစံဖေါ်ချက်သည် စာလုံးအကြီးနှင့် ကွက်လပ်ခြားခြင်းတို့ကိုသာ ပြောင်းလဲပေးနိုင်သည်။ "
-
-msgid "Pop-Up Message"
-msgstr "ပွင့်ထွတ် စာတမ်း"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "အောက်ပါ သုံးစွဲသူအမည်သည် %s နှင့် ဆက်စပ်မှု ရှိသည်။ "
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "အီးမေးလ်လိပ်စာ %s အတွက် ရှာဖွေမှု ရလာဒ် မရှိပါ"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "%s ကို အတည်ပြုရန် တောင်းဆိုသော အီးမေးလ် တစ်စောင်ကို သင် ရရှိမည်။"
-
-msgid "Account Confirmation Requested"
-msgstr "အကောင့် အတည်ပြုရန် တောင်းဆိုလိုက်ပြီ"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"ချို့ယွင်းချက် 0x%04x: တောင်းဆိုလိုက်သော အမည်သည် မူလအမည်နှင့် ကွဲပြားနေသောကြောင့် သုံးစွဲသူအမည်ကို ပုံစံပြင်၍ "
-"မရပါ။"
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr "ချို့ယွင်းချက် 0x%04x: သုံးစွဲသူအမည်သည် မမှန်​သောကြောင့် သုံးစွဲသူအမည်ကို ပုံစံပြင်၍ မရပါ။"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"ချို့ယွင်းချက် 0x%04x: တောင်းဆိုလိုက်သော အမည်သည် ရှည်လျားလွန်းသောကြောင့် သုံးစွဲသူအမည်ကို ပုံစံပြင်၍ မရပါ။"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"ချို့ယွင်းချက် 0x%04x: ဤသုံးစွဲသူအမည်ကို ဆိုင်းငံ့ရန် တောင်းဆိုချက် ရှိပြီးဖြစ်သောကြောင့် အီးမေးလ်လိပ်စာကို "
-"ပြောင်းလဲ၍ မရပါ။"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"ချို့ယွင်းချက် 0x%04x: ဖေါ်ပြပါ လိပ်စာ၌ ၄င်းနှင့် သက်ဆိုင်သော သုံးစွဲသူအမည် များလွန်းနေသောကြောင့် "
-"အီးမေးလ်လိပ်စာကို ပြောင်းလဲ၍ မရပါ။"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr "ချို့ယွင်းချက် 0x%04x: ဖေါ်ပြပါ လိပ်စာသည် မမှန်သောကြောင့် အီးမေးလ်လိပ်စာကို ပြောင်းလဲ၍ မရပါ။"
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "ချို့ယွင်းချက် 0x%04x: အမည်မသိ ချို့ယွင်းချက်။"
-
-msgid "Error Changing Account Info"
-msgstr "အကောင့် အချက်အလက်များ ပြောင်းလဲခြင်း ချို့ယွင်းချက်"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "%s အတွက် အီးမေးလ်လိပ်စာ %s"
-
-msgid "Account Info"
-msgstr "အကောင့် အချက်အလက်"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr "သင့် IM ပုံကို မပေးပို့နိုင်ပါ။ ပုံပေးပို့ရန် သင် တိုက်ရိုက် ဆက်သွယ်ရမည်။ "
-
-msgid "Unable to set AIM profile."
-msgstr "AIM ပရိုဖိုင်ကို သတ်မှတ်၍ မရပါ။"
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"အကောင့်ထဲ ဝင်ရောက်မှု လုပ်ငန်းစဉ် မပြီးခင် သင့် ပရိုဖိုင်ကို သတ်မှတ်ရန် သင် တောင်းဆိုထားပုံရသည်။ သင့်ပရိုဖိုင်ကို "
-"မသတ်မှတ်ရသေးပါ။ သင် အဆက်အသွယ် ရသည့်အခါ ၄င်းကို ပြန်ပြီး ကြိုးစား သတ်မှတ်ကြည့်ပါ။ "
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"အများဆုံး ထားနိုင်သော ပရိုဖိုင် အတိုင်းအတာ %d byte ကို ကျော်လွန်သွားသည်။ ၄င်းကို သင့်အတွက် အတိုချုံ့ထားသည်။"
-
-msgid "Profile too long."
-msgstr "ပရိုဖိုင် ရှည်လွန်းသည်။"
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"အများဆုံး ထားနိုင်သော ပရိုဖိုင် အတိုင်းအတာ %d byte ကို ကျော်လွန်သွားသည်။ ၄င်းကို သင့်အတွက် အတိုချုံ့ထားသည်။"
-
-msgid "Away message too long."
-msgstr "အဝေးမှ ပေးစာ ရှည်လွန်းသည်။"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"သုံးစွဲသူအမည် မမှန်သောကြောင့် မိတ်ဆွေ %s ကို ထည့်သွင်း၍ မရပါ။ သုံးစွဲသူအမည်များသည် အီးမေးလ်လိပ်စာ အမှန် "
-"ဖြစ်ရမည် (သို့) စာလုံးနှင့် စပြီး စာသားများ၊ ဂဏန်းများနှင့် ကွက်လပ်များ၊ (သို့) ဂဏန်းများ ပါရှိရမည်။"
-
-msgid "Unable to Add"
-msgstr "ထည့်သွင်း၍ မရပါ"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "မိတ်ဆွေ စာရင်းကို ပြန်ဖေါ်၍ မရပါ"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"AIM ဆာဗာများသည် သင့် မိတ်ဆွေစာရင်းကို ပေးပို့၍ မရပါ။ သင့် မိတ်ဆွေစာရင်း ပျောက်ဆုံး မသွားပါ၊ "
-"မိနစ်အနည်းငယ်အကြာ ပြန်လည် ရရှိနိုင်ပါသည်။"
-
-msgid "Orphans"
-msgstr "မိဘမဲ့များ"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"သင့် မိတ်ဆွေစာရင်း၌ မိတ်ဆွေများ အလွန်များနေသောကြောင့် မိတ်ဆွေ %s ကို ထည့်သွင်း၍ မရပါ။ တစ်ယောက်ယောက်ကို "
-"ဖယ်ထုတ်ပြီး ​ထပ်ကြိုးစားကြည့်ပါ။"
-
-msgid "(no name)"
-msgstr "(အမည် မရှိပါ)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "အမည်မသိ အကြောင်းကြောင့် မိတ်ဆွေ %s ကို ထည့်သွင်း၍ မရပါ။"
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"သုံးစွဲသူ %s သည် သင့်မိတ်ဆွေစာရင်းထဲ၌ သူ (သို့) သူမကို ထည့်သွင်းရန် ခွင့်ပြုထားသည်။ ဤသုံးစွဲသူကို သင် ထည့်သွင်းလိုသလား?"
-
-msgid "Authorization Given"
-msgstr "ခွင့်ပြုချက် ​ပေးလိုက်ပြီ"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr "သုံးစွဲသူ %s သည် သင့်မိတ်ဆွေစာရင်းထဲ၌ သူတို့ကို ထည့်သွင်းရန် တောင်းဆိုထားမှုကို ခွင့်ပြုလိုက်ပြီ။"
-
-msgid "Authorization Granted"
-msgstr "ခွင့်ပြုလိုက်ပြီ"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"သုံးစွဲသူ %s က အောက်ပါ အကြောင်းကြောင့် သင့် မိတ်ဆွေစာရင်းထဲ၌ သူတို့ကို ထည့်သွင်းရန် တောင်းဆိုထားမှုကို "
-"ငြင်းပယ်လိုက်သည် -\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "ခွင့်ပြုချက် ငြင်းပယ်ခံရသည်"
-
-msgid "_Exchange:"
-msgstr "_E ဖလှယ်ရန် -"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr "သင့် IM ပုံကို မပေးပို့ခဲ့ပါ။ AIM ပုံများကို AIM  စကားပြောခန်းများထဲ ပေးပို့၍ မရပါ။"
-
-msgid "iTunes Music Store Link"
-msgstr "iTunes တေးဂီတဆိုင်၏ လင့်ခ်"
-
-msgid "Lunch"
-msgstr "နေ့လည်စာ"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "%s အတွက် မိတ်ဆွေ မှတ်ချက်"
-
-msgid "Buddy Comment:"
-msgstr "မိတ်ဆွေ မှတ်ချက် -"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "%s နှင့် တိုက်ရိုက် IM အဆက်အသွယ် လုပ်ရန် သင် ရွေးချယ်လိုက်ပြီ။"
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"ဒီနေရာ၌ သင့် IP လိပ်စာကို ဖော်ပြမည် ဖြစ်သောကြောင့်၊ လုံခြုံရေးအရ အန္တရယ် ရှိနိုင်သည်။ ဆက်လက် "
-"လုပ်ဆောင်မည်လား?"
-
-msgid "C_onnect"
-msgstr "_O ဆက်သွယ်ရန်"
-
-msgid "You closed the connection."
-msgstr "အဆက်အသွယ်ကို သင်ပိတ်လိုက်သည်။"
-
-msgid "Get AIM Info"
-msgstr "AIM အချက်အလက်ကို ရယူရန်"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "မိတ်ဆွေ မှတ်ချက်ကို တည်းဖြတ်ရန်"
-
-msgid "Get X-Status Msg"
-msgstr "X-Status Msg ကို ရယူရန်"
-
-msgid "End Direct IM Session"
-msgstr "တိုက်ရိုက် IM လုပ်ဆောင်မှု အဆုံးသတ်ရန်"
-
-msgid "Direct IM"
-msgstr "တိုက်ရိုက် IM"
-
-msgid "Re-request Authorization"
-msgstr "ခွင့်ပြုချက် ပြန်လည်တောင်းခံရန်"
-
-msgid "Require authorization"
-msgstr "ခွင့်ပြုချက် တောင်းခံရန်"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr "ကွန်ရက် အချက်ပေး (ဤအချက်ကို ဖွင့်ထားခြင်းဖြင့် SPAM ရရှိစေမည် ဖြစ်သည်)"
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ သီးခြား ရွေးစရာများ"
-
-msgid "Change Address To:"
-msgstr "လိပ်စာ ပြောင်းလဲရန် -"
-
-msgid "you are not waiting for authorization"
-msgstr "ခွင့်ပြုချက် ရရှိရန် မစောင့်ဆိုင်းပါနှင့်။"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "သင်သည် အောက်ပါ မိတ်ဆွေများထံမှ ခွင့်ပြုချက် ရရှိရန် စောင့်ဆိုင်းနေသည်"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"မိတ်ဆွေများကို ညာဖက် နှိပ်၊ \"ခွင့်ပြုချက် တောင်းခံရန်\" ကို ရွေးပြီး သူတို့ထံမှ ခွင့်ပြုချက် ​ပြန်လည် "
-"တောင်းခံနိုင်သည်။"
-
-msgid "Find Buddy by Email"
-msgstr "အီးမေးလ်ဖြင့် မိတ်ဆွေ ရှာရန်"
-
-msgid "Search for a buddy by email address"
-msgstr "အီးမေးလ် လိပ်စာဖြင့် မိတ်ဆွေတစ်ဦး ရှာရန်"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "သင် ရှာဖွေလိုသော မိတ်ဆွေ၏ အီးမေးလ်လိပ်စာကို ရေးထည့်ပါ။ "
-
-msgid "_Search"
-msgstr "_S ရှာဖွေရန်"
-
-msgid "Set User Info (web)..."
-msgstr "သုံးစွဲသူ အချက်အလက် (ကွန်ရက်) ကို သတ်မှတ်ရန်..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "စကားဝှက် (ကွန်ရက်) ပြောင်းရန်"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "IM လက်ဆင့်ကမ်း ပေးပို့မှု (ကွန်ရက်) ကို ပုံစံချရန်"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "သီးခြား ရွေးစရာများကို သတ်မှတ်ရန်..."
-
-msgid "Show Visible List"
-msgstr "မြင်နိုင်သော စာရင်းကို ဖေါ်ပြရန်"
-
-msgid "Show Invisible List"
-msgstr "မမြင်နိုင်သော စာရင်းကို ဖေါ်ပြရန်"
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "အကောင့်ကို အတည်ပြုရန်"
-
-msgid "Display Currently Registered Email Address"
-msgstr "လောလောဆယ် စာရင်းသွင်းထားသော အီးမေးလ် လိပ်စာကို ဖော်ပြရန်"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "လောလောဆယ် စာရင်းသွင်းထားသော အီးမေးလ် လိပ်စာကို ပြောင်းရန်..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "ခွင့်ပြုချက် စောင့်ဆိုင်းနေသော မိတ်ဆွေများကို ဖေါ်ပြရန်"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "အီးမေးလ် လိပ်စာဖြင့် မိတ်ဆွေ ရှာဖွေရန်..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"ဖိုင် ရွှေပြောင်းရန်နှင့် တိုက်ရိုက် IM အတွက်\n"
-"AIM/ICQ ပရောက်ဆီ ဆာဗာကို အမြဲ သုံးစွဲပါ \n"
-"(ပိုမို နှေးမည်၊ သို့သော် သင့် IP လိပ်စာကို မဖော်ပြပါနှင့်)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "အကောင့်ထဲ တစ်ပြိုင်တည်း ဝင်ရောက်ခွင့်ပြုရန်"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr "တိုက်ရိုက် IM ပြုလုပ်ရန် %s ကို %s:%hu ၌ ဆက်သွယ်ရန် တောင်းခံနေသည်။"
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "%s:%hu ကို ဆက်သွယ်ရန် ကြိုးပမ်းနေသည်။"
-
-msgid "Attempting to connect via proxy server."
-msgstr "ပရောက်ဆီ ဆာဗာမှတစ်ဆင့် ဆက်သွယ်ရန် ကြိုးပမ်းနေသည်။ "
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s သည် %s ကို တိုက်ရိုက် ဆက်သွယ်ရန် ယခု တောင်းခံနေသည်"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"ကွန်ပျူတာ နှစ်လုံးအကြားနှင့် တိုက်ရိုက်ဆက်သွယ်မှု ပြုလုပ်ရန် လိုအပ်ပြီး ၄င်းကို IM ပုံများအတွက် လိုအပ်သည်။ သင့် IP "
-"လိပ်စာကို ဖော်ပြနေမည် ဖြစ်သောကြောင့်၊ ကိုယ်ရေးကိုယ်တာ လုံခြုံရေးကို ထိခိုက်နိုင်သည်ဟု ဆိုနိုင်သည်။ "
-
-#. Label
-msgid "Buddy Icon"
-msgstr "မိတ်ဆွေ သ​င်္ကေတပုံ"
-
-msgid "Voice"
-msgstr "အသံ"
-
-msgid "AIM Direct IM"
-msgstr "AIM တိုက်ရိုက် IM"
-
-msgid "Get File"
-msgstr "ဖိုင် ရယူရန်"
-
-msgid "Games"
-msgstr "ဂိမ်းများ"
-
-msgid "ICQ Xtraz"
-msgstr "ICQ Xtraz"
-
-msgid "Add-Ins"
-msgstr "အပိုဆောင်း ဆော့ဗ်ဝဲများ"
-
-msgid "Send Buddy List"
-msgstr "မိတ်ဆွေစာရင်း ပေးပို့ရန်"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ တိုက်ရိုက် ဆက်သွယ်မှု"
-
-msgid "AP User"
-msgstr "AP သုံးစွဲသူ"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "မရှိခြင်းဝါဒီ"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ ဆာဗာ ချိတ်ဆက်မှု"
-
-msgid "Old ICQ UTF8"
-msgstr "ပုံစံဟောင်း ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Trillian ကုဒ်ဝှက်ခြင်း"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "လုံခြုံရေး ဖွင့်ထားသည်"
-
-msgid "Video Chat"
-msgstr "ရုပ်သံဖြင့် စကားပြောခန်း"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "ရုပ်သံ တိုက်ရိုက် ထုတ်လွှင့်မှု"
-
-msgid "Camera"
-msgstr "ကင်မရာ"
-
-msgid "Screen Sharing"
-msgstr "မျက်နှာပြင် မျှဝေလုပ်ဆောင်ခြင်း"
-
-msgid "IP Address"
-msgstr "IP လိပ်စာ"
-
-msgid "Warning Level"
-msgstr "သတိပေးမှုအဆင့်"
-
-msgid "Buddy Comment"
-msgstr "မိတ်ဆွေ မှတ်ချက်"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "သုံးစွဲသူ အချက်အလက် မရနိုင်ပါ - %s "
-
-msgid "Mobile Phone"
-msgstr "လက်ကိုင်ဖုန်း"
-
-msgid "Age"
-msgstr "အသက်"
-
-msgid "Personal Web Page"
-msgstr "ကိုယ်ပိုင် ကွန်ရက်စာမျက်နှာ"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "နောက်ဆက်တွဲ အချက်အလက်"
-
-msgid "Home Address"
-msgstr "အိမ်လိပ်စာ"
-
-msgid "Zip Code"
-msgstr "စာပို့ သင်္ကေတ"
-
-msgid "Work Address"
-msgstr "အလုပ် လိပ်စာ"
-
-msgid "Work Information"
-msgstr "လုပ်ငန်းခွင် အချက်အလက်"
-
-msgid "Company"
-msgstr "ကုမ္ပဏီ"
-
-msgid "Division"
-msgstr "ဌာနခွဲ"
-
-msgid "Position"
-msgstr "ရာထူး"
-
-msgid "Web Page"
-msgstr "ကွန်ရက် စာမျက်နှာ"
-
-msgid "Online Since"
-msgstr "အွန်လိုင်း ရောက်ရှိချိန်"
-
-msgid "Member Since"
-msgstr "အဖွဲ့ဝင် စဖြစ်ချိန်"
-
-msgid "Capabilities"
-msgstr "အစွမ်းအစများ"
-
-msgid "Profile"
-msgstr "ပရိုဖိုင်"
-
-msgid "View web profile"
-msgstr "ကွန်ယက် ပရိုဖိုင် ကြည့်ရန်"
-
-msgid "Invalid SNAC"
-msgstr "မှားနေသော SNAC"
-
-msgid "Server rate limit exceeded"
-msgstr "ဆာဗာနှုန်းထား ကန့်သတ်ချက် ကျော်လွန်သွားသည်"
-
-msgid "Client rate limit exceeded"
-msgstr "သုံးစွဲသူနှုန်းထား ကန့်သတ်ချက် ကျော်လွန်သွားသည်"
-
-msgid "Service unavailable"
-msgstr "၀န်ဆောင်မှု မရနိုင်ပါ"
-
-msgid "Service not defined"
-msgstr "၀န်ဆောင်မှု သတ်မှတ်မထားပါ"
-
-msgid "Obsolete SNAC"
-msgstr "တိမ်ကောသွားသော SNAC"
-
-msgid "Not supported by host"
-msgstr "Host မှ ထောက်ပံ့မှုမပေးပါ"
-
-msgid "Not supported by client"
-msgstr "သုံးစွဲသူမှ ထောက်ပံ့မှုမပေးပါ"
-
-msgid "Refused by client"
-msgstr "သုံးစွဲသူမှ ငြင်းပယ်လိုက်သည်"
-
-msgid "Reply too big"
-msgstr "အကြောင်းပြန်ချက် ကြီးလွန်းသည်"
-
-msgid "Responses lost"
-msgstr "တုံ့ပြန်ချက်များ ပျောက်ဆုံးသွားသည်"
-
-msgid "Request denied"
-msgstr "တောင်းဆိုမှု ငြင်းပယ်ခံရသည်"
-
-msgid "Busted SNAC payload"
-msgstr "ကွဲသွားသော SNAC အရှုပ်ထုပ်"
-
-msgid "Insufficient rights"
-msgstr "လုပ်ပိုင်ခွင့် မလုံလောက်ပါ"
-
-msgid "In local permit/deny"
-msgstr "ခွင့်ပြုချက်/ငြင်းပယ်ချက်"
-
-msgid "Warning level too high (sender)"
-msgstr "သတိပေးမှု အဆင့် မြင့်မားလွန်းသည် (ပေးပို့သူ)"
-
-msgid "Warning level too high (receiver)"
-msgstr "သတိပေးမှု အဆင့် မြင့်မားလွန်းသည် (လက်ခံသူ)"
-
-msgid "User temporarily unavailable"
-msgstr "သုံးစွဲသူ ယာယီ ရပ်ဆိုင်းထားသည်"
-
-msgid "No match"
-msgstr "မကိုက်ညီပါ"
-
-msgid "List overflow"
-msgstr "စာရင်း ပိုလျှံမှု"
-
-msgid "Request ambiguous"
-msgstr "တောင်းဆိုချက် မရှင်းလင်းပါ"
-
-msgid "Queue full"
-msgstr "အစီအစဉ် ပြည့်သွားသည်"
-
-msgid "Not while on AOL"
-msgstr "AOL တွင် ရှိစဉ် မဟုတ်ပါ"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "အွန်​လိုင်း ရှိပုံပေါ်သည်"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "အွန်လိုင်း ရှိပုံမပေါ်ပါ"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "အော့ဖ်လိုင်း ရှိပုံပေါ်သည်"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "အော့ဖ်လိုင်း ရှိပုံမပေါ်ပါ"
-
-msgid "you have no buddies on this list"
-msgstr "ဒီစာရင်းတွင် သင့်မိတ်ဆွေများ မရှိပါ"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-"မိတ်ဆွေ တစ်ဦးပေါ်တွင် ညာဖက် နှိပ်ပြီး ဖြစ်စေ၊ \"%s\" ကို ရွေးပြီး ဖြစ်စေ ဤစာရင်းသို့ ၄င်းကို "
-"ထည့်သွင်းနိုင်သည်။"
-
-msgid "Visible List"
-msgstr "မြင်နိုင်သော စာရင်း"
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-"သင်သည် \"ကိုယ်ဖျောက်ရန်\" စနစ်သို့ ကူးပြောင်းသောအခါ ဤမိတ်ဆွေများသည် သင့်အနေအထားကို မြင်ရကြမည် ဖြစ်သည်။"
-
-msgid "Invisible List"
-msgstr "ကိုယ်ဖျောက် စာရင်း"
-
-msgid "These buddies will always see you as offline"
-msgstr "ဤမိတ်ဆွေများသည် သင့်ကို အော့ဖ်လိုင်း အနေအထားဖြင့် အမြဲမြင်ရကြမည် ဖြစ်သည်"
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7768,6 +6634,9 @@ msgstr "ရုပ်သံဖြင့် ဆွေးနွေးခြင်�
 msgid "Computer"
 msgstr "ကွန်ပျူတာ"
 
+msgid "Mobile Phone"
+msgstr "လက်ကိုင်ဖုန်း"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8024,6 +6893,9 @@ msgstr "ပိုင်နက်"
 msgid "Exposure"
 msgstr "ဖေါ်ထုတ်ခြင်း"
 
+msgid "Encoding"
+msgstr "ဝှက်စာရေးနေသည်"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "ဖန်တီး၍ မရသော ဆော့ကက် - %s"
@@ -8044,6 +6916,9 @@ msgstr "၀င်ရောက်ခွင့် ပိတ်ပင်သည် -
 msgid "Error resolving %s"
 msgstr "%s ကို ဖြေရှင်းမှု ချို့ယွင်းချက်"
 
+msgid "Received invalid data on connection with server"
+msgstr "ဆာဗာနှင့် ဆက်သွယ်ရာ၌ ဒေတာ အမှား လက်ခံရရှိသည်"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "%s ၏ အာရုံစိုက်မှုကို တောင်းခံနေသည်..."
@@ -8060,6 +6935,12 @@ msgstr "_Y ဟုတ်ကဲ့"
 
 msgid "_No"
 msgstr "_N လက်မခံပါ"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_O ဟုတ်ပြီ"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8131,8 +7012,17 @@ msgstr "ပြန်ဖျက်ရန်"
 msgid "Do not disturb"
 msgstr "မနှောင့်ယှက်ရ"
 
+msgid "Invisible"
+msgstr "မမြင်နိုင်ပါ"
+
 msgid "Extended away"
 msgstr "တိုးချဲ့ရန်"
+
+msgid "Mobile"
+msgstr "လက်ကိုင်ဖုန်း"
+
+msgid "Listening to music"
+msgstr "သီချင်းနားထောင်နေသည်"
 
 msgid "Feeling"
 msgstr "ခံစားချက်"
@@ -8283,33 +7173,41 @@ msgstr ""
 "သင့် %s ကို ဖတ်ရှုရာတွင် ချို့ယွင်းမှု ဖြစ်ပေါ်ခဲ့သည်။ ဖိုင်ကို ဖွင့်မရပါ။ ထို့ပြင် ဖိုင်ဟောင်းကို %s အဖြစ် "
 "အမည်ပြောင်းလိုက်သည် ~."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "ပင်ဂျင်း အင်တာနက် မစ်ဆင်းဂျာ"
 
 msgid "Internet Messenger"
 msgstr "အင်တာနက် မစ်ဆင်းဂျာ -"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "ပင်ဂျင်း အင်တာနက် မစ်ဆင်းဂျာ"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"IM သုံးပြီး စကားပြောရန်။ AIM, Google Talk, Jabber/XMPP, MSN, Yahoo နှင့် အခြားကို "
-"ထောက်ပံ့ထားသည်။"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -8805,6 +7703,9 @@ msgstr "_H /အကူအညီ"
 
 msgid "/Help/Online _Help"
 msgstr "_H /အကူအညီ/အွန်လိုင်း အကူအညီ"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr "_B /အကူအညီ/အချက်အလက် တည်ဆောက်ရန်"
@@ -9332,6 +8233,9 @@ msgid "%d person in room"
 msgid_plural "%d people in room"
 msgstr[0] "အခန်းထဲ၌ လူ %d ယောက် ရှိသည်"
 
+msgid "Typing"
+msgstr "စာရိုက်နေသည်"
+
 msgid "Stopped Typing"
 msgstr "စာရိုက်မှု ရပ်သွားသည်"
 
@@ -9439,20 +8343,14 @@ msgstr "ချို့ယွင်းချက်"
 msgid "Fatal Error"
 msgstr "ဆိုးရွားသော ချို့ယွင်းချက်"
 
-msgid "artist"
-msgstr "အနုပညာရှင်"
-
-msgid "voice and video"
-msgstr "အသံနှင့် ဗွီဒီယို"
-
-msgid "support"
-msgstr "အထောက်အပံ့"
-
-msgid "webmaster"
-msgstr "ကွန်ရက် စီမံခန့်ခွဲသူ"
+msgid "lead developer"
+msgstr "ဦးဆောင် စီစဉ်သူ"
 
 msgid "win32 port"
 msgstr "win32 port"
+
+msgid "artist"
+msgstr "အနုပညာရှင်"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9465,9 +8363,18 @@ msgstr "ထိန်းသိမ်းသူ"
 msgid "libfaim maintainer"
 msgstr "libfaim ထိန်းသိမ်းသူ"
 
+msgid "webmaster"
+msgstr "ကွန်ရက် စီမံခန့်ခွဲသူ"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "ဟက်ကာနှင့် သတ်မှတ်ထားသော ဒရိုင်ဘာ [lazy bum]"
+
+msgid "voice and video"
+msgstr "အသံနှင့် ဗွီဒီယို"
+
+msgid "support"
+msgstr "အထောက်အပံ့"
 
 msgid "support/QA"
 msgstr "အထောက်အပံ့/မေးဖြေ"
@@ -9477,9 +8384,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "မူလ ရေးသားသူ"
-
-msgid "lead developer"
-msgstr "ဦးဆောင် စီစဉ်သူ"
 
 msgid "Senior Contributor/QA"
 msgstr "အဓိက ပါဝင်ပံ့ပိုးသူ/မေးဖြေ"
@@ -9800,24 +8704,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>အထောက်အကူပြုသော အရင်းအမြစ်များ</B></FONT><BR>\t<A HREF=\"%s"
-"\">ကွန်ရက် စာမျက်နှာ</A><BR>\t<A HREF=\"%s\">မေးလေ့မေးထ မေးခွန်းများ</A><BR>\tIRC "
-"ချာနယ် - #irc.freenode.net ပေါ်မှ #pidgin<BR>\tXMPP MUC - devel@conference."
-"pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10870,12 +9768,12 @@ msgstr "ပရောက်ဆီ ပုံစံချထားမှု ပရ�
 msgid "Cannot start browser configuration program."
 msgstr "ဘရောင်ဆာ ပုံစံချထားမှု ပရိုဂရမ်ကို စဖွင့်လို့ မရပါ။ "
 
-msgid "Disabled"
-msgstr "ပိတ်ထားသည်"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "_A အလိုအလျောက် ရှာဖွေသော IP လိပ်စာကို သုံးရန် - %s"
+
+msgid "IP Address"
+msgstr "IP လိပ်စာ"
 
 msgid "ST_UN server:"
 msgstr "_U ST_UN ဆာဗာ -"
@@ -11138,6 +10036,37 @@ msgstr "_E စဖွင့်ချိန် နောက်ဆုံး အပ�
 msgid "Status to a_pply at startup:"
 msgstr "_P စဖွင့်ချင်း သုံးစွဲမည့် အနေအထား -"
 
+msgid "DROP"
+msgstr "လွှတ်ချရန်"
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr "အသံ အတိုးအကျယ်"
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "_D စက်ပစ္စည်း"
+
+msgid "Audio"
+msgstr "အသံ"
+
+msgid "Input"
+msgstr "ရေးသွင်းချက်"
+
+msgid "Output"
+msgstr "ထုတ်ပြန်ချက်"
+
+msgid "Video"
+msgstr "ရုပ်သံ"
+
 msgid "Interface"
 msgstr "မျက်နှာပြင်"
 
@@ -11149,6 +10078,9 @@ msgstr "အနေအထား/မလှုပ်မရှား"
 
 msgid "Themes"
 msgstr "Theme များ"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "ကျွန်​​​တော့်ကို သုံးစွဲသူအားလုံးက ဆက်သွယ်ခွင့်ပြုရန်"
@@ -11232,6 +10164,46 @@ msgstr "အမည်သစ် ရွေးရန်"
 
 msgid "Select Folder..."
 msgstr "ဖိုင်တွဲ ရွေးရန်..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_A ထည့်သွင်းရန်"
 
 #. list button
 msgid "_Get List"
@@ -11406,6 +10378,10 @@ msgstr ""
 "<b>ဖိုင် အရွယ် -</b> %s\n"
 "<b>ပုံရိပ် အရွယ် -</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "မိတ်ဆွေ သ​င်္ကေတပုံ"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr "ဖိုင် '%s' သည် %s အတွက် အလွန်ကြီးနေသည်။ ပို၍သေးသော ရုပ်ပုံဖြင့် ကြိုးစားကြည့်ပါ။\n"
@@ -11445,11 +10421,6 @@ msgstr "သင် တကယ် ရှင်းလင်းလိုသလား?
 
 msgid "Select color"
 msgstr "အရောင် ရွေးချယ်ရန်"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_A အမည်ကွဲ"
@@ -12314,6 +11285,9 @@ msgstr "အော်ပရေတာ"
 msgid "Half Operator"
 msgstr "အငယ်တန်း အော်ပရေတာ"
 
+msgid "Voice"
+msgstr "အသံ"
+
 msgid "Authorization dialog"
 msgstr "ခွင့်ပြုချက် ပေးသော စာမျက်နှာ"
 
@@ -12565,35 +11539,51 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
-msgstr "အသံ"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "ရုပ်သံ"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "ထုတ်ပြန်ချက်"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "_P ပလပ်အင်"
-
-msgid "_Device"
-msgstr "_D စက်ပစ္စည်း"
-
-msgid "Input"
-msgstr "ရေးသွင်းချက်"
 
 msgid "P_lugin"
 msgstr "_L ပလပ်အင်"
 
 msgid "D_evice"
 msgstr "_E စက်ပစ္စည်း"
-
-msgid "DROP"
-msgstr "လွှတ်ချရန်"
-
-msgid "Volume:"
-msgstr "အသံ အတိုးအကျယ်"
 
 msgid "Silence threshold:"
 msgstr "တိတ်ဆိတ်မှု သတ်မှတ်အဆင့်"
@@ -12784,12 +11774,12 @@ msgstr "စာလုံးပေါင်းသတ်ပုံ အထောက�
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 "($R3) စာလုံးပေါင်းစစ်စနစ် ထည့်သွင်းရာတွင် ချို့ယွင်းချက် ရှိသည်။$\\rIf ထပ်ကြိုးစား၍ မအောင်မြင်လျှင်၊ "
-"ဆော့ဗ်ဝဲ ထည့်သွင်းနည်း လမ်းညွှန်ချက်ကို - http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation တွင် ​လေ့လာနိုင်သည်။"
+"ဆော့ဗ်ဝဲ ထည့်သွင်းနည်း လမ်းညွှန်ချက်ကို - http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation တွင် ​လေ့လာနိုင်သည်။"
 
 #. Installer Subsection Detailed Description
 msgid ""

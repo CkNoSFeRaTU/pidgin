@@ -289,12 +289,14 @@ spellchk_free(spellchk *spell)
 
 	g_return_if_fail(spell != NULL);
 
-	buffer = gtk_text_view_get_buffer(spell->view);
+	if (spell->view != NULL) {
+		buffer = gtk_text_view_get_buffer(spell->view);
 
-	g_signal_handlers_disconnect_matched(buffer,
-			G_SIGNAL_MATCH_DATA,
-			0, 0, NULL, NULL,
-			spell);
+		g_signal_handlers_disconnect_matched(buffer,
+		                                     G_SIGNAL_MATCH_DATA,
+		                                     0, 0, NULL, NULL,
+		                                     spell);
+	}
 	g_free(spell->word);
 	g_free(spell);
 }
@@ -645,6 +647,7 @@ spellchk_new_attach(PurpleConversation *conv)
 	/* attach to the widget */
 	spell = g_new0(spellchk, 1);
 	spell->view = view;
+	g_object_add_weak_pointer(G_OBJECT(view), (gpointer*)&spell->view);
 
 	g_object_set_data_full(G_OBJECT(view), SPELLCHK_OBJECT_KEY, spell,
 			(GDestroyNotify)spellchk_free);
@@ -2139,6 +2142,8 @@ plugin_unload(PurplePlugin *plugin)
 		spellchk *spell = g_object_get_data(G_OBJECT(gtkconv->entry), SPELLCHK_OBJECT_KEY);
 
 		g_signal_handlers_disconnect_by_func(gtkconv->entry, message_send_cb, spell);
+		g_object_remove_weak_pointer(G_OBJECT(gtkconv->entry),
+		                             (gpointer*)&spell->view);
 		g_object_set_data(G_OBJECT(gtkconv->entry), SPELLCHK_OBJECT_KEY, NULL);
 	}
 

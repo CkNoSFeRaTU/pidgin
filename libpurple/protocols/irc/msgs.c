@@ -71,7 +71,14 @@ static char *irc_mask_nick(const char *mask)
 
 static char *irc_mask_userhost(const char *mask)
 {
-	return g_strdup(strchr(mask, '!') + 1);
+	char *sep = strchr(mask, '!');
+	char *host = "";
+
+	if(sep) {
+		host = sep + 1;
+	}
+
+	return g_strdup(host);
 }
 
 static void irc_chat_remove_buddy(PurpleConversation *convo, char *data[2])
@@ -1256,7 +1263,7 @@ void irc_msg_ping(struct irc_conn *irc, const char *name, const char *from, char
 	char *buf;
 
 	buf = irc_format(irc, "v:", "PONG", args[0]);
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 }
 
@@ -1454,10 +1461,20 @@ irc_sasl_cb_simple(void *ctx, int id, const char **res, unsigned *len)
 {
 	struct irc_conn *irc = ctx;
 	PurpleConnection *gc = purple_account_get_connection(irc->account);
+	const char *saslname =
+		purple_account_get_string(irc->account, "saslname", NULL);
+
+	if(saslname == NULL || *saslname == '\0') {
+		saslname = purple_account_get_string(irc->account, "realname", "");
+	}
+
+	if(saslname == NULL || *saslname == '\0') {
+		saslname = purple_connection_get_display_name(gc);
+	}
 
 	switch(id) {
 		case SASL_CB_AUTHNAME:
-			*res = purple_connection_get_display_name(gc);
+			*res = saslname;
 			break;
 		case SASL_CB_USER:
 			*res = "";
@@ -1494,7 +1511,10 @@ irc_auth_start_cyrus(struct irc_conn *irc)
 	} else {
 		secprops.max_ssf = 0;
 		secprops.maxbufsize = 0;
-		plaintext = TRUE;
+		/* this isn't checked anywhere else, but I'm going to guess it's because
+		 * something is incomplete?.
+		 */
+		/* plaintext = TRUE; */
 	}
 
 	secprops.property_names = 0;
@@ -1566,7 +1586,7 @@ irc_auth_start_cyrus(struct irc_conn *irc)
 	purple_debug_info("irc", "Using SASL: %s\n", irc->current_mech);
 
 	buf = irc_format(irc, "vv", "AUTHENTICATE", irc->current_mech);
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 }
 
@@ -1592,7 +1612,7 @@ irc_msg_cap(struct irc_conn *irc, const char *name, const char *from, char **arg
 		return;
 	}
 
-	if ((ret = sasl_client_init(NULL)) != SASL_OK) {
+	if (sasl_client_init(NULL) != SASL_OK) {
 		const char *tmp = _("SASL authentication failed: Initializing SASL failed.");
 		purple_connection_error_reason (gc,
 			PURPLE_CONNECTION_ERROR_OTHER_ERROR, tmp);
@@ -1697,7 +1717,7 @@ irc_msg_auth(struct irc_conn *irc, char *arg)
 		authinfo = g_strdup("+");
 
 	buf = irc_format(irc, "vv", "AUTHENTICATE", authinfo);
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 	g_free(authinfo);
 	g_free(serverin);
@@ -1716,11 +1736,11 @@ irc_msg_authok(struct irc_conn *irc, const char *name, const char *from, char **
 
 	sasl_dispose(&irc->sasl_conn);
 	irc->sasl_conn = NULL;
-	purple_debug_info("irc", "Succesfully authenticated using SASL.\n");
+	purple_debug_info("irc", "Successfully authenticated using SASL.\n");
 
 	/* Finish auth session */
 	buf = irc_format(irc, "vv", "CAP", "END");
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 }
 
@@ -1799,7 +1819,7 @@ irc_sasl_finish(struct irc_conn *irc)
 
 	/* Auth failed, abort */
 	buf = irc_format(irc, "vv", "CAP", "END");
-	irc_send(irc, buf);
+	irc_priority_send(irc, buf);
 	g_free(buf);
 }
 #endif

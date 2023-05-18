@@ -89,6 +89,8 @@ static const size_t menu_entry_count = sizeof(menu_entries) / sizeof(*menu_entri
 
 static PidginPrivacyDialog *privacy_dialog = NULL;
 
+static void type_changed_cb(GtkComboBox *combo, PidginPrivacyDialog *dialog);
+
 static void
 rebuild_allow_list(PidginPrivacyDialog *dialog)
 {
@@ -219,6 +221,8 @@ select_account_cb(GtkWidget *dropdown, PurpleAccount *account,
 
 	rebuild_allow_list(dialog);
 	rebuild_block_list(dialog);
+
+	type_changed_cb(GTK_COMBO_BOX(dialog->type_menu), dialog);
 }
 
 /*
@@ -299,6 +303,9 @@ remove_cb(GtkWidget *button, PidginPrivacyDialog *dialog)
 		purple_privacy_deny_remove(dialog->account, name, FALSE);
 
 	g_free(name);
+
+	purple_blist_schedule_save();
+	pidgin_blist_refresh(purple_get_blist());
 }
 
 static void
@@ -318,6 +325,9 @@ removeall_cb(GtkWidget *button, PidginPrivacyDialog *dialog)
 		else
 			purple_privacy_deny_remove(dialog->account, user, FALSE);
 	}
+
+	purple_blist_schedule_save();
+	pidgin_blist_refresh(purple_get_blist());
 }
 
 static void
@@ -410,7 +420,7 @@ privacy_dialog_new(void)
 	button = pidgin_dialog_add_button(GTK_DIALOG(dialog->win), GTK_STOCK_CLOSE, G_CALLBACK(close_cb), dialog);
 	dialog->close_button = button;
 
-	type_changed_cb(GTK_COMBO_BOX(dialog->type_menu), dialog);
+	select_account_cb(dropdown, dialog->account, dialog);
 #if 0
 	if (dialog->account->perm_deny == PURPLE_PRIVACY_ALLOW_USERS) {
 		gtk_widget_show(dialog->allow_widget);
@@ -466,6 +476,9 @@ confirm_permit_block_cb(PidginPrivacyRequestData *data, int option)
 		purple_privacy_allow(data->account, data->name, FALSE, FALSE);
 
 	destroy_request_data(data);
+
+	purple_blist_schedule_save();
+	pidgin_blist_refresh(purple_get_blist());
 }
 
 static void

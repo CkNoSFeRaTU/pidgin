@@ -8,6 +8,8 @@
 PIDGIN_TREE_TOP := .
 include $(PIDGIN_TREE_TOP)/libpurple/win32/global.mak
 
+DICTIONARY_TIMESTAMP := 20220215-003057
+
 # Generate a X.X.X.X version for the installer file versioning header
 # The last digit will be 99 for a final release, 0 for dev or unknown, or the beta number
 PIDGIN_PRODUCT_VERSION = $(shell \
@@ -41,12 +43,25 @@ authenticode_sign = $(SIGNTOOL) sign \
 		    /tr "http://timestamp.comodoca.com/rfc3161" /td SHA256 \
 		    $(1)
 else
+ifdef OSSLSIGNCODE
+osslsigncode_sign = $(OSSLSIGNCODE) sign \
+		    -spc "$(SIGNCODE_SPC)" -key "$(SIGNCODE_PVK)" \
+		    -h $(3) -comm \
+		    -n $(2) -i "https://pidgin.im" \
+		    -t http://timestamp.digicert.com \
+                    -in $(1) -out $(1).signed \
+		    && mv $(1).signed $(1)
+# osslsigncode apparently only allows one nested signature
+authenticode_sign = $(call osslsigncode_sign,$(1),$(2),sha1) && \
+		    $(call osslsigncode_sign,$(1),$(2),sha256 -nest)
+else
 authenticode_sign = $(MONO_SIGNCODE) \
 		    -spc "$(SIGNCODE_SPC)" -v "$(SIGNCODE_PVK)" \
 		    -a sha1 -$$ commercial \
 		    -n "$(2)" -i "https://pidgin.im" \
 		    -t "http://timestamp.verisign.com/scripts/timstamp.dll" -tr 10 \
 		    $(1) && rm -f $(1).bak
+endif
 endif
 
 gpg_sign = $(GPG_SIGN) -ab $(1) && $(GPG_SIGN) --verify $(1).asc
@@ -116,15 +131,13 @@ generate_installer_includes: create_release_install_dir gtk_runtime_zip debug_sy
 	 | LC_ALL=C sort | sed -e s/^/\!insertmacro\ LANG_SECTION\ \"/ -e s/$$/\"/ \
 	 > pidgin/win32/nsis/pidgin-translations.nsh
 	#Convert the available.lst lines to "!insertmacro SPELLCHECK_SECTION lang lang_name lang_file"
-	sed -e "/^#/d" -e "s/^[^,]\{1,\},[^,]\{1,\},/\"/" \
-	 -e "s/,/\"\ \"/" -e "s/,/\"\ \"/" -e "s/[\ \t]*$$/\"/" \
-	 -e "s/^/\!insertmacro\ SPELLCHECK_SECTION\ /" \
+	sed -e "/^#/d" -e "s/,/\ /" -e "s/^/\!insertmacro\ SPELLCHECK_SECTION\ /" \
          pidgin/win32/nsis/available.lst \
          > pidgin/win32/nsis/pidgin-spellcheck.nsh
 	#Convert the lines to "!insertmacro CHECK_SPELLCHECK_SECTION lang"
 	iconv -f latin1 -t utf-8 pidgin/win32/nsis/pidgin-spellcheck.nsh | \
 	 sed -e "s/SPELLCHECK_SECTION/CHECK_SPELLCHECK_SECTION/" \
-	 -e "s/ \"[^\"]*\"\ \"[^\"]*\"[\t\ ]*$$//" | \
+	 -e "s/ \"[^\"]*\"[\t\ ]*$$//" | \
          iconv -f utf-8 -t latin1 \
         > pidgin/win32/nsis/pidgin-spellcheck-preselect.nsh
 	#Generate the Installer translations
@@ -150,7 +163,8 @@ installer: generate_installer_includes
 	$(eval $@_GTK_SHA1SUM := $(shell sha1sum pidgin/win32/nsis/gtk-runtime-$(GTK_INSTALL_VERSION).zip | sed -e "s/\ .*$$//"))
 	$(MAKENSIS) -V3 -DPIDGIN_VERSION="$(PIDGIN_VERSION)" -DPIDGIN_PRODUCT_VERSION="$(PIDGIN_PRODUCT_VERSION)" \
 		-DPIDGIN_INSTALL_DIR="$(STRIPPED_RELEASE_DIR)" -DGTK_INSTALL_VERSION="$(GTK_INSTALL_VERSION)" \
-		-DDEBUG_SYMBOLS_SHA1SUM="$($@_DEBUG_SYMBOLS_SHA1SUM)" -DGTK_SHA1SUM="$($@_GTK_SHA1SUM)"\
+		-DDEBUG_SYMBOLS_SHA1SUM="$($@_DEBUG_SYMBOLS_SHA1SUM)" -DGTK_SHA1SUM="$($@_GTK_SHA1SUM)" \
+		-DDICTIONARY_TIMESTAMP="$(DICTIONARY_TIMESTAMP)" \
 		pidgin/win32/nsis/pidgin-installer.nsi
 	$(call authenticode_sign, pidgin/win32/nsis/pidgin-$(PIDGIN_VERSION).exe, "Pidgin Installer")
 	mv pidgin/win32/nsis/pidgin-$(PIDGIN_VERSION).exe ./
@@ -159,7 +173,7 @@ installer: generate_installer_includes
 installer_offline: generate_installer_includes
 	$(MAKENSIS) -V3 -DPIDGIN_VERSION="$(PIDGIN_VERSION)" -DPIDGIN_PRODUCT_VERSION="$(PIDGIN_PRODUCT_VERSION)" \
 		-DPIDGIN_INSTALL_DIR="$(STRIPPED_RELEASE_DIR)" -DGTK_INSTALL_VERSION="$(GTK_INSTALL_VERSION)" \
-		-DOFFLINE_INSTALLER \
+		-DDICTIONARY_TIMESTAMP="$(DICTIONARY_TIMESTAMP)" -DOFFLINE_INSTALLER \
 		pidgin/win32/nsis/pidgin-installer.nsi
 	$(call authenticode_sign, pidgin/win32/nsis/pidgin-$(PIDGIN_VERSION)-offline.exe, "Pidgin Installer")
 	mv pidgin/win32/nsis/pidgin-$(PIDGIN_VERSION)-offline.exe ./

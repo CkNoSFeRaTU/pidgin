@@ -11,9 +11,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:20+0000\n"
-"Last-Translator: Richard Laager <rlaager@wiktel.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Mikel Pascual Aldabaldetreku <mikel.paskual@gmail.com>, "
+"correct and translate more than 85%, 2009\n"
 "Language-Team: Basque (http://www.transifex.com/pidgin/pidgin/language/eu/)\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -1799,7 +1800,6 @@ msgstr "+++ %s sartu da"
 msgid "+++ %s signed off"
 msgstr "+++ %s irten egin da"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Errore ezezaguna"
 
@@ -1815,6 +1815,10 @@ msgstr "Mezua luzeegia da."
 
 msgid "Unable to send message."
 msgstr "Ezin mezua bidali."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Mezua Bidali"
@@ -2158,19 +2162,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;ERANTZUN "
-"AUTOMATIKOA&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;ERANTZUN "
-"AUTOMATIKOA&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>Ezin txostenerako bidea aurkitu!</b></font>"
@@ -2236,6 +2236,42 @@ msgstr ""
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Errorea sesioa sortzean: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2781,7 +2817,7 @@ msgstr "Datozen solasaldietarako modu psikikoa"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3373,7 +3409,16 @@ msgstr "SSL Erabili"
 msgid "Authenticate with SASL"
 msgstr ""
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3845,37 +3890,6 @@ msgstr "Errorea SASL balioztatzean"
 #, c-format
 msgid "SASL error: %s"
 msgstr "SASL errorea: %s"
-
-msgid "Invalid Encoding"
-msgstr ""
-
-msgid "Unsupported Extension"
-msgstr ""
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr ""
-
-msgid "User not found"
-msgstr "Ez da erabiltzailea aurkitu"
-
-msgid "Invalid Username Encoding"
-msgstr ""
-
-msgid "Resource Constraint"
-msgstr "Baliabide-Murrizketa"
 
 msgid "Unable to canonicalize username"
 msgstr ""
@@ -4456,6 +4470,9 @@ msgstr "Baimen-Mekanismo Baliogabea"
 msgid "Authorization mechanism too weak"
 msgstr "Baimen-mekanismo ahulegia"
 
+msgid "Incorrect username or password"
+msgstr "Erabiltzaile-izen edo pasahitz okerra"
+
 msgid "Temporary Authentication Failure"
 msgstr "Aldiuneko Balioztatze-Errorea"
 
@@ -4500,6 +4517,9 @@ msgstr "Politika-Bortxaketa"
 
 msgid "Remote Connection Failed"
 msgstr "Urruneko Konexioak Huts"
+
+msgid "Resource Constraint"
+msgstr "Baliabide-Murrizketa"
 
 msgid "Restricted XML"
 msgstr "XML Murriztua"
@@ -4831,6 +4851,19 @@ msgstr ""
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Fitxategia %s(e)ko zein baliabidetara bidaliko duzun hautatu ezazu."
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr ""
 
@@ -5050,7 +5083,6 @@ msgstr ""
 msgid "Sick"
 msgstr ""
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Logurarekin"
 
@@ -5139,6 +5171,9 @@ msgstr "Pasahitza iraungitu da"
 msgid "Incorrect password"
 msgstr "Pasahitz okerra"
 
+msgid "User not found"
+msgstr "Ez da erabiltzailea aurkitu"
+
 msgid "Account has been disabled"
 msgstr "Kontua ezgaitua izan da"
 
@@ -5159,9 +5194,6 @@ msgstr "Ezin duzu zure burua gehitu"
 
 msgid "Master archive is misconfigured"
 msgstr "Artxibo nagusia oker konfiguratuta dago"
-
-msgid "Incorrect username or password"
-msgstr "Erabiltzaile-izen edo pasahitz okerra"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Ezin da sartu duzun erabiltzaile-izenaren ostalaria identifikatu"
@@ -5376,1194 +5408,6 @@ msgstr "Zerbitzariaren helbidea"
 
 msgid "Server port"
 msgstr "Zerbitzariaren ataka"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "Zu nire lagun-zerrendara gehitzeko baimena emaidazu, mesedez."
-
-msgid "No reason given."
-msgstr "Ez da arrazoirik eman."
-
-msgid "Authorization Denied Message:"
-msgstr "Baimena Ezesteko Mezua:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_Ados"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr ""
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "Espero ez zen erantzuna jaso da %s(e)tik"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Maizegi konektatu eta deskonektatu zara. Hamar minutu itxaron itzazu berriro "
-"saiatu aurretik. Saiatzen jarraituz gero, agian gehiago ere itxaron beharko "
-"duzu."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Errorea %s eskatzean: %s"
-
-msgid "The server returned an empty response"
-msgstr ""
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL-k ez du zure pantaila-izena hemen balioztatzea onartzen"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(Errorea mezu hau jasotzean.  Agian, espero zena ez den beste kodeketa bat "
-"darabil zure lagunak.  Zein kodeketa darabilen badakizu, zure AIM/ICQ "
-"kontuaren aukera aurreratuetan zehaztu dezakezu.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"((Errorea mezu hau jasotzean.  Kodeketa ezberdinak hautatu dituzue zuk eta "
-"%s(e)k, edo %s(e)k bezero akatsduna dauka.)"
-
-msgid "Could not join chat room"
-msgstr "Ezin gelara batu"
-
-msgid "Invalid chat room name"
-msgstr "Gela-izen baliogabea"
-
-msgid "Invalid error"
-msgstr "Errore baliogabea"
-
-msgid "Not logged in"
-msgstr "Ez konektatuta"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr ""
-
-msgid "Cannot send SMS without accepting terms"
-msgstr ""
-
-msgid "Cannot send SMS"
-msgstr ""
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr ""
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr ""
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr ""
-
-msgid "Bot account cannot IM this user"
-msgstr ""
-
-msgid "Bot account reached IM limit"
-msgstr ""
-
-msgid "Bot account reached daily IM limit"
-msgstr ""
-
-msgid "Bot account reached monthly IM limit"
-msgstr ""
-
-msgid "Unable to receive offline messages"
-msgstr ""
-
-msgid "Offline message store full"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Ezin mezua bidali: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr ""
-
-msgid "Thinking"
-msgstr ""
-
-msgid "Shopping"
-msgstr ""
-
-msgid "Questioning"
-msgstr ""
-
-msgid "Eating"
-msgstr ""
-
-msgid "Watching a movie"
-msgstr ""
-
-msgid "Typing"
-msgstr "Idazten"
-
-msgid "At the office"
-msgstr ""
-
-msgid "Taking a bath"
-msgstr ""
-
-msgid "Watching TV"
-msgstr ""
-
-msgid "Having fun"
-msgstr ""
-
-msgid "Sleeping"
-msgstr ""
-
-msgid "Using a PDA"
-msgstr ""
-
-msgid "Meeting friends"
-msgstr ""
-
-msgid "On the phone"
-msgstr ""
-
-msgid "Surfing"
-msgstr ""
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Mugikorra"
-
-msgid "Searching the web"
-msgstr ""
-
-msgid "At a party"
-msgstr ""
-
-msgid "Having Coffee"
-msgstr ""
-
-#. Playing video games
-msgid "Gaming"
-msgstr ""
-
-msgid "Browsing the web"
-msgstr ""
-
-msgid "Smoking"
-msgstr ""
-
-msgid "Writing"
-msgstr ""
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr ""
-
-msgid "Listening to music"
-msgstr "Musika entzuten"
-
-msgid "Studying"
-msgstr ""
-
-msgid "Working"
-msgstr "Lanean"
-
-msgid "In the restroom"
-msgstr ""
-
-msgid "Received invalid data on connection with server"
-msgstr "Datu baliogabeak jaso dira zerbotzariarekin konektatzean"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "AIM Protokolo-Plugina"
-
-msgid "ICQ UIN..."
-msgstr "ICQ UIN..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "ICQ Protokolo-Plugina"
-
-msgid "Encoding"
-msgstr "Kodeketa"
-
-msgid "The remote user has closed the connection."
-msgstr "Konexioa itxi du urruneko erabiltzaileak."
-
-msgid "The remote user has declined your request."
-msgstr "Zure eskaria ezetsi du urruneko erabiltzaileak."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Urruneko erabiltzailearekiko konexioa galduta:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Datu baliogabeak jaso dira urruneko erabiltzailearekiko konexioan."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "Ezin konexioa ezarri urruneko erabiltzailearekin."
-
-msgid "Direct IM established"
-msgstr "Zuzeneko IMa ezarrita"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s(e)k %s fitxategia bidali nahi izan dizu, baina gehienez %s dauzkaten "
-"fitxategiak onartzen ditugu Zuzeneko IMaren bidez. Fitxategi-transferentzia "
-"erabili ezazu.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr ""
-"%s fitxategiak %s dauzka, hau da, %s tamaina maximoa baina handiagoa da."
-
-msgid "Free For Chat"
-msgstr "Berriketarako Libre"
-
-msgid "Not Available"
-msgstr "Eskuragaitz"
-
-msgid "Occupied"
-msgstr "Okupatuta"
-
-msgid "Web Aware"
-msgstr "Web-ean"
-
-msgid "Invisible"
-msgstr "Ikustezin"
-
-msgid "Evil"
-msgstr ""
-
-msgid "Depression"
-msgstr ""
-
-msgid "At home"
-msgstr ""
-
-msgid "At work"
-msgstr ""
-
-msgid "At lunch"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "Ezin balioztatze-zerbitzarira konektatu: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "Ezin BOS zerbitzarira konektatu: %s"
-
-msgid "Username sent"
-msgstr "Erabiltzaile-izena bidalia"
-
-msgid "Connection established, cookie sent"
-msgstr "Konexioa ezarri da, eta cookie-a bidali da"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Konexioa amaitzen"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Ezin %s bezala konektatu, erabiltzaile-izena ez delako baliozkoa.  "
-"Erabiltzaile-izenek baliozko helbide elektroniko izan behar dute, edo letra "
-"batekin hasi eta letrak, zenbakiak eta zuriuneak bakarrik eduki, edo bestela "
-"zenbakiak bakarrik."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"Laster deskonektatuko zaituzte agian.  Hala bada, eguneraketak bilatu "
-"itzazu: %s"
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Ezin baliozko AIM-konexio hash-a eskuratu."
-
-msgid "Unable to get a valid login hash."
-msgstr "Ezin baliozko konexio-hash-a eskuratu."
-
-msgid "Received authorization"
-msgstr "Baimena jaso da"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Erabiltzaile-izena ez da existitzen"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Zure kontua suspendituta dago oraintxe"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "AOL Istanteko Mezularitza zerbitzua eskuragaitz dago une honetan."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr "Zure bezero-bertsioa zaharregia da. %s gunean berritu dezakezu"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-msgid "The SecurID key entered is invalid"
-msgstr "Baliogabea da sartutako SecurID-gakoa"
-
-msgid "Enter SecurID"
-msgstr "SecurID-a Sartu"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Pantaila digitaleko zenbakia (6 digito) sartu ezazu."
-
-msgid "Password sent"
-msgstr "Pasahitza bidali da"
-
-msgid "Unable to initialize connection"
-msgstr "Ezin konexioa hasiarazi"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"%u erabiltzaileak ukatu egin dizu bera zure lagun-zerrendara gehitzeko "
-"baimena. Arrazoia:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "ICQ baimena ukatu da."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-"%u erabiltzaileak baimena eman dizu bera zure lagun-zerrendara gehitzeko."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Mezu berezi bat jaso duzu\n"
-"\n"
-"Bidaltzailea: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"ICQ-orri bat jaso duzu\n"
-"\n"
-"Bidaltzailea: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"ICQ e-posta jaso duzu: %s [%s]\n"
-"\n"
-"Mezua:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "%u ICQ-erabiltzaileak lagun bat bidali dizu: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Lagun hori zure lagun-zerrendara gehitu nahi duzu?"
-
-msgid "_Add"
-msgstr "_Gehitu"
-
-msgid "_Decline"
-msgstr "_Ukatu"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "Mezu %hu galdu duzu (%s(r)enak), baliogabea zelako."
-msgstr[1] "%hu mezu galdu dituzu (%s(r)enak), baliogabeak zirelako."
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "Mezu %hu galdu duzu (%s(r)ena), luzeegia zelako."
-msgstr[1] "%hu mezu galdu dituzu (%s(r)enak), luzeegiak zirelako."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] "Mezu %hu galdu duzu (%s(r)ena), tasa-muga gainditu delako."
-msgstr[1] "%hu mezu galdu dituzu (%s(r)enak), tasa-muga gainditu delako."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] "Mezu %hu galdu duzu, %s(r)en abisu-maila altuegia delako."
-msgstr[1] "%hu mezu galdu dituzu, %s(r)en abisu-maila altuegia delako."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"Mezu %hu galdu duzu (%s(e)k bidalia), zure abisu-maila altuegia delako."
-msgstr[1] ""
-"%hu mezu galdu dituzu (%s(e)k bidaliak), zure abisu-maila altuegia delako."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "Mezu %hu galdu duzu (%s(r)ena), arrazoi ezezagun baten erruz."
-msgstr[1] "%hu mezu galdu dituzu (%s(r)enak), arrazoi ezezagun baten erruz."
-
-msgid "Your AIM connection may be lost."
-msgstr "Beharbada AIM konexioa galdu duzu."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "%s berriketa-gelatik deskonektatu egin zaituzte."
-
-msgid "The new formatting is invalid."
-msgstr "Formatu berria ez da baliozkoa."
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"Erabiltzaile-izenak formateatzean maiuskula/minuskulak eta hutsuneak "
-"bakarrik aldatu ditzake."
-
-msgid "Pop-Up Message"
-msgstr "Pop-Up Mezua"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "%s(r)ekin asoziatuta dago ondorengo erabiltzaile-izen hau"
-msgstr[1] "%s(r)ekin asoziatuta daude ondorengo erabiltzaile-izen hauek"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Emaitzik ez %s e-postarentzat"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "%s berrestea eskatzen duen posta-mezu bat jaso beharko zenuke. "
-
-msgid "Account Confirmation Requested"
-msgstr "Kontuaren Berrespena Eskatuta"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"0x%04x errorea: Ezin da erabiltzaile-izena formateatu, eskatutako izena ez "
-"delako jatorrizkoaren berdina."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-"0x%04x errorea: Ezin da erabiltzaile-izena formateatu, baliogabea delako."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"0x%04x errorea: Ezin da erabiltzaile-izena formateatu, eskatutako izena "
-"luzeegia delako."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"0x%04x errorea: Ezin da helbide elektronikoa aldatu, jadanik badagoelako "
-"erabiltzaile-izen honentzako beste eskaera bat."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"0x%04x errorea: Ezin da helbide elektronikoa aldatu, emandako helbideak "
-"erabiltzaile-izen gehiegi dituelako asoziatuta."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"0x%04x errorea: Ezin da helbide elektronikoa aldatu, emandako helbidea ez "
-"delako baliozkoa."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "0x%04x errorea: Errore ezezaguna."
-
-msgid "Error Changing Account Info"
-msgstr "Errorea Kontuaren Datuak Aldatzean"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "%s erabiltzailearen helbide elektronikoa %s da"
-
-msgid "Account Info"
-msgstr "Kontuaren Informazioa"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Ez da zure IM Irudia bidali. Zuzeneko Konexioa behar duzu IM Irudiak "
-"bidaltzeko."
-
-msgid "Unable to set AIM profile."
-msgstr "Ezin AIM profila ezarri."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Beharbada, saio-hasiera osatu aurretik saiatu zara zure profila ezartzen. "
-"Profilak ezarri gabe jarraitzen du; saiatu berriro, erabat konektatuta "
-"zaudenean."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"Byte %d(e)ko profila-luzeera maximoa gainditu da.  Laburtua izan da."
-msgstr[1] "%d byteko profila-luzeera maximoa gainditu da.  Laburtua izan da."
-
-msgid "Profile too long."
-msgstr "Profila luzeegia."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"Kanpoan zaudeneko mezuaren gehienezko luzera (%d byte) gainditu da. Laburtua "
-"izan da."
-msgstr[1] ""
-"Kanpoan zaudeneko mezuaren gehienezko luzera (%d byte) gainditu da. Laburtua "
-"izan da."
-
-msgid "Away message too long."
-msgstr "Luzeegia da Kanpoan Zaudeneko Mezua."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Ezin %s laguna gehitu, erabiltzaile-izena ez delako baliozkoa.  Erabiltzaile-"
-"izenek baliozko helbide elektroniko izan behar dute, edo letra batekin hasi "
-"eta letrak, zenbakiak eta zuriuneak bakarrik eduki, edo bestela zenbakiak "
-"bakarrik."
-
-msgid "Unable to Add"
-msgstr "Ezin Gehitu"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Ezin Lagun-Zerrenda Eskuratu"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"Oraintxe AIM-zerbitzariak ez dira zure lagun-zerrenda bidaltzeko gai.  Zure "
-"lagun-zerrenda ez da galdu, eta ziurrenik minutu batzutan izango duzu "
-"eskurragarri."
-
-msgid "Orphans"
-msgstr "Umezurtzak"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"Ezin %s laguna gehitu, lagun gehiegi dauzkazulako zure lagun-zerrendan.  "
-"Batenbat kendu ezazu, eta berriro saiatu zaitez."
-
-msgid "(no name)"
-msgstr "(izenik ez)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Ezin %s laguna gehitu, arrazoi ezezagun baten erruz."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"%s erabiltzaileak baimena eman dizu bera zure lagun-zerrendara gehitzeko. "
-"Lagun hau gehitu nahi al duzu?"
-
-msgid "Authorization Given"
-msgstr "Baimena Emana"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"%s erabiltzaileak baimena eman dizu bera zure lagun-zerrendara gehitzeko."
-
-msgid "Authorization Granted"
-msgstr "Baimena Emana"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"%s erabiltzaileak ukatu dizu bera zure lagun-zerrendara gehitzeko eskaera. "
-"Arrazoia:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Baimena Ukatuta"
-
-msgid "_Exchange:"
-msgstr "_Trukea:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"Ez da zure IM Irudia bidali. Ezin duzu IM Irudirik bidali AIM berriketetara."
-
-msgid "iTunes Music Store Link"
-msgstr "iTunes Musika-Denda Esteka"
-
-msgid "Lunch"
-msgstr ""
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Lagun-Iruzkina %s(r)entzako"
-
-msgid "Buddy Comment:"
-msgstr "Lagun-Iruzkina:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr "%s(r)ekin zuzeneko IM-konexio bat irekitzea hautatu duzu."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Zure IP helbidea erakutsiko denez, segurtasun arazo bezala har liteke.  "
-"Jarraitu nahi duzu?"
-
-msgid "C_onnect"
-msgstr "_Konektatu"
-
-msgid "You closed the connection."
-msgstr "Konexioa itxi duzu."
-
-msgid "Get AIM Info"
-msgstr "AIM-Informazioa Eskuratu"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Lagun-Iruzkina Editatu"
-
-msgid "Get X-Status Msg"
-msgstr ""
-
-msgid "End Direct IM Session"
-msgstr "Zuzeneko IM Sesioa Amaitu"
-
-msgid "Direct IM"
-msgstr "Zuzeneko IM"
-
-msgid "Re-request Authorization"
-msgstr "Baimena Berriro Eskatu"
-
-msgid "Require authorization"
-msgstr "Baimena eskatu"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr ""
-
-msgid "ICQ Privacy Options"
-msgstr "ICQ Pribatutasun Ezarpenak"
-
-msgid "Change Address To:"
-msgstr "Helbide Hau Ezarri:"
-
-msgid "you are not waiting for authorization"
-msgstr ""
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Lagun hauen baimenaren zain zaude"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Lagun hauei baimena berriro eskatzeko, eskuin-klik egizu lagunen gainean eta "
-"\"Baimena Berriro Eskatu\" hautatu ezazu."
-
-msgid "Find Buddy by Email"
-msgstr "E-posta bidez Bilatu Laguna"
-
-msgid "Search for a buddy by email address"
-msgstr "Helbide elektronikoaren bidez bilatu lagun bat"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Bilatu nahi duzun lagunaren helbide elektronikoa idatz ezazu."
-
-msgid "_Search"
-msgstr "_Bilatu"
-
-msgid "Set User Info (web)..."
-msgstr "Erabiltzaile-Informazioa Ezarri (web)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Pasahitza Aldatu (web)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "IM-Birbidalketa Konfiguratu (URLa)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Pribatutasun Aukerak Ezarri..."
-
-msgid "Show Visible List"
-msgstr ""
-
-msgid "Show Invisible List"
-msgstr ""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Kontua Berretsi"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Orain Erregistratuta Dagoen Helbidea Elektronikoa Erakutsi"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Orain Erregistratuta Dagoen Helbidea Elektronikoa Erakutsi..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Baimenaren Zain dauden Lagunak Bistaratu"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Helbide Elektronikoaren bidez Bilatu Laguna..."
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr ""
-
-msgid "MD5-based"
-msgstr ""
-
-msgid "Authentication method"
-msgstr ""
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"AIM/ICQ proxy-zerbitzariak erabili beti\n"
-"fitxategi-transferentzi eta zuzeneko IMrako\n"
-"(geldoagoa da,baina ez du IP-helbidea erakusten)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "Aldi bereko konexio ugari onartu"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr ""
-"%s(r)i galdetzen gurekin %s:%hu(e)n IM Zuzenerako koenktatzeko eskatzen."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "%s(e)ra konektatzen saiatzen: %hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Proxy zerbitzari baten bidez konektatzen saiatzen."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s erabiltzaileak %s erabiltzailearekin zuzenean konektatzea eskatu du"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Bi ordenagailuen arteko konexio zuzena behar du, eta beharrezkoa da IM "
-"Irudietarako. Zure IP helbidea erakutsiko denez, pribatutasun-arrisku bat "
-"suposa dezake."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Lagun-Ikonoa"
-
-msgid "Voice"
-msgstr "Ahotsa"
-
-msgid "AIM Direct IM"
-msgstr "AIM Direct IM"
-
-msgid "Get File"
-msgstr "Fitxategia Hartu"
-
-msgid "Games"
-msgstr "Jokoak"
-
-msgid "ICQ Xtraz"
-msgstr ""
-
-msgid "Add-Ins"
-msgstr "Osagarriak"
-
-msgid "Send Buddy List"
-msgstr "Lagun-Zerrenda Bidali"
-
-msgid "ICQ Direct Connect"
-msgstr "ICQ Zuzeneko Konexioa"
-
-msgid "AP User"
-msgstr "AP Erabiltzailea"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nihilista"
-
-msgid "ICQ Server Relay"
-msgstr "ICQ Server Relay"
-
-msgid "Old ICQ UTF8"
-msgstr "ICQ UTF8 Zaharra"
-
-msgid "Trillian Encryption"
-msgstr "Trillian Enkripzioa"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Segurtasuna Gaituta"
-
-msgid "Video Chat"
-msgstr "Bideo-Berriketa"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "Zuzeneko Bideoa"
-
-msgid "Camera"
-msgstr "Kamera"
-
-msgid "Screen Sharing"
-msgstr "Pantaila-Partekatzea"
-
-msgid "IP Address"
-msgstr "IP Helbidea"
-
-msgid "Warning Level"
-msgstr "Abisu-Maila"
-
-msgid "Buddy Comment"
-msgstr "Lagun-Iruzkina"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Erabiltzaile-datuak ez daude eskuragarri: %s"
-
-msgid "Mobile Phone"
-msgstr "Telefono Mugikorra"
-
-msgid "Age"
-msgstr "Adina"
-
-msgid "Personal Web Page"
-msgstr "Webgune Pertsonala"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Informazio Gehigarria"
-
-msgid "Home Address"
-msgstr "Etxeko Helbidea"
-
-msgid "Zip Code"
-msgstr "Posta-Kodea"
-
-msgid "Work Address"
-msgstr "Laneko Helbidea"
-
-msgid "Work Information"
-msgstr "Laneko Datuak"
-
-msgid "Company"
-msgstr "Enpresa"
-
-msgid "Division"
-msgstr "Saila"
-
-msgid "Position"
-msgstr "Kargua"
-
-msgid "Web Page"
-msgstr "Webgunea"
-
-msgid "Online Since"
-msgstr "Noiztik Online"
-
-msgid "Member Since"
-msgstr "Noiztik Kidea"
-
-msgid "Capabilities"
-msgstr "Gaitasunak"
-
-msgid "Profile"
-msgstr "Profila"
-
-msgid "View web profile"
-msgstr "Web profila ikusi"
-
-msgid "Invalid SNAC"
-msgstr "SNAC baliogabea"
-
-msgid "Server rate limit exceeded"
-msgstr ""
-
-msgid "Client rate limit exceeded"
-msgstr ""
-
-msgid "Service unavailable"
-msgstr "Zerbitzua eskuragaitz"
-
-msgid "Service not defined"
-msgstr "Zerbitzua ez dago zehaztuta"
-
-msgid "Obsolete SNAC"
-msgstr "SNAC zaharkitua"
-
-msgid "Not supported by host"
-msgstr "Ostalariak ez du onartzen"
-
-msgid "Not supported by client"
-msgstr "Bezeroak ez du onartzen"
-
-msgid "Refused by client"
-msgstr "Bezeroak ezetsi du"
-
-msgid "Reply too big"
-msgstr "Erantzuna handiegia da"
-
-msgid "Responses lost"
-msgstr "Erantzunak galdu dira"
-
-msgid "Request denied"
-msgstr "Eskaera ukatu da"
-
-msgid "Busted SNAC payload"
-msgstr "SNAC karga hondatuta"
-
-msgid "Insufficient rights"
-msgstr "Eskubide nahikorik ez"
-
-msgid "In local permit/deny"
-msgstr "Lokalki onartu/ukatu"
-
-msgid "Warning level too high (sender)"
-msgstr "Abisu-maila  altuegia (igorlea)"
-
-msgid "Warning level too high (receiver)"
-msgstr "Abisu-maila altuegia (hartzailea)"
-
-msgid "User temporarily unavailable"
-msgstr "Erabiltzailea eskuragaitz aldi baterako"
-
-msgid "No match"
-msgstr "Kointzidentziarik ez"
-
-msgid "List overflow"
-msgstr "Zerrendaren gainezkatzea"
-
-msgid "Request ambiguous"
-msgstr "Eskaera anbiguoa"
-
-msgid "Queue full"
-msgstr "Ilara beteta"
-
-msgid "Not while on AOL"
-msgstr "Ez AOLn egon bitartean"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Online Agertu"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr ""
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Offline Agertu"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr ""
-
-msgid "you have no buddies on this list"
-msgstr ""
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr ""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr ""
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7884,6 +6728,9 @@ msgstr "Bideo-Konferentzia"
 msgid "Computer"
 msgstr "Ordenagailua"
 
+msgid "Mobile Phone"
+msgstr "Telefono Mugikorra"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8145,6 +6992,9 @@ msgstr "Domeinua"
 msgid "Exposure"
 msgstr "Esposizioa"
 
+msgid "Encoding"
+msgstr "Kodeketa"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "Ezin socket-a sortu: %s"
@@ -8166,6 +7016,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "Errorea %s ebaztean"
 
+msgid "Received invalid data on connection with server"
+msgstr "Datu baliogabeak jaso dira zerbotzariarekin konektatzean"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "%s(r)ren arreta eskatzen..."
@@ -8182,6 +7035,12 @@ msgstr "_Bai"
 
 msgid "_No"
 msgstr "_Ez"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_Ados"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8253,8 +7112,17 @@ msgstr "Ezarri gabe"
 msgid "Do not disturb"
 msgstr "Ez molestatu"
 
+msgid "Invisible"
+msgstr "Ikustezin"
+
 msgid "Extended away"
 msgstr "Kanpoan luzarorako"
+
+msgid "Mobile"
+msgstr "Mugikorra"
+
+msgid "Listening to music"
+msgstr "Musika entzuten"
 
 msgid "Feeling"
 msgstr ""
@@ -8411,29 +7279,40 @@ msgstr ""
 "Errore bat aurkitu da zure %s irakurtzean.  Ez da fitxategia kargatu, eta "
 "fitxategi zaharra berrizendatu da: %s~."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr ""
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
+msgid "Buddy list showing friends on different networks"
 msgstr ""
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin Internet-Mezularia"
 
 msgid "Internet Messenger"
 msgstr "Internet-Mezularia"
 
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin Internet-Mezularia"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
+msgstr ""
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
 msgstr ""
 
 #. Build the login options frame.
@@ -8932,6 +7811,9 @@ msgstr "/_Laguntza"
 
 msgid "/Help/Online _Help"
 msgstr "/Laguntza/_Online Laguntza"
+
+msgid "/Help/D_onate"
+msgstr ""
 
 msgid "/Help/_Build Information"
 msgstr ""
@@ -9462,6 +8344,9 @@ msgid_plural "%d people in room"
 msgstr[0] "Pertsona %d gelan"
 msgstr[1] "%d pertsona gelan"
 
+msgid "Typing"
+msgstr "Idazten"
+
 msgid "Stopped Typing"
 msgstr "Idazten Gelditu Da"
 
@@ -9569,20 +8454,14 @@ msgstr "Errorea"
 msgid "Fatal Error"
 msgstr "Errore Konponezina"
 
-msgid "artist"
-msgstr "artista"
-
-msgid "voice and video"
-msgstr "ahotsa eta bideoa"
-
-msgid "support"
-msgstr "euskarria"
-
-msgid "webmaster"
-msgstr "webmaster-a"
+msgid "lead developer"
+msgstr "garatzaile-burua"
 
 msgid "win32 port"
 msgstr "win32 bertsioa"
+
+msgid "artist"
+msgstr "artista"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9595,9 +8474,18 @@ msgstr "mantentzailea"
 msgid "libfaim maintainer"
 msgstr "libfaim mantentzailea"
 
+msgid "webmaster"
+msgstr "webmaster-a"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "hacker eta aukeratutako gidaria [zerri alperra]"
+
+msgid "voice and video"
+msgstr "ahotsa eta bideoa"
+
+msgid "support"
+msgstr "euskarria"
 
 msgid "support/QA"
 msgstr "euskarria/Galderak"
@@ -9607,9 +8495,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "jatorrizko egilea"
-
-msgid "lead developer"
-msgstr "garatzaile-burua"
 
 msgid "Senior Contributor/QA"
 msgstr ""
@@ -9925,20 +8810,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -11000,12 +9883,12 @@ msgstr "Ezin proxy-konfigurazio programa hasiarazi."
 msgid "Cannot start browser configuration program."
 msgstr "Ezin nabigatzaile-konfigurazio programa hasiarazi."
 
-msgid "Disabled"
-msgstr ""
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "_Automatikoki detektatutako IP-helbidea erabili: %s"
+
+msgid "IP Address"
+msgstr "IP Helbidea"
 
 msgid "ST_UN server:"
 msgstr ""
@@ -11268,6 +10151,37 @@ msgstr "Azkeneko exekuzioko egoera erabili abiaraztean"
 msgid "Status to a_pply at startup:"
 msgstr "Abioan e_zarriko den egoera:"
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr ""
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "_Gailua"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Input"
+msgstr "Sarrera"
+
+msgid "Output"
+msgstr "Irteera"
+
+msgid "Video"
+msgstr "Bideo"
+
 msgid "Interface"
 msgstr "Interfazea"
 
@@ -11278,6 +10192,9 @@ msgid "Status / Idle"
 msgstr "Egoera / Inaktibo"
 
 msgid "Themes"
+msgstr ""
+
+msgid "Voice/Video"
 msgstr ""
 
 msgid "Allow all users to contact me"
@@ -11362,6 +10279,46 @@ msgstr "Izen Berria Hautatu"
 
 msgid "Select Folder..."
 msgstr "Direktorioa Hautatu..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Gehitu"
 
 #. list button
 msgid "_Get List"
@@ -11544,6 +10501,10 @@ msgstr ""
 "<b>Fitxategi-tamaina:</b> %s\n"
 "<b>Irudi-tamaina:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Lagun-Ikonoa"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11584,11 +10545,6 @@ msgstr ""
 
 msgid "Select color"
 msgstr "Kolorea Hautatu"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_Ezizena"
@@ -12481,6 +11437,9 @@ msgstr "Operadorea"
 msgid "Half Operator"
 msgstr "Erdi-Operadorea"
 
+msgid "Voice"
+msgstr "Ahotsa"
+
 msgid "Authorization dialog"
 msgstr "Autorizazio-elkarrizketa"
 
@@ -12732,35 +11691,51 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
-msgstr "Audio"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "Bideo"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "Irteera"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "_Plugina"
-
-msgid "_Device"
-msgstr "_Gailua"
-
-msgid "Input"
-msgstr "Sarrera"
 
 msgid "P_lugin"
 msgstr "P_lugina"
 
 msgid "D_evice"
 msgstr "G_ailua"
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
-msgstr ""
 
 msgid "Silence threshold:"
 msgstr ""
@@ -12952,8 +11927,8 @@ msgstr "Zuzentzaile Ortografikoa"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description

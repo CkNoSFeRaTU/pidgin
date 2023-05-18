@@ -148,10 +148,9 @@ sending_msg_cb(PurpleAccount *account, const char *who, char **message, gpointer
 	offline->message = *message;
 	*message = NULL;
 
-	if (purple_prefs_get_bool(PREF_ALWAYS) || setting == OFFLINE_MSG_YES)
+	if (purple_prefs_get_bool(PREF_ALWAYS) || setting == OFFLINE_MSG_YES) {
 		record_pounce(offline);
-	else if (setting == OFFLINE_MSG_NONE)
-	{
+	} else if (setting == OFFLINE_MSG_NONE) {
 		char *ask;
 		ask = g_strdup_printf(_("\"%s\" is currently offline. Do you want to save the "
 						"rest of the messages in a pounce and automatically send them "
@@ -165,6 +164,8 @@ sending_msg_cb(PurpleAccount *account, const char *who, char **message, gpointer
 					_("Yes"), record_pounce,
 					_("No"), cancel_poune);
 		g_free(ask);
+	} else {
+		discard_data(offline);
 	}
 }
 

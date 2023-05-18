@@ -29,6 +29,7 @@
 #include "account.h"
 #include "connection.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "roomlist.h"
 #include "server.h"
 
@@ -109,8 +110,8 @@ static void purple_roomlist_destroy(PurpleRoomlist *list)
 	}
 	g_list_free(list->rooms);
 
-	g_list_foreach(list->fields, (GFunc)purple_roomlist_field_destroy, NULL);
-	g_list_free(list->fields);
+	g_list_free_full(list->fields,
+	                 (GDestroyNotify)purple_roomlist_field_destroy);
 
 	g_free(list);
 }

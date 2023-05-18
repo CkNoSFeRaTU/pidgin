@@ -22,6 +22,7 @@
  */
 #include "internal.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "imgstore.h"
 #include "prpl.h"
 #include "notify.h"
@@ -1043,7 +1044,7 @@ static void jabber_vcard_parse(JabberStream *js, const char *from,
 			} else if(text && purple_strequal(child->name, "NICKNAME")) {
 				/* Prefer the Nickcname to the Full Name as the serverside alias if it's not just part of the jid.
 				 * Ignore it if it's part of the jid. */
-				if (strstr(bare_jid, text) == NULL) {
+				if (bare_jid != NULL && strstr(bare_jid, text) == NULL) {
 					g_free(serverside_alias);
 					serverside_alias = g_strdup(text);
 
@@ -1181,7 +1182,7 @@ static void jabber_vcard_parse(JabberStream *js, const char *from,
 						char *img_text;
 						char *hash;
 
-						jbi->vcard_imgids = g_slist_prepend(jbi->vcard_imgids, GINT_TO_POINTER(purple_imgstore_add_with_id(g_memdup(data, size), size, "logo.png")));
+						jbi->vcard_imgids = g_slist_prepend(jbi->vcard_imgids, GINT_TO_POINTER(purple_imgstore_add_with_id(g_memdup2(data, size), size, "logo.png")));
 						img_text = g_strdup_printf("<img id='%d'>", GPOINTER_TO_INT(jbi->vcard_imgids->data));
 
 						purple_notify_user_info_add_pair(user_info, (photo ? _("Photo") : _("Logo")), img_text);

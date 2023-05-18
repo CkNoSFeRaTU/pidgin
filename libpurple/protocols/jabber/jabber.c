@@ -31,6 +31,7 @@
 #include "conversation.h"
 #include "debug.h"
 #include "dnssrv.h"
+#include "glibcompat.h"
 #include "imgstore.h"
 #include "message.h"
 #include "notify.h"
@@ -68,6 +69,7 @@
 #include "xdata.h"
 #include "pep.h"
 #include "adhoccommands.h"
+#include "stream_management.h"
 
 #include "jingle/jingle.h"
 #include "jingle/rtp.h"
@@ -176,6 +178,9 @@ static void jabber_bind_result_cb(JabberStream *js, const char *from,
 		return;
 	}
 
+	if (js->sm_state == SM_PLANNED) {
+		jabber_sm_enable(js);
+	}
 	jabber_session_init(js);
 }
 
@@ -312,6 +317,13 @@ void jabber_stream_features_parse(JabberStream *js, xmlnode *packet)
 		jabber_stream_set_state(js, JABBER_STREAM_AUTHENTICATING);
 		jabber_auth_start_old(js);
 	}
+
+	/* Stream management */
+	if (xmlnode_get_child_with_namespace(packet, "sm", NS_STREAM_MANAGEMENT)
+	    && (js->sm_state == SM_DISABLED) )
+	{
+		js->sm_state = SM_PLANNED;
+	}
 }
 
 static void jabber_stream_handle_error(JabberStream *js, xmlnode *packet)
@@ -339,6 +351,8 @@ void jabber_process_packet(JabberStream *js, xmlnode **packet)
 
 	name = (*packet)->name;
 	xmlns = xmlnode_get_namespace(*packet);
+
+	jabber_sm_inbound(js, *packet);
 
 	if(purple_strequal((*packet)->name, "iq")) {
 		jabber_iq_parse(js, *packet);
@@ -370,6 +384,8 @@ void jabber_process_packet(JabberStream *js, xmlnode **packet)
 				tls_init(js);
 			/* TODO: Handle <failure/>, I guess? */
 		}
+	} else if (purple_strequal(xmlns, NS_STREAM_MANAGEMENT)) {
+		jabber_sm_process_packet(js, *packet);
 	} else {
 		purple_debug_warning("jabber", "Unknown packet: %s\n", (*packet)->name);
 	}
@@ -583,6 +599,28 @@ int jabber_prpl_send_raw(PurpleConnection *gc, const char *buf, int len)
 	return (len < 0 ? (int)strlen(buf) : len);
 }
 
+/* Checks whether a packet may be a stanza (not strictly: returns TRUE
+   if there's no namespace, assuming that the default namespace is
+   jabber:client or jabber:server). */
+gboolean
+jabber_is_stanza(xmlnode *packet) {
+	const char *name;
+	const char *xmlns;
+
+	g_return_val_if_fail(packet != NULL, FALSE);
+	g_return_val_if_fail(packet->name != NULL, FALSE);
+
+	name = packet->name;
+	xmlns = xmlnode_get_namespace(packet);
+
+	return ((purple_strequal(name, "message")
+	         || purple_strequal(name, "iq")
+	         || purple_strequal(name, "presence"))
+	        && ((xmlns == NULL)
+	            || purple_strequal(xmlns, NS_XMPP_CLIENT)
+	            || purple_strequal(xmlns, NS_XMPP_SERVER)));
+}
+
 void jabber_send_signal_cb(PurpleConnection *pc, xmlnode **packet,
                            gpointer unused)
 {
@@ -601,13 +639,13 @@ void jabber_send_signal_cb(PurpleConnection *pc, xmlnode **packet,
 		return;
 
 	if (js->bosh)
-		if (purple_strequal((*packet)->name, "message") ||
-				purple_strequal((*packet)->name, "iq") ||
-				purple_strequal((*packet)->name, "presence"))
+		if (jabber_is_stanza(*packet))
 			xmlnode_set_namespace(*packet, NS_XMPP_CLIENT);
 	txt = xmlnode_to_str(*packet, &len);
 	jabber_send_raw(js, txt, len);
 	g_free(txt);
+
+	jabber_sm_outbound(js, *packet);
 }
 
 void jabber_send(JabberStream *js, xmlnode *packet)
@@ -760,49 +798,6 @@ jabber_login_callback_ssl(gpointer data, PurpleSslConnection *gsc,
 }
 
 static void
-txt_resolved_cb(GList *responses, gpointer data)
-{
-	JabberStream *js = data;
-	gboolean found = FALSE;
-
-	js->srv_query_data = NULL;
-
-	while (responses) {
-		PurpleTxtResponse *resp = responses->data;
-		gchar **token;
-		token = g_strsplit(purple_txt_response_get_content(resp), "=", 2);
-		if (purple_strequal(token[0], "_xmpp-client-xbosh")) {
-			purple_debug_info("jabber","Found alternative connection method using %s at %s.\n", token[0], token[1]);
-			js->bosh = jabber_bosh_connection_init(js, token[1]);
-			g_strfreev(token);
-			break;
-		}
-		g_strfreev(token);
-		purple_txt_response_destroy(resp);
-		responses = g_list_delete_link(responses, responses);
-	}
-
-	if (js->bosh) {
-		found = TRUE;
-		jabber_bosh_connection_connect(js->bosh);
-	}
-
-	if (!found) {
-		purple_debug_warning("jabber", "Unable to find alternative XMPP connection "
-				  "methods after failing to connect directly.\n");
-		purple_connection_error_reason(js->gc,
-				PURPLE_CONNECTION_ERROR_NETWORK_ERROR,
-				_("Unable to connect"));
-		return;
-	}
-
-	if (responses) {
-		g_list_foreach(responses, (GFunc)purple_txt_response_destroy, NULL);
-		g_list_free(responses);
-	}
-}
-
-static void
 jabber_login_callback(gpointer data, gint source, const gchar *error)
 {
 	PurpleConnection *gc = data;
@@ -813,10 +808,9 @@ jabber_login_callback(gpointer data, gint source, const gchar *error)
 			purple_debug_error("jabber", "Unable to connect to server: %s.  Trying next SRV record or connecting directly.\n", error);
 			try_srv_connect(js);
 		} else {
-			purple_debug_info("jabber","Couldn't connect directly to %s.  Trying to find alternative connection methods, like BOSH.\n", js->user->domain);
-			js->srv_query_data = purple_txt_resolve_account(
-					purple_connection_get_account(gc), "_xmppconnect",
-					js->user->domain, txt_resolved_cb, js);
+			purple_connection_error_reason(js->gc,
+				PURPLE_CONNECTION_ERROR_NETWORK_ERROR,
+				_("Unable to connect"));
 		}
 		return;
 	}
@@ -1015,6 +1009,8 @@ jabber_stream_new(PurpleAccount *account)
 	presence = purple_account_get_presence(account);
 	if (purple_presence_is_idle(presence))
 		js->idle = purple_presence_get_idle_time(presence);
+
+	js->sm_state = SM_DISABLED;
 
 	return js;
 }
@@ -1584,6 +1580,27 @@ void jabber_unregister_account(PurpleAccount *account, PurpleAccountUnregistrati
 	jabber_unregister_account_cb(js);
 }
 
+static void
+jabber_terminate_transfers(JabberStream *js)
+{
+	while(js->file_transfers != NULL) {
+		gpointer data = js->file_transfers->data;
+
+		purple_xfer_end(data);
+
+		if(js->file_transfers == NULL) {
+			break;
+		}
+
+		/* Forcefully remove the link if jabber_si_xfer_free doesn't
+		   remove the link. */
+		if(js->file_transfers->data == data) {
+			js->file_transfers = g_list_delete_link(js->file_transfers,
+								js->file_transfers);
+		}
+	}
+}
+
 /* TODO: As Will pointed out in IRC, after being notified by the core to
  * shutdown, we should async. wait for the server to send us the stream
  * termination before destorying everything. That seems like it would require
@@ -1596,10 +1613,14 @@ void jabber_close(PurpleConnection *gc)
 	/* Close all of the open Jingle sessions on this stream */
 	jingle_terminate_sessions(js);
 
+	jabber_terminate_transfers(js);
+
 	if (js->bosh)
 		jabber_bosh_connection_close(js->bosh);
-	else if ((js->gsc && js->gsc->fd > 0) || js->fd > 0)
+	else if ((js->gsc && js->gsc->fd > 0) || js->fd > 0) {
+		jabber_sm_ack_send(js);
 		jabber_send_raw(js, "</stream:stream>", -1);
+	}
 
 	if (js->srv_query_data)
 		purple_srv_cancel(js->srv_query_data);
@@ -1731,6 +1752,12 @@ void jabber_close(PurpleConnection *gc)
 	jabber_mam_clear(js->mam);
 	free(js->mam);
 	js->mam = NULL;
+
+	if (js->sessions) {
+		g_hash_table_remove_all(js->sessions);
+		g_hash_table_unref(js->sessions);
+		js->sessions = NULL;
+	}
 
 	g_free(js);
 
@@ -1878,10 +1905,6 @@ static void jabber_blocklist_parse(JabberStream *js, const char *from,
 	if (type == JABBER_IQ_ERROR || blocklist == NULL)
 		return;
 
-	/* This is the only privacy method supported by XEP-0191 */
-	if (account->perm_deny != PURPLE_PRIVACY_DENY_USERS)
-		account->perm_deny = PURPLE_PRIVACY_DENY_USERS;
-
 	/*
 	 * TODO: When account->deny is something more than a hash table, this can
 	 * be re-written to find the set intersection and difference.
@@ -1917,6 +1940,7 @@ void jabber_add_deny(PurpleConnection *gc, const char *who)
 	JabberStream *js;
 	JabberIq *iq;
 	xmlnode *block, *item;
+	const char *norm = NULL;
 
 	g_return_if_fail(who != NULL && *who != '\0');
 
@@ -1937,13 +1961,15 @@ void jabber_add_deny(PurpleConnection *gc, const char *who)
 		return;
 	}
 
+	norm = jabber_normalize(purple_connection_get_account(gc), who);
+
 	iq = jabber_iq_new(js, JABBER_IQ_SET);
 
 	block = xmlnode_new_child(iq->node, "block");
 	xmlnode_set_namespace(block, NS_SIMPLE_BLOCKING);
 
 	item = xmlnode_new_child(block, "item");
-	xmlnode_set_attrib(item, "jid", who);
+	xmlnode_set_attrib(item, "jid", norm ? norm : who);
 
 	jabber_iq_send(iq);
 }
@@ -1953,6 +1979,7 @@ void jabber_rem_deny(PurpleConnection *gc, const char *who)
 	JabberStream *js;
 	JabberIq *iq;
 	xmlnode *unblock, *item;
+	const char *norm = NULL;
 
 	g_return_if_fail(who != NULL && *who != '\0');
 
@@ -1969,13 +1996,15 @@ void jabber_rem_deny(PurpleConnection *gc, const char *who)
 	if (!(js->server_caps & JABBER_CAP_BLOCKING))
 		return;
 
+	norm = jabber_normalize(purple_connection_get_account(gc), who);
+
 	iq = jabber_iq_new(js, JABBER_IQ_SET);
 
 	unblock = xmlnode_new_child(iq->node, "unblock");
 	xmlnode_set_namespace(unblock, NS_SIMPLE_BLOCKING);
 
 	item = xmlnode_new_child(unblock, "item");
-	xmlnode_set_attrib(item, "jid", who);
+	xmlnode_set_attrib(item, "jid", norm ? norm : who);
 
 	jabber_iq_send(iq);
 }
@@ -2951,7 +2980,7 @@ char *jabber_parse_error(JabberStream *js,
 			/* Clear the pasword if it isn't being saved */
 			if (!purple_account_get_remember_password(js->gc->account))
 				purple_account_set_password(js->gc->account, NULL);
-			text = _("Not Authorized");
+			text = _("Incorrect username or password");
 		} else if(xmlnode_get_child(packet, "temporary-auth-failure")) {
 			text = _("Temporary Authentication Failure");
 		} else {
@@ -3345,7 +3374,12 @@ static gboolean _jabber_send_buzz(JabberStream *js, const char *username, char *
 		xmlnode *buzz, *msg = xmlnode_new("message");
 		gchar *to;
 
-		to = g_strdup_printf("%s/%s", username, jbr->name);
+		if((strchr(username, '/') == NULL) && jbr && (jbr->name != NULL)) {
+			to = g_strdup_printf("%s/%s", username, jbr->name);
+		} else {
+			to = g_strdup(username);
+		}
+
 		xmlnode_set_attrib(msg, "to", to);
 		g_free(to);
 
@@ -4109,12 +4143,15 @@ jabber_do_init(void)
 	jabber_si_init();
 
 	jabber_auth_init();
+
+	jabber_sm_init();
 }
 
 static void
 jabber_do_uninit(void)
 {
 	/* reverse order of jabber_do_init */
+	jabber_sm_uninit();
 	jabber_bosh_uninit();
 	jabber_data_uninit();
 	jabber_si_uninit();

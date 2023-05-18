@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2014 Richard Hughes <richard@hughsie.com> -->
-<!-- Copyright 2014 Pidgin Developers <devel@pidgin.im> -->
+<!-- Copyright 2014-2022 Pidgin Developers <devel@pidgin.im> -->
 
-<application>
-  <id type="desktop">pidgin.desktop</id>
+<component type="desktop-application">
+  <id>pidgin.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0</project_license>
+  <_name>Pidgin</_name>
   <_summary>Instant Messaging Client</_summary>
   <description>
     <_p>
-      Pidgin is a chat program which lets you log in to accounts on multiple
+      Pidgin is a chat program which lets you log into accounts on multiple
       chat networks simultaneously.
     </_p>
     <_p>
-      This means that you can be chatting with friends on AIM, talking to a
-      friend on Google Talk, and sitting in an IRC chat room all at the same
-      time.
+      This means that you can be chatting with friends on XMPP and sitting in
+      an IRC channel at the same time.
     </_p>
   </description>
-  <url type="homepage">http://www.pidgin.im/</url>
+
+  <launchable type="desktop-id">pidgin.desktop</launchable>
+
   <screenshots>
     <screenshot type="default">
-      <image>http://www.pidgin.im/shared/img/contact_window.png</image>
-      <_caption>The buddy list showing friends on different networks.</_caption>
+      <image>https://old.pidgin.im/shared/img/contact_window.png</image>
+      <_caption>Buddy list showing friends on different networks</_caption>
     </screenshot>
   </screenshots>
-  <updatecontact>devel@pidgin.im</updatecontact>
-</application>
+
+  <url type="homepage">https://pidgin.im/</url>
+  <url type="bugtracker">https://issues.imfreedom.org/issues/PIDGIN</url>
+  <url type="faq">https://pidgin.im/development/faq/</url>
+  <url type="help">https://pidgin.im/help/</url>
+
+  <update_contact>devel@pidgin.im</update_contact>
+
+  <translation type="gettext">pidgin</translation>
+
+  <content_rating type="oars-1.1">
+    <content_attribute id="social-chat">intense</content_attribute>
+    <content_attribute id="social-info">mild</content_attribute>
+    <content_attribute id="social-audio">intense</content_attribute>
+    <content_attribute id="social-contacts">intense</content_attribute>
+  </content_rating>
+</component>

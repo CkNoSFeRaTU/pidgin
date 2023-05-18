@@ -6,9 +6,6 @@ datarootdir=@datarootdir@
 datadir=@datadir@
 sysconfdir=@sysconfdir@
 
-abs_srcdir=@abs_srcdir@
-abs_builddir=@abs_builddir@
-
 abs_top_srcdir=@abs_top_srcdir@
 abs_top_builddir=@abs_top_builddir@
 
@@ -18,4 +15,5 @@ Name: Pidgin
 Description: Pidgin is a GTK2-based instant messenger application.
 Version: @VERSION@
 Requires: gtk+-2.0 purple
-Cflags: -I${abs_top_srcdir}
+Cflags: -I${abs_top_srcdir} -I${abs_top_srcdir}/pidgin -I${abs_top_builddir} -I${abs_top_builddir}/pidgin
+Libs: -L${abs_top_builddir}/pidgin -lpidgin

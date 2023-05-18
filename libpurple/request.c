@@ -27,6 +27,7 @@
 
 #include "internal.h"
 
+#include "glibcompat.h"
 #include "notify.h"
 #include "request.h"
 #include "debug.h"
@@ -61,8 +62,8 @@ purple_request_fields_destroy(PurpleRequestFields *fields)
 {
 	g_return_if_fail(fields != NULL);
 
-	g_list_foreach(fields->groups, (GFunc)purple_request_field_group_destroy, NULL);
-	g_list_free(fields->groups);
+	g_list_free_full(fields->groups,
+	                 (GDestroyNotify)purple_request_field_group_destroy);
 	g_list_free(fields->required_fields);
 	g_hash_table_destroy(fields->fields);
 	g_free(fields);
@@ -290,8 +291,8 @@ purple_request_field_group_destroy(PurpleRequestFieldGroup *group)
 
 	g_free(group->title);
 
-	g_list_foreach(group->fields, (GFunc)purple_request_field_destroy, NULL);
-	g_list_free(group->fields);
+	g_list_free_full(group->fields,
+	                 (GDestroyNotify)purple_request_field_destroy);
 
 	g_free(group);
 }
@@ -375,22 +376,19 @@ purple_request_field_destroy(PurpleRequestField *field)
 	{
 		if (field->u.choice.labels != NULL)
 		{
-			g_list_foreach(field->u.choice.labels, (GFunc)g_free, NULL);
-			g_list_free(field->u.choice.labels);
+			g_list_free_full(field->u.choice.labels, (GDestroyNotify)g_free);
 		}
 	}
 	else if (field->type == PURPLE_REQUEST_FIELD_LIST)
 	{
 		if (field->u.list.items != NULL)
 		{
-			g_list_foreach(field->u.list.items, (GFunc)g_free, NULL);
-			g_list_free(field->u.list.items);
+			g_list_free_full(field->u.list.items, (GDestroyNotify)g_free);
 		}
 
 		if (field->u.list.selected != NULL)
 		{
-			g_list_foreach(field->u.list.selected, (GFunc)g_free, NULL);
-			g_list_free(field->u.list.selected);
+			g_list_free_full(field->u.list.selected, (GDestroyNotify)g_free);
 		}
 
 		g_hash_table_destroy(field->u.list.item_data);
@@ -918,8 +916,7 @@ purple_request_field_list_clear_selected(PurpleRequestField *field)
 
 	if (field->u.list.selected != NULL)
 	{
-		g_list_foreach(field->u.list.selected, (GFunc)g_free, NULL);
-		g_list_free(field->u.list.selected);
+		g_list_free_full(field->u.list.selected, (GDestroyNotify)g_free);
 		field->u.list.selected = NULL;
 	}
 
@@ -1023,7 +1020,7 @@ purple_request_field_image_new(const char *id, const char *text, const char *buf
 
 	field = purple_request_field_new(id, text, PURPLE_REQUEST_FIELD_IMAGE);
 
-	field->u.image.buffer  = g_memdup(buf, size);
+	field->u.image.buffer  = g_memdup2(buf, size);
 	field->u.image.size    = size;
 	field->u.image.scale_x = 1;
 	field->u.image.scale_y = 1;
@@ -1494,6 +1491,31 @@ purple_request_folder(void *handle, const char *title, const char *dirname,
 											ok_cb, cancel_cb,
 											account, who, conv,
 											user_data);
+		handles = g_list_append(handles, info);
+		return info->ui_handle;
+	}
+
+	return NULL;
+}
+
+void *
+purple_request_screenshare_media(void *handle, const char *title,
+				 const char *primary, const char *secondary,
+				 PurpleAccount *account, GCallback cb,
+				 void *user_data)
+{
+	PurpleRequestUiOps *ops;
+
+	ops = purple_request_get_ui_ops();
+
+	if (ops != NULL && ops->request_screenshare_media != NULL) {
+		PurpleRequestInfo *info;
+
+		info            = g_new0(PurpleRequestInfo, 1);
+		info->type      = PURPLE_REQUEST_SCREENSHARE;
+		info->handle    = handle;
+		info->ui_handle = ops->request_screenshare_media(title, primary, secondary,
+								 account, cb, user_data);
 		handles = g_list_append(handles, info);
 		return info->ui_handle;
 	}

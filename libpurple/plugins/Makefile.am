@@ -121,7 +121,7 @@ $(top_builddir)/libpurple/dbus-types.h: always
 
 dbus-example-bindings.c: $(top_srcdir)/libpurple/dbus-analyze-functions.py $(dbus_example_la_SOURCES)
 	cat $(srcdir)/$(dbus_example_la_SOURCES) | \
-	$(PYTHON) $(top_srcdir)/libpurple/dbus-analyze-functions.py --export-only > $@
+	$(PYTHON3) $(top_srcdir)/libpurple/dbus-analyze-functions.py --export-only > $@
 
 $(dbus_example_la_OBJECTS) dbus-example.so: dbus-example-bindings.c $(top_builddir)/libpurple/dbus-types.h
 

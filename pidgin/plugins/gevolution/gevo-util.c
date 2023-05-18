@@ -120,26 +120,51 @@ gevo_prpl_is_supported(PurpleAccount *account, PurpleBuddy *buddy)
 }
 
 gboolean
-gevo_load_addressbook(const gchar* uri, EBook **book, GError **error)
-{
+gevo_load_addressbook(const gchar* uid, EBook **book, GError **error) {
 	gboolean result = FALSE;
+	ESourceRegistry *registry;
+	ESource *source;
 
 	g_return_val_if_fail(book != NULL, FALSE);
 
-	if (uri == NULL)
-		*book = e_book_new_system_addressbook(error);
-	else
-		*book = e_book_new_from_uri(uri, error);
+	registry = e_source_registry_new_sync(NULL, error);
 
-	if (*book == NULL)
+	if(!registry) {
+	    return FALSE;
+	}
+
+	if(uid == NULL) {
+		source = e_source_registry_ref_default_address_book(registry);
+	} else {
+		source = e_source_registry_ref_source(registry, uid);
+	}
+
+	g_object_unref(registry);
+
+	result = gevo_load_addressbook_from_source(source, book, error);
+
+	g_object_unref(source);
+
+	return result;
+}
+
+gboolean
+gevo_load_addressbook_from_source(ESource *source, EBook **book,
+                                  GError **error)
+{
+	gboolean result = FALSE;
+
+	*book = e_book_new(source, error);
+
+	if(*book == NULL) {
 		return FALSE;
+	}
 
 	*error = NULL;
 
 	result = e_book_open(*book, FALSE, error);
 
-	if (!result && *book != NULL)
-	{
+	if(!result && *book != NULL) {
 		g_object_unref(*book);
 		*book = NULL;
 	}

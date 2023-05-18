@@ -1,72 +1,73 @@
-Pidgin and Finch: The Pimpin' Penguin IM Clients That're Good for the Soul
+Pidgin and Finch: The Universal Chat Clients!
 ==========================================================================
 
 For a complete list of all contributors, see the COPYRIGHT file.
 
-We've got an IRC room now too, #pidgin on irc.freenode.net. Come check us out.
+We've got an IRC room now too, #pidgin on irc.libera.chat. Come check us out.
 
 Current Developers:
 ------------------
 
-Daniel 'datallah' Atallah - Developer
-Paul 'darkrain42' Aurich - Developer
 John 'rekkanoryo' Bailey - Developer
 Ethan 'Paco-Paco' Blanton - Developer
-Sadrul Habib Chowdhury - Developer
-Mark 'KingAnt' Doliner - Developer
-Casey Harkins - Developer
-Ivan Komarov - Developer
 Gary 'grim' Kramlich - Developer
 Richard 'rlaager' Laager - Developer
-Marcus 'malu' Lundblad - Developer
-Sulabh 'sulabh_m' Mahajan - Developer
-Richard 'wabz' Nelson - Developer
-Etan 'deryni' Reisner - Developer
-Michael 'Maiku' Ruprecht - Developer, voice and video
+Eion Robb - Developer
 Elliott 'QuLogic' Sales de Andrade - Developer
-Luke 'LSchiere' Schierer - Support
-Evan Schoenberg - Developer
-Kevin 'SimGuy' Stange - Developer & Webmaster
-Will 'resiak' Thompson - Developer
-Stu 'nosnilmot' Tomlinson - Developer
-Jorge 'Masca' Villaseñor - Developer
 
 Crazy Patch Writers:
 -------------------
-Jakub 'haakon' Adam
-Krzysztof Klinikowski
-Peter 'Fmoo' Ruibal
-Gabriel 'Nix' Schulhof
-Tomasz Wasilczyk
 
 Retired Developers:
 ------------------
+Daniel 'datallah' Atallah - Developer
+Paul 'darkrain42' Aurich - Developer
 Herman Bloggs - Win32 Port
 Thomas Butter - Developer
 Ka-Hing Cheung - Developer
+Sadrul Habib Chowdhury - Developer
+Mark 'KingAnt' Doliner - Developer
 Jim Duchek <jim@linuxpimps.com> - maintainer
 Sean Egan - Developer
 Rob Flynn <gaim@robflynn.com> - maintainer
 Adam Fritzler - libfaim maintainer
 Christian 'ChipX86' Hammond - Developer & Webmaster
+Casey Harkins - Developer
+Ivan Komarov - Developer
 Syd Logan - hacker and designated driver [lazy bum]
+Marcus 'malu' Lundblad - Developer
+Sulabh 'sulabh_m' Mahajan - Developer
+Richard 'wabz' Nelson - Developer
 Christopher 'siege' O'Brien - Developer
 Bartosz Oler - Developer
+Etan 'deryni' Reisner - Developer
 Tim 'marv' Ringenbach - Developer
+Michael 'Maiku' Ruprecht - Developer, voice and video
+Luke 'LSchiere' Schierer - Support
 Megan 'Cae' Schneider - support/QA
+Evan Schoenberg - Developer
 Jim Seymour - XMPP developer
 Mark Spencer <markster@marko.net> - original author
+Kevin 'SimGuy' Stange - Developer & Webmaster
+Will 'resiak' Thompson - Developer
+Stu 'nosnilmot' Tomlinson - Developer
+Jorge 'Masca' Villaseñor - Developer
 Nathan 'faceprint' Walp - Developer
 Eric Warmenhoven <eric@warmenhoven.org> - lead developer
+Tomasz Wasilczyk
 
 Retired Crazy Patch Writers:
 ---------------------------
+Jakub 'haakon' Adam
 Felipe 'shx' Contreras
 Decklin Foster
-Dennis 'EvilDennisR' Ristuccia - Senior Contributor/QA
+Krzysztof Klinikowski
 Peter 'Bleeter' Lawler
 Robert 'Robot101' McQueen
 Benjamin Miller
+Dennis 'EvilDennisR' Ristuccia - Senior Contributor/QA
+Peter 'Fmoo' Ruibal
+Gabriel 'Nix' Schulhof
 
 Artists:
 -------

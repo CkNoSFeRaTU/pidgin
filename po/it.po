@@ -3,24 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Giuseppe Pignataro (Fasbyte01) <rogepix@gmail.com>, 2015
-# Giuseppe Pignataro (Fasbyte01) <rogepix@gmail.com>, 2015
+# Giuseppe Pignataro <rogepix@gmail.com>, 2015
+# Giuseppe Pignataro <rogepix@gmail.com>, 2015
+# Giuseppe Pignataro <rogepix@gmail.com>, 2015
 # Saverio <saverio.brancaccio@gmail.com>, 2015
-# Sebastiano Pistore <SebastianoPistore.info@protonmail.ch>, 2016-2017
+# SebastianoPistore <SebastianoPistore.info@protonmail.ch>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:20+0000\n"
-"Last-Translator: Sebastiano Pistore <SebastianoPistore.info@protonmail.ch>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: Saverio <saverio.brancaccio@gmail.com>, 2015\n"
 "Language-Team: Italian (http://www.transifex.com/pidgin/pidgin/language/"
 "it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
+"1 : 2;\n"
 
 #. Translators may want to transliterate the name.
 #. It is not to be translated.
@@ -657,13 +659,14 @@ msgid "You are not connected."
 msgstr "Non sei connesso."
 
 msgid "<AUTO-REPLY> "
-msgstr "<RISPOSTA AUTOMATICA>"
+msgstr "<RISPOSTA AUTOMATICA> "
 
 #, c-format
 msgid "List of %d user:\n"
 msgid_plural "List of %d users:\n"
 msgstr[0] "Lista di %d utente:\n"
 msgstr[1] "Lista di %d utenti:\n"
+msgstr[2] "Lista di %d utenti:\n"
 
 msgid "Supported debug options are: plugins version"
 msgstr "Le opzioni di debug supportate sono: plugins version"
@@ -775,6 +778,7 @@ msgid "File Transfers - %d%% of %d file"
 msgid_plural "File Transfers - %d%% of %d files"
 msgstr[0] "Trasferimento file - %d%% di %d file"
 msgstr[1] "Trasferimento file - %d%% di %d file"
+msgstr[2] "Trasferimento file - %d%% di %d file"
 
 #. Create the window.
 msgid "File Transfers"
@@ -880,7 +884,7 @@ msgstr "Dimensione totale del log:"
 
 #. Search box *********
 msgid "Scroll/Search: "
-msgstr "Scorri/cerca:"
+msgstr "Scorri/cerca: "
 
 #, c-format
 msgid "Conversations in %s"
@@ -947,6 +951,7 @@ msgid "%s (%s) has %d new message."
 msgid_plural "%s (%s) has %d new messages."
 msgstr[0] "%s (%s) ha %d nuovo messaggio."
 msgstr[1] "%s (%s) ha %d nuovi messaggi."
+msgstr[2] "%s (%s) ha %d nuovi messaggi."
 
 msgid "New Mail"
 msgstr "C'è posta per te"
@@ -1213,7 +1218,7 @@ msgid "Change status when idle"
 msgstr "Modifica lo stato quando sei inattivo"
 
 msgid "Minutes before changing status"
-msgstr "Minuti prima di modificare lo stato:"
+msgstr "Minuti prima di modificare lo stato"
 
 msgid "Change status to"
 msgstr "Cambia lo stato in"
@@ -1319,7 +1324,7 @@ msgid "Sound Method"
 msgstr "Metodo del suono"
 
 msgid "Method: "
-msgstr "Metodo:"
+msgstr "Metodo: "
 
 #, c-format
 msgid ""
@@ -1385,7 +1390,7 @@ msgid "Type"
 msgstr "Tipo"
 
 msgid "Message"
-msgstr "Messaggio:"
+msgstr "Messaggio"
 
 #. Use
 msgid "Use"
@@ -1586,7 +1591,7 @@ msgid "Offline Buddies"
 msgstr "Contatti non in linea"
 
 msgid "Online/Offline"
-msgstr " In linea/Non in linea"
+msgstr "In linea/Non in linea"
 
 msgid "Meebo"
 msgstr "Meebo"
@@ -1615,7 +1620,7 @@ msgid "GntLastlog"
 msgstr "Lastlog gnt"
 
 msgid "Lastlog plugin."
-msgstr "Plugin Lastlog"
+msgstr "Plugin Lastlog."
 
 msgid "accounts"
 msgstr "account"
@@ -1840,7 +1845,6 @@ msgstr "+++ %s si è connesso"
 msgid "+++ %s signed off"
 msgstr "+++ %s si è disconnesso"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Errore sconosciuto"
 
@@ -1856,6 +1860,10 @@ msgstr "Il messaggio è troppo grande."
 
 msgid "Unable to send message."
 msgstr "Impossibile inviare il messaggio."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Invia messaggio"
@@ -2203,19 +2211,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;RISPOSTA "
-"AUTOMATICA&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;RISPOSTA "
-"AUTOMATICA&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr ""
@@ -2290,6 +2294,42 @@ msgstr "Errore nella conferenza"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Errore nella creazione della sessione: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Disabilitato"
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2514,7 +2554,7 @@ msgstr "Rimuovi il tempo di inattività per tutti gli account"
 
 msgid "Allows you to hand-configure how long you've been idle"
 msgstr ""
-"Consente di configurare manualmente per quanto tempo sei stato inattivo."
+"Consente di configurare manualmente per quanto tempo sei stato inattivo"
 
 #. *< type
 #. *< ui_requirement
@@ -2584,7 +2624,7 @@ msgstr "Nascondi join/part"
 #. *< version
 #. *  summary
 msgid "Hides extraneous join/part messages."
-msgstr "Nasconde i messaggi estranei di join/part"
+msgstr "Nasconde i messaggi estranei di join/part."
 
 #. *  description
 msgid ""
@@ -2745,7 +2785,7 @@ msgstr "A capo"
 #. *< name
 #. *< version
 msgid "Prepends a newline to displayed message."
-msgstr "Manda a capo ogni messaggio mostrato"
+msgstr "Manda a capo ogni messaggio mostrato."
 
 #. *< summary
 msgid ""
@@ -2847,7 +2887,7 @@ msgstr "Modalità psichica per le conversazioni in ingresso"
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3444,10 +3484,19 @@ msgstr "Utilizza SSL"
 msgid "Authenticate with SASL"
 msgstr "Autenticarsi con SASL"
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
 msgstr ""
 "Permetti l'autenticazione SALS con testo normale su una connessione non "
 "criptata"
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
+msgstr ""
 
 msgid "Bad mode"
 msgstr "Modalità non valida"
@@ -3928,41 +3977,6 @@ msgstr "Autenticazione SASL fallita"
 #, c-format
 msgid "SASL error: %s"
 msgstr "Errore SASL: %s"
-
-msgid "Invalid Encoding"
-msgstr "Codifica non valida"
-
-msgid "Unsupported Extension"
-msgstr "Estensione non supportata"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-"Risposta inattesa dal server. Questo potrebbe indicare un possibile attacco "
-"MITM"
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-"Il server non supporta il binding del canale, sebbene non lo dica "
-"esplicitamente. Questo indica un probabile attacco MITM"
-
-msgid "Server does not support channel binding"
-msgstr "Il server non supporta il binding del canale"
-
-msgid "Unsupported channel binding method"
-msgstr "Metodo di binding del canale non supportato"
-
-msgid "User not found"
-msgstr "Utente non trovato"
-
-msgid "Invalid Username Encoding"
-msgstr "Codifica del nome utente non valida"
-
-msgid "Resource Constraint"
-msgstr "Vincolo sulla risorsa"
 
 msgid "Unable to canonicalize username"
 msgstr "Impossibile rendere il nome utente in forma canonica"
@@ -4547,6 +4561,9 @@ msgstr "Meccanismo di autorizzazione non valido"
 msgid "Authorization mechanism too weak"
 msgstr "Meccanismo di autorizzazione troppo debole"
 
+msgid "Incorrect username or password"
+msgstr "Password o nome utente non corretti"
+
 msgid "Temporary Authentication Failure"
 msgstr "Autenticazione temporaneamente non riuscita"
 
@@ -4591,6 +4608,9 @@ msgstr "Violazione delle regole di policy"
 
 msgid "Remote Connection Failed"
 msgstr "Controllo remoto fallito"
+
+msgid "Resource Constraint"
+msgstr "Vincolo sulla risorsa"
 
 msgid "Restricted XML"
 msgstr "XML limitato"
@@ -4654,8 +4674,7 @@ msgstr "Impossibile richiamare %s con un buzz: non conosco nulla dell'utente."
 #, c-format
 msgid "Unable to buzz, because %s might be offline."
 msgstr ""
-"Impossibile richiamare %s con un buzz: l'utente potrebbe non essere in "
-"linea. "
+"Impossibile richiamare %s con un buzz: l'utente potrebbe non essere in linea."
 
 #, c-format
 msgid ""
@@ -4845,7 +4864,7 @@ msgstr "Errore messaggio XMPP"
 
 #, c-format
 msgid "(Code %s)"
-msgstr " (Codice %s)"
+msgstr "(Codice %s)"
 
 msgid "A custom smiley in the message is too large to send."
 msgstr ""
@@ -4926,6 +4945,19 @@ msgstr ""
 #, c-format
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Scegli a quale risorsa di %s vuoi inviare un file"
+
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
 
 msgid "Afraid"
 msgstr "Spaventato"
@@ -5146,7 +5178,6 @@ msgstr "Timido"
 msgid "Sick"
 msgstr "Malato"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Assonnato"
 
@@ -5224,7 +5255,7 @@ msgid "Conference does not exist"
 msgstr "La conferenza non esiste"
 
 msgid "A folder with that name already exists"
-msgstr "Esiste già una cartella con quel nome."
+msgstr "Esiste già una cartella con quel nome"
 
 msgid "Not supported"
 msgstr "Non supportato"
@@ -5234,6 +5265,9 @@ msgstr "La password è scaduta"
 
 msgid "Incorrect password"
 msgstr "Password non corretta"
+
+msgid "User not found"
+msgstr "Utente non trovato"
 
 msgid "Account has been disabled"
 msgstr "L'account è stato disabilitato"
@@ -5255,9 +5289,6 @@ msgstr "Impossibile aggiungere te stesso"
 
 msgid "Master archive is misconfigured"
 msgstr "L'archivio principale non è configurato propriamente"
-
-msgid "Incorrect username or password"
-msgstr "Password o nome utente non corretti"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Impossibile riconoscere l'host del nome utente inserito"
@@ -5484,1230 +5515,6 @@ msgstr "Indirizzo del server"
 msgid "Server port"
 msgstr "Porta del server"
 
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "Autorizzami ad includerti nella mia lista contatti."
-
-msgid "No reason given."
-msgstr "Nessun motivo fornito."
-
-msgid "Authorization Denied Message:"
-msgstr "Messaggio di autorizzazione rifiutata:"
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_OK"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr "È stata ricevuta una risposta inattesa da parte di %s: %s"
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr "È stata ricevuta una risposta inattesa da parte di %s"
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-"Ti sei connesso e disconnesso con troppa frequenza. Aspetta dieci minuti e "
-"riprova. Se continui a provare, avrai bisogno di aspettare ancora di più."
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-"Hai richiesto la crittografia nelle impostazioni del tuo account, ma uno dei "
-"server non la supporta."
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Errore nella richiesta di %s: %s"
-
-msgid "The server returned an empty response"
-msgstr "Il server ha fornito una risposta vuota"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-"Il server richiede che venga compilato un CAPTCHA per poter effettuare il "
-"login; tuttavia questo client non supporta al momento i CAPTCHA."
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr "AOL non autorizza il tuo nome utente ad autenticarsi qui"
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-"(C'è stato un errore nella ricezione del messaggio. L'utente con il quale "
-"stai parlando sta probabilmente usando una codifica diversa da quella "
-"attesa. Se conosci la codifica che sta usando, puoi specificarla nelle "
-"opzioni avanzate del tuo account AIM/ICQ.)"
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-"(C'è stato un errore nella ricezione questo messaggio. E' possibile che tu e "
-"%s stiate usando delle codifiche differenti, oppure si tratta di un bug nel "
-"client di %s.)"
-
-msgid "Could not join chat room"
-msgstr "Impossibile entrare nella stanza di discussione"
-
-msgid "Invalid chat room name"
-msgstr "Nome della stanza di discussione non valido"
-
-msgid "Invalid error"
-msgstr "Errore non valido"
-
-msgid "Not logged in"
-msgstr "Non connesso"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr "Impossibile ricevere il MI a causa dei controlli parentali"
-
-msgid "Cannot send SMS without accepting terms"
-msgstr ""
-"Impossibile inviare SMS senza aver prima accettato le condizioni del servizio"
-
-msgid "Cannot send SMS"
-msgstr "Impossibile inviare l'SMS"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr "Impossibile inviare SMS verso questo paese"
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr "Impossibile inviare SMS ad un paese sconosciuto"
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr "Gli account Bot non possono avviare una sessione di MI"
-
-msgid "Bot account cannot IM this user"
-msgstr "L'account Bot non può inviare MI a questo utente"
-
-msgid "Bot account reached IM limit"
-msgstr "L'account Bot ha raggiunto il limite di MI"
-
-msgid "Bot account reached daily IM limit"
-msgstr "L'account Bot ha raggiunto il limite giornaliero di MI"
-
-msgid "Bot account reached monthly IM limit"
-msgstr "L'account Bot ha raggiunto il limite mensile di MI"
-
-msgid "Unable to receive offline messages"
-msgstr "Impossibile ricevere messaggi non in linea"
-
-msgid "Offline message store full"
-msgstr "L'archivio dei messaggi non in linea è pieno"
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr "Impossibile inviare il messaggio: %s (%s)."
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr "Impossibile inviare il messaggio: %s"
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr "Impossibile inviare il messaggio a %s: %s (%s)"
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr "Impossibile inviare il messaggio a %s: %s"
-
-msgid "Thinking"
-msgstr "Pensando"
-
-msgid "Shopping"
-msgstr "Shopping"
-
-msgid "Questioning"
-msgstr "Discutendo"
-
-msgid "Eating"
-msgstr "Mangiando"
-
-msgid "Watching a movie"
-msgstr "Guardando un film"
-
-msgid "Typing"
-msgstr "Sta scrivendo"
-
-msgid "At the office"
-msgstr "In ufficio"
-
-msgid "Taking a bath"
-msgstr "Facendo un bagno"
-
-msgid "Watching TV"
-msgstr "Guardando la TV"
-
-msgid "Having fun"
-msgstr "Divertendosi"
-
-msgid "Sleeping"
-msgstr "Dormendo"
-
-msgid "Using a PDA"
-msgstr "Usando un palmare"
-
-msgid "Meeting friends"
-msgstr "In compagnia di amici"
-
-msgid "On the phone"
-msgstr "Al telefono"
-
-msgid "Surfing"
-msgstr "Navigando"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Cellulare"
-
-msgid "Searching the web"
-msgstr "Cercando sul web"
-
-msgid "At a party"
-msgstr "Ad una festa"
-
-msgid "Having Coffee"
-msgstr "Prendendo un caffè"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "Giocando"
-
-msgid "Browsing the web"
-msgstr "Navigando sul web"
-
-msgid "Smoking"
-msgstr "Fumando"
-
-msgid "Writing"
-msgstr "Scrivendo"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "Bevendo"
-
-msgid "Listening to music"
-msgstr "Sta ascoltando musica"
-
-msgid "Studying"
-msgstr "Studiando"
-
-msgid "Working"
-msgstr "Al lavoro"
-
-msgid "In the restroom"
-msgstr "In bagno"
-
-msgid "Received invalid data on connection with server"
-msgstr "Ricevuti dati non validi durante la connessione con il server"
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr "Errore sconosciuto durante l'autenticazione"
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "Plugin per il protocollo AIM"
-
-msgid "ICQ UIN..."
-msgstr "UIN ICQ..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "Plugin per il protocollo ICQ"
-
-msgid "Encoding"
-msgstr "Codifica"
-
-msgid "The remote user has closed the connection."
-msgstr "L'utente remoto ha chiuso la connessione."
-
-msgid "The remote user has declined your request."
-msgstr "L'utente remoto ha rifiutato la tua richiesta."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr "Connessione persa con l'utente remoto:<br>%s"
-
-msgid "Received invalid data on connection with remote user."
-msgstr "Ricevuti dati non validi durante la connessione con l'utente remoto."
-
-msgid "Unable to establish a connection with the remote user."
-msgstr "Impossibile stabilire una connessione con l'utente remoto."
-
-msgid "Direct IM established"
-msgstr "Sessione di messaggi immediati diretti avviata"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-"%s ha cercato di inviarti un file di %s, ma sono consentiti soltanto file di "
-"dimensione fino a %s in un messaggio immediato diretto. Prova ad usare il "
-"trasferimento file, invece.\n"
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr "Il file %s è di %s. La massima dimensione possibile è di %s."
-
-msgid "Free For Chat"
-msgstr "Disponibile alla chat"
-
-msgid "Not Available"
-msgstr "Non disponibile"
-
-msgid "Occupied"
-msgstr "Occupato"
-
-msgid "Web Aware"
-msgstr "Rendi visibile il tuo stato sul web"
-
-msgid "Invisible"
-msgstr "Invisibile"
-
-msgid "Evil"
-msgstr "Malvagio"
-
-msgid "Depression"
-msgstr "Depressione"
-
-msgid "At home"
-msgstr "A casa"
-
-msgid "At work"
-msgstr "Al lavoro"
-
-msgid "At lunch"
-msgstr "A pranzo"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr "Impossibile connettersi al server di autenticazione: %s"
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr "Impossibile connettersi al server BOS: %s"
-
-msgid "Username sent"
-msgstr "Nome utente inviato"
-
-msgid "Connection established, cookie sent"
-msgstr "Connessione stabilita, cookie inviato"
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Finalizzazione della connessione"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Impossibile effettuare il login come %s poiché il nome utente non è valido. "
-"I nomi utente devono essere indirizzi email validi. In alternativa devono "
-"iniziare con una lettera e contenere solo lettere, numeri e spazi; oppure "
-"devono contenere solo numeri."
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-"Hai richiesto la crittografia nelle impostazioni del tuo account, ma la "
-"crittografia non è supportata dal tuo sistema."
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-"Potresti essere disconnesso a breve. In tal caso, controlla %s per "
-"aggiornamenti."
-
-msgid "Unable to get a valid AIM login hash."
-msgstr "Impossibile ottenere un hash di login valido per AIM."
-
-msgid "Unable to get a valid login hash."
-msgstr "Impossibile ottenere un hash di login valido."
-
-msgid "Received authorization"
-msgstr "Autorizzazione ricevuta"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Il nome utente non esiste"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Il tuo account è attualmente sospeso"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr "Il servizio AOL Instant Messenger è temporaneamente non disponibile."
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Il tuo nome utente si è connesso e disconnesso con eccessiva frequenza. "
-"Aspetta dieci minuti e riprova. Se continui a provare, avrai bisogno di "
-"aspettare ancora di più."
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-"La versione del client che stai usando è troppo vecchia. Aggiornala su %s"
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-"Il tuo indirizzo IP si è connesso e disconnesso con eccessiva frequenza. "
-"Aspetta un minuto e riprova. Se continui a provare, avrai bisogno di "
-"aspettare ancora di più."
-
-msgid "The SecurID key entered is invalid"
-msgstr "La chiave SecurID immessa non è valida"
-
-msgid "Enter SecurID"
-msgstr "Immettere SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Immettere il numero di 6 cifre del display digitale."
-
-msgid "Password sent"
-msgstr "Password inviata"
-
-msgid "Unable to initialize connection"
-msgstr "Impossibile inizializzare la connessione"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"L'utente %u ha rifiutato di essere aggiunto alla tua lista contatti per il "
-"seguente motivo:\n"
-"%s"
-
-msgid "ICQ authorization denied."
-msgstr "Autorizzazione ICQ rifiutata."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-"L'utente %u ha accolto la tua richiesta di aggiungerlo alla tua lista "
-"contatti."
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Hai ricevuto un messaggio speciale\n"
-"\n"
-"Da: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-"Hai ricevuto una pagina ICQ\n"
-"\n"
-"Da: %s [%s]\n"
-"%s"
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-"Hai ricevuto un'email ICQ da %s [%s]\n"
-"\n"
-"Il messaggio è:\n"
-"%s"
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr "L'utente ICQ %u ti ha inviato un contatto: %s (%s)"
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr "Vuoi aggiungere questo contatto alla tua lista?"
-
-msgid "_Add"
-msgstr "_Aggiungi"
-
-msgid "_Decline"
-msgstr "_Declina"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] "Non hai ricevuto %hu messaggio da %s poiché non era valido."
-msgstr[1] "Non hai ricevuto %hu messaggi da %s poiché non erano validi."
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] "Non hai ricevuto %hu messaggio da %s poiché era troppo grande."
-msgstr[1] "Non hai ricevuto %hu messaggi da %s poiché erano troppo grandi."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-"Non hai ricevuto %hu messaggio da %s poiché è stato spedito troppo "
-"velocemente."
-msgstr[1] ""
-"Non hai ricevuto %hu messaggi da %s poiché sono stati spedito troppo "
-"velocemente."
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-"Non hai ricevuto %hu messaggio da %s poiché il livello di allerta "
-"dell'utente è troppo alto."
-msgstr[1] ""
-"Non hai ricevuto %hu messaggi da %s poiché il livello di allerta dell'utente "
-"è troppo alto."
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-"Non hai ricevuto %hu messaggio da %s poiché il tuo livello di allerta è "
-"troppo alto."
-msgstr[1] ""
-"Non hai ricevuto %hu messaggi da %s poiché il tuo livello di allerta è "
-"troppo alto."
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] "Non hai ricevuto %hu messaggio da %s per un motivo sconosciuto"
-msgstr[1] "Non hai ricevuto %hu messaggi da %s per un motivo sconosciuto"
-
-msgid "Your AIM connection may be lost."
-msgstr "La tua connessione ad AIM potrebbe essere perduta."
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr "Sei stato disconnesso dalla stanza di discussione %s."
-
-msgid "The new formatting is invalid."
-msgstr "La nuova formattazione non è valida."
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-"La formattazione del nome utente può modificare solo le maiuscole/minuscole "
-"e gli spazi bianchi."
-
-msgid "Pop-Up Message"
-msgstr "Messaggio pop-up"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] "Il seguente nome utente è associato con %s"
-msgstr[1] "I seguenti nomi utente sono associati con %s"
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr "Nessun risultato trovato per l'indirizzo email %s"
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr "Dovresti ricevere un'email con la richiesta di conferma per %s."
-
-msgid "Account Confirmation Requested"
-msgstr "Conferma per l'account richiesta"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-"Errore 0x%04x: Impossibile formattare il nome utente poiché il nome utente "
-"richiesto differisce dall'originale."
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-"Errore 0x%04x: Impossibile formattare il nome utente poiché non è valido."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-"Errore 0x%04x: Impossibile formattare il nome utente poiché il nome utente "
-"richiesto è troppo lungo."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-"Errore 0x%04x: Impossibile cambiare l'indirizzo email poiché c'è già una "
-"richiesta in corso per questo nome utente."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-"Errore 0x%04x: Impossibile cambiare l'indirizzo email poiché l'indirizzo "
-"fornito ha troppi nomi utente associati."
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-"Errore 0x%04x: Impossibile cambiare l'indirizzo email poiché l'indirizzo "
-"fornito non è valido."
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Errore 0x%04x: Errore sconosciuto."
-
-msgid "Error Changing Account Info"
-msgstr "Errore nella modifica delle informazioni sull'account"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "L'indirizzo email di %s è %s"
-
-msgid "Account Info"
-msgstr "Informazioni sull'account"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"La tua immagine MI non è stata inviata. Devi essere in connessione diretta "
-"per inviare immagini MI."
-
-msgid "Unable to set AIM profile."
-msgstr "Impossibile impostare il profilo AIM."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-"Probabilmente hai richiesto di impostare il tuo profilo prima che la "
-"procedura di login fosse completata. Il tuo profilo rimane non impostato; "
-"prova ad impostarlo di nuovo quando sei connesso correttamente."
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"La lunghezza massima del profilo di %d byte è stata superata. E' stato "
-"pertanto automaticamente troncato."
-msgstr[1] ""
-"La lunghezza massima del profilo di %d byte è stata superata. E' stato "
-"pertanto automaticamente troncato."
-
-msgid "Profile too long."
-msgstr "Profilo troppo lungo."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"La lunghezza massima del messaggio di assenza di %d byte è stata superata. "
-"E' stato pertanto automaticamente troncato."
-msgstr[1] ""
-"La lunghezza massima del messaggio di assenza di %d byte è stata superata. "
-"E' stato pertanto automaticamente troncato."
-
-msgid "Away message too long."
-msgstr "Messaggio di assenza troppo lungo."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-"Impossibile aggiungere il contatto %s poiché il nome utente non è valido. I "
-"nomi utente devono essere indirizzi email validi oppure iniziare con una "
-"lettera e contenere solo lettere, numeri e spazi; oppure devono contenere "
-"solo numeri."
-
-msgid "Unable to Add"
-msgstr "Impossibile aggiungere"
-
-msgid "Unable to Retrieve Buddy List"
-msgstr "Impossibile ricevere la lista contatti"
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-"I server AIM non sono momentaneamente in grado di inviare la tua lista dei "
-"contatti. In ogni caso, la lista non è persa e sarà probabilmente "
-"disponibile tra pochi minuti."
-
-msgid "Orphans"
-msgstr "Orfani"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-"Impossibile aggiungere il contatto %s poiché hai troppi contatti nella tua "
-"lista. Rimuovine uno e prova nuovamente."
-
-msgid "(no name)"
-msgstr "(nessun nome)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Impossibile aggiungere il contatto %s per un motivo sconosciuto."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"L'utente %s ti ha dato il permesso di aggiungerlo alla tua lista contatti. "
-"Vuoi aggiungerlo?"
-
-msgid "Authorization Given"
-msgstr "Autorizzazione concessa"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"L'utente %s ha accolto la tua richiesta di aggiungerlo nella tua lista "
-"contatti."
-
-msgid "Authorization Granted"
-msgstr "Autorizzazione concessa"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-"L'utente %s ha rifiutato la tua richiesta di aggiungerlo alla tua lista "
-"contatti per il seguente motivo:\n"
-"%s"
-
-msgid "Authorization Denied"
-msgstr "Autorizzazione rifiutata"
-
-msgid "_Exchange:"
-msgstr "_Scambio:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"La tua immagine MI non è stata inviata. Non puoi inviare immagini MI nelle "
-"chat AIM."
-
-msgid "iTunes Music Store Link"
-msgstr "Link all'iTunes Music Store"
-
-msgid "Lunch"
-msgstr "Pranzo"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Commento per il contatto %s"
-
-msgid "Buddy Comment:"
-msgstr "Commento per il contatto:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr ""
-"Hai scelto di aprire una connessione per messaggi immediati diretti con %s."
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-"Poiché questo rivela il tuo indirizzo IP, deve essere considerato un rischio "
-"per la sicurezza. Vuoi continuare?"
-
-msgid "C_onnect"
-msgstr "C_onnetti"
-
-msgid "You closed the connection."
-msgstr "Hai chiuso la connessione."
-
-msgid "Get AIM Info"
-msgstr "Ottieni info AIM"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Modifica il commento per il contatto"
-
-msgid "Get X-Status Msg"
-msgstr "Ottieni il messaggio x-status"
-
-msgid "End Direct IM Session"
-msgstr "Termina la sessione di messaggi immediati diretti"
-
-msgid "Direct IM"
-msgstr "Messaggio immediato diretto"
-
-msgid "Re-request Authorization"
-msgstr "Richiedi nuovamente l'autorizzazione"
-
-msgid "Require authorization"
-msgstr "Richiedi autorizzazione"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr ""
-"Segnala sul web la tua presenza (questa opzione ti farà ricevere molto SPAM!)"
-
-msgid "ICQ Privacy Options"
-msgstr "Opzioni per la privacy di ICQ"
-
-msgid "Change Address To:"
-msgstr "Cambia l'indirizzo in:"
-
-msgid "you are not waiting for authorization"
-msgstr "non stai attendendo nessuna autorizzazione"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr "Stai attendendo autorizzazione dai seguenti contatti"
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-"Puoi richiedere nuovamente autorizzazione da questi contatti cliccando col "
-"tasto destro su di essi e scegliendo \"Richiedi nuovamente autorizzazione\""
-
-msgid "Find Buddy by Email"
-msgstr "Cerca un contatto per email"
-
-msgid "Search for a buddy by email address"
-msgstr "Cerca un contatto attraverso il suo indirizzo email"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Inserisci l'indirizzo email del contatto che stai cercando."
-
-msgid "_Search"
-msgstr "_Cerca"
-
-msgid "Set User Info (web)..."
-msgstr "Imposta le informazioni utente (web)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Cambia la password (web)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Configura l'inoltro dei messaggi immediati (web)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Imposta le opzioni per la privacy..."
-
-msgid "Show Visible List"
-msgstr "Mostra la lista \"visibile\""
-
-msgid "Show Invisible List"
-msgstr "Mostra la lista \"invisibile\""
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Conferma account"
-
-msgid "Display Currently Registered Email Address"
-msgstr "Mostra gli attuali indirizzi email registrati"
-
-msgid "Change Currently Registered Email Address..."
-msgstr "Cambia gli attuali indirizzi email registrati..."
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr "Mostra i contatti dai quali attendi autorizzazione"
-
-msgid "Search for Buddy by Email Address..."
-msgstr "Cerca un contatto per indirizzo email..."
-
-msgid "clientLogin"
-msgstr "clientLogin"
-
-msgid "Kerberos"
-msgstr "Kerberos"
-
-msgid "MD5-based"
-msgstr "MD-5"
-
-msgid "Authentication method"
-msgstr "Metodo di autenticazione"
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-"Utilizza sempre il server proxy ICQ per\n"
-"il trasferimento file e i messaggi immediati diretti\n"
-"(più lento, ma non rivela il tuo indirizzo IP)"
-
-msgid "Allow multiple simultaneous logins"
-msgstr "Consenti login multipli simultanei"
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr ""
-"È in corso la richiesta a %s di connessione verso di noi su %s:%hu per "
-"messaggi immediati diretti."
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr "Tentativo di connessione con %s: %hu."
-
-msgid "Attempting to connect via proxy server."
-msgstr "Tentativo di connessione attraverso un server proxy."
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr "%s ha chiesto di connettersi direttamente a %s"
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-"Questo richiede una connessione diretta tra i due computer ed è necessario "
-"per le Immagini IM. Poiché verrà rivelato il tuo indirizzo IP, devi "
-"considerare la cosa come un potenziale rischio per la tua privacy."
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Icona per il contatto"
-
-msgid "Voice"
-msgstr "Voce"
-
-msgid "AIM Direct IM"
-msgstr "Messaggio immediato diretto AIM"
-
-msgid "Get File"
-msgstr "Ricevi file"
-
-msgid "Games"
-msgstr "Giochi"
-
-msgid "ICQ Xtraz"
-msgstr "Extra ICQ"
-
-msgid "Add-Ins"
-msgstr "Add-in"
-
-msgid "Send Buddy List"
-msgstr "Invia la lista contatti"
-
-msgid "ICQ Direct Connect"
-msgstr "Connessione diretta ICQ"
-
-msgid "AP User"
-msgstr "Utente AP"
-
-msgid "ICQ RTF"
-msgstr "ICQ RTF"
-
-msgid "Nihilist"
-msgstr "Nichilista"
-
-msgid "ICQ Server Relay"
-msgstr "Server relay ICQ"
-
-msgid "Old ICQ UTF8"
-msgstr "Vecchio ICQ UTF8"
-
-msgid "Trillian Encryption"
-msgstr "Crittografia di Trillian"
-
-msgid "ICQ UTF8"
-msgstr "ICQ UTF8"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Sicurezza abilitata"
-
-msgid "Video Chat"
-msgstr "Video chat"
-
-msgid "iChat AV"
-msgstr "iChat AV"
-
-msgid "Live Video"
-msgstr "Video live"
-
-msgid "Camera"
-msgstr "Fotocamera"
-
-msgid "Screen Sharing"
-msgstr "Condivisone dello schermo"
-
-msgid "IP Address"
-msgstr "Indirizzo IP"
-
-msgid "Warning Level"
-msgstr "Livello di richiamo"
-
-msgid "Buddy Comment"
-msgstr "Commento per il contatto"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Informazioni sull'utente non disponibili: %s"
-
-msgid "Mobile Phone"
-msgstr "Cellulare"
-
-msgid "Age"
-msgstr "Età"
-
-msgid "Personal Web Page"
-msgstr "Pagina web personale"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Informazioni aggiuntive"
-
-msgid "Home Address"
-msgstr "Indirizzo di casa"
-
-msgid "Zip Code"
-msgstr "Codice postale"
-
-msgid "Work Address"
-msgstr "Indirizzo di lavoro"
-
-msgid "Work Information"
-msgstr "Informazioni sul lavoro"
-
-msgid "Company"
-msgstr "Compagnia"
-
-msgid "Division"
-msgstr "Divisione"
-
-msgid "Position"
-msgstr "Posizione"
-
-msgid "Web Page"
-msgstr "Pagina web"
-
-msgid "Online Since"
-msgstr "Online da"
-
-msgid "Member Since"
-msgstr "Membro da"
-
-msgid "Capabilities"
-msgstr "Capacità"
-
-msgid "Profile"
-msgstr "Profilo"
-
-msgid "View web profile"
-msgstr "Mostra il profilo web"
-
-msgid "Invalid SNAC"
-msgstr "SNAC non valido"
-
-msgid "Server rate limit exceeded"
-msgstr "Velocità del server superata"
-
-msgid "Client rate limit exceeded"
-msgstr "Velocità del client superata"
-
-msgid "Service unavailable"
-msgstr "Servizio non disponibile"
-
-msgid "Service not defined"
-msgstr "Servizio non definito"
-
-msgid "Obsolete SNAC"
-msgstr "SNAC obsoleto"
-
-msgid "Not supported by host"
-msgstr "Non supportato dal server"
-
-msgid "Not supported by client"
-msgstr "Non supportato dal client"
-
-msgid "Refused by client"
-msgstr "Rifiutato dal client"
-
-msgid "Reply too big"
-msgstr "Risposta troppo grande"
-
-msgid "Responses lost"
-msgstr "Risposte perse"
-
-msgid "Request denied"
-msgstr "Richiesta negata"
-
-msgid "Busted SNAC payload"
-msgstr "Payload SNAC danneggiato"
-
-msgid "Insufficient rights"
-msgstr "Permessi insufficienti"
-
-msgid "In local permit/deny"
-msgstr "Permetti/vieta in locale"
-
-msgid "Warning level too high (sender)"
-msgstr "Livello di allerta troppo elevato (mittente)"
-
-msgid "Warning level too high (receiver)"
-msgstr "Livello di allerta troppo elevato (destinatario)"
-
-msgid "User temporarily unavailable"
-msgstr "Utente temporaneamente non disponibile"
-
-msgid "No match"
-msgstr "Nessuna corrispondenza"
-
-msgid "List overflow"
-msgstr "Overflow della lista"
-
-msgid "Request ambiguous"
-msgstr "Richiesta ambigua"
-
-msgid "Queue full"
-msgstr "Coda piena"
-
-msgid "Not while on AOL"
-msgstr "Non possibile su AOL"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Mostrati come in linea"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "Non mostrarti come in linea"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Mostrati come non in linea"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "Non mostrarti come non in linea"
-
-msgid "you have no buddies on this list"
-msgstr "non hai nessun contatto su questa lista"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-"Puoi aggiungere un contatto a questa lista facendo clic con il pulsante "
-"destro sul suo nome e scegliendo \"%s\""
-
-msgid "Visible List"
-msgstr "Lista \"visibile\""
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-"Questi contatti potranno vedere il tuo stato quando passi a \"Invisibile\""
-
-msgid "Invisible List"
-msgstr "Lista \"invisibile\""
-
-msgid "These buddies will always see you as offline"
-msgstr "Questi contatti ti vedranno sempre come non in linea"
-
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
 msgstr "<b>Titolo del gruppo:</b> %s<br>"
@@ -6770,7 +5577,7 @@ msgid "Conference Closed"
 msgstr "Conferenza chiusa"
 
 msgid "Unable to send message: "
-msgstr "Impossibile inviare il messaggio:"
+msgstr "Impossibile inviare il messaggio: "
 
 #, c-format
 msgid "Unable to send message to %s:"
@@ -6911,7 +5718,7 @@ msgid "Merge List from Server"
 msgstr "Unisci la lista dal server"
 
 msgid "Merge and Save List to Server"
-msgstr "Unisci e salva la lista sul server "
+msgstr "Unisci e salva la lista sul server"
 
 msgid "Synchronize List with Server"
 msgstr "Sincronizza la lista con il server"
@@ -8036,6 +6843,9 @@ msgstr "Video conferenza"
 msgid "Computer"
 msgstr "Computer"
 
+msgid "Mobile Phone"
+msgstr "Cellulare"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -8301,6 +7111,9 @@ msgstr "Dominio"
 msgid "Exposure"
 msgstr "Esposizione"
 
+msgid "Encoding"
+msgstr "Codifica"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr "Impossibile creare il socket: %s"
@@ -8323,6 +7136,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "Errore nella risoluzione di %s"
 
+msgid "Received invalid data on connection with server"
+msgstr "Ricevuti dati non validi durante la connessione con il server"
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Richiedi l'attenzione di %s..."
@@ -8339,6 +7155,12 @@ msgstr "_Sì"
 
 msgid "_No"
 msgstr "_No"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_OK"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -8410,8 +7232,17 @@ msgstr "Rimuovi"
 msgid "Do not disturb"
 msgstr "Non disturbare"
 
+msgid "Invisible"
+msgstr "Invisibile"
+
 msgid "Extended away"
 msgstr "Assente per molto"
+
+msgid "Mobile"
+msgstr "Cellulare"
+
+msgid "Listening to music"
+msgstr "Sta ascoltando musica"
 
 msgid "Feeling"
 msgstr "Sensazione"
@@ -8465,36 +7296,42 @@ msgid "%d second"
 msgid_plural "%d seconds"
 msgstr[0] "%d secondo"
 msgstr[1] "%d secondi"
+msgstr[2] "%d secondi"
 
 #, c-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d giorno"
 msgstr[1] "%d giorni"
+msgstr[2] "%d giorni"
 
 #, c-format
 msgid "%s, %d hour"
 msgid_plural "%s, %d hours"
 msgstr[0] "%s, %d ora"
 msgstr[1] "%s, %d ore"
+msgstr[2] "%s, %d ore"
 
 #, c-format
 msgid "%d hour"
 msgid_plural "%d hours"
 msgstr[0] "%d ora"
 msgstr[1] "%d ore"
+msgstr[2] "%d ore"
 
 #, c-format
 msgid "%s, %d minute"
 msgid_plural "%s, %d minutes"
 msgstr[0] "%s, %d minuto"
 msgstr[1] "%s, %d minuti"
+msgstr[2] "%s, %d minuti"
 
 #, c-format
 msgid "%d minute"
 msgid_plural "%d minutes"
 msgstr[0] "%d minuto"
 msgstr[1] "%d minuti"
+msgstr[2] "%d minuti"
 
 #, c-format
 msgid "Could not open %s: Redirected too many times"
@@ -8531,11 +7368,11 @@ msgstr "Impossibile connettersi a %s: %s"
 
 #, c-format
 msgid " - %s"
-msgstr "- %s"
+msgstr " - %s"
 
 #, c-format
 msgid " (%s)"
-msgstr "(%s)"
+msgstr " (%s)"
 
 #. 10053
 msgid "Connection interrupted by other software on your computer."
@@ -8569,38 +7406,41 @@ msgstr ""
 "Si è verificato un errore nella lettura del tuo %s. Il file non è stato "
 "caricato e il vecchio file è stato rinominato in %s~."
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr "Pidgin"
+
 msgid "Instant Messaging Client"
 msgstr "Client di messaggistica istantanea"
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
-"Pidgin è un'applicazione per le chat che ti permette di accedere "
-"simultaneamente a diversi account."
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
-"Questo significa che puoi chattare con gli amici su AIM, essere disponibile "
-"su Google Talk, e nello stesso momento chattare su IRC utilizzando lo stesso "
-"programma."
 
-msgid "The buddy list showing friends on different networks."
-msgstr "La lista dei contatti che mostra gli utenti di reti diverse."
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pidgin Internet Messenger"
+msgid "Buddy list showing friends on different networks"
+msgstr ""
 
 msgid "Internet Messenger"
 msgstr "Internet Messenger"
 
-#, fuzzy
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pidgin Internet Messenger"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
 msgstr ""
-"Chat attraverso MI. Supporta AIM, Google Talk, Jabber/XMPP, MSN, Yahoo ed "
-"altri ancora"
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
+msgstr ""
 
 #. Build the login options frame.
 msgid "Login Options"
@@ -8872,6 +7712,7 @@ msgid_plural ""
 "You currently have %d contacts named %s. Would you like to merge them?"
 msgstr[0] "Hai già %d contatto con il nome %s. Vuoi unirli?"
 msgstr[1] "Hai già %d contatti con il nome %s. Vuoi unirli?"
+msgstr[2] "Hai già %d contatti con il nome %s. Vuoi unirli?"
 
 msgid ""
 "Merging these contacts will cause them to share a single entry on the buddy "
@@ -9105,6 +7946,9 @@ msgstr "/_Aiuto"
 msgid "/Help/Online _Help"
 msgstr "/Aiuto/_Aiuto online"
 
+msgid "/Help/D_onate"
+msgstr ""
+
 msgid "/Help/_Build Information"
 msgstr "/Aiuto/Informazioni sulla _compilazione"
 
@@ -9208,6 +8052,7 @@ msgid "%d unread message from %s\n"
 msgid_plural "%d unread messages from %s\n"
 msgstr[0] "%d messaggio non letto da %s\n"
 msgstr[1] "%d messaggi non letti da %s\n"
+msgstr[2] "%d messaggi non letti da %s\n"
 
 msgid "Manually"
 msgstr "Manualmente"
@@ -9245,6 +8090,8 @@ msgid_plural ""
 msgstr[0] ""
 "%d account è stato disabilitato perché sei connesso da un'altra posizione:"
 msgstr[1] ""
+"%d account sono stati disabilitati perché sei connesso da un'altra posizione:"
+msgstr[2] ""
 "%d account sono stati disabilitati perché sei connesso da un'altra posizione:"
 
 msgid "<b>Username:</b>"
@@ -9640,6 +8487,10 @@ msgid "%d person in room"
 msgid_plural "%d people in room"
 msgstr[0] "%d persona nella stanza"
 msgstr[1] "%d persone nella stanza"
+msgstr[2] "%d persone nella stanza"
+
+msgid "Typing"
+msgstr "Sta scrivendo"
 
 msgid "Stopped Typing"
 msgstr "Ha smesso di scrivere"
@@ -9730,7 +8581,7 @@ msgid "Right click for more options."
 msgstr "Fai clic col tasto destro per altre opzioni."
 
 msgid "Level "
-msgstr "Livello"
+msgstr "Livello "
 
 msgid "Select the debug filter level."
 msgstr "Seleziona il livello del filtro di debug."
@@ -9745,25 +8596,19 @@ msgid "Warning"
 msgstr "Avviso"
 
 msgid "Error "
-msgstr "Errore"
+msgstr "Errore "
 
 msgid "Fatal Error"
 msgstr "Errore fatale"
 
-msgid "artist"
-msgstr "artista"
-
-msgid "voice and video"
-msgstr "voce e video"
-
-msgid "support"
-msgstr "supporto"
-
-msgid "webmaster"
-msgstr "webmaster"
+msgid "lead developer"
+msgstr "sviluppatore principale"
 
 msgid "win32 port"
 msgstr "port su win32"
+
+msgid "artist"
+msgstr "artista"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9776,9 +8621,18 @@ msgstr "maintainer"
 msgid "libfaim maintainer"
 msgstr "Maintainer della libfaim"
 
+msgid "webmaster"
+msgstr "webmaster"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "hacker e autista designato [lazy bum]"
+
+msgid "voice and video"
+msgstr "voce e video"
+
+msgid "support"
+msgstr "supporto"
 
 msgid "support/QA"
 msgstr "supporto/QA"
@@ -9788,9 +8642,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "autore originale"
-
-msgid "lead developer"
-msgstr "sviluppatore principale"
 
 msgid "Senior Contributor/QA"
 msgstr "Collaboratore senior/QA"
@@ -10113,31 +8964,19 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
-"<FONT SIZE=\"4\"><B>Risorse utili</B></FONT><BR>\t<A HREF=\"%s\">Sito web</"
-"A><BR>\t<A HREF=\"%s\">Domande frequenti</A><BR>\tCanale IRC: #pidgin su irc."
-"freenode.net<BR>\tMUC XMPP: devel@conference.pidgin.im<BR><BR>"
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
-"È possibile ricevere <font size=\"4\"><b>aiuto da altri utenti di Pidgin</"
-"b></font> inviando un'email a <a href=\"mailto:support@pidgin.im"
-"\">support@pidgin.im</a><br/>Questa è una mailing list <b>pubblica</b>! (<a "
-"href=\"http://pidgin.im/pipermail/support/\">archivio</a>)<br/>Non possiamo "
-"fornire aiuto su protocolli o plugin forniti da terzi!<br/>La lingua "
-"primaria di questa lista è l'<b>inglese</b>. Sei libero di scrivere in "
-"un'altra lingua, ma le risposte potrebbero essere meno esaustive.<br/>"
 
 #, c-format
 msgid "About %s"
@@ -10233,6 +9072,9 @@ msgstr[0] ""
 "Stai per rimuovere la lista contenente %s e %d altro contatto dalla tua "
 "lista contatti. Vuoi continuare?"
 msgstr[1] ""
+"Stai per rimuovere la lista contenente %s e altri %d contatti dalla tua "
+"lista contatti. Vuoi continuare?"
+msgstr[2] ""
 "Stai per rimuovere la lista contenente %s e altri %d contatti dalla tua "
 "lista contatti. Vuoi continuare?"
 
@@ -10843,14 +9685,16 @@ msgstr "_Muto"
 #, c-format
 msgid "%s has %d new message."
 msgid_plural "%s has %d new messages."
-msgstr[0] "%s ha %d nuovo messaggio"
-msgstr[1] "%s ha %d nuovi messaggi"
+msgstr[0] "%s ha %d nuovo messaggio."
+msgstr[1] "%s ha %d nuovi messaggi."
+msgstr[2] "%s ha %d nuovi messaggi."
 
 #, c-format
 msgid "<b>%d new email.</b>"
 msgid_plural "<b>%d new emails.</b>"
 msgstr[0] "<b>%d nuova email.</b>"
 msgstr[1] "<b>%d nuove email.</b>"
+msgstr[2] "<b>%d nuove email.</b>"
 
 #, c-format
 msgid "The browser command \"%s\" is invalid."
@@ -11220,12 +10064,12 @@ msgstr "Impossibile avviare il programma per la configurazione del proxy."
 msgid "Cannot start browser configuration program."
 msgstr "Impossibile avviare il programma di configurazione del browser."
 
-msgid "Disabled"
-msgstr "Disabilitato"
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr "Usa l'indirizzo IP rilevato _automaticamente: %s"
+
+msgid "IP Address"
+msgstr "Indirizzo IP"
 
 msgid "ST_UN server:"
 msgstr "Server ST_UN:"
@@ -11492,6 +10336,37 @@ msgstr "Utilizza lo stato impostato l'ultima volta"
 msgid "Status to a_pply at startup:"
 msgstr "Stato da _utilizzare all'avvio:"
 
+msgid "DROP"
+msgstr "Disconnessione"
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr "Volume:"
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr "_Dispositivo"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Input"
+msgstr "Ingresso"
+
+msgid "Output"
+msgstr "Uscita"
+
+msgid "Video"
+msgstr "Video"
+
 msgid "Interface"
 msgstr "Interfaccia"
 
@@ -11503,6 +10378,9 @@ msgstr "Stato / Inattività"
 
 msgid "Themes"
 msgstr "Temi"
+
+msgid "Voice/Video"
+msgstr ""
 
 msgid "Allow all users to contact me"
 msgstr "Consenti a tutti di contattarmi"
@@ -11573,7 +10451,7 @@ msgid "Apply"
 msgstr "Applica"
 
 msgid "That file already exists"
-msgstr "Il file esiste già."
+msgstr "Il file esiste già"
 
 msgid "Would you like to overwrite it?"
 msgstr "Vuoi sovrascriverlo?"
@@ -11586,6 +10464,46 @@ msgstr "Scegli un nuovo nome"
 
 msgid "Select Folder..."
 msgstr "Scegli cartella..."
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "_Aggiungi"
 
 #. list button
 msgid "_Get List"
@@ -11768,6 +10686,10 @@ msgstr ""
 "<b>Dimensione del file:</b> %s\n"
 "<b>Dimensione dell'immagine:</b> %dx%d"
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Icona per il contatto"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11808,11 +10730,6 @@ msgstr "Vuoi davvero pulire?"
 
 msgid "Select color"
 msgstr "Scegli il colore"
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
-msgstr "Pidgin"
 
 msgid "_Alias"
 msgstr "_Alias"
@@ -12027,7 +10944,7 @@ msgid ""
 "<b>Description:</b> "
 msgstr ""
 "\n"
-"<b>Descrizione:</b>"
+"<b>Descrizione:</b> "
 
 #. Create the window.
 msgid "Service Discovery"
@@ -12717,6 +11634,9 @@ msgstr "Operatore"
 msgid "Half Operator"
 msgstr "Mezzo operatore"
 
+msgid "Voice"
+msgstr "Voce"
+
 msgid "Authorization dialog"
 msgstr "Finestra di autorizzazione"
 
@@ -12880,7 +11800,7 @@ msgid "_IM window transparency"
 msgstr "_Rendi trasparente la finestra"
 
 msgid "_Show slider bar in IM window"
-msgstr "_Mostra la barra di scorrimento nella finestra "
+msgstr "_Mostra la barra di scorrimento nella finestra"
 
 msgid "Remove IM window transparency on focus"
 msgstr "Rimuovi la trasparenza della finestra dei MI quando va in primo piano"
@@ -12975,35 +11895,51 @@ msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 "Fornisce l'integrazione tra il programma e il menu dei messaggi di Unity."
 
-msgid "Audio"
-msgstr "Audio"
+msgid "ALSA"
+msgstr ""
 
-msgid "Video"
-msgstr "Video"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
+msgstr ""
 
-msgid "Output"
-msgstr "Uscita"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
+msgstr ""
 
 msgid "_Plugin"
 msgstr "_Plugin"
-
-msgid "_Device"
-msgstr "_Dispositivo"
-
-msgid "Input"
-msgstr "Ingresso"
 
 msgid "P_lugin"
 msgstr "P_lugin"
 
 msgid "D_evice"
 msgstr "D_ispositivo"
-
-msgid "DROP"
-msgstr "Disconnessione"
-
-msgid "Volume:"
-msgstr "Volume:"
 
 msgid "Silence threshold:"
 msgstr "Soglia del silenzio:"
@@ -13092,7 +12028,7 @@ msgstr "<font color='#777777'>Non connesso a XMPP</font>"
 #. *< version
 #. *  summary
 msgid "Send and receive raw XMPP stanzas."
-msgstr "Invia e riceve blocchi XMPP"
+msgstr "Invia e riceve blocchi XMPP raw."
 
 #. *  description
 msgid "This plugin is useful for debugging XMPP servers or clients."
@@ -13100,7 +12036,7 @@ msgstr ""
 "Questo plugin è utile per effettuare il debug dei server o dei client XMPP."
 
 msgid "The installer is already running."
-msgstr "Il programma di installazione è già in esecuzione"
+msgstr "Il programma di installazione è già in esecuzione."
 
 msgid ""
 "An instance of Pidgin is currently running.  Please exit Pidgin and try "
@@ -13200,13 +12136,13 @@ msgstr "Supporto per il correttore ortografico"
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 "Errore nell'installazione del correttore ortografico ($R3).$\\rSe il "
 "problema persiste, consulta le istruzioni per l'installazione manuale su: "
-"http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 
 #. Installer Subsection Detailed Description
 msgid ""

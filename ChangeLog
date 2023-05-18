@@ -1,5 +1,288 @@
 Pidgin and Finch: The Pimpin' Penguin IM Clients That're Good for the Soul
 
+version 2.14.12 (12/31/2022):
+	* Remove a string from the Romanian translation that's breaks the creation
+	  of the Windows installer. (RR 2157) (Gary Kramlich)
+
+version 2.14.11 (12/31/2022):
+	* Add Markus "ivanhoe" Fischer to the Crazy Patch Writers! Congrats Markus!
+	  (RR 1952) (Gary Kramlich)
+	* Fix a crash when closing a group chat with spellchk plugin enabled. (RR
+	  1951) (Markus Fischer)
+	* Fix network interface detection on Windows to fix broken file transfers.
+	  (PIDGIN-17123, PIDGIN-17293, PIDGIN-17516, PIDGIN-17704) (RR 2018) (Gary
+	  Kramlich)
+	* Update the about box to point people to Discourse instead of the mailing
+	  lists. (RR 2154) (Gary Kramlich)
+
+version 2.14.10 (06/02/2022):
+	General:
+	* Audit and correct the COPYRIGHT file. (RR 1425) (Richard Laager)
+	* Fix a spelling error in a debug message for proxies. (RR 1426) (Richard
+	  Laager)
+	* Install some emojis already in the theme but not being installed.
+	  (RR 1428) (Richard Laager)
+	* Drop the QQ smileys as we don't ship QQ anymore. (PIDGIN-14385) (RR 1429)
+	  (Richard Laager)
+	* Modernize the desktop file. (RR 1433) (Richard Laager)
+	* Modernize the appdata file. (RR 1431) (Richard Laager)
+	* Make privacy settings persist. (PIDGIN-17137) (RR 1463) (Belgin Știrbu)
+
+	Pidgin:
+	* Fix a use after free that was introduced in 2.14.9. (RR 1488) (ivanhoe)
+
+	IRC:
+	* Fix a crash if the server sends a short form JOIN message. (PIDGIN-17375)
+	  (RR 1484) (Belgin Știrbu)
+
+	XMPP:
+	* Fix a regression from 2.14.9 where XMPP accounts state would get lost
+	  after failing to connect. (PIDGIN-17621) (RR 1455) (Belgin Știrbu)
+	* Fix a crash when requesting your own info in an XMPP conference. (RR 1465)
+	  (Belgin Știrbu)
+	* Fix hang when completing a file transfer over XMPP. (RR 1466) (Belgin
+	  Știrbu)
+	* Fix updating custom smileys. (PIDGIN-17153) (RR 1477) (Belgin Știrbu)
+	* Fix unblocking users. (PIDGIN-16414) (RR 1479) (Belgin Știrbu)
+	* Fix a crash when cancelling a file transfer. (PIDGIN-17189) (RR 1485)
+	  (Belgin Știrbu)
+
+version 2.14.9 (04/28/2022):
+	Security:
+	* Remove _xmppconnect support. (RR 1357) (CVE-2022-26491) (Gary Kramlich)
+
+	libpurple:
+	* Fix a GLib CRITICAL message with typing time outs. (RR 1123) (Mohammed
+	  Sadiq)
+	* Fix an issue where the unit tests for purple_str_to_time would fail.
+	  (GENTOO-819774) (RR 1238) (Gary Kramlich)
+
+	Pidgin:
+	* Fix a memory leak in pidgin_conversations_set_tab_colors. (RR 1244)
+	  (ivanhoe)
+	* Fixed the majority of the infinite resizing issues in the input box.
+	  (PIDGIN-16753, PIDGIN-16999, PIDGIN-17287, PIDGIN-17413, PIDGIN-17430,
+	  PIDGIN-17568, PIDGIN-17602) (RR 1342) (Belgin Știrbu)
+	* Add transient-buddy back which is used to show some context menus and
+	  other things. (PIDGIN-17523) (RR 1381) (Belgin Știrbu)
+
+	Windows:
+	* Fix the download of dictionaries in the Windows installer. (PIDGIN-14618,
+	  PIDGIN-15648, PIDGIN-15540, PIDGIN-14612, PIDGIN-14893) (RR 1303) (Gary
+	  Kramlich)
+
+	Translations:
+	* Fix a typo in the German translations. (PIDGIN-17575) (RR 1242) (ivanhoe)
+	* Synced all of the translations with Transifex.
+
+	IRC:
+	* Fix IRC file transfers on Windows. (PIDGIN-17175) (RR 1382) (Belgin
+	  Știrbu)
+	* Fix file transfers failing at 99% on IRC. (PIDGIN-15893) (RR 1385) (Belgin
+	  Știrbu)
+	* Default realname and ident name in IRC to the username (nickname) of the
+	  account. (PIDGIN-17610) (RR 1386) (Belgin Știrbu)
+	* Add an advanced account option to IRC accounts for explicitly setting the
+	  SASL login name. (PIDGIN-15451) (RR 1388) (Belgin Știrbu)
+	* Added a rate limiter that should make it impossible to excess flood.
+	  (RR 1391) (Gary Kramlich)
+
+	SIMPLE:
+	* Fix an issue with the CSeq numbers in SIMPLE. (PIDGIN-9675) (RR 1379)
+	  (dohmniq)
+
+	XMPP:
+	* Fix XMPP attention messages being sent to incorrect JIDs. (PIDGIN-14714)
+	  (RR 1387) (itsnotabigtruck, Belgin Știrbu)
+
+version 2.14.8 (10/14/2021):
+	libpurple:
+	* Fix a regression in purple_str_to_time. (PIDGIN-17552) (RR 931) (Gary
+	  Kramlich)
+
+	XMPP:
+	* Fix a double free in jabber/message.c. (PIDGIN-17547) (RR 932) (Gary
+	  Kramlich, pv32768)
+
+	Pidgin:
+	* Fix the link to the support mailing list archive in the About Dialog.
+	  (RR 929) (Gary Kramlich)
+
+version 2.14.7 (09/16/2021):
+	libpurple:
+	* Fix leak in purple_markup_find_tag on error. (OSS-FUZZ 35816) (RR 924)
+	  (Elliott Sales de Andrade)
+	* Fix an issue where the XMPP utility tests would fail if libidn was
+	  disabled. (RR 922) (Gary Kramlich)
+	* Fix an assert in purple_markup_html_to_xhtml (OSS-FUZZ 35029) (RR 921)
+	  (Elliott Sales de Andrade)
+	* Fix building on Haiku (RR 916) (Haiku Ports Team)
+	* Correctly free parse tags at end of purple_html_to_xhtml (OSS-FUZZ 34996)
+	  (RR 913) (Elliott Sales de Andrade)
+	* Fix leak that may occur when xmlnode_from_str fails (OSS-FUZZ 34988)
+	  (RR 911) (Elliott Sales de Andrade)
+	* Cleanup, standardize and create starting corpora for all of the fuzzers.
+	  (RR 920) (Gary Kramlich)
+	* Port purple_str_to_time to use a regular expression and add additional
+	  unit tests for it. (RR 923) (Gary Kramlich)
+
+version 2.14.6 (07/08/2021):
+	General:
+	* Update references to point to our current websites. (RR 766) (Gary
+	  Kramlich)
+	* Add a donate link to the help menu. (RR 749) (Gary Kramlich)
+
+	Finch:
+	* Check pkg-config for ncurses before looking for it manually. (RR 729)
+	  (Justin Lecher)
+
+	Pidgin:
+	* Replace newlines in topics with spaces. (PIDGIN-16704) (RR 730) (Gary
+	  Kramlich)
+
+	libpurple:
+	* Added support for the no_proxy environment variable. (PIDGIN-17518)
+	  (RR #667) (Alynx Zhou and Gary Kramlich)
+	* Added infrastructure for fuzzing as well as some initial fuzzers.
+	  (RR #760) (Jordy Zomer)
+	* Fix an out of bounds write in purple_markup_linkify. (RR 781) (Thomas
+	  Roth, Dominik Maier, and Fabian Freyer)
+
+	XMPP:
+	* Enable session management after binding a resource. (PIDGIN-17520) (RR
+	  759) (defanor)
+
+	Zephyr:
+	* Fix a clang logical-not-parentheses warning. (PIDGIN-17528) (RR 731)
+	  (Gary Kramlich)
+
+version 2.14.5 (06/03/2021):
+	General:
+	* Updated our bundled certificates to the latest version from Mozilla.
+	  (RR #722) (PIDGIN-17535) (Gary Kramlich)
+	* Made the project scan-build clean. (RR #692-705, #707-714, #716-#719)
+	  (Gary Kramlich)
+	* Fixed some of Gary's scan-build fixes that were a bit verbose. (RR #715)
+	  (Elliott Sales de Andrade)
+	* Disabled UPnP and NAT-PMP by default for new user. (RR #706) (Gary
+	  Kramlich)
+
+	IRC:
+	* Changed the default server to irc.libera.chat. (RR #675) (Gary Kramlich)
+
+	Windows Specific Changes:
+	* Fixed the installer not running when Mandatory ASLR was turned on.
+	  (RR #721) (PIDGIN-17524) (Gary Kramlich)
+
+version 2.14.4 (04/29/2021):
+	General:
+	* Use LT_LIB_M to find the math library.  This should simplify things for
+	  various distros including the BSD's. (RR #608) (and, Justin Lechner)
+
+	libpurple:
+	* Removed a dangling reference to oscar that was causing the unit tests
+	  to fail. (RR #605) (Gary Kramlich)
+	* Update purple-remote and purple-url-handler to have a Python 3 shebang.
+	  (RR #609) (Richard Laager)
+
+	Pidgin:
+	* Install our AppData file into the $prefix/share/metainfo. (RR 607)
+	  (Lars Wendler)
+	* Re-enable the Gevolution plugin and set the evolution-data-server
+	  requirement to >= 3.6. (RR #610) (Ed Catmur, Lars Wendler)
+
+	Windows-Specific Changes:
+	* Output pkg-config files so that our Windows builds can be seen by meson.
+	  Grim owes a blog post on how this works. (RR #615) (Gary Kramlich)
+	* Update the debug symbols download in the installer to the inetc plugin.
+	  (RR #627) (Gary Kramlich)
+	* Make sure the uninstaller removes all files that we install. (RR #612)
+	  (Gary Kramlich)
+
+version 2.14.3 (04/08/2021):
+	libpurple:
+	* Removed the AIM protocol plugin. AIM has been shut down since December
+	  15th of 2017. We left it around because of a third party server, but our
+	  plugin no longer works with it. (RR #598) (Gary Kramlich)
+
+	Windows-Specific Changes:
+	* Standardize on wprintf in pidgin/win32/winpidgin.c (RR #593) (Gary
+	  Kramlich)
+	* Use the inetc nsis plugin that supports https (RR #593, #594)
+	  (PIDGIN-17511) (Gary Kramlich)
+	* If building under msys2 copy libgcc_s_dw2-1.dll and libwinpthread to the
+	  install directory. (RR #593) (PIDGIN-17511) (Gary Kramlich)
+
+version 2.14.2 (04/01/2021):
+	* Fix a build issue when compiling with gstreamer but without voice and
+	  video. (RR #25)
+	* Enable cyrus-sasl by default. (RR #26)
+	* Fix an issue with opening link in Firefox. (RR #503) (PIDGIN-16589)
+	* Fix a regression from 2.14.0 where extra whitespace would be displayed
+	  when pasting <p> elements from HTML. (RR #504) (PIDGIN-17437)
+	* Require Python 3 for generating the D-Bus bindings. (RR #550)
+	* Fix an issue where pasting <hr>'s and other HTML elements would
+	  eventually lead to a crash. (RR #514) (PIDGIN-17446)
+
+version 2.14.1 (11/06/2020):
+	* Fixed issues with Windows installer that always thought Pidgin was
+	  running. (Eion Robb)
+	* Fixed an issue where the Windows installer was not using Unicode while
+	  doing checksums which made it fail. (Eion Robb)
+	* Fixed an issue in the released source code that caused the Mercurial
+	  revision in the About box to be "unknown". (Gary Kramlich)
+
+version 2.14.0 (10/06/2020):
+	General:
+	* Fixed a memory leak in search results. (#17292 PR #320 David Woodhouse)
+	* Support SNI with GNUTLS. (#17300 tiagosalem) (PR #659 Mihai Moldovan)
+	* Add additional error handling to NSS and GNUTLS. (PR #679 Samuel Thibault)
+
+	libpurple:
+	* Add invisible buddy support to support presence/name/photos for non
+	  buddies. (#17295 PR 321 David Woodhouse)
+	* Make purple-remote compatible with both Python 2 and Python 3. (Jan
+	  Synacek of RedHat)
+	* Fixed some leaky deprecation warnings.  (PR #586 Gary Kramlich)
+	* Fixed HTML logs which were writing invalid HTML. (#17280 stars PR #312
+	  Daniel Kamil Kozar)
+	* Fixed a use after free in purple_smiley_set_data_impl. (PR #694 Gary
+	  Kramlich)
+	* Added the chat_send_file ability to protocol plugins. (PR #701 David
+	  Woodhouse)
+
+	Pidgin:
+	* Treat <p> tags as line breaks when pasting. (PR #678 Colin Xu)
+	* Reverted Ticket #17232/PR #695.  It caused more harm than good and a new
+	  solution needs to be found.  (PR #695 Gary Kramlich)
+
+	Bonjour:
+	* Always use port fallback for IPv4 addresses. (PR #382 Michael Osborne)
+
+	XMPP:
+	* Support for XEP-0198 Stream Management (PR #309 defanor)
+	* Decrease delay for file transfer using streamhosts (PR #464 #627 Evert
+	  Mouw)
+
+	Voice & Video:
+	* Improve webcam failure handling. (PR #322 David Woodhouse)
+	* Show error when creating media pipeline fails. (#17290 PR 322 David
+	  Woodhouse)
+	* Clip audio level reporting. (#14426 PR #322 David Woodhouse)
+	* Keep track of devices managed by GstDeviceMonitor. (PR #322 David
+	  Woodhouse)
+	* Ignore PulseAudio monitors.  (PR #322 David Woodhouse)
+	* Backport native Voice & Video prefs from 3.0.  (PR #322 David Woodhouse)
+	* Fixed building against GStreamer 0.10 (PR #325 David Woodhouse)
+	* Fixed initial delay on incoming audio (PR #379 David Woodhouse)
+	* Properly cleanup timeouts. (PR #383 Jakub Adam)
+	* Added an audio mixer so mixed sources don't cause a pipe failure. (PR #522
+	  Fabrice Bellet)
+	* Added screen share support for Wayland via XDP Portal. (PR #337 David
+	  Woodhouse)
+	* Handle unplug and replug events of selected media device. (PR #699 David
+	  Woodhouse)
+
 version 2.13.0 (03/08/2018):
 	libpurple:
 	* Unified string comparison. (PR #186) (Arkadiy Illarionov)

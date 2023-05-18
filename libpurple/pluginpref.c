@@ -26,6 +26,7 @@
 #include <glib.h>
 
 #include "debug.h"
+#include "glibcompat.h"
 #include "internal.h"
 #include "pluginpref.h"
 #include "prefs.h"
@@ -65,8 +66,7 @@ purple_plugin_pref_frame_destroy(PurplePluginPrefFrame *frame)
 {
 	g_return_if_fail(frame != NULL);
 
-	g_list_foreach(frame->prefs, (GFunc)purple_plugin_pref_destroy, NULL);
-	g_list_free(frame->prefs);
+	g_list_free_full(frame->prefs, (GDestroyNotify)purple_plugin_pref_destroy);
 	g_free(frame);
 }
 

@@ -6,9 +6,6 @@ datarootdir=@datarootdir@
 datadir=@datadir@
 sysconfdir=@sysconfdir@
 
-abs_srcdir=@abs_srcdir@
-abs_builddir=@abs_builddir@
-
 abs_top_srcdir=@abs_top_srcdir@
 abs_top_builddir=@abs_top_builddir@
 
@@ -18,5 +15,5 @@ Name: libpurple
 Description: libpurple is a GLib-based instant messenger library.
 Version: @VERSION@
 Requires: glib-2.0
-Cflags: -I${abs_top_srcdir} -I${abs_top_builddir}
-Libs: ${abs_builddir}/libpurple.la
+Cflags: -I${abs_top_srcdir} -I${abs_top_srcdir}/libpurple -I${abs_top_builddir} -I${abs_top_builddir}/libpurple
+Libs: -L${abs_top_builddir}/libpurple -lpurple

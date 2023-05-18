@@ -29,6 +29,7 @@
 #include "blist.h"
 #include "conversation.h"
 #include "debug.h"
+#include "glibcompat.h"
 #include "notify.h"
 #include "prpl.h"
 #include "plugin.h"
@@ -87,15 +88,44 @@ static void irc_view_motd(PurplePluginAction *action)
 
 static int do_send(struct irc_conn *irc, const char *buf, gsize len)
 {
+	gchar *tosend = g_strndup(buf, len);
 	int ret;
 
-	if (irc->gsc) {
-		ret = purple_ssl_write(irc->gsc, buf, len);
-	} else {
-		ret = write(irc->fd, buf, len);
+	purple_signal_emit(_irc_plugin, "irc-sending-text", purple_account_get_connection(irc->account), &tosend);
+
+	if(tosend == NULL) {
+		return 0;
 	}
 
+	if(purple_debug_is_verbose()) {
+		char *clean = purple_utf8_salvage(tosend);
+		clean = g_strstrip(clean);
+		purple_debug_misc("irc", "<< %s\n", clean);
+		g_free(clean);
+	}
+
+	if (irc->gsc) {
+		ret = purple_ssl_write(irc->gsc, tosend, strlen(tosend));
+	} else {
+		ret = write(irc->fd, tosend, strlen(tosend));
+	}
+
+	irc->send_time = time(NULL);
+
+	g_free(tosend);
+
 	return ret;
+}
+
+int irc_priority_send(struct irc_conn *irc, const char *buf)
+{
+	if(irc->sent_partial) {
+		g_queue_insert_after(irc->send_queue, irc->send_queue->head,
+		                     g_strdup(buf));
+		return 0;
+	} else {
+		return do_send(irc, buf, strlen(buf));
+	}
 }
 
 static int irc_send_raw(PurpleConnection *gc, const char *buf, int len)
@@ -108,99 +138,110 @@ static int irc_send_raw(PurpleConnection *gc, const char *buf, int len)
 	return len;
 }
 
-static void
-irc_send_cb(gpointer data, gint source, PurpleInputCondition cond)
-{
-	struct irc_conn *irc = data;
-	int ret, writelen;
+static gboolean
+irc_send_handler_cb(gpointer data) {
+	struct irc_conn *irc = (struct irc_conn *)data;
+	gint available = 0;
+	gint interval = 0;
 
-	writelen = purple_circ_buffer_get_max_read(irc->outbuf);
+	interval = purple_account_get_int(irc->account, "ratelimit-interval",
+	                                  IRC_DEFAULT_COMMAND_INTERVAL);
 
-	if (writelen == 0) {
-		purple_input_remove(irc->writeh);
-		irc->writeh = 0;
-		return;
+	/* Check if we're enabled. */
+	if(interval < 1) {
+		available = G_MAXINT;
+	} else {
+		gint burst = purple_account_get_int(irc->account, "ratelimit-burst",
+		                                    IRC_DEFAULT_COMMAND_MAX_BURST);
+		available = (time(NULL) - irc->send_time) / interval;
+		if(available > burst) {
+			available = burst;
+		}
 	}
 
-	ret = do_send(irc, irc->outbuf->outptr, writelen);
+	while(available > 0) {
+		gchar *msg = NULL;
+		gpointer raw = NULL;
+		gint length = 0, ret = 0;
 
-	if (ret < 0 && errno == EAGAIN)
-		return;
-	else if (ret <= 0) {
-		PurpleConnection *gc = purple_account_get_connection(irc->account);
-		gchar *tmp = g_strdup_printf(_("Lost connection with server: %s"),
-			g_strerror(errno));
-		purple_connection_error_reason (gc,
-			PURPLE_CONNECTION_ERROR_NETWORK_ERROR, tmp);
-		g_free(tmp);
-		return;
+		/* No message in the queue should be NULL, so a NULL value means the
+		 * queue is empty.
+		 */
+		raw = g_queue_pop_head(irc->send_queue);
+		if(raw == NULL) {
+			break;
+		}
+
+		msg = (gchar *)raw;
+		length = strlen(msg);
+
+		ret = do_send(irc, msg, length);
+		if(ret < 0 && errno != EAGAIN) {
+			PurpleConnection *gc = purple_account_get_connection(irc->account);
+			gchar *tmp = g_strdup_printf(_("Lost connection with server: %s"),
+			                             g_strerror(errno));
+
+			purple_connection_error_reason(gc,
+			                               PURPLE_CONNECTION_ERROR_NETWORK_ERROR,
+			                               tmp);
+			g_free(tmp);
+
+			g_free(msg);
+
+			irc->send_handler = 0;
+
+			return FALSE;
+		} else if(ret < length) {
+			gchar *partial = NULL;
+
+			/* The preceeding conditional allows EAGAIN to fall through to
+			 * here so that we can retransmit it.  There shouldn't even be a
+			 * case where ret < 0 and != EAGAIN, which is why we have the
+			 * assert.
+			 */
+			if(ret < 0) {
+				if(ret == EAGAIN) {
+					ret = 0;
+				} else {
+					g_assert_not_reached();
+				}
+			}
+
+			/* We need to move past the characters we already wrote and requeue
+			 * the rest of the string. We know ret is less than length, so the
+			 * starting address of msg plus ret can never get outside of the
+			 * string, and likewise, length minus ret will always be < length
+			 * because ret is less than length and if it was somehow negative,
+			 * it has been reset to zero.
+			 */
+			partial = g_strndup(msg + ret, length - ret);
+
+			/* requeue the item to the start of the queue */
+			g_queue_push_head(irc->send_queue, partial);
+			irc->sent_partial = TRUE;
+		} else {
+			/* We successfully sent a message so decrement the counter. */
+			available -= 1;
+			irc->sent_partial = FALSE;
+		}
+
+		/* Message was processed successfully or a partial message was
+		 * allocated and requeued so we can free the one we popped off.
+		 */
+		g_free(msg);
 	}
 
-	purple_circ_buffer_mark_read(irc->outbuf, ret);
-
-#if 0
-	/* We *could* try to write more if we wrote it all */
-	if (ret == write_len) {
-		irc_send_cb(data, source, cond);
-	}
-#endif
+	return TRUE;
 }
 
-int irc_send(struct irc_conn *irc, const char *buf)
+void irc_send(struct irc_conn *irc, const char *buf)
 {
     return irc_send_len(irc, buf, strlen(buf));
 }
 
-int irc_send_len(struct irc_conn *irc, const char *buf, int buflen)
-{
-	int ret;
- 	char *tosend = g_strdup(buf);
-
-	purple_signal_emit(_irc_plugin, "irc-sending-text", purple_account_get_connection(irc->account), &tosend);
-
-	if (tosend == NULL)
-		return 0;
-
-	if (!purple_strequal(tosend, buf)) {
-		buflen = strlen(tosend);
-	}
-
-	if (purple_debug_is_verbose()) {
-		char *clean = purple_utf8_salvage(tosend);
-		clean = g_strstrip(clean);
-		purple_debug_misc("irc", "<< %s\n", clean);
-		g_free(clean);
-	}
-
-	/* If we're not buffering writes, try to send immediately */
-	if (!irc->writeh)
-		ret = do_send(irc, tosend, buflen);
-	else {
-		ret = -1;
-		errno = EAGAIN;
-	}
-
-	/* purple_debug(PURPLE_DEBUG_MISC, "irc", "sent%s: %s",
-		irc->gsc ? " (ssl)" : "", tosend); */
-	if (ret <= 0 && errno != EAGAIN) {
-		PurpleConnection *gc = purple_account_get_connection(irc->account);
-		gchar *tmp = g_strdup_printf(_("Lost connection with server: %s"),
-			g_strerror(errno));
-		purple_connection_error_reason (gc,
-			PURPLE_CONNECTION_ERROR_NETWORK_ERROR, tmp);
-		g_free(tmp);
-	} else if (ret < buflen) {
-		if (ret < 0)
-			ret = 0;
-		if (!irc->writeh)
-			irc->writeh = purple_input_add(
-				irc->gsc ? irc->gsc->fd : irc->fd,
-				PURPLE_INPUT_WRITE, irc_send_cb, irc);
-		purple_circ_buffer_append(irc->outbuf, tosend + ret,
-			buflen - ret);
-	}
-	g_free(tosend);
-	return ret;
+void
+irc_send_len(struct irc_conn *irc, const char *buf, int buflen) {
+	g_queue_push_tail(irc->send_queue, g_strdup(buf));
 }
 
 /* XXX I don't like messing directly with these buddies */
@@ -357,7 +398,9 @@ static void irc_login(PurpleAccount *account)
 	gc->proto_data = irc = g_new0(struct irc_conn, 1);
 	irc->fd = -1;
 	irc->account = account;
-	irc->outbuf = purple_circ_buffer_new(512);
+
+	irc->send_queue = g_queue_new();
+	irc->sent_partial = FALSE;
 
 	userparts = g_strsplit(username, "@", 2);
 	purple_connection_set_display_name(gc, userparts[0]);
@@ -406,6 +449,7 @@ static gboolean do_login(PurpleConnection *gc) {
 	const char *nickname, *identname, *realname;
 	struct irc_conn *irc = gc->proto_data;
 	const char *pass = purple_connection_get_password(gc);
+	gint interval, burst;
 #ifdef HAVE_CYRUS_SASL
 	const gboolean use_sasl = purple_account_get_bool(irc->account, "sasl", FALSE);
 #endif
@@ -417,7 +461,7 @@ static gboolean do_login(PurpleConnection *gc) {
 		else /* intended to fall through */
 #endif
 			buf = irc_format(irc, "v:", "PASS", pass);
-		if (irc_send(irc, buf) < 0) {
+		if (irc_priority_send(irc, buf) < 0) {
 			g_free(buf);
 			return FALSE;
 		}
@@ -426,9 +470,10 @@ static gboolean do_login(PurpleConnection *gc) {
 
 	realname = purple_account_get_string(irc->account, "realname", "");
 	identname = purple_account_get_string(irc->account, "username", "");
+	nickname = purple_connection_get_display_name(gc);
 
 	if (identname == NULL || *identname == '\0') {
-		identname = g_get_user_name();
+		identname = nickname;
 	}
 
 	if (identname != NULL && strchr(identname, ' ') != NULL) {
@@ -446,25 +491,34 @@ static gboolean do_login(PurpleConnection *gc) {
 	}
 
 	buf = irc_format(irc, "vvvv:", "USER", tmp ? tmp : identname, "*", server,
-	                 strlen(realname) ? realname : IRC_DEFAULT_ALIAS);
+	                 strlen(realname) ? realname : nickname);
 	g_free(tmp);
 	g_free(server);
-	if (irc_send(irc, buf) < 0) {
+	if (irc_priority_send(irc, buf) < 0) {
 		g_free(buf);
 		return FALSE;
 	}
 	g_free(buf);
-	nickname = purple_connection_get_display_name(gc);
+
 	buf = irc_format(irc, "vn", "NICK", nickname);
 	irc->reqnick = g_strdup(nickname);
 	irc->nickused = FALSE;
-	if (irc_send(irc, buf) < 0) {
+	if (irc_priority_send(irc, buf) < 0) {
 		g_free(buf);
 		return FALSE;
 	}
 	g_free(buf);
 
 	irc->recv_time = time(NULL);
+
+	/* Give ourselves one full burst for startup commands. */
+	interval = purple_account_get_int(irc->account, "ratelimit-interval",
+	                                  IRC_DEFAULT_COMMAND_INTERVAL);
+	burst = purple_account_get_int(irc->account, "ratelimit-burst",
+	                               IRC_DEFAULT_COMMAND_MAX_BURST);
+
+	irc->send_time = time(NULL) - (interval * burst);
+	irc->send_handler = g_timeout_add_seconds(1, irc_send_handler_cb, irc);
 
 	return TRUE;
 }
@@ -540,10 +594,10 @@ static void irc_close(PurpleConnection *gc)
 		g_string_free(irc->motd, TRUE);
 	g_free(irc->server);
 
-	if (irc->writeh)
-		purple_input_remove(irc->writeh);
-
-	purple_circ_buffer_destroy(irc->outbuf);
+	g_queue_free_full(irc->send_queue, g_free);
+	if(irc->send_handler != 0) {
+		g_source_remove(irc->send_handler);
+	}
 
 	g_free(irc->mode_chars);
 	g_free(irc->reqnick);
@@ -1008,7 +1062,10 @@ static PurplePluginProtocolInfo prpl_info =
 	NULL,					 /* set_public_alias */
 	NULL,					 /* get_public_alias */
 	NULL,					 /* add_buddy_with_invite */
-	NULL					 /* add_buddies_with_invite */
+	NULL,					 /* add_buddies_with_invite */
+	NULL,					 /* get_cb_alias */
+	NULL,					 /* chat_can_receive_file */
+	NULL,					 /* chat_send_file */
 };
 
 static gboolean load_plugin (PurplePlugin *plugin) {
@@ -1095,11 +1152,24 @@ static void _init_plugin(PurplePlugin *plugin)
 	option = purple_account_option_bool_new(_("Authenticate with SASL"), "sasl", FALSE);
 	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options, option);
 
+	option = purple_account_option_string_new(_("SASL login name"), "saslname", "");
+	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options, option);
+
 	option = purple_account_option_bool_new(
 						_("Allow plaintext SASL auth over unencrypted connection"),
 						"auth_plain_in_clear", FALSE);
 	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options, option);
 #endif
+
+	option = purple_account_option_int_new(_("Seconds between sending messages"),
+	                                       "ratelimit-interval",
+	                                       IRC_DEFAULT_COMMAND_INTERVAL);
+	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options, option);
+
+	option = purple_account_option_int_new(_("Maximum messages to send at once"),
+	                                       "ratelimit-burst",
+	                                       IRC_DEFAULT_COMMAND_MAX_BURST);
+	prpl_info.protocol_options = g_list_append(prpl_info.protocol_options, option);
 
 	_irc_plugin = plugin;
 

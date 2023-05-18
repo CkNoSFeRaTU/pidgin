@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pidgin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 20:59-0600\n"
-"PO-Revision-Date: 2017-09-19 19:26+0000\n"
-"Last-Translator: abuyop <abuyop@gmail.com>\n"
+"POT-Creation-Date: 2022-12-31 20:43-0600\n"
+"PO-Revision-Date: 2012-02-20 18:15+0000\n"
+"Last-Translator: abuyop <abuyop@gmail.com>, 2015-2017\n"
 "Language-Team: Malay (Malaysia) (http://www.transifex.com/pidgin/pidgin/"
 "language/ms_MY/)\n"
 "Language: ms_MY\n"
@@ -1779,7 +1779,6 @@ msgstr "+++ %s mendaftar masuk"
 msgid "+++ %s signed off"
 msgstr "+++ %s mendaftar keluar"
 
-#. Undocumented
 msgid "Unknown error"
 msgstr "Ralat tidak diketahui"
 
@@ -1795,6 +1794,10 @@ msgstr "Mesej terlalu besar."
 
 msgid "Unable to send message."
 msgstr "Tidak boleh hantar mesej."
+
+#. Meaningful name in case a UI doesn't actually honour the INVISIBLE flag
+msgid "(internal) Temporary IM peers"
+msgstr ""
 
 msgid "Send Message"
 msgstr "Hantar Mesej"
@@ -2118,19 +2121,15 @@ msgstr "XML"
 
 #, c-format
 msgid ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #16569E\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#16569E\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"BALAS&gt;:</b></font> %s<br/>\n"
 
 #, c-format
 msgid ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"REPLY&gt;:</b></font> %s<br/>\n"
+"<span style=\"color: #A82F2F\"><span style=\"font-size: smaller\">(%s)</"
+"span> <b>%s &lt;AUTO-REPLY&gt;:</b></span> %s<br>\n"
 msgstr ""
-"<font color=\"#A82F2F\"><font size=\"2\">(%s)</font> <b>%s &lt;AUTO-"
-"BALAS&gt;:</b></font> %s<br/>\n"
 
 msgid "<font color=\"red\"><b>Unable to find log path!</b></font>"
 msgstr "<font color=\"red\"><b>Tidak dapat cari laluan log!</b></font>"
@@ -2195,6 +2194,42 @@ msgstr "Ralat sidang"
 #, c-format
 msgid "Error creating session: %s"
 msgstr "Ralat mencipta sesi: %s"
+
+msgid "Could not create media pipeline"
+msgstr ""
+
+#. "aasink", "AALib", Didn't work for me
+#. "aasink",	"AALib", Didn't work for me
+msgid "DirectDraw"
+msgstr ""
+
+msgid "OpenGL"
+msgstr ""
+
+msgid "X Window System"
+msgstr ""
+
+msgid "X Window System (Xv)"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible audio input device. The device can help the
+#. * user to check if her speakers or headphones have been
+#. * set up correctly for voice calling.
+#. "audiotestsrc wave=silence", "Silence",
+msgid "Test Sound"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+#. Translators: This is a noun that refers to one
+#. * possible video input device. The device produces
+#. * a test "monoscope" image that can help the user check
+#. * the video output has been set up correctly without
+#. * needing a webcam connected to the computer.
+msgid "Test Pattern"
+msgstr ""
 
 #, c-format
 msgid "You are using %s, but this plugin requires %s."
@@ -2710,7 +2745,7 @@ msgstr ""
 
 msgid ""
 "Causes conversation windows to appear as other users begin to message you.  "
-"This works for AIM, ICQ, XMPP, and Sametime"
+"This works for XMPP and Sametime"
 msgstr ""
 
 msgid "You feel a disturbance in the force..."
@@ -3298,7 +3333,16 @@ msgstr "Guna SSL"
 msgid "Authenticate with SASL"
 msgstr "Sahihkan dengan SASL"
 
+msgid "SASL login name"
+msgstr ""
+
 msgid "Allow plaintext SASL auth over unencrypted connection"
+msgstr ""
+
+msgid "Seconds between sending messages"
+msgstr ""
+
+msgid "Maximum messages to send at once"
 msgstr ""
 
 msgid "Bad mode"
@@ -3722,37 +3766,6 @@ msgstr "Pengesahihan SASL gagal"
 #, c-format
 msgid "SASL error: %s"
 msgstr "Ralat SASL: %s"
-
-msgid "Invalid Encoding"
-msgstr "Pengekodan Tidak Sah"
-
-msgid "Unsupported Extension"
-msgstr "Sambungan Tidak Disokong"
-
-msgid ""
-"Unexpected response from the server.  This may indicate a possible MITM "
-"attack"
-msgstr ""
-
-msgid ""
-"The server does support channel binding, but did not appear to advertise "
-"it.  This indicates a likely MITM attack"
-msgstr ""
-
-msgid "Server does not support channel binding"
-msgstr ""
-
-msgid "Unsupported channel binding method"
-msgstr "Kaedah pengikatan saluran tidak disokong"
-
-msgid "User not found"
-msgstr "Pengguna tidak ditemui"
-
-msgid "Invalid Username Encoding"
-msgstr "Pengekodan Nama Pengguna Tidak Sah"
-
-msgid "Resource Constraint"
-msgstr "Kekangan Sumber"
 
 msgid "Unable to canonicalize username"
 msgstr ""
@@ -4328,6 +4341,9 @@ msgstr "Mekanisma Pengesahihan Tidak Sah"
 msgid "Authorization mechanism too weak"
 msgstr "Mekanisma pengesahihan terlalu lemah"
 
+msgid "Incorrect username or password"
+msgstr "Nama pengguna atau kata laluan salah"
+
 msgid "Temporary Authentication Failure"
 msgstr "Kegagalan Pengesahihan Sementara"
 
@@ -4372,6 +4388,9 @@ msgstr "Pelanggaran Polisi"
 
 msgid "Remote Connection Failed"
 msgstr "Sambungan Jauh Gagal"
+
+msgid "Resource Constraint"
+msgstr "Kekangan Sumber"
 
 msgid "Restricted XML"
 msgstr "XML Terhad"
@@ -4684,6 +4703,19 @@ msgstr "Tidak boleh hantar fail kepada %s, tidak melanggan pengguna tersebut"
 msgid "Please select the resource of %s to which you would like to send a file"
 msgstr "Sila pilih sumber %s yang anda mahu hantarkan fail"
 
+#, c-format
+msgid "The queue for %s has reached its maximum length of %u."
+msgstr ""
+
+msgid "XMPP stream management"
+msgstr ""
+
+msgid "Stanza queue is full"
+msgstr ""
+
+msgid "No further messages will be queued"
+msgstr ""
+
 msgid "Afraid"
 msgstr "Takut"
 
@@ -4903,7 +4935,6 @@ msgstr "Malu"
 msgid "Sick"
 msgstr "Sakit"
 
-#. Sleepy / Tired
 msgid "Sleepy"
 msgstr "Mengantuk"
 
@@ -4990,6 +5021,9 @@ msgstr "Kata laluan telah tamat tempoh"
 msgid "Incorrect password"
 msgstr "Kata laluan salah"
 
+msgid "User not found"
+msgstr "Pengguna tidak ditemui"
+
 msgid "Account has been disabled"
 msgstr "Akaun telah dilumpuhkan"
 
@@ -5010,9 +5044,6 @@ msgstr "Tidak dapat tambah diri anda sendiri"
 
 msgid "Master archive is misconfigured"
 msgstr "Arkib master tersalah konfigur"
-
-msgid "Incorrect username or password"
-msgstr "Nama pengguna atau kata laluan salah"
 
 msgid "Could not recognize the host of the username you entered"
 msgstr "Tidak dapat kenalpasti hos nama pengguna yang anda masukkan"
@@ -5220,1109 +5251,6 @@ msgstr "Alamat pelayan"
 
 msgid "Server port"
 msgstr "Port pelayan"
-
-msgid "Please authorize me so I can add you to my buddy list."
-msgstr "Sila sahihkan saya supaya dapat ditambah ke dalam senarai rakan saya."
-
-msgid "No reason given."
-msgstr "Tiada sebab diberi."
-
-msgid "Authorization Denied Message:"
-msgstr ""
-
-#. *
-#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
-#.
-msgid "_OK"
-msgstr "_OK"
-
-#, c-format
-msgid "Received unexpected response from %s: %s"
-msgstr ""
-
-#, c-format
-msgid "Received unexpected response from %s"
-msgstr ""
-
-msgid ""
-"You have been connecting and disconnecting too frequently. Wait ten minutes "
-"and try again. If you continue to try, you will need to wait even longer."
-msgstr ""
-
-msgid ""
-"You required encryption in your account settings, but one of the servers "
-"doesn't support it."
-msgstr ""
-
-#. Note to translators: The first %s is a URL, the second is an
-#. error message.
-#, c-format
-msgid "Error requesting %s: %s"
-msgstr "Ralat meminta %s: %s"
-
-msgid "The server returned an empty response"
-msgstr "Pelayan mengembalikan respon kosong"
-
-msgid ""
-"Server requested that you fill out a CAPTCHA in order to sign in, but this "
-"client does not currently support CAPTCHAs."
-msgstr ""
-
-msgid "AOL does not allow your screen name to authenticate here"
-msgstr ""
-
-msgid ""
-"(There was an error receiving this message.  The buddy you are speaking with "
-"is probably using a different encoding than expected.  If you know what "
-"encoding he is using, you can specify it in the advanced account options for "
-"your AIM/ICQ account.)"
-msgstr ""
-
-#, c-format
-msgid ""
-"(There was an error receiving this message.  Either you and %s have "
-"different encodings selected, or %s has a buggy client.)"
-msgstr ""
-
-msgid "Could not join chat room"
-msgstr "Tidak dapat menyertai bilik sembang"
-
-msgid "Invalid chat room name"
-msgstr "Nama bilik sembang tidak sah"
-
-msgid "Invalid error"
-msgstr "Ralat tidak sah"
-
-msgid "Not logged in"
-msgstr "Tidak mendaftar masuk"
-
-msgid "Cannot receive IM due to parental controls"
-msgstr ""
-
-msgid "Cannot send SMS without accepting terms"
-msgstr ""
-
-msgid "Cannot send SMS"
-msgstr "Tidak dapat hantar SMS"
-
-#. SMS_WITHOUT_DISCLAIMER is weird
-msgid "Cannot send SMS to this country"
-msgstr ""
-
-#. Undocumented
-msgid "Cannot send SMS to unknown country"
-msgstr ""
-
-msgid "Bot accounts cannot initiate IMs"
-msgstr ""
-
-msgid "Bot account cannot IM this user"
-msgstr ""
-
-msgid "Bot account reached IM limit"
-msgstr ""
-
-msgid "Bot account reached daily IM limit"
-msgstr ""
-
-msgid "Bot account reached monthly IM limit"
-msgstr ""
-
-msgid "Unable to receive offline messages"
-msgstr ""
-
-msgid "Offline message store full"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message: %s"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message to %s: %s (%s)"
-msgstr ""
-
-#, c-format
-msgid "Unable to send message to %s: %s"
-msgstr ""
-
-msgid "Thinking"
-msgstr "Berfikir"
-
-msgid "Shopping"
-msgstr "Membeli-belah"
-
-msgid "Questioning"
-msgstr "Menanya"
-
-msgid "Eating"
-msgstr "Makan"
-
-msgid "Watching a movie"
-msgstr "Menonton cereka"
-
-msgid "Typing"
-msgstr "Menaip"
-
-msgid "At the office"
-msgstr "Di pejabat"
-
-msgid "Taking a bath"
-msgstr "Sedang mandi"
-
-msgid "Watching TV"
-msgstr "Menonton TV"
-
-msgid "Having fun"
-msgstr "Sedang berseronok"
-
-msgid "Sleeping"
-msgstr "Tidur"
-
-msgid "Using a PDA"
-msgstr "Guna PDA"
-
-msgid "Meeting friends"
-msgstr "Bertemu rakan"
-
-msgid "On the phone"
-msgstr "Menelefon"
-
-msgid "Surfing"
-msgstr "Melayari"
-
-#. "I am mobile." / "John is mobile."
-msgid "Mobile"
-msgstr "Telefon Bimbit"
-
-msgid "Searching the web"
-msgstr "Menggelintar sesawang"
-
-msgid "At a party"
-msgstr "Menghadiri parti"
-
-msgid "Having Coffee"
-msgstr "Menikmati Kopi"
-
-#. Playing video games
-msgid "Gaming"
-msgstr "Bermain"
-
-msgid "Browsing the web"
-msgstr "Melayari sesawang"
-
-msgid "Smoking"
-msgstr "Merokok"
-
-msgid "Writing"
-msgstr "Menulis"
-
-#. Drinking [Alcohol]
-msgid "Drinking"
-msgstr "Minum"
-
-msgid "Listening to music"
-msgstr "Mendengar muzik"
-
-msgid "Studying"
-msgstr "Sedang belajar"
-
-msgid "Working"
-msgstr "Bekerja"
-
-msgid "In the restroom"
-msgstr "Di bilik air"
-
-msgid "Received invalid data on connection with server"
-msgstr ""
-
-msgid "Error parsing response from authentication server"
-msgstr ""
-
-msgid "Unknown error during authentication"
-msgstr ""
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "AIM Protocol Plugin"
-msgstr "Pemalam Protokol AIM"
-
-msgid "ICQ UIN..."
-msgstr "UIN ICQ..."
-
-#. *< type
-#. *< ui_requirement
-#. *< flags
-#. *< dependencies
-#. *< priority
-#. *< id
-#. *< name
-#. *< version
-#. *  summary
-#. *  description
-msgid "ICQ Protocol Plugin"
-msgstr "Pemalam Protokol ICQ"
-
-msgid "Encoding"
-msgstr "Pengekodan"
-
-msgid "The remote user has closed the connection."
-msgstr "Pengguna jauh telah menutup sambungan."
-
-msgid "The remote user has declined your request."
-msgstr "Pengguna jauh menolak permintaan anda."
-
-#, c-format
-msgid "Lost connection with the remote user:<br>%s"
-msgstr ""
-
-msgid "Received invalid data on connection with remote user."
-msgstr ""
-
-msgid "Unable to establish a connection with the remote user."
-msgstr ""
-
-msgid "Direct IM established"
-msgstr "IM langsung terjalin"
-
-#, c-format
-msgid ""
-"%s tried to send you a %s file, but we only allow files up to %s over Direct "
-"IM.  Try using file transfer instead.\n"
-msgstr ""
-
-#, c-format
-msgid "File %s is %s, which is larger than the maximum size of %s."
-msgstr ""
-
-msgid "Free For Chat"
-msgstr "Sedia Bersembang"
-
-msgid "Not Available"
-msgstr "Tidak Tersedia"
-
-msgid "Occupied"
-msgstr "Tak Boleh"
-
-msgid "Web Aware"
-msgstr "Di Laman Maya"
-
-msgid "Invisible"
-msgstr "Halimunan"
-
-msgid "Evil"
-msgstr "Berniat Jahat"
-
-msgid "Depression"
-msgstr "Gangguan Mental"
-
-msgid "At home"
-msgstr "Di rumah"
-
-msgid "At work"
-msgstr "Di tempat kerja"
-
-msgid "At lunch"
-msgstr "Menikmati makan tengahari"
-
-#, c-format
-msgid "Unable to connect to authentication server: %s"
-msgstr ""
-
-#, c-format
-msgid "Unable to connect to BOS server: %s"
-msgstr ""
-
-msgid "Username sent"
-msgstr "Nama pengguna dihantar"
-
-msgid "Connection established, cookie sent"
-msgstr ""
-
-#. TODO: Don't call this with ssi
-msgid "Finalizing connection"
-msgstr "Menyudahkan sambungan"
-
-#, c-format
-msgid ""
-"Unable to sign on as %s because the username is invalid.  Usernames must be "
-"a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid ""
-"You required encryption in your account settings, but encryption is not "
-"supported by your system."
-msgstr ""
-
-msgid ""
-"You required Kerberos authentication but encryption is disabled in your "
-"account settings."
-msgstr ""
-
-#, c-format
-msgid "You may be disconnected shortly.  If so, check %s for updates."
-msgstr ""
-
-msgid "Unable to get a valid AIM login hash."
-msgstr ""
-
-msgid "Unable to get a valid login hash."
-msgstr ""
-
-msgid "Received authorization"
-msgstr "Keizinan diterima"
-
-#. Unregistered username
-msgid "Username does not exist"
-msgstr "Nama pengguna tidak wujud"
-
-#. Suspended account
-msgid "Your account is currently suspended"
-msgstr "Akaun anda telah ditangguh"
-
-#. service temporarily unavailable
-msgid "The AOL Instant Messenger service is temporarily unavailable."
-msgstr ""
-
-#. username connecting too frequently
-msgid ""
-"Your username has been connecting and disconnecting too frequently. Wait ten "
-"minutes and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-#. client too old
-#, c-format
-msgid "The client version you are using is too old. Please upgrade at %s"
-msgstr ""
-
-#. IP address connecting too frequently
-msgid ""
-"Your IP address has been connecting and disconnecting too frequently. Wait a "
-"minute and try again. If you continue to try, you will need to wait even "
-"longer."
-msgstr ""
-
-msgid "The SecurID key entered is invalid"
-msgstr ""
-
-msgid "Enter SecurID"
-msgstr "Masukkan SecurID"
-
-msgid "Enter the 6 digit number from the digital display."
-msgstr "Masukkan nombor 6 digiy menerusi paparan digital."
-
-msgid "Password sent"
-msgstr "Kata laluan dihantar"
-
-msgid "Unable to initialize connection"
-msgstr "Tidak boleh awalkan sambungan"
-
-#, c-format
-msgid ""
-"The user %u has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-
-msgid "ICQ authorization denied."
-msgstr "Keizinan ICQ dinafikan."
-
-#. Someone has granted you authorization
-#, c-format
-msgid "The user %u has granted your request to add them to your buddy list."
-msgstr ""
-
-#, c-format
-msgid ""
-"You have received a special message\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-
-#, c-format
-msgid ""
-"You have received an ICQ page\n"
-"\n"
-"From: %s [%s]\n"
-"%s"
-msgstr ""
-
-#, c-format
-msgid ""
-"You have received an ICQ email from %s [%s]\n"
-"\n"
-"Message is:\n"
-"%s"
-msgstr ""
-
-#, c-format
-msgid "ICQ user %u has sent you a buddy: %s (%s)"
-msgstr ""
-
-msgid "Do you want to add this buddy to your buddy list?"
-msgstr ""
-
-msgid "_Add"
-msgstr "T_ambah"
-
-msgid "_Decline"
-msgstr "_Nafi"
-
-#, c-format
-msgid "You missed %hu message from %s because it was invalid."
-msgid_plural "You missed %hu messages from %s because they were invalid."
-msgstr[0] ""
-
-#, c-format
-msgid "You missed %hu message from %s because it was too large."
-msgid_plural "You missed %hu messages from %s because they were too large."
-msgstr[0] ""
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because the rate limit has been exceeded."
-msgid_plural ""
-"You missed %hu messages from %s because the rate limit has been exceeded."
-msgstr[0] ""
-
-#, c-format
-msgid ""
-"You missed %hu message from %s because his/her warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because his/her warning level is too high."
-msgstr[0] ""
-
-#, c-format
-msgid "You missed %hu message from %s because your warning level is too high."
-msgid_plural ""
-"You missed %hu messages from %s because your warning level is too high."
-msgstr[0] ""
-
-#, c-format
-msgid "You missed %hu message from %s for an unknown reason."
-msgid_plural "You missed %hu messages from %s for an unknown reason."
-msgstr[0] ""
-
-msgid "Your AIM connection may be lost."
-msgstr ""
-
-#, c-format
-msgid "You have been disconnected from chat room %s."
-msgstr ""
-
-msgid "The new formatting is invalid."
-msgstr ""
-
-msgid "Username formatting can change only capitalization and whitespace."
-msgstr ""
-
-msgid "Pop-Up Message"
-msgstr "Mesej Timbul"
-
-#, c-format
-msgid "The following username is associated with %s"
-msgid_plural "The following usernames are associated with %s"
-msgstr[0] ""
-
-#, c-format
-msgid "No results found for email address %s"
-msgstr ""
-
-#, c-format
-msgid "You should receive an email asking to confirm %s."
-msgstr ""
-
-msgid "Account Confirmation Requested"
-msgstr "Pengesahan Akaun Dipinta"
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name differs "
-"from the original."
-msgstr ""
-
-#, c-format
-msgid "Error 0x%04x: Unable to format username because it is invalid."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to format username because the requested name is too "
-"long."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because there is already a "
-"request pending for this username."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address has "
-"too many usernames associated with it."
-msgstr ""
-
-#, c-format
-msgid ""
-"Error 0x%04x: Unable to change email address because the given address is "
-"invalid."
-msgstr ""
-
-#, c-format
-msgid "Error 0x%04x: Unknown error."
-msgstr "Ralat 0x%04x: Ralat tidak diketahui."
-
-msgid "Error Changing Account Info"
-msgstr "Ralat Mengubah Maklumat Akaun"
-
-#, c-format
-msgid "The email address for %s is %s"
-msgstr "Alamat emel untuk %s ialah %s"
-
-msgid "Account Info"
-msgstr "Maklumat Akaun"
-
-msgid ""
-"Your IM Image was not sent. You must be Direct Connected to send IM Images."
-msgstr ""
-"Imej IM anda tidak dapat dihantar. Anda mesti Bersambung Terus supaya dapat "
-"menghantar Imej IM."
-
-msgid "Unable to set AIM profile."
-msgstr "Tidak dapat tetapkan profil AIM."
-
-msgid ""
-"You have probably requested to set your profile before the login procedure "
-"completed.  Your profile remains unset; try setting it again when you are "
-"fully connected."
-msgstr ""
-
-#, c-format
-msgid ""
-"The maximum profile length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum profile length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-
-msgid "Profile too long."
-msgstr "Profil terlalu panjang."
-
-#, c-format
-msgid ""
-"The maximum away message length of %d byte has been exceeded.  It has been "
-"truncated for you."
-msgid_plural ""
-"The maximum away message length of %d bytes has been exceeded.  It has been "
-"truncated for you."
-msgstr[0] ""
-"Panjang maksimum mesej keluar adalah %d bait telah dilepasi. Ia telah "
-"dipangkaskan untuk anda."
-
-msgid "Away message too long."
-msgstr "Mesej keluar terlalu panjang."
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because the username is invalid.  Usernames must "
-"be a valid email address, or start with a letter and contain only letters, "
-"numbers and spaces, or contain only numbers."
-msgstr ""
-
-msgid "Unable to Add"
-msgstr "Tidak boleh Tambah "
-
-msgid "Unable to Retrieve Buddy List"
-msgstr ""
-
-msgid ""
-"The AIM servers were temporarily unable to send your buddy list.  Your buddy "
-"list is not lost, and will probably become available in a few minutes."
-msgstr ""
-
-msgid "Orphans"
-msgstr "Yatim"
-
-#, c-format
-msgid ""
-"Unable to add the buddy %s because you have too many buddies in your buddy "
-"list.  Please remove one and try again."
-msgstr ""
-
-msgid "(no name)"
-msgstr "(tanpa nama)"
-
-#, c-format
-msgid "Unable to add the buddy %s for an unknown reason."
-msgstr "Tidak dapat tambah rakan %s atas sebab yang tidak diketahui."
-
-#, c-format
-msgid ""
-"The user %s has given you permission to add him or her to your buddy list.  "
-"Do you want to add this user?"
-msgstr ""
-"Pengguna %s telah memberi keizinan menambah dia ke dalam senarai rakan anda. "
-"Anda mahu tambah pengguna ini?"
-
-msgid "Authorization Given"
-msgstr "Keizinan Diberi"
-
-#. Granted
-#, c-format
-msgid "The user %s has granted your request to add them to your buddy list."
-msgstr ""
-"Pengguna %s telah mengizinkan permintaan anda menambah dia ke dalam senarai "
-"rakan anda."
-
-msgid "Authorization Granted"
-msgstr "Keizinan Diberi"
-
-#. Denied
-#, c-format
-msgid ""
-"The user %s has denied your request to add them to your buddy list for the "
-"following reason:\n"
-"%s"
-msgstr ""
-
-msgid "Authorization Denied"
-msgstr "Keizinan Dinafikan"
-
-msgid "_Exchange:"
-msgstr "P_ertukaran:"
-
-msgid "Your IM Image was not sent. You cannot send IM Images in AIM chats."
-msgstr ""
-"Imej IM anda tidak dapat dihantar. Anda tidak boleh menghantar Imej IM di "
-"dalam sembang AIM."
-
-msgid "iTunes Music Store Link"
-msgstr "Pautan Kedai Muzik iTunes"
-
-msgid "Lunch"
-msgstr "Makan tengahari"
-
-#, c-format
-msgid "Buddy Comment for %s"
-msgstr "Ulasan rakan untuk %s"
-
-msgid "Buddy Comment:"
-msgstr "Ulasan Rakan:"
-
-#, c-format
-msgid "You have selected to open a Direct IM connection with %s."
-msgstr ""
-
-msgid ""
-"Because this reveals your IP address, it may be considered a security risk.  "
-"Do you wish to continue?"
-msgstr ""
-
-msgid "C_onnect"
-msgstr "Sa_mbung"
-
-msgid "You closed the connection."
-msgstr "Anda telah menutup sambungan."
-
-msgid "Get AIM Info"
-msgstr "Dapatkan Maklumat AIM"
-
-#. We only do this if the user is in our buddy list
-msgid "Edit Buddy Comment"
-msgstr "Sunting Ulasan Rakan"
-
-msgid "Get X-Status Msg"
-msgstr "Dapatkan Mesej X-Status"
-
-msgid "End Direct IM Session"
-msgstr "Tamatkan Sesi IM Langsung"
-
-msgid "Direct IM"
-msgstr "IM Langsung"
-
-msgid "Re-request Authorization"
-msgstr "Pinta-semula Keizinan"
-
-msgid "Require authorization"
-msgstr "Perlukan keizinan"
-
-msgid "Web aware (enabling this will cause you to receive SPAM!)"
-msgstr ""
-
-msgid "ICQ Privacy Options"
-msgstr "Pilihan Kerahsiaan ICQ"
-
-msgid "Change Address To:"
-msgstr "Ubah Alamat Ke:"
-
-msgid "you are not waiting for authorization"
-msgstr "anda tidak menunggu keizinan"
-
-msgid "You are awaiting authorization from the following buddies"
-msgstr ""
-
-msgid ""
-"You can re-request authorization from these buddies by right-clicking on "
-"them and selecting \"Re-request Authorization.\""
-msgstr ""
-
-msgid "Find Buddy by Email"
-msgstr "Cari Rakan melalui Emel"
-
-msgid "Search for a buddy by email address"
-msgstr "Gelintar rakan melalui alamat emel"
-
-msgid "Type the email address of the buddy you are searching for."
-msgstr "Taip alamat emel rakan yang anda mahu cari."
-
-msgid "_Search"
-msgstr "_Gelintar"
-
-msgid "Set User Info (web)..."
-msgstr "Tetapkan Maklumat Pengguna (sesawang)..."
-
-#. This only happens when connecting with the old-style BUCP login
-msgid "Change Password (web)"
-msgstr "Ubah Kata Laluan (sesawang)"
-
-msgid "Configure IM Forwarding (web)"
-msgstr "Konfigur Pemajuan IM (sesawang)"
-
-#. ICQ actions
-msgid "Set Privacy Options..."
-msgstr "Tetapkan Pilihan Kerahsiaan..."
-
-msgid "Show Visible List"
-msgstr "Tunjuk Senarai Tampak"
-
-msgid "Show Invisible List"
-msgstr "Tunjuk Senarai Halimunan"
-
-#. AIM actions
-msgid "Confirm Account"
-msgstr "Sahkan Akaun"
-
-msgid "Display Currently Registered Email Address"
-msgstr ""
-
-msgid "Change Currently Registered Email Address..."
-msgstr ""
-
-msgid "Show Buddies Awaiting Authorization"
-msgstr ""
-
-msgid "Search for Buddy by Email Address..."
-msgstr ""
-
-msgid "clientLogin"
-msgstr ""
-
-msgid "Kerberos"
-msgstr "Kerberos"
-
-msgid "MD5-based"
-msgstr "Berasaskan-MD5"
-
-msgid "Authentication method"
-msgstr "Kaedah pengesahihan"
-
-msgid ""
-"Always use AIM/ICQ proxy server for\n"
-"file transfers and direct IM (slower,\n"
-"but does not reveal your IP address)"
-msgstr ""
-
-msgid "Allow multiple simultaneous logins"
-msgstr ""
-
-#, c-format
-msgid "Asking %s to connect to us at %s:%hu for Direct IM."
-msgstr ""
-
-#, c-format
-msgid "Attempting to connect to %s:%hu."
-msgstr ""
-
-msgid "Attempting to connect via proxy server."
-msgstr ""
-
-#, c-format
-msgid "%s has just asked to directly connect to %s"
-msgstr ""
-
-msgid ""
-"This requires a direct connection between the two computers and is necessary "
-"for IM Images.  Because your IP address will be revealed, this may be "
-"considered a privacy risk."
-msgstr ""
-
-#. Label
-msgid "Buddy Icon"
-msgstr "Ikon Rakan"
-
-msgid "Voice"
-msgstr "Suara"
-
-msgid "AIM Direct IM"
-msgstr "IM Langsung AIM"
-
-msgid "Get File"
-msgstr "Dapatkan Fail"
-
-msgid "Games"
-msgstr "Permainan"
-
-msgid "ICQ Xtraz"
-msgstr "Xtraz ICQ"
-
-msgid "Add-Ins"
-msgstr "Tambahan"
-
-msgid "Send Buddy List"
-msgstr "Hantar Senarai Rakan"
-
-msgid "ICQ Direct Connect"
-msgstr "Sambung Langsung ICQ"
-
-msgid "AP User"
-msgstr "Pengguna AP"
-
-msgid "ICQ RTF"
-msgstr "RTF ICQ"
-
-msgid "Nihilist"
-msgstr ""
-
-msgid "ICQ Server Relay"
-msgstr ""
-
-msgid "Old ICQ UTF8"
-msgstr "UTF8 ICQ Lama"
-
-msgid "Trillian Encryption"
-msgstr "Penyulitan Trillian"
-
-msgid "ICQ UTF8"
-msgstr "UTF8 ICQ"
-
-msgid "Hiptop"
-msgstr "Hiptop"
-
-msgid "Security Enabled"
-msgstr "Keselamatan Dibenarkan"
-
-msgid "Video Chat"
-msgstr "Sembang Video"
-
-msgid "iChat AV"
-msgstr "AV iChat"
-
-msgid "Live Video"
-msgstr "Video Langsung"
-
-msgid "Camera"
-msgstr "Kamera"
-
-msgid "Screen Sharing"
-msgstr "Perkongsian Skrin"
-
-msgid "IP Address"
-msgstr "Alamat IP"
-
-msgid "Warning Level"
-msgstr "Aras Amaran"
-
-msgid "Buddy Comment"
-msgstr "Ulasan Rakan"
-
-#, c-format
-msgid "User information not available: %s"
-msgstr "Maklumat pengguna tidak tersedia: %s"
-
-msgid "Mobile Phone"
-msgstr "Telefon Bimbit"
-
-msgid "Age"
-msgstr "Usia"
-
-msgid "Personal Web Page"
-msgstr "Laman Sesawang Peribadi"
-
-#. aim_userinfo_t
-#. use_html_status
-msgid "Additional Information"
-msgstr "Maklumat Tambahan"
-
-msgid "Home Address"
-msgstr "Alamat Rumah"
-
-msgid "Zip Code"
-msgstr "Poskod"
-
-msgid "Work Address"
-msgstr "Alamat Tempat Kerja"
-
-msgid "Work Information"
-msgstr "Maklumat Tempat Kerja"
-
-msgid "Company"
-msgstr "Syarikat"
-
-msgid "Division"
-msgstr "Bahagian"
-
-msgid "Position"
-msgstr "Kedudukan"
-
-msgid "Web Page"
-msgstr "Laman Sesawang"
-
-msgid "Online Since"
-msgstr "Atas Talian Semenjak"
-
-msgid "Member Since"
-msgstr "Ahli Semenjak"
-
-msgid "Capabilities"
-msgstr "Keupayaan"
-
-msgid "Profile"
-msgstr "Profil"
-
-msgid "View web profile"
-msgstr "Lihat profil sesawang"
-
-msgid "Invalid SNAC"
-msgstr "SNAC Tidak Sah"
-
-msgid "Server rate limit exceeded"
-msgstr "Had kadar pelayan dicapai"
-
-msgid "Client rate limit exceeded"
-msgstr "Had kadar klien dicapai"
-
-msgid "Service unavailable"
-msgstr "Perkhidmatan tidak tersedia"
-
-msgid "Service not defined"
-msgstr "Perkhidmatan tidak ditakrif"
-
-msgid "Obsolete SNAC"
-msgstr "SNAC Lapuk"
-
-msgid "Not supported by host"
-msgstr "Tidak disokong oleh hos"
-
-msgid "Not supported by client"
-msgstr "Tidak disokong oleh klien"
-
-msgid "Refused by client"
-msgstr "Ditolak oleh klien"
-
-msgid "Reply too big"
-msgstr "Balasan terlalu besar"
-
-msgid "Responses lost"
-msgstr "Respon hilang"
-
-msgid "Request denied"
-msgstr "Permintaan dinafikan"
-
-msgid "Busted SNAC payload"
-msgstr "Beban muatan SNAC pecah"
-
-msgid "Insufficient rights"
-msgstr "Hak kebenaran tidak mencukupi"
-
-msgid "In local permit/deny"
-msgstr ""
-
-msgid "Warning level too high (sender)"
-msgstr "Aras amaran terlalu tinggi (pengirim)"
-
-msgid "Warning level too high (receiver)"
-msgstr "Aras amaran terlalu tinggi (penerima)"
-
-msgid "User temporarily unavailable"
-msgstr "Pengguna buat masa ini tidak tersedia"
-
-msgid "No match"
-msgstr "Tiada padanan"
-
-msgid "List overflow"
-msgstr "Senarai melimpah"
-
-msgid "Request ambiguous"
-msgstr "Permintaan kabur"
-
-msgid "Queue full"
-msgstr "Baris gilir penuh"
-
-msgid "Not while on AOL"
-msgstr "Tidak berada dalam AOL"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear online to the chosen user even when your status is set to
-#. Invisible.
-msgid "Appear Online"
-msgstr "Kelihatan Atas Talian"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user when your status is set to
-#. Invisible (this is the default).
-msgid "Don't Appear Online"
-msgstr "Jangan Kelihatan Atas Talian"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to always appear offline to the chosen user (even when your status
-#. isn't Invisible).
-msgid "Appear Offline"
-msgstr "Kelihatan Luar Talian"
-
-#. Translators: This string is a menu option that, if selected, will cause
-#. you to appear offline to the chosen user if you are invisible, and
-#. appear online to the chosen user if you are not invisible (this is the
-#. default).
-msgid "Don't Appear Offline"
-msgstr "Jangan Kelihatan Luar Talian"
-
-msgid "you have no buddies on this list"
-msgstr "anda tidak mempunyai rakan dalam senarai ini"
-
-#, c-format
-msgid ""
-"You can add a buddy to this list by right-clicking on them and selecting \"%s"
-"\""
-msgstr ""
-
-msgid "Visible List"
-msgstr "Senarai Tampak"
-
-msgid "These buddies will see your status when you switch to \"Invisible\""
-msgstr ""
-
-msgid "Invisible List"
-msgstr "Senarai Halimunan"
-
-msgid "These buddies will always see you as offline"
-msgstr ""
 
 #, c-format
 msgid "<b>Group Title:</b> %s<br>"
@@ -7556,6 +6484,9 @@ msgstr "Sidang Video"
 msgid "Computer"
 msgstr "Komputer"
 
+msgid "Mobile Phone"
+msgstr "Telefon Bimbit"
+
 msgid "PDA"
 msgstr "PDA"
 
@@ -7803,6 +6734,9 @@ msgstr ""
 msgid "Exposure"
 msgstr ""
 
+msgid "Encoding"
+msgstr "Pengekodan"
+
 #, c-format
 msgid "Unable to create socket: %s"
 msgstr ""
@@ -7823,6 +6757,9 @@ msgstr ""
 msgid "Error resolving %s"
 msgstr "Ralat meleraikan %s"
 
+msgid "Received invalid data on connection with server"
+msgstr ""
+
 #, c-format
 msgid "Requesting %s's attention..."
 msgstr "Meminta perhatian %s..."
@@ -7839,6 +6776,12 @@ msgstr "_Ya"
 
 msgid "_No"
 msgstr "_Tidak"
+
+#. *
+#. * A wrapper for purple_request_action() that uses @c OK and @c Cancel buttons.
+#.
+msgid "_OK"
+msgstr "_OK"
 
 #. *
 #. * A wrapper for purple_request_action() that uses Accept and Cancel buttons.
@@ -7908,8 +6851,17 @@ msgstr "Nyahtetap"
 msgid "Do not disturb"
 msgstr "Jangan ganggu"
 
+msgid "Invisible"
+msgstr "Halimunan"
+
 msgid "Extended away"
 msgstr ""
+
+msgid "Mobile"
+msgstr "Telefon Bimbit"
+
+msgid "Listening to music"
+msgstr "Mendengar muzik"
 
 msgid "Feeling"
 msgstr "Berasa"
@@ -8056,29 +7008,40 @@ msgid ""
 "the old file has been renamed to %s~."
 msgstr ""
 
+#. Translators may want to transliterate the name.
+#. It is not to be translated.
+msgid "Pidgin"
+msgstr ""
+
 msgid "Instant Messaging Client"
 msgstr "Klien Pemesejan Segera"
 
 msgid ""
-"Pidgin is a chat program which lets you log in to accounts on multiple chat "
+"Pidgin is a chat program which lets you log into accounts on multiple chat "
 "networks simultaneously."
 msgstr ""
 
 msgid ""
-"This means that you can be chatting with friends on AIM, talking to a friend "
-"on Google Talk, and sitting in an IRC chat room all at the same time."
+"This means that you can be chatting with friends on XMPP and sitting in an "
+"IRC channel at the same time."
 msgstr ""
 
-msgid "The buddy list showing friends on different networks."
-msgstr "Senarai rakan menunjukkan rakan yang berada dalam pelbagai rangkaian."
-
-msgid "Pidgin Internet Messenger"
-msgstr "Pemesej Internet Pidgin"
+msgid "Buddy list showing friends on different networks"
+msgstr ""
 
 msgid "Internet Messenger"
 msgstr "Pemesej Internet"
 
-msgid "Chat over IM.  Supports AIM, Google Talk, Jabber/XMPP, and more"
+msgid "Pidgin Internet Messenger"
+msgstr "Pemesej Internet Pidgin"
+
+msgid "Chat over IM.  Supports XMPP, IRC, and more"
+msgstr ""
+
+#. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+msgid ""
+"chat;talk;im;message;bonjour;gadu-gadu;irc;groupwise;jabber;sametime;silc;"
+"simple;xmpp;zephyr"
 msgstr ""
 
 #. Build the login options frame.
@@ -8561,6 +7524,9 @@ msgid "/_Help"
 msgstr ""
 
 msgid "/Help/Online _Help"
+msgstr ""
+
+msgid "/Help/D_onate"
 msgstr ""
 
 msgid "/Help/_Build Information"
@@ -9082,6 +8048,9 @@ msgid "%d person in room"
 msgid_plural "%d people in room"
 msgstr[0] "%d orang di dalam bilik"
 
+msgid "Typing"
+msgstr "Menaip"
+
 msgid "Stopped Typing"
 msgstr ""
 
@@ -9189,20 +8158,14 @@ msgstr "Ralat"
 msgid "Fatal Error"
 msgstr "Ralat Mati"
 
-msgid "artist"
-msgstr "artis"
-
-msgid "voice and video"
-msgstr "suara dan video"
-
-msgid "support"
-msgstr "sokongan"
-
-msgid "webmaster"
-msgstr "webmaster"
+msgid "lead developer"
+msgstr "pembangun peneraju"
 
 msgid "win32 port"
 msgstr "port win32"
+
+msgid "artist"
+msgstr "artis"
 
 #. Translators: This is a person's name. For most languages we recommend
 #. not translating it.
@@ -9215,9 +8178,18 @@ msgstr "penyelenggara"
 msgid "libfaim maintainer"
 msgstr "penyelenggara libfaim"
 
+msgid "webmaster"
+msgstr "webmaster"
+
 #. If "lazy bum" translates literally into a serious insult, use something else or omit it.
 msgid "hacker and designated driver [lazy bum]"
 msgstr "penggodam dan pemacu khusus [lazy bum]"
+
+msgid "voice and video"
+msgstr "suara dan video"
+
+msgid "support"
+msgstr "sokongan"
 
 msgid "support/QA"
 msgstr "sokongan/SJ"
@@ -9227,9 +8199,6 @@ msgstr "XMPP"
 
 msgid "original author"
 msgstr "pengarang asal"
-
-msgid "lead developer"
-msgstr "pembangun peneraju"
 
 msgid "Senior Contributor/QA"
 msgstr "Penyumbang Senior/SJ"
@@ -9545,20 +8514,18 @@ msgstr ""
 
 #, c-format
 msgid ""
-"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A HREF=\"%s"
-"\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</A><BR>\tIRC "
-"Channel: #pidgin on irc.freenode.net<BR>\tXMPP MUC: devel@conference.pidgin."
-"im<BR><BR>"
+"<FONT SIZE=\"4\"><B>Helpful Resources</B></FONT><BR>\t<A "
+"HREF=\"%s\">Website</A><BR>\t<A HREF=\"%s\">Frequently Asked Questions</"
+"A><BR>\tIRC Channel: #pidgin on irc.libera.chat<BR>\tXMPP MUC: "
+"devel@conference.pidgin.im<BR><BR>"
 msgstr ""
 
 msgid ""
-"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available by "
-"emailing <a href=\"mailto:support@pidgin.im\">support@pidgin.im</a><br/>This "
-"is a <b>public</b> mailing list! (<a href=\"http://pidgin.im/pipermail/"
-"support/\">archive</a>)<br/>We can't help with third-party protocols or "
-"plugins!<br/>This list's primary language is <b>English</b>.  You are "
-"welcome to post in another language, but the responses may be less helpful."
-"<br/>"
+"<font size=\"4\"><b>Help from other Pidgin users</b></font> is available via "
+"<a href=\"https://discourse.imfreedom.org/c/support/\">Discourse</a>. This "
+"is a <b>public</b> forum and an account is required to post new messages!<br/"
+">This forum's primary language is <b>English</b>. You are welcome to post in "
+"another language, but the responses may be less helpful.<br/>"
 msgstr ""
 
 #, c-format
@@ -10589,12 +9556,12 @@ msgstr ""
 msgid "Cannot start browser configuration program."
 msgstr ""
 
-msgid "Disabled"
-msgstr ""
-
 #, c-format
 msgid "Use _automatically detected IP address: %s"
 msgstr ""
+
+msgid "IP Address"
+msgstr "Alamat IP"
 
 msgid "ST_UN server:"
 msgstr ""
@@ -10853,6 +9820,37 @@ msgstr ""
 msgid "Status to a_pply at startup:"
 msgstr ""
 
+msgid "DROP"
+msgstr ""
+
+#, c-format
+msgid "Silence threshold: %d%%"
+msgstr ""
+
+msgid "Volume:"
+msgstr ""
+
+msgid "Test Audio"
+msgstr ""
+
+msgid "Test Video"
+msgstr ""
+
+msgid "_Device"
+msgstr ""
+
+msgid "Audio"
+msgstr ""
+
+msgid "Input"
+msgstr ""
+
+msgid "Output"
+msgstr ""
+
+msgid "Video"
+msgstr ""
+
 msgid "Interface"
 msgstr ""
 
@@ -10863,6 +9861,9 @@ msgid "Status / Idle"
 msgstr ""
 
 msgid "Themes"
+msgstr ""
+
+msgid "Voice/Video"
 msgstr ""
 
 msgid "Allow all users to contact me"
@@ -10947,6 +9948,46 @@ msgstr ""
 
 msgid "Select Folder..."
 msgstr ""
+
+msgid "Screen share error"
+msgstr ""
+
+msgid "Error creating screencast request"
+msgstr ""
+
+msgid "OpenPipeWireRemote request failed"
+msgstr ""
+
+msgid "No file descriptor found"
+msgstr ""
+
+msgid "Screencast \"Start\" failed"
+msgstr ""
+
+msgid "Screencast \"SelectSources\" failed"
+msgstr ""
+
+msgid "Screencast \"CreateSession\" failed."
+msgstr ""
+
+msgid "Test image"
+msgstr ""
+
+msgid "Select window"
+msgstr ""
+
+msgid "Use monitor"
+msgstr ""
+
+#, c-format
+msgid "%s (%d✕%d @ %d,%d)"
+msgstr ""
+
+msgid "Unknown output"
+msgstr ""
+
+msgid "_Add"
+msgstr "T_ambah"
 
 #. list button
 msgid "_Get List"
@@ -11114,6 +10155,10 @@ msgid ""
 "<b>Image size:</b> %dx%d"
 msgstr ""
 
+#. Label
+msgid "Buddy Icon"
+msgstr "Ikon Rakan"
+
 #, c-format
 msgid "The file '%s' is too large for %s.  Please try a smaller image.\n"
 msgstr ""
@@ -11152,11 +10197,6 @@ msgid "Do you really want to clear?"
 msgstr ""
 
 msgid "Select color"
-msgstr ""
-
-#. Translators may want to transliterate the name.
-#. It is not to be translated.
-msgid "Pidgin"
 msgstr ""
 
 msgid "_Alias"
@@ -12003,6 +11043,9 @@ msgstr ""
 msgid "Half Operator"
 msgstr ""
 
+msgid "Voice"
+msgstr "Suara"
+
 msgid "Authorization dialog"
 msgstr ""
 
@@ -12252,34 +11295,50 @@ msgstr ""
 msgid "Provides integration with Unity's messaging menu and launcher."
 msgstr ""
 
-msgid "Audio"
+msgid "ALSA"
 msgstr ""
 
-msgid "Video"
+#. "esdmon",	"ESD", ?
+msgid "OSS"
 msgstr ""
 
-msgid "Output"
+msgid "PulseAudio"
+msgstr ""
+
+msgid "sndio"
+msgstr ""
+
+msgid "aRts"
+msgstr ""
+
+msgid "ESD"
+msgstr ""
+
+msgid "Test Input"
+msgstr ""
+
+msgid "KS Video"
+msgstr ""
+
+msgid "Quickcam"
+msgstr ""
+
+msgid "Video4Linux"
+msgstr ""
+
+msgid "Video4Linux2"
+msgstr ""
+
+msgid "Video4Linux MJPEG"
 msgstr ""
 
 msgid "_Plugin"
-msgstr ""
-
-msgid "_Device"
-msgstr ""
-
-msgid "Input"
 msgstr ""
 
 msgid "P_lugin"
 msgstr ""
 
 msgid "D_evice"
-msgstr ""
-
-msgid "DROP"
-msgstr ""
-
-msgid "Volume:"
 msgstr ""
 
 msgid "Silence threshold:"
@@ -12464,8 +11523,8 @@ msgstr ""
 #, no-c-format
 msgid ""
 "Error Installing Spellchecking ($R3).$\\rIf retrying fails, manual "
-"installation instructions are at: http://developer.pidgin.im/wiki/Installing"
-"%20Pidgin#manual_win32_spellcheck_installation"
+"installation instructions are at: http://developer.pidgin.im/wiki/"
+"Installing%20Pidgin#manual_win32_spellcheck_installation"
 msgstr ""
 
 #. Installer Subsection Detailed Description
