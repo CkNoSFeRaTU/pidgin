@@ -374,6 +374,8 @@ update_buddy_metadata(JabberStream *js, const char *from, xmlnode *items)
 					goodinfo = info;
 			}
 		}
+		if (goodinfopng)
+			goodinfo = goodinfopng;
 		if(has_children == FALSE) {
 			purple_buddy_icons_set_for_user(purple_connection_get_account(js->gc), from, NULL, 0, NULL);
 		} else if(goodinfo) {
